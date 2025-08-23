@@ -6,49 +6,81 @@
   <title>Jose Carlos – Link in Bio</title>
   <style>
     :root{
-      --bg:#0d3a3d;
-      --card:#12494c;
+      --bgsolid:#12494c; /* ✅ color verde de acerca.html */
       --accent:#e0c36c;
       --text:#f1f5f9;
       --muted:#cbd5e1;
-      --radius:24px;
-      --shadow:0 8px 28px rgba(0,0,0,.4);
+      --radius:26px;
+      --shadow:0 10px 24px rgba(0,0,0,.28);
+      --shadow-soft:0 6px 14px rgba(0,0,0,.20);
+      --maxw:520px;
     }
-    *{box-sizing:border-box;}
-    body{ margin:0; background:var(--bg); font-family:'Segoe UI', Roboto, sans-serif; display:flex; justify-content:center; align-items:center; min-height:100vh; color:var(--text) }
+    * { box-sizing:border-box }
+    body{
+      margin:0;
+      min-height:100vh;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--text);
+      background: var(--bgsolid); /* ✅ fondo verde sólido */
+      display:flex; align-items:center; justify-content:center;
+      padding:28px;
+      position:relative;
+    }
+    /* ✅ Marca de agua del logo */
+    body::before{
+      content:"";
+      position:fixed; inset:0; pointer-events:none; z-index:0;
+      background: url('logo.png') no-repeat center;
+      background-size:min(70vmin, 600px);
+      opacity:.08;
+      filter: saturate(70%);
+    }
+    .wrap{ width:min(var(--maxw), 100%); text-align:center; position:relative; z-index:1 }
 
-    .card{ width:min(400px,95%); background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow); padding:34px 26px; text-align:center; position:relative }
+    .logo{ width:96px; height:96px; margin:0 auto 14px; display:grid; place-items:center }
+    .logo img{ width:100%; height:100%; object-fit:contain }
 
-    .logo{ width:70px; height:70px; margin:0 auto 14px; }
-    .logo img{ width:100%; height:100%; object-fit:cover; border-radius:8px }
+    h1{ margin:8px 0 4px; font-size:clamp(26px, 5vw, 36px); letter-spacing:.4px }
+    .subtitle{ color:var(--muted); margin-bottom:26px }
 
-    h1{ margin:4px 0 0; font-size:22px; font-weight:700; letter-spacing:.5px }
-    .subtitle{ font-size:13px; color:var(--muted); margin-bottom:22px }
+    .links{ display:flex; flex-direction:column; gap:18px; margin-top:12px }
+    .btn{
+      display:flex; align-items:center; justify-content:center; gap:10px;
+      text-decoration:none; color:var(--text); font-weight:700;
+      border:2px solid var(--accent); border-radius:999px;
+      padding:16px 18px; letter-spacing:.3px;
+      transition: transform .12s ease, box-shadow .12s ease, background .12s ease, color .12s ease;
+      box-shadow: var(--shadow-soft);
+      background-color: rgba(0,0,0,0.18);
+    }
+    .btn:hover{ background:var(--accent); color:#13252a; transform:translateY(-2px) scale(1.01); box-shadow:var(--shadow) }
+    .btn:active{ transform:translateY(0); box-shadow:var(--shadow-soft) }
+    .btn:focus-visible{ outline:3px solid #fff2; outline-offset:3px }
 
-    .links{ display:flex; flex-direction:column; gap:14px }
-    .btn{ display:flex; justify-content:center; align-items:center; text-decoration:none; color:var(--text); font-weight:600; border:2px solid var(--accent); border-radius:999px; padding:12px 16px; transition:.2s all ease; background:transparent; cursor:pointer }
-    .btn:hover{ background:var(--accent); color:#1e293b }
-
-    footer{ margin-top:28px; font-size:11px; color:var(--muted) }
+    footer{ margin-top:28px; color:var(--muted); font-size:12px }
   </style>
+  <!-- ✅ Font Awesome actualizado -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body>
-  <div class="card">
+  <main class="wrap">
     <div class="logo">
-  <img src="logo.png" alt="Logo Jose Carlos">
-</div>
+      <img src="logo.png" alt="Logo Jose Carlos">
+    </div>
+
     <h1>Jose Carlos</h1>
     <div class="subtitle">Estadístico | Data Scientist</div>
 
-    <nav class="links">
-      <a class="btn" href="acerca.html" target="_blank" rel="noopener">Acerca de mí</a>
-      <a class="btn" href="https://www.linkedin.com/in/carlos-meza-351a09295" target="_blank">LinkedIn</a>
-      <a class="btn" href="https://www.instagram.com/jose21carlo?igsh=MXI0ZTVmd3JldXBxMg==" target="_blank">Instagram</a>
-      <a class="btn" href="https://www.tiktok.com/@josecarlosgallego89?is_from_webapp=1&sender_device=pc" target="_blank">TikTok</a>
+    <nav class="links" aria-label="Enlaces principales">
+      <a class="btn" href="acerca.html" target="_blank" rel="noopener"><i class="fas fa-user"></i> Acerca de mí</a>
+      <a class="btn" href="https://www.linkedin.com/in/carlos-meza-351a09295" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i> LinkedIn</a>
+      <a class="btn" href="https://www.instagram.com/jose21carlo?igsh=MXI0ZTVmd3JldXBxMg==" target="_blank" rel="noopener"><i class="fab fa-instagram\"></i> Instagram</a>
+      <a class="btn" href="https://www.tiktok.com/@josecarlosgallego89?is_from_webapp=1&sender_device=pc" target="_blank" rel="noopener"><i class="fab fa-tiktok\"></i> TikTok</a>
     </nav>
 
     <footer>© 2025 • Jose Carlos</footer>
-  </div>
+  </main>
 </body>
 </html>
+
 
