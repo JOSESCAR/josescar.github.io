@@ -6,81 +6,110 @@
   <title>Jose Carlos – Link in Bio</title>
   <style>
     :root{
-      --bgsolid:#12494c; /* ✅ color verde de acerca.html */
-      --accent:#e0c36c;
-      --text:#f1f5f9;
-      --muted:#cbd5e1;
-      --radius:26px;
-      --shadow:0 10px 24px rgba(0,0,0,.28);
-      --shadow-soft:0 6px 14px rgba(0,0,0,.20);
-      --maxw:520px;
+      --bgsolid:#12494c;      /* verde sólido tipo acerca.html */
+      --accent:#e0c36c;       /* dorado */
+      --text:#f1f5f9;         /* texto claro */
+      --muted:#cbd5e1;        /* texto secundario */
+      --radius:28px;
+      --shadow:0 18px 50px rgba(0,0,0,.35);
+      --soft:0 8px 18px rgba(0,0,0,.24);
+      --maxw:720px;
     }
-    * { box-sizing:border-box }
+    *{box-sizing:border-box}
     body{
-      margin:0;
-      min-height:100vh;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color:var(--text);
-      background: var(--bgsolid); /* ✅ fondo verde sólido */
-      display:flex; align-items:center; justify-content:center;
-      padding:28px;
+      margin:0; min-height:100vh; font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+      color:var(--text); background:var(--bgsolid);
+      display:flex; align-items:center; justify-content:center; padding:24px;
+    }
+    /* Tarjeta central (como en tu captura) */
+    .card{
+      width:min(var(--maxw), 92vw);
+      background:rgba(13,58,61,.92);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:42px 28px;
       position:relative;
+      overflow:hidden; /* para que la marca de agua no se salga */
+      text-align:center;
     }
-    /* ✅ Marca de agua del logo */
-    body::before{
+    /* Marca de agua del logo dentro de la tarjeta */
+    .card::before{
       content:"";
-      position:fixed; inset:0; pointer-events:none; z-index:0;
+      position:absolute; inset:0; pointer-events:none; z-index:0;
       background: url('logo.png') no-repeat center;
-      background-size:min(70vmin, 600px);
-      opacity:.08;
-      filter: saturate(70%);
+      background-size:min(70vmin, 520px);   /* ajusta aquí el tamaño del logo */
+      opacity:.08;                          /* intensidad de la marca de agua */
+      filter:saturate(75%);
     }
-    .wrap{ width:min(var(--maxw), 100%); text-align:center; position:relative; z-index:1 }
 
-    .logo{ width:96px; height:96px; margin:0 auto 14px; display:grid; place-items:center }
-    .logo img{ width:100%; height:100%; object-fit:contain }
+    .header{ position:relative; z-index:1 }
+    .logo-top{ width:76px; height:76px; margin:0 auto 10px }
+    .logo-top img{ width:100%; height:100%; object-fit:contain }
 
-    h1{ margin:8px 0 4px; font-size:clamp(26px, 5vw, 36px); letter-spacing:.4px }
-    .subtitle{ color:var(--muted); margin-bottom:26px }
+    h1{ margin:6px 0 4px; font-size:clamp(26px,5vw,34px) }
+    .subtitle{ color:var(--muted); margin-bottom:20px }
 
-    .links{ display:flex; flex-direction:column; gap:18px; margin-top:12px }
+    .links{ position:relative; z-index:1; display:flex; flex-direction:column; gap:18px; margin-top:10px }
     .btn{
       display:flex; align-items:center; justify-content:center; gap:10px;
-      text-decoration:none; color:var(--text); font-weight:700;
-      border:2px solid var(--accent); border-radius:999px;
-      padding:16px 18px; letter-spacing:.3px;
-      transition: transform .12s ease, box-shadow .12s ease, background .12s ease, color .12s ease;
-      box-shadow: var(--shadow-soft);
-      background-color: rgba(0,0,0,0.18);
+      padding:16px 18px; border-radius:999px; text-decoration:none; color:var(--text);
+      border:2px solid var(--accent); background:rgba(0,0,0,.20);
+      font-weight:800; letter-spacing:.2px; box-shadow:var(--soft);
+      transition:transform .12s ease, box-shadow .12s ease, background .12s ease, color .12s ease;
     }
-    .btn:hover{ background:var(--accent); color:#13252a; transform:translateY(-2px) scale(1.01); box-shadow:var(--shadow) }
-    .btn:active{ transform:translateY(0); box-shadow:var(--shadow-soft) }
-    .btn:focus-visible{ outline:3px solid #fff2; outline-offset:3px }
+    .btn:hover{ background:var(--accent); color:#13252a; transform:translateY(-2px) }
+    .btn svg{ width:20px; height:20px; display:block }
 
-    footer{ margin-top:28px; color:var(--muted); font-size:12px }
+    footer{ position:relative; z-index:1; margin-top:26px; color:var(--muted); font-size:12px }
   </style>
-  <!-- ✅ Font Awesome actualizado -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body>
-  <main class="wrap">
-    <div class="logo">
-      <img src="logo.png" alt="Logo Jose Carlos">
+
+  <!-- Sprite de iconos SVG (no depende de CDNs) -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+    <symbol id="ico-user" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 12c2.761 0 5-2.686 5-6s-2.239-6-5-6-5 2.686-5 6 2.239 6 5 6zm0 2c-4.418 0-8 2.91-8 6.5V22h16v-1.5c0-3.59-3.582-6.5-8-6.5z"/>
+    </symbol>
+    <symbol id="ico-linkedin" viewBox="0 0 448 512" fill="currentColor">
+      <path d="M100.28 448H7.4V149.9h92.88zM53.79 108.1C24.09 108.1 0 83.77 0 54.06A53.79 53.79 0 0 1 107.58 54c0 29.71-24.09 54.06-53.79 54.06zM447.9 448h-92.4V302.4c0-34.7-.7-79.3-48.3-79.3-48.3 0-55.7 37.7-55.7 76.6V448h-92.5V149.9h88.8v40.7h1.3c12.4-23.4 42.7-48.3 88-48.3 94.1 0 111.5 61.9 111.5 142.3z"/>
+    </symbol>
+    <symbol id="ico-instagram" viewBox="0 0 448 512" fill="currentColor">
+      <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.2 0-74.7-33.4-74.7-74.7s33.4-74.7 74.7-74.7 74.7 33.4 74.7 74.7-33.5 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zM398.8 80C362 43.2 313.6 24 261.7 24H186.3C134.4 24 86 43.2 49.2 80 12.4 116.8-6.8 165.2-6.8 217.1v75.4c0 51.9 19.2 100.3 56 137.1s85.2 56 137.1 56h75.4c51.9 0 100.3-19.2 137.1-56s56-85.2 56-137.1v-75.4C454.8 165.2 435.6 116.8 398.8 80z"/>
+    </symbol>
+    <symbol id="ico-tiktok" viewBox="0 0 448 512" fill="currentColor">
+      <path d="M448 209.9v89.1a210.1 210.1 0 0 1-122-39.9v115.5a137.8 137.8 0 1 1-118.8-136.1v72.2a65.1 65.1 0 1 0 45.4 62.1V0h75.4a122.3 122.3 0 0 0 1.9 22.2 121.6 121.6 0 0 0 43.2 69.4A121.2 121.2 0 0 0 448 121.3z"/>
+    </symbol>
+  </svg>
+
+  <section class="card">
+    <div class="header">
+      <div class="logo-top">
+        <img src="logo.png" alt="Logo Jose Carlos">
+      </div>
+      <h1>Jose Carlos</h1>
+      <div class="subtitle">Estadístico | Data Scientist</div>
     </div>
 
-    <h1>Jose Carlos</h1>
-    <div class="subtitle">Estadístico | Data Scientist</div>
-
     <nav class="links" aria-label="Enlaces principales">
-      <a class="btn" href="acerca.html" target="_blank" rel="noopener"><i class="fas fa-user"></i> Acerca de mí</a>
-      <a class="btn" href="https://www.linkedin.com/in/carlos-meza-351a09295" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i> LinkedIn</a>
-      <a class="btn" href="https://www.instagram.com/jose21carlo?igsh=MXI0ZTVmd3JldXBxMg==" target="_blank" rel="noopener"><i class="fab fa-instagram\"></i> Instagram</a>
-      <a class="btn" href="https://www.tiktok.com/@josecarlosgallego89?is_from_webapp=1&sender_device=pc" target="_blank" rel="noopener"><i class="fab fa-tiktok\"></i> TikTok</a>
+      <a class="btn" href="acerca.html" target="_blank" rel="noopener">
+        <svg aria-hidden="true"><use href="#ico-user"/></svg>
+        Acerca de mí
+      </a>
+      <a class="btn" href="https://www.linkedin.com/in/carlos-meza-351a09295" target="_blank" rel="noopener">
+        <svg aria-hidden="true"><use href="#ico-linkedin"/></svg>
+        LinkedIn
+      </a>
+      <a class="btn" href="https://www.instagram.com/jose21carlo?igsh=MXI0ZTVmd3JldXBxMg==" target="_blank" rel="noopener">
+        <svg aria-hidden="true"><use href="#ico-instagram"/></svg>
+        Instagram
+      </a>
+      <a class="btn" href="https://www.tiktok.com/@josecarlosgallego89?is_from_webapp=1&sender_device=pc" target="_blank" rel="noopener">
+        <svg aria-hidden="true"><use href="#ico-tiktok"/></svg>
+        TikTok
+      </a>
     </nav>
 
     <footer>© 2025 • Jose Carlos</footer>
-  </main>
+  </section>
 </body>
 </html>
-
-
