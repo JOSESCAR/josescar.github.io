@@ -4,42 +4,60 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Acerca de mí – Jose Carlos</title>
+
+  <!-- Fuente moderna -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
   <style>
     :root{
-      --bgsolid:#12494c;
+      --bg1:#0f3f42;
+      --bg2:#14575a;
+      --surface:#103f42;
       --accent:#e0c36c;
-      --text:#f1f5f9;
-      --muted:#cbd5e1;
-      --radius:28px;
-      --shadow:0 18px 50px rgba(0,0,0,.35);
-      --soft:0 8px 18px rgba(0,0,0,.24);
-      --maxw:920px;
+      --text:#eaf2f7;
+      --muted:#c6d4df;
+      --radius:24px;
+      --shadow:0 16px 44px rgba(0,0,0,.34);
+      --soft:0 8px 20px rgba(0,0,0,.22);
+      --maxw:980px;
     }
     *{box-sizing:border-box}
     body{
-      margin:0; min-height:100vh; font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
-      color:var(--text); background:var(--bgsolid);
+      margin:0; min-height:100vh;
+      font-family: "Poppins", Roboto, system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+      color:var(--text);
+      /* ✅ Degradado de fondo sutil */
+      background: radial-gradient(1200px 800px at 20% 0%, #0c3638 0%, transparent 60%),
+                  radial-gradient(900px 700px at 80% 100%, #0b2f31 0%, transparent 55%),
+                  linear-gradient(135deg, var(--bg1), var(--bg2));
       display:flex; align-items:flex-start; justify-content:center; padding:24px;
     }
+
+    @keyframes fadeSlide {
+      from { opacity:0; transform:translateY(14px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+
     .card{
       width:min(var(--maxw), 94vw);
-      background:rgba(13,58,61,.92);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
+      background: color-mix(in srgb, var(--surface) 92%, black 8%);
+      border-radius:28px; box-shadow:var(--shadow);
       padding:34px 28px 30px; position:relative; overflow:hidden;
+      animation: fadeSlide .6s ease both;
     }
+    /* ✅ Marca de agua con blur tenue */
     .card::before{
       content:""; position:absolute; inset:0; pointer-events:none; z-index:0;
-      background:url('logo.png') no-repeat center; background-size:min(70vmin, 520px);
-      opacity:.08; filter:saturate(75%);
+      background:url('logo.png') no-repeat center 38%; background-size:min(72vmin, 560px);
+      opacity:.075; filter: blur(1.2px) saturate(80%);
     }
     .content{ position:relative; z-index:1 }
 
     .topbar{ display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:8px }
-    .back{ text-decoration:none; color:var(--accent); border:1.6px solid var(--accent); padding:8px 12px; border-radius:12px; box-shadow:var(--soft) }
-    .back:hover{ background:var(--accent); color:#13252a }
+    .back{ text-decoration:none; color:var(--accent); border:1.6px solid var(--accent); padding:8px 12px; border-radius:12px; box-shadow:var(--soft); transition: background .18s ease, color .18s ease }
+    .back:hover{ background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 32%, white 0%) 0%, color-mix(in srgb, var(--accent) 16%, black 0%) 100%); color:#0e2430 }
 
-    h1{ margin:8px 0 10px; text-align:center; font-size:clamp(26px,5vw,34px) }
+    h1{ margin:8px 0 10px; text-align:center; font-size:clamp(26px,5vw,34px); font-weight:800 }
     h2{ color:var(--accent); margin:22px 0 10px; font-size:22px }
     p{ color:var(--muted); line-height:1.65; font-size:16px; margin:0 0 10px }
     ul{ color:var(--muted); line-height:1.65; font-size:16px; padding-left:20px; margin:0 }
@@ -59,7 +77,7 @@
       </div>
 
       <h1>Acerca de mí</h1>
-      <p>Soy <strong>Jose Carlos Gallegos Meza</strong>, estudiante de Estadística en la ESPOCH con una sólida formación en análisis de datos, investigación aplicada y liderazgo académico. Mi enfoque profesional combina el dominio de herramientas estadísticas y de machine learning con la capacidad de comunicar resultados de manera clara y estratégica, aportando soluciones basadas en evidencia a problemas complejos en seguridad ciudadana, educación y economía.</p>
+      <p>Soy <strong>Jose Carlos Gallegos Meza</strong>, estudiante de Estadística en la ESPOCH con una sólida formación en análisis de datos, investigación aplicada y liderazgo académico. Mi enfoque combina herramientas estadísticas y de machine learning con comunicación clara y estratégica para resolver problemas en seguridad ciudadana, educación y economía.</p>
 
       <h2>Skills técnicos</h2>
       <ul>
@@ -74,21 +92,21 @@
       <ul>
         <li><strong>Aprendizaje supervisado:</strong> regresión lineal y logística, árboles de decisión, redes neuronales, random forest, gradient boosting.</li>
         <li><strong>Aprendizaje no supervisado:</strong> clustering (k-means, DBSCAN, jerárquico), análisis de componentes principales (PCA), análisis de correspondencias múltiples.</li>
-        <li><strong>Diseño experimental y análisis multivariante:</strong> ANOVA, MANOVA, modelos factoriales y de bloques completos aleatorizados.</li>
-        <li><strong>Series temporales y pronóstico:</strong> modelos ARIMA, suavizamiento exponencial y predicción de datos económicos.</li>
-        <li><strong>Comunicación de resultados:</strong> elaboración de reportes técnicos, storytelling con datos y visualizaciones interactivas.</li>
+        <li><strong>Diseño experimental y análisis multivariante:</strong> ANOVA, MANOVA, modelos factoriales y de bloques.</li>
+        <li><strong>Series temporales y pronóstico:</strong> ARIMA, suavizamiento exponencial, modelos para datos económicos.</li>
+        <li><strong>Comunicación de resultados:</strong> reportes técnicos, storytelling con datos y visualizaciones interactivas.</li>
       </ul>
 
       <h2>Experiencia y actividades</h2>
       <ul>
-        <li><strong>Investigación científica:</strong> Autor de un artículo publicado sobre producción de hongos ostra blanco, aplicando técnicas estadísticas avanzadas para optimización de procesos agrícolas.</li>
-        <li><strong>Liderazgo académico:</strong> Presidente de la Asociación de Estudiantes de Estadística de la ESPOCH, impulsando proyectos estudiantiles, representación institucional y organización de eventos académicos.</li>
-        <li><strong>Gestión y organización:</strong> Coordinador en congresos internacionales y comités académicos, con experiencia en logística, gestión de ponentes y difusión científica.</li>
-        <li><strong>Investigación aplicada:</strong> Miembro del grupo BI-DATA y de la Sociedad Ecuatoriana de Estadística, colaborando en proyectos de análisis de datos y consultoría académica.</li>
+        <li><strong>Investigación científica:</strong> Artículo publicado sobre producción de hongos ostra blanco, aplicando técnicas estadísticas para optimizar procesos.</li>
+        <li><strong>Liderazgo académico:</strong> Presidente de la Asociación de Estudiantes de Estadística (ESPOCH), impulsando proyectos, representación y eventos.</li>
+        <li><strong>Gestión y organización:</strong> Coordinación de congresos y comités académicos (logística, ponentes, difusión científica).</li>
+        <li><strong>Investigación aplicada:</strong> Miembro de BI-DATA y de la Sociedad Ecuatoriana de Estadística en proyectos de análisis y consultoría.</li>
       </ul>
 
       <h2>Contacto</h2>
-      <p>Puedes escribirme a: <a href="mailto:carlosmexa302@gmail.com">carlosmexa302@gmail.com</a></p>
+      <p>Email: <a href="mailto:carlosmexa302@gmail.com">carlosmexa302@gmail.com</a></p>
 
       <footer>© 2025 • Jose Carlos</footer>
     </div>
