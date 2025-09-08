@@ -1,14 +1,14 @@
 /* =========================================================
    Jose Carlos — Portfolio · Tema Aqua-Slate (CSS completo)
-   Enfoque: mucho aire, tipografía legible, grids amplios
+   Enfoque: mucho aire, lectura cómoda, grids amplios
    ========================================================= */
 
 :root{
   /* PALETA */
   --bg1:#0b1f24;            /* azul petróleo muy oscuro */
   --bg2:#0f2c34;            /* teal noche */
-  --surface:#102f36;        /* tarjeta */
-  --surface-2:#0e2830;      /* bloques secundarios */
+  --surface:#102f36;        /* tarjeta principal */
+  --surface-2:#0e2830;      /* tarjetas secundarias */
   --accent:#7ef2c7;         /* menta */
   --accent2:#67c9ff;        /* cian suave */
   --text:#eaf5ff;           /* texto claro */
@@ -16,12 +16,15 @@
 
   /* LAYOUT & FX */
   --containerW: 1160px;                /* ancho cómodo para lectura */
-  --gutter: clamp(48px, 7vw, 120px);   /* margen lateral */
+  --gutter: clamp(48px, 7vw, 120px);   /* margen lateral fluido */
   --navH: 92px;                        /* altura navbar */
   --radius-lg: 28px;
   --radius-xl: 36px;
   --shadow: 0 24px 60px rgba(0,0,0,.45);
   --ring: 0 0 0 1px rgba(255,255,255,.06), inset 0 0 0 1px rgba(255,255,255,.03);
+
+  /* Lectura */
+  --readW: 68ch;                       /* ancho ideal de párrafos */
 }
 
 /* ============ Reset / base ============ */
@@ -30,7 +33,7 @@ html,body{height:100%}
 html{scroll-behavior:smooth}
 body{
   margin:0; color:var(--text);
-  font:16px/1.7 "Poppins",system-ui,Arial;
+  font:16px/1.72 "Poppins",system-ui,Arial;
   background:
     radial-gradient(1200px 900px at 10% -10%, rgba(126,242,199,.08), transparent 60%),
     radial-gradient(1200px 900px at 90% 110%, rgba(103,201,255,.07), transparent 60%),
@@ -42,7 +45,8 @@ body{
 /* ============ Navbar ============ */
 .header{
   position:sticky; top:0; z-index:40;
-  background:rgba(16,47,54,.8); backdrop-filter:blur(10px);
+  background:rgba(16,47,54,.8);
+  backdrop-filter:blur(10px);
   border-bottom:1px solid rgba(255,255,255,.06);
 }
 .nav{
@@ -71,26 +75,25 @@ body{
   width:min(var(--containerW), 92vw);
   margin-inline:auto;
   padding-inline: var(--gutter);
-  padding-block: clamp(56px, 10vh, 120px);     /* mucho aire vertical */
+  padding-block: clamp(70px, 12vh, 140px);   /* mucho aire vertical */
 }
 .card{
   background:linear-gradient(180deg, color-mix(in srgb, var(--surface) 94%, black 6%), var(--surface));
   border:1px solid rgba(255,255,255,.08);
   border-radius:var(--radius-xl);
   box-shadow:var(--shadow);
-  padding: clamp(28px, 3vw, 48px);             /* padding grande */
+  padding: clamp(28px, 3vw, 48px);           /* padding grande */
 }
 
-/* tipografía y párrafos */
-h1{margin:0 0 10px; font-size:clamp(32px,5vw,56px)}
-h2{margin:0 0 12px; font-size:clamp(22px,3.2vw,32px)}
+/* ============ Tipografía ============ */
+h1{margin:0 0 12px; font-size:clamp(32px,5vw,56px)}
+h2{margin:0 0 14px; font-size:clamp(22px,3.2vw,32px)}
 p{margin:0 0 12px}
 .lead{color:var(--muted)}
 footer.site{color:var(--muted); text-align:center; margin:28px 0 48px}
 
 /* ============ Hero (cuadro grande, centrado y aireado) ============ */
 .card.hero{
-  /* NO se extiende fuera del contenedor: todo respira */
   padding-left: clamp(56px, 6.5vw, 120px);
   padding-right: clamp(56px, 6.5vw, 120px);
   padding-top: clamp(48px, 7vh, 110px);
@@ -100,9 +103,9 @@ footer.site{color:var(--muted); text-align:center; margin:28px 0 48px}
 .hero{
   display:grid; grid-template-columns: 1.1fr 0.9fr;
   align-items:center;
-  gap: clamp(32px, 6vw, 64px);                  /* gran separación columnas */
+  gap: clamp(32px, 6vw, 64px);               /* gran separación columnas */
 }
-.hero > :first-child{ max-width: 640px }        /* copy no muy ancho */
+.hero > :first-child{ max-width: 640px }     /* copy no muy ancho */
 @media (max-width:980px){ .hero{ grid-template-columns:1fr } }
 
 .kicker{
@@ -137,11 +140,24 @@ footer.site{color:var(--muted); text-align:center; margin:28px 0 48px}
 }
 .avatar img{width:100%; height:100%; object-fit:cover}
 
+/* ============ Páginas de texto (Biografía/Contacto) ============ */
+/* Tarjeta más angosta y centrada + ancho de lectura de párrafos */
+.wrap > .card:only-child:not(.hero){
+  max-width: min(1000px, 92vw);
+  margin-inline:auto;
+  padding: clamp(34px, 3.6vw, 60px);
+}
+.wrap > .card:only-child:not(.hero) :where(h1,h2,p,ul,ol){
+  max-width: var(--readW);
+}
+.card h1{ margin-bottom: 18px; }
+.card p + p{ margin-top: 10px; }
+
 /* ============ Grid común (Services / Work) ============ */
 .grid{
   display:grid;
   grid-template-columns: repeat(12, 1fr);
-  gap: clamp(28px, 3vw, 40px);                  /* gaps grandes */
+  gap: clamp(32px, 3.8vw, 48px);              /* gaps MUY grandes */
 }
 .card-proj{
   grid-column: span 6;
@@ -160,8 +176,8 @@ footer.site{color:var(--muted); text-align:center; margin:28px 0 48px}
 }
 .thumb img{width:100%; height:100%; object-fit:cover; display:block}
 
-/* contenido interno de tarjetas con padding amplio (aunque el HTML tenga inline) */
-.card-proj > *{ padding: clamp(24px, 2.4vw, 36px) !important; }
+/* Más padding dentro de las tarjetas (aunque el HTML tenga inline) */
+.card-proj > *{ padding: clamp(26px, 2.8vw, 36px) !important; }
 .meta{display:flex; justify-content:space-between; align-items:center; gap:12px}
 .pill{font-size:12px; border:1px solid rgba(255,255,255,.2); padding:6px 10px; border-radius:999px}
 
@@ -205,7 +221,7 @@ textarea{min-height:130px}
 
 /* ============ Ajustes responsivos finos ============ */
 @media (min-width:1600px){
-  :root{ --containerW: 1260px; }        /* en pantallas muy grandes mantén lectura cómoda */
+  :root{ --containerW: 1260px; }       /* en pantallas XL mantiene lectura cómoda */
 }
 @media (max-width:1100px){
   :root{ --gutter: clamp(32px, 6vw, 80px); }
