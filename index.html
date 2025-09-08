@@ -3,151 +3,45 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Jose Carlos – Link in Bio</title>
-
-  <!-- Fuente moderna -->
+  <title>Jose Carlos – Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet" />
-
-  <style>
-    :root{
-      --bg1:#0f3f42;           /* verde profundo */
-      --bg2:#14575a;           /* verde azulado */
-      --surface:#103f42;       /* capa de la tarjeta */
-      --accent:#e0c36c;        /* dorado */
-      --text:#eaf2f7;          /* texto claro */
-      --muted:#c6d4df;         /* texto secundario */
-      --radius:24px;
-      --shadow:0 16px 44px rgba(0,0,0,.34);
-      --soft:0 8px 20px rgba(0,0,0,.22);
-      --maxw:760px;
-    }
-
-    *{ box-sizing:border-box }
-    body{
-      margin:0;
-      min-height:100vh;
-      font-family: "Poppins", Roboto, system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
-      color:var(--text);
-      /* ✅ Degradado de fondo sutil */
-      background: radial-gradient(1200px 800px at 20% 0%, #0c3638 0%, transparent 60%),
-                  radial-gradient(900px 700px at 80% 100%, #0b2f31 0%, transparent 55%),
-                  linear-gradient(135deg, var(--bg1), var(--bg2));
-      display:flex; align-items:center; justify-content:center;
-      padding:24px;
-    }
-
-    /* Animación de entrada */
-    @keyframes fadeSlide {
-      from { opacity:0; transform:translateY(14px); }
-      to   { opacity:1; transform:translateY(0); }
-    }
-
-    /* Tarjeta principal */
-    .card{
-      width:min(var(--maxw), 92vw);
-      background: color-mix(in srgb, var(--surface) 92%, black 8%);
-      border-radius:28px;
-      box-shadow:var(--shadow);
-      padding:42px 28px;
-      position:relative;
-      overflow:hidden;
-      animation: fadeSlide .6s ease both;
-    }
-
-    /* ✅ Marca de agua con blur tenue (no molesta) */
-    .card::before{
-      content:"";
-      position:absolute; inset:0; pointer-events:none; z-index:0;
-      background: url('logo.png') no-repeat center 40%;
-      background-size:min(72vmin, 560px);
-      opacity:.075;
-      filter: blur(1.2px) saturate(80%);
-    }
-
-    .inner{ position:relative; z-index:1; max-width:600px; margin-inline:auto; text-align:center }
-    .logo-top{ width:72px; height:72px; margin:0 auto 10px }
-    .logo-top img{ width:100%; height:100%; object-fit:contain }
-
-    h1{ margin:6px 0 6px; font-size:clamp(28px, 5vw, 38px); font-weight:800; letter-spacing:.2px }
-    .subtitle{ color:var(--muted); font-weight:600; margin-bottom:22px }
-
-    /* Lista de botones */
-    .links{ display:flex; flex-direction:column; gap:16px }
-    .btn{
-      --h:56px;
-      display:flex; align-items:center; justify-content:center; gap:10px;
-      height:var(--h); padding:0 18px; border-radius:999px;
-      color:var(--text); text-decoration:none; font-weight:700;
-      border:1.8px solid var(--accent);
-      background: linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.22)); /* base sutil */
-      box-shadow:var(--soft);
-      transition: background .18s ease, color .18s ease, transform .12s ease, box-shadow .18s ease;
-    }
-    /* ✅ Degradado suave en hover */
-    .btn:hover{
-      background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 35%, white 0%) 0%,
-                                         color-mix(in srgb, var(--accent) 18%, black 0%) 100%);
-      color:#0e2430;
-      transform: translateY(-2px);
-      box-shadow: 0 12px 26px rgba(0,0,0,.30);
-    }
-    .btn:active{ transform: translateY(0) }
-
-    /* Iconos SVG monocromos y discretos */
-    .icon{ width:20px; height:20px; display:inline-grid; place-items:center }
-    .icon svg{ width:20px; height:20px; color:var(--accent) }
-
-    footer{ margin-top:26px; color:var(--muted); font-size:12px; text-align:center }
-  </style>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <header class="header">
+    <nav class="nav">
+      <div class="brand">PORTFOLIO</div>
+      <a href="index.html">Home</a>
+      <a href="services.html">Service</a>
+      <a href="biography.html">Biography</a>
+      <a href="work.html">Work</a>
+      <a href="contact.html">Contact</a>
+      <div class="spacer"></div>
+    </nav>
+  </header>
 
-  <!-- Sprite de iconos SVG (sin CDNs) -->
-  <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
-    <symbol id="i-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M20 21a8 8 0 0 0-16 0"/><circle cx="12" cy="7" r="4"/>
-    </symbol>
-    <symbol id="i-linkedin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-      <rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
-    </symbol>
-    <symbol id="i-instagram" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-      <rect x="3" y="3" width="18" height="18" rx="5"/>
-      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-      <circle cx="17.5" cy="6.5" r="0.8"/>
-    </symbol>
-    <symbol id="i-tiktok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M14 3v9.5a3.5 3.5 0 1 1-3.5-3.5M14 6a5 5 0 0 0 5 5"/>
-    </symbol>
-  </svg>
+  <main class="wrap">
+    <section class="card hero">
+      <div>
+        <p class="kicker">UI/UX · DATA SCIENCE</p>
+        <h1>JOSE CARLOS</h1>
+        <p class="lead">Estadístico y desarrollador orientado a visualización y modelos predictivos. Construyo dashboards, mapas y pipelines reproducibles.</p>
+        <div class="cta">
+          <a class="btn" href="work.html">Ver proyectos</a>
+          <a class="btn" href="biography.html">Sobre mí</a>
+        </div>
+        <div class="social">
+          <a class="sico" href="https://github.com/usuario" target="_blank" aria-label="GitHub">GH</a>
+          <a class="sico" href="https://www.linkedin.com/in/carlos-meza-351a09295" target="_blank" aria-label="LinkedIn">in</a>
+          <a class="sico" href="https://www.instagram.com/jose21carlo" target="_blank" aria-label="Instagram">IG</a>
+          <a class="sico" href="https://www.tiktok.com/@josecarlosgallego89" target="_blank" aria-label="TikTok">TT</a>
+        </div>
+      </div>
+      <div class="avatar"><img src="avatar.jpg" alt="Avatar Jose Carlos"></div>
+    </section>
+  </main>
 
-  <section class="card">
-    <div class="inner">
-      <div class="logo-top"><img src="logo.png" alt="Logo Jose Carlos"></div>
-      <h1>Jose Carlos</h1>
-      <div class="subtitle">Estadístico | Data Scientist</div>
-
-      <nav class="links" aria-label="Enlaces principales">
-        <a class="btn" href="acerca.html" target="_blank" rel="noopener">
-          <span class="icon"><svg><use href="#i-user"/></svg></span>
-          <span>Acerca de mí</span>
-        </a>
-        <a class="btn" href="https://www.linkedin.com/in/carlos-meza-351a09295" target="_blank" rel="noopener">
-          <span class="icon"><svg><use href="#i-linkedin"/></svg></span>
-          <span>LinkedIn</span>
-        </a>
-        <a class="btn" href="https://www.instagram.com/jose21carlo?igsh=MXI0ZTVmd3JldXBxMg==" target="_blank" rel="noopener">
-          <span class="icon"><svg><use href="#i-instagram"/></svg></span>
-          <span>Instagram</span>
-        </a>
-        <a class="btn" href="https://www.tiktok.com/@josecarlosgallego89?is_from_webapp=1&sender_device=pc" target="_blank" rel="noopener">
-          <span class="icon"><svg><use href="#i-tiktok"/></svg></span>
-          <span>TikTok</span>
-        </a>
-      </nav>
-
-      <footer>© 2025 • Jose Carlos</footer>
-    </div>
-  </section>
+  <footer class="site">© 2025 • Jose Carlos</footer>
+  <script src="main.js"></script>
 </body>
 </html>
