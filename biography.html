@@ -1,34 +1,55 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Jose Carlos – Biography</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Biografía – Jose Carlos</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
-  <header class="header">
-    <nav class="nav">
-      <div class="brand">PORTFOLIO</div>
-      <a href="index.html">Home</a>
-      <a href="services.html">Service</a>
-      <a href="biography.html">Biography</a>
-      <a href="work.html">Work</a>
-      <a href="contact.html">Contact</a>
-      <div class="spacer"></div>
-    </nav>
-  </header>
+<header class="header">
+  <nav class="nav">
+    <div class="brand">PORTFOLIO</div>
+    <a href="index.html">Home</a>
+    <a href="services.html">Service</a>
+    <a href="biography.html" class="active">Biography</a>
+    <a href="work.html">Work</a>
+    <a href="contact.html">Contact</a>
+    <div class="spacer"></div>
+  </nav>
+</header>
 
-  <main class="wrap">
-    <section class="card">
+<main>
+  <section class="wrap">
+    <article class="card">
       <h1>Biografía</h1>
-      <p class="lead">Estudiante de Ingeniería en Estadística (ESPOCH). Presidente de la Asociación de Estudiantes de Estadística. Investigación BI-DATA y proyectos NASA/EO.</p>
-      <p>Trabajo analítica aplicada a seguridad, educación y agro. Transformo datos en decisiones con visualizaciones claras e informes reproducibles.</p>
-    </section>
-  </main>
+      <p>Estudiante de Ingeniería en Estadística (ESPOCH). Presidente de la Asociación de Estudiantes de Estadística. Investigación BI-DATA y proyectos NASA/EO.</p>
+      <p>Trabajo analítica aplicada a seguridad, educación y agro. Transformo datos en decisiones usando visualizaciones claras e informes reproducibles.</p>
+    </article>
+  </section>
 
-  <footer class="site">© 2025 • Jose Carlos</footer>
-  <script src="main.js"></script>
+  <section class="wrap">
+    <article class="card">
+      <h2>Línea de tiempo</h2>
+      <ul>
+        <li><strong>2025 – Presente:</strong> Proyectos de analítica aplicada (freelance/colab).</li>
+        <li><strong>2024:</strong> AgroDash (EO/SMAP): humedad de suelo, mapas y series temporales.</li>
+        <li><strong>2023:</strong> Benchmark Logit vs MLP para predicción regional de seguridad.</li>
+        <li><strong>2022:</strong> Dashboards educativos y formación en Power BI / R.</li>
+      </ul>
+    </article>
+  </section>
+
+  <section class="wrap">
+    <article class="card">
+      <h2>Competencias y herramientas</h2>
+      <p>Python, R, SQL, Power BI, Shiny, Quarto, scikit-learn, xarray, GeoPandas, Git/GitHub, Docker, ETL, APIs, geodatos (EO).</p>
+      <p>Modelado: GLM, árboles, boosting, MLP; evaluación: F1, AUC, MCC, validación cruzada; explicabilidad: SHAP/perm.</p>
+    </article>
+  </section>
+</main>
+
+<footer class="site">© 2025 • Jose Carlos</footer>
+<script src="main.js"></script>
 </body>
 </html>
