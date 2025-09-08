@@ -1,3 +1,5 @@
+<!-- styles.css -->
+<style id="styles.css">
 :root{
   --bg1:#0f3f42; --bg2:#14575a; --surface:#103f42;
   --accent:#6cf6d2;          /* verde neón suave */
@@ -13,49 +15,105 @@ body{
     linear-gradient(135deg,var(--bg1),var(--bg2));
 }
 
-/* NAVBAR */
-.header{position:sticky; top:0; z-index:50; background:rgba(16,63,66,.85); backdrop-filter: blur(8px); border-bottom:1px solid rgba(255,255,255,.08)}
-.nav{max-width:1100px; margin:0 auto; display:flex; align-items:center; gap:18px; padding:12px 16px}
-.brand{font-weight:800; letter-spacing:.3px; font-size:22px}
+/* NAVBAR (más grande) */
+.header{position:sticky; top:0; z-index:50; background:rgba(16,63,66,.85); backdrop-filter: blur(10px); border-bottom:1px solid rgba(255,255,255,.08)}
+.nav{max-width:1100px; margin:0 auto; display:flex; align-items:center; gap:22px; padding:18px 20px}
+.brand{font-weight:900; letter-spacing:.4px; font-size:26px}
 .spacer{flex:1}
-.nav a{color:var(--muted); text-decoration:none; font-weight:600; padding:8px 10px; border-bottom:2px solid transparent; border-radius:6px}
+.nav a{color:var(--muted); text-decoration:none; font-weight:700; font-size:16px; padding:10px 14px; border-bottom:3px solid transparent; border-radius:8px}
 .nav a:hover{color:var(--text)}
 .nav a.active{color:var(--text); border-color:var(--accent)}
 
 /* LAYOUT */
-.wrap{max-width:1100px; margin:0 auto; padding:28px 16px 60px}
+.wrap{max-width:1100px; margin:0 auto; padding:32px 18px 70px}
 .card{background:linear-gradient(180deg,#0d3537,#103f42); border:1px solid rgba(255,255,255,.08); box-shadow:var(--shadow); border-radius:24px; padding:28px}
-h1{margin:0 0 6px; font-size:clamp(28px,5vw,42px)}
+h1{margin:0 0 6px; font-size:clamp(30px,5vw,44px)}
 h2{margin:0 0 10px; font-size:clamp(22px,3.5vw,30px)}
 .lead{color:var(--muted)}
 
-/* HOME HERO (como tu ejemplo) */
-.hero{display:grid; grid-template-columns:1.15fr .85fr; gap:20px; align-items:center}
-@media (max-width:900px){.hero{grid-template-columns:1fr}}
-.kicker{letter-spacing:.25em; text-transform:uppercase; color:#9bf9e6; font-weight:700; margin:0 0 8px}
-.cta{display:flex; gap:12px; margin-top:16px; flex-wrap:wrap}
-.btn{display:inline-flex; align-items:center; gap:10px; padding:10px 16px; border-radius:999px; border:1.6px solid var(--accent); color:var(--text); text-decoration:none; background:linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.22))}
-.btn:hover{box-shadow:0 12px 26px rgba(0,0,0,.30)}
-.social{display:flex; gap:12px; margin-top:16px}
-.sico{width:42px; height:42px; border-radius:50%; display:grid; place-items:center; border:2px solid var(--accent); text-decoration:none; color:var(--text); background:rgba(255,255,255,.04)}
-.sico:hover{box-shadow:0 0 18px rgba(108,246,210,.35)}
-.avatar{width:min(260px,42vmin); aspect-ratio:1/1; border-radius:50%;
-  border:4px solid var(--accent); box-shadow:0 0 32px rgba(108,246,210,.28), inset 0 0 10px rgba(108,246,210,.25);
-  overflow:hidden; margin-inline:auto}
-.avatar img{width:100%; height:100%; object-fit:cover}
+/* CONTACT: grilla de redes bonita */
+.social-grid{display:grid; grid-template-columns: repeat(auto-fit,minmax(180px,1fr)); gap:16px; margin-top:6px}
+.s-card{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.12); border-radius:18px; padding:18px; text-align:center; position:relative; overflow:hidden}
+.s-card::after{content:""; position:absolute; inset:-2px; border-radius:inherit; padding:1.2px; background: linear-gradient(90deg, transparent, rgba(108,246,210,.45), transparent); -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; opacity:.6}
+.s-card:hover{box-shadow:0 16px 40px rgba(0,0,0,.35)}
+.s-icon{width:52px; height:52px; border-radius:50%; border:2px solid var(--accent); display:grid; place-items:center; margin:6px auto 10px; box-shadow:0 0 18px rgba(108,246,210,.28)}
+.s-icon svg{width:28px; height:28px}
+.s-name{font-weight:700}
+.s-link{display:inline-block; margin-top:8px; font-weight:700; color:var(--text); text-decoration:none; border-bottom:2px solid var(--accent)}
+</style>
 
-/* GRID genérica */
-.grid{display:grid; gap:14px; grid-template-columns: repeat(12,1fr)}
-.card-proj{grid-column: span 6; border-radius:18px; overflow:hidden}
-@media (max-width:900px){.card-proj{grid-column: span 12}}
-.thumb{aspect-ratio:16/9; background:#0a2224}
-.thumb img{width:100%; height:100%; object-fit:cover}
-.meta{display:flex; justify-content:space-between; align-items:center; gap:10px}
-.pill{font-size:12px; border:1px solid rgba(255,255,255,.2); padding:4px 8px; border-radius:999px}
+<!-- contact.html -->
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contacto – Jose Carlos</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="header">
+    <nav class="nav">
+      <div class="brand">PORTFOLIO</div>
+      <a href="index.html">Home</a>
+      <a href="services.html">Service</a>
+      <a href="biography.html">Biography</a>
+      <a href="work.html">Work</a>
+      <a href="contact.html" class="active">Contact</a>
+      <div class="spacer"></div>
+    </nav>
+  </header>
 
-footer.site{color:var(--muted); text-align:center; margin:18px 0 40px}
+  <!-- Iconos -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+    <symbol id="i-github" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 22v-3a4.6 4.6 0 0 0-1-3.5c3 0 6-2 6-5.5a5.3 5.3 0 0 0-.2-1.5 4.6 4.6 0 0 0-1.3-2.1A5 5 0 0 0 15 3c-3 0-5 2-5 2s-2-2-5-2a5 5 0 0 0-3.5 1.3 4.6 4.6 0 0 0-1.3 2.1A5.3 5.3 0 0 0 1 10c0 3.5 3 5.5 6 5.5-.5.6-.8 1.4-.9 2.2-.1.6 0 1.3 0 2.3"/>
+    </symbol>
+    <symbol id="i-linkedin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+      <rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
+    </symbol>
+    <symbol id="i-instagram" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="3" width="18" height="18" rx="5"/>
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+      <circle cx="17.5" cy="6.5" r="0.9"/>
+    </symbol>
+    <symbol id="i-tiktok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M14 3v9.5a3.5 3.5 0 1 1-3.5-3.5M14 6a5 5 0 0 0 5 5"/>
+    </symbol>
+  </svg>
 
-/* FORM */
-form{display:grid; gap:10px; max-width:640px}
-input,textarea{background:#0b2f31; border:1px solid rgba(255,255,255,.16); color:var(--text); padding:12px; border-radius:12px; font:inherit}
-textarea{min-height:120px}
+  <main class="wrap">
+    <section class="card">
+      <h1>Contacto</h1>
+      <p class="lead">Encuéntrame en mis redes. ¡Hablemos!</p>
+      <div class="social-grid">
+        <a class="s-card" href="https://github.com/usuario" target="_blank" rel="noopener">
+          <div class="s-icon"><svg><use href="#i-github"/></svg></div>
+          <div class="s-name">GitHub</div>
+          <span class="s-link">@usuario</span>
+        </a>
+        <a class="s-card" href="https://www.linkedin.com/in/carlos-meza-351a09295" target="_blank" rel="noopener">
+          <div class="s-icon"><svg><use href="#i-linkedin"/></svg></div>
+          <div class="s-name">LinkedIn</div>
+          <span class="s-link">/in/carlos-meza-351a09295</span>
+        </a>
+        <a class="s-card" href="https://www.instagram.com/jose21carlo" target="_blank" rel="noopener">
+          <div class="s-icon"><svg><use href="#i-instagram"/></svg></div>
+          <div class="s-name">Instagram</div>
+          <span class="s-link">@jose21carlo</span>
+        </a>
+        <a class="s-card" href="https://www.tiktok.com/@josecarlosgallego89" target="_blank" rel="noopener">
+          <div class="s-icon"><svg><use href="#i-tiktok"/></svg></div>
+          <div class="s-name">TikTok</div>
+          <span class="s-link">@josecarlosgallego89</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site">© 2025 • Jose Carlos</footer>
+  <script src="main.js"></script>
+</body>
+</html>
