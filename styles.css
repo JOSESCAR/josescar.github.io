@@ -1,6 +1,6 @@
 /* =========================================================
    Portafolio — Tema "Grafito + Lima" (CSS completo, ESPAÑOL)
-   Enfoque: mucho aire, lectura cómoda, tarjetas anchas
+   Enfoque: mucho aire, lectura cómoda, tarjetas ANCHAS
    ========================================================= */
 
 /* ─ Paleta principal ─ */
@@ -16,7 +16,7 @@
   --muted:#c9d0de;         /* texto secundario */
 
   /* Layout y efectos */
-  --containerW: 1440px;                /* ANCHO GLOBAL amplio */
+  --containerW: 1440px;                /* ancho global amplio */
   --gutter: clamp(48px, 7vw, 120px);   /* margen lateral fluido */
   --navH: 92px;                        /* altura de la barra */
   --radius-lg: 28px;
@@ -103,14 +103,18 @@ p{margin:0 0 12px}
 .lead{color:var(--muted)}
 footer.site{color:var(--muted); text-align:center; margin:28px 0 48px}
 
-/* ============ Hero (cuadro grande y aireado) ============ */
+/* ============ HÉROE (cuadro grande, con MUCHO aire) ============ */
 .card.hero{
-  min-height: clamp(640px, 74svh, 880px);
+  /* 👇 MÁS aire para que el círculo no quede pegado */
+  padding-inline: clamp(56px, 7vw, 110px);
+  padding-block: clamp(42px, 6vw, 96px);
+  min-height: clamp(620px, 72svh, 840px);
 }
 .hero{
   display:grid; grid-template-columns: 1.1fr 0.9fr;
   align-items:center;
-  gap: clamp(36px, 6vw, 72px);
+  /* 👇 MÁS separación entre texto y círculo */
+  gap: clamp(48px, 8vw, 120px);
 }
 .hero > :first-child{ max-width: 660px }
 @media (max-width:980px){ .hero{ grid-template-columns:1fr } }
@@ -138,9 +142,13 @@ footer.site{color:var(--muted); text-align:center; margin:28px 0 48px}
 }
 .sico svg{width:22px; height:22px; color:var(--accent2)}
 
+/* ─ Círculo / Avatar: centrado y con margen lateral ─ */
 .avatar{
-  width:min(520px, 48vmin); aspect-ratio:1/1; border-radius:50%;
-  position:relative; overflow:hidden; margin-inline:auto;
+  width:min(520px, 45vmin); aspect-ratio:1/1; border-radius:50%;
+  position:relative; overflow:hidden;
+  /* 👇 margen para no pegarse aún con paddings pequeños */
+  margin-inline: clamp(8px, 2vw, 32px);
+  margin-block: clamp(8px, 2vw, 24px);
   background: radial-gradient(60% 60% at 50% 40%, color-mix(in srgb,var(--accent2) 18%, transparent), transparent 70%);
   border:4px solid color-mix(in srgb, var(--accent2) 80%, white 15%);
   box-shadow:0 0 36px color-mix(in srgb,var(--accent2) 26%, transparent), inset 0 0 16px color-mix(in srgb,var(--accent) 18%, transparent);
@@ -224,6 +232,10 @@ textarea{min-height:130px}
 @media (max-width:900px){
   .nav{gap:18px}
   .card{border-radius:24px}
-  .card.hero{min-height:clamp(560px,70svh,740px)}
+  .card.hero{
+    padding-inline: clamp(28px, 6vw, 52px);
+    padding-block: clamp(24px, 5vw, 48px);
+    min-height:clamp(560px,70svh,740px)
+  }
   .avatar{width:min(420px, 58vmin)}
 }
