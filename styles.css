@@ -61,7 +61,26 @@
     </section>
   </main>
 
+/* === CONTACTO: tarjetas de redes === */
+.social-grid{
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:16px; margin-top:20px;
+}
+.s-card{
+  background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:18px; padding:18px; text-align:center;
+  transition:.25s;
+}
+.s-card:hover{ box-shadow:0 16px 38px rgba(0,0,0,.35); transform:translateY(-2px); }
+.s-icon{ width:52px; height:52px; border-radius:50%;
+  border:2px solid #6cf6d2; display:grid; place-items:center; margin:6px auto 10px; }
+.s-icon svg{ width:28px; height:28px; color:#6cf6d2; }
+.s-name{ font-weight:700; }
+.s-link{ display:block; margin-top:6px; color:#eaf2f7; font-size:14px; text-decoration:none; }
+
   <footer class="site">© 2025 • Jose Carlos</footer>
   <script src="main.js"></script>
 </body>
+
 </html>
