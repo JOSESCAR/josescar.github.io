@@ -1,67 +1,114 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Jose Carlos – Contact</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Contacto – Jose Carlos</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
-  <header class="header">
-    <nav class="nav">
-      <div class="brand">PORTFOLIO</div>
-      <a href="index.html">Home</a>
-      <a href="services.html">Service</a>
-      <a href="biography.html">Biography</a>
-      <a href="work.html">Work</a>
-      <a class="active" href="contact.html">Contact</a>
-      <div class="spacer"></div>
-    </nav>
-  </header>
+<header class="header">
+  <nav class="nav">
+    <div class="brand">PORTFOLIO</div>
+    <a href="index.html">Home</a>
+    <a href="services.html">Service</a>
+    <a href="biography.html">Biography</a>
+    <a href="work.html">Work</a>
+    <a href="contact.html" class="active">Contact</a>
+    <div class="spacer"></div>
+  </nav>
+</header>
 
-  <!-- Iconos para redes -->
-  <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
-    <symbol id="i-github" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-3a4.6 4.6 0 0 0-1-3.5c3 0 6-2 6-5.5a5.3 5.3 0 0 0-.2-1.5 4.6 4.6 0 0 0-1.3-2.1A5 5 0 0 0 15 3c-3 0-5 2-5 2s-2-2-5-2a5 5 0 0 0-3.5 1.3A4.6 4.6 0 0 0 .7 7.4 5.3 5.3 0 0 0 1 10c0 3.5 3 5.5 6 5.5-.5.6-.8 1.4-.9 2.2-.1.6 0 1.3 0 2.3"/></symbol>
-    <symbol id="i-linkedin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></symbol>
-    <symbol id="i-instagram" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><circle cx="17.5" cy="6.5" r="0.9"/></symbol>
-    <symbol id="i-tiktok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v9.5a3.5 3.5 0 1 1-3.5-3.5M14 6a5 5 0 0 0 5 5"/></symbol>
-  </svg>
-
-  <main class="wrap">
-    <section class="card">
+<main>
+  <section class="wrap">
+    <article class="card">
       <h1>Contacto</h1>
       <p class="lead">¿Tienes un proyecto o colaboración? Escríbeme o descarga mi CV.</p>
 
       <p class="form-actions">
-        <a class="btn" href="CV_JoseCarlos.pdf" target="_blank" rel="noopener">Descargar CV</a>
-        <button class="btn" type="button" onclick="copyEmail('jose@example.com')">Copiar email</button>
+        <a class="btn" href="assets/CV_JoseCarlos.pdf" target="_blank" rel="noopener">Descargar CV</a>
+        <button class="btn" type="button" onclick="copyEmail('carlosmexa302@gmail.com')">Copiar email</button>
+        <a class="btn" href="mailto:carlosmexa302@gmail.com">Abrir en correo</a>
       </p>
 
-      <!-- Form por correo (abre tu cliente de email) -->
-      <form class="contact" action="mailto:jose@example.com" method="post" enctype="text/plain">
+      <!-- FormSubmit (sin backend) -->
+      <form class="contact" action="https://formsubmit.co/carlosmexa302@gmail.com" method="POST">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://example.com/thanks.html">
         <div class="row2">
-          <label>Nombre<input name="Nombre" required></label>
-          <label>Email<input type="email" name="Email" required></label>
+          <div>
+            <label for="nombre">Nombre</label>
+            <input id="nombre" name="nombre" required placeholder="Tu nombre"/>
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input id="email" type="email" name="email" required placeholder="tucorreo@dominio.com"/>
+          </div>
         </div>
-        <label>Asunto<input name="Asunto" placeholder="Consulta / Propuesta" required></label>
-        <label>Mensaje<textarea name="Mensaje" placeholder="Hola Jose…"></textarea></label>
-        <div class="form-actions">
-          <button class="btn" type="submit">Enviar</button>
+        <div>
+          <label for="asunto">Asunto</label>
+          <input id="asunto" name="asunto" placeholder="Consulta / Propuesta"/>
         </div>
+        <div>
+          <label for="mensaje">Mensaje</label>
+          <textarea id="mensaje" name="mensaje" placeholder="Cuéntame brevemente tu necesidad…"></textarea>
+        </div>
+        <button class="btn" type="submit">Enviar</button>
       </form>
+    </article>
+  </section>
 
-      <!-- (Opcional) redes debajo -->
+  <!-- Mis redes -->
+  <section class="wrap">
+    <article class="card">
+      <h2>También en redes</h2>
       <div class="social-grid">
-        <a class="s-card" href="https://github.com/usuario" target="_blank" rel="noopener"><div class="s-icon"><svg><use href="#i-github"/></svg></div><div class="s-name">GitHub</div><span class="s-user">@usuario</span></a>
-        <a class="s-card" href="https://www.linkedin.com/in/carlos-meza-351a09295" target="_blank" rel="noopener"><div class="s-icon"><svg><use href="#i-linkedin"/></svg></div><div class="s-name">LinkedIn</div><span class="s-user">/in/carlos-meza-351a09295</span></a>
-        <a class="s-card" href="https://www.instagram.com/jose21carlo" target="_blank" rel="noopener"><div class="s-icon"><svg><use href="#i-instagram"/></svg></div><div class="s-name">Instagram</div><span class="s-user">@jose21carlo</span></a>
-        <a class="s-card" href="https://www.tiktok.com/@josecarlosgallego89" target="_blank" rel="noopener"><div class="s-icon"><svg><use href="#i-tiktok"/></svg></div><div class="s-name">TikTok</div><span class="s-user">@josecarlosgallego89</span></a>
+        <a class="s-card" href="https://github.com/" target="_blank" rel="noopener">
+          <div class="s-icon"><svg><use href="#i-gh"/></svg></div>
+          <div class="s-name">GitHub</div>
+          <span class="s-user">@usuario</span>
+        </a>
+        <a class="s-card" href="https://www.linkedin.com/in/carlos-meza-351a09295" target="_blank" rel="noopener">
+          <div class="s-icon"><svg><use href="#i-in"/></svg></div>
+          <div class="s-name">LinkedIn</div>
+          <span class="s-user">/in/carlos-meza-351a09295</span>
+        </a>
+        <a class="s-card" href="https://www.instagram.com/jose21carlo" target="_blank" rel="noopener">
+          <div class="s-icon"><svg><use href="#i-ig"/></svg></div>
+          <div class="s-name">Instagram</div>
+          <span class="s-user">@jose21carlo</span>
+        </a>
+        <a class="s-card" href="https://www.tiktok.com/@josecarlosgallego89" target="_blank" rel="noopener">
+          <div class="s-icon"><svg><use href="#i-tt"/></svg></div>
+          <div class="s-name">TikTok</div>
+          <span class="s-user">@josecarlosgallego89</span>
+        </a>
       </div>
-    </section>
-  </main>
+    </article>
+  </section>
+</main>
 
-  <footer class="site">© 2025 • Jose Carlos</footer>
-  <script src="main.js"></script>
+<!-- Sprite de iconos (para esta página) -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <symbol id="i-gh" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5 0-1.2-.5-2.3-1.3-3.2.3-1 .3-2.1-.1-3.1 0 0-1-.3-3.3 1.2A11 11 0 0 0 12 3a11 11 0 0 0-3.3.4C6.4 2 5.4 2.3 5.4 2.3a5 5 0 0 0-.1 3.1A5 5 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.4.5-.7 1-.8 1.6A5 5 0 0 1 5 15s-2 0-2 1.9c0 .6.3 1 .7 1.4 0 0 .3.3 1.3.3 0 0 .8 0 1.5-.3v2.7"/>
+  </symbol>
+  <symbol id="i-in" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
+    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+  </symbol>
+  <symbol id="i-ig" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="3" width="18" height="18" rx="5"/>
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+    <circle cx="17.5" cy="6.5" r="0.8"/>
+  </symbol>
+  <symbol id="i-tt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M14 3v9.5a3.5 3.5 0 1 1-3.5-3.5M14 6a5 5 0 0 0 5 5"/>
+  </symbol>
+</svg>
+
+<footer class="site">© 2025 • Jose Carlos</footer>
+<div class="toast" id="toast">Correo copiado</div>
+<script src="main.js"></script>
 </body>
 </html>
