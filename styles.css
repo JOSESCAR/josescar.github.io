@@ -4,34 +4,30 @@
   --shadow:0 16px 44px rgba(0,0,0,.34);
 }
 
-/* ===== Reset básico ===== */
+/* Reset y pantalla completa */
 *{box-sizing:border-box}
 html,body{height:100%}
 html{scroll-behavior:smooth}
 body{
   margin:0; color:var(--text);
   font:16px/1.6 "Poppins",system-ui,Arial;
-  /* Fondo */
   background:
     radial-gradient(1100px 700px at 20% 0%, #0c3638 0%, transparent 60%),
     radial-gradient(900px 700px at 80% 100%, #0b2f31 0%, transparent 55%),
     linear-gradient(135deg,var(--bg1),var(--bg2));
-  /* Pantalla completa: header | contenido | footer */
   min-height:100svh;
   display:grid; grid-template-rows:auto 1fr auto;
 }
 
-/* ===== NAVBAR grande ===== */
+/* NAVBAR grande (para todas las páginas) */
 .header{
   position:sticky; top:0; z-index:50;
-  background:rgba(16,63,66,.85);
-  backdrop-filter:blur(10px);
+  background:rgba(16,63,66,.85); backdrop-filter:blur(10px);
   border-bottom:1px solid rgba(255,255,255,.08);
 }
 .nav{
   width:min(1200px,92vw); margin:0 auto;
-  display:flex; align-items:center; gap:22px;
-  padding:18px 20px;
+  display:flex; align-items:center; gap:22px; padding:18px 20px;
 }
 .brand{font-weight:900; font-size:26px; letter-spacing:.4px}
 .spacer{flex:1}
@@ -42,38 +38,29 @@ body{
 .nav a:hover{color:var(--text)}
 .nav a.active{color:var(--text); border-color:var(--accent)}
 
-/* ===== Contenedor principal ===== */
-.wrap{
-  width:min(1200px,92vw);
-  margin-inline:auto;
-  padding-block:clamp(24px,6vh,90px);   /* ocupa más alto de pantalla */
-}
+/* Contenido y tarjetas */
+.wrap{width:min(1200px,92vw); margin-inline:auto; padding-block:clamp(24px,6vh,90px)}
 .card{
   background:linear-gradient(180deg,#0d3537,#103f42);
   border:1px solid rgba(255,255,255,.08);
-  box-shadow:var(--shadow);
-  border-radius:28px;
+  box-shadow:var(--shadow); border-radius:28px;
   padding:clamp(20px,2vw+16px,36px);
 }
 
-/* ===== Tipografía ===== */
 h1{margin:0 0 6px; font-size:clamp(30px,5vw,44px)}
 h2{margin:0 0 10px; font-size:clamp(22px,3.5vw,30px)}
 .lead{color:var(--muted)}
 footer.site{color:var(--muted); text-align:center; margin:22px 0 44px}
 
-/* ===== HOME (hero) ===== */
+/* HOME (hero) */
 .hero{
   display:grid; grid-template-columns:1.15fr .85fr;
   gap:clamp(12px,4vw,32px); align-items:center;
-  min-height:clamp(420px,62svh,640px);   /* <<< llena la pantalla */
+  min-height:clamp(420px,62svh,640px);
 }
 @media (max-width:900px){ .hero{ grid-template-columns:1fr } }
 
-.kicker{
-  letter-spacing:.25em; text-transform:uppercase;
-  color:#9bf9e6; font-weight:800; margin:0 0 10px
-}
+.kicker{letter-spacing:.25em; text-transform:uppercase; color:#9bf9e6; font-weight:800; margin:0 0 10px}
 .cta{display:flex; gap:14px; margin-top:18px; flex-wrap:wrap}
 .btn{
   display:inline-flex; align-items:center; gap:10px;
@@ -87,10 +74,8 @@ footer.site{color:var(--muted); text-align:center; margin:22px 0 44px}
 .social-row{display:flex; gap:10px; margin-top:12px}
 .sico{
   width:40px; height:40px; border-radius:50%;
-  border:2px solid var(--accent);
-  display:grid; place-items:center;
-  text-decoration:none; color:var(--text);
-  background:rgba(255,255,255,.04)
+  border:2px solid var(--accent); display:grid; place-items:center;
+  text-decoration:none; color:var(--text); background:rgba(255,255,255,.04)
 }
 .sico svg{width:22px; height:22px; color:var(--accent)}
 .avatar{
@@ -101,7 +86,7 @@ footer.site{color:var(--muted); text-align:center; margin:22px 0 44px}
 }
 .avatar img{width:100%; height:100%; object-fit:cover}
 
-/* ===== GRID común (work/services) ===== */
+/* Grid común */
 .grid{display:grid; gap:16px; grid-template-columns:repeat(12,1fr)}
 .card-proj{grid-column:span 6; border-radius:18px; overflow:hidden}
 @media (max-width:900px){ .card-proj{ grid-column:span 12 } }
@@ -110,11 +95,18 @@ footer.site{color:var(--muted); text-align:center; margin:22px 0 44px}
 .meta{display:flex; justify-content:space-between; align-items:center; gap:10px}
 .pill{font-size:12px; border:1px solid rgba(255,255,255,.2); padding:4px 8px; border-radius:999px}
 
-/* ===== CONTACTO: tarjetas de redes ===== */
-.social-grid{
-  display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-  gap:18px; margin-top:16px
+/* CONTACTO (form + redes) */
+form.contact{display:grid; gap:12px; max-width:720px}
+.row2{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+@media (max-width:720px){ .row2{grid-template-columns:1fr} }
+input,textarea{
+  background:#0b2f31; border:1px solid rgba(255,255,255,.16);
+  color:var(--text); padding:12px; border-radius:12px; font:inherit;
 }
+textarea{min-height:120px}
+.form-actions{display:flex; gap:12px; flex-wrap:wrap; margin-top:4px}
+
+.social-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:18px; margin-top:18px}
 .s-card{
   background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
   border:1px solid rgba(255,255,255,.12);
@@ -126,3 +118,7 @@ footer.site{color:var(--muted); text-align:center; margin:22px 0 44px}
 .s-icon svg{ width:28px; height:28px; color:var(--accent); }
 .s-name{ font-weight:700; }
 .s-user{ display:block; margin-top:6px; color:var(--text); font-size:14px; }
+
+/* pequeño toast */
+.toast{position:fixed; left:50%; bottom:24px; transform:translateX(-50%); background:#0b2f31; color:var(--text); padding:10px 14px; border-radius:10px; border:1px solid rgba(255,255,255,.12); box-shadow:0 10px 24px rgba(0,0,0,.35); opacity:0; pointer-events:none; transition:.25s}
+.toast.show{opacity:1}
