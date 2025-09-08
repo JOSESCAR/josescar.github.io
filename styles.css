@@ -1,5 +1,9 @@
+/* =========================================================
+   Jose Carlos — Portfolio · Tema Midnight Plum (full CSS)
+   ========================================================= */
+
 :root{
-  /* ======= PALETA Midnight Plum ======= */
+  /* ======= PALETA ======= */
   --bg1:#0b0f1a;          /* navy muy oscuro */
   --bg2:#121a2f;          /* azul noche */
   --surface:#0f1629;      /* tarjeta */
@@ -12,9 +16,9 @@
   --ring:0 0 0 1px rgb(255 255 255 / .06), inset 0 0 0 1px rgb(255 255 255 / .02);
   --shadow:0 22px 70px rgba(0,0,0,.48);
 
-  --containerW: 1380px;                /* más ancho => tarjeta más grande */
-  --gutter: clamp(40px, 7vw, 120px);   /* margen lateral fluido */
-  --navH: 96px;                        /* navbar alta */
+  --containerW: 1480px;               /* ancho base del contenido */
+  --gutter: clamp(40px, 7vw, 120px);  /* margen lateral fluido */
+  --navH: 96px;                        /* altura navbar */
 }
 
 /* ===== Reset + pantalla completa ===== */
@@ -80,16 +84,26 @@ h2{margin:0 0 12px; font-size:clamp(22px,3.4vw,32px)}
 .lead{color:var(--muted)}
 footer.site{color:var(--muted); text-align:center; margin:26px 0 46px}
 
-/* ===== HERO (cuadro gigante) ===== */
+/* ===== HERO (cuadro gigante con más aire) ===== */
 .card.hero{
-  /* La tarjeta ocupa todo el ancho del contenedor y es alta */
-  padding-left: clamp(40px, 6.5vw, 96px);
-  padding-right: clamp(40px, 6.5vw, 96px);
-  min-height: clamp(620px, 75svh, 880px);  /* <<< GRANDE */
+  /* ensancha la tarjeta un poco por fuera del contenedor */
+  --edge: clamp(28px, 5vw, 80px);
+  width: calc(100% + var(--edge)*2);
+  margin-left: calc(var(--edge)*-1);
+  margin-right: calc(var(--edge)*-1);
+
+  /* padding generoso */
+  padding-left: clamp(64px, 8vw, 140px);
+  padding-right: clamp(64px, 8vw, 140px);
+  padding-top: clamp(50px, 7vh, 110px);
+  padding-bottom: clamp(46px, 8vh, 120px);
+
+  /* altura grande */
+  min-height: clamp(700px, 78svh, 940px);
 }
 .hero{
-  display:grid; grid-template-columns:1.25fr 1fr;
-  gap: clamp(22px, 4.6vw, 50px); align-items:center;
+  display:grid; grid-template-columns:1.15fr .85fr;
+  gap: clamp(26px, 5vw, 60px); align-items:center;
 }
 @media (max-width:980px){ .hero{ grid-template-columns:1fr } }
 
@@ -119,14 +133,13 @@ footer.site{color:var(--muted); text-align:center; margin:26px 0 46px}
 .sico svg{width:22px; height:22px; color:var(--accent2)}
 
 .avatar{
-  width:min(520px, 52vmin); aspect-ratio:1/1; border-radius:50%;
+  width:min(560px, 52vmin); aspect-ratio:1/1; border-radius:50%;
   position:relative; overflow:hidden; margin-inline:auto;
   background: radial-gradient(60% 60% at 50% 40%, rgba(122,226,255,.08), transparent 70%);
   box-shadow:0 0 40px rgba(122,226,255,.28), inset 0 0 16px rgba(255,122,217,.18);
   border:4px solid color-mix(in srgb, var(--accent2) 80%, white 15%);
 }
 .avatar::after{
-  /* halo suave alrededor del borde */
   content:""; position:absolute; inset:-18px; border-radius:50%;
   background: radial-gradient(60% 60% at 50% 50%, rgba(122,226,255,.18), transparent 70%);
   pointer-events:none;
@@ -134,11 +147,12 @@ footer.site{color:var(--muted); text-align:center; margin:26px 0 46px}
 .avatar img{width:100%; height:100%; object-fit:cover}
 
 /* ===== GRID común (Work/Services) ===== */
-.grid{display:grid; gap:18px; grid-template-columns:repeat(12,1fr)}
+.grid{display:grid; gap: clamp(22px, 2.6vw, 34px); grid-template-columns:repeat(12,1fr)}
 .card-proj{grid-column:span 6; border-radius:20px; overflow:hidden}
 @media (max-width:900px){ .card-proj{grid-column:span 12} }
-.thumb{aspect-ratio:16/9; background:#0b1220}
+.thumb{aspect-ratio:16/9; background:#0b1220; border-bottom:1px solid rgba(255,255,255,.06)}
 .thumb img{width:100%; height:100%; object-fit:cover}
+.card-proj > *{ padding: clamp(22px, 2.2vw, 30px) !important; }
 .meta{display:flex; justify-content:space-between; align-items:center; gap:10px}
 .pill{font-size:12px; border:1px solid rgba(255,255,255,.2); padding:4px 8px; border-radius:999px}
 
@@ -166,7 +180,7 @@ textarea{min-height:130px}
 .s-name{font-weight:800}
 .s-user{display:block; margin-top:6px; color:var(--muted); font-size:14px}
 
-/* Toast copiar email */
+/* ===== Toast copiar email ===== */
 .toast{
   position:fixed; left:50%; bottom:24px; transform:translateX(-50%);
   background:#0d1630; color:var(--text); padding:10px 14px; border-radius:10px;
@@ -174,3 +188,18 @@ textarea{min-height:130px}
   opacity:0; pointer-events:none; transition:.25s;
 }
 .toast.show{opacity:1}
+
+/* ===== Responsivo fino ===== */
+@media (max-width:1200px){
+  :root{ --gutter: clamp(28px, 6vw, 80px); }
+  .card.hero{ min-height: clamp(640px, 74svh, 860px); }
+}
+@media (max-width:980px){
+  .nav{gap:18px}
+  .card.hero{
+    padding-left: clamp(28px, 6vw, 60px);
+    padding-right: clamp(28px, 6vw, 60px);
+    min-height: clamp(560px, 70svh, 780px);
+  }
+  .avatar{ width:min(420px, 58vmin); }
+}
