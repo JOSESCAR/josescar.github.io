@@ -1,23 +1,28 @@
 /* =========================================================
-   Jose Carlos — Portfolio · Tema Aqua-Slate (CSS completo)
+   Portafolio — Tema "Grafito + Lima" (CSS completo, español)
    Enfoque: mucho aire, lectura cómoda, grids amplios
    ========================================================= */
 
+/* ───────────────── Paletas ─────────────────
+   PALETA ACTUAL: Grafito + Lima (neón elegante)
+   Si deseas otra, comenta este bloque y descomenta
+   una de las paletas alternativas de abajo.
+*/
 :root{
-  /* PALETA */
-  --bg1:#0b1f24;            /* azul petróleo muy oscuro */
-  --bg2:#0f2c34;            /* teal noche */
-  --surface:#102f36;        /* tarjeta principal */
-  --surface-2:#0e2830;      /* tarjetas secundarias */
-  --accent:#7ef2c7;         /* menta */
-  --accent2:#67c9ff;        /* cian suave */
-  --text:#eaf5ff;           /* texto claro */
-  --muted:#c0d3df;          /* texto secundario */
+  /* Colores */
+  --bg1:#0b0b10;           /* fondo base muy oscuro */
+  --bg2:#14161d;           /* degradado profundo */
+  --surface:#11131a;       /* tarjeta principal */
+  --surface-2:#0f1117;     /* tarjetas secundarias */
+  --accent:#c8ff4d;        /* lima neón */
+  --accent2:#8dff7a;       /* menta lima */
+  --text:#eef2f8;          /* texto principal */
+  --muted:#c9d0de;         /* texto secundario */
 
-  /* LAYOUT & FX */
+  /* Layout y efectos */
   --containerW: 1160px;                /* ancho cómodo para lectura */
   --gutter: clamp(48px, 7vw, 120px);   /* margen lateral fluido */
-  --navH: 92px;                        /* altura navbar */
+  --navH: 92px;                        /* altura de la barra */
   --radius-lg: 28px;
   --radius-xl: 36px;
   --shadow: 0 24px 60px rgba(0,0,0,.45);
@@ -27,6 +32,25 @@
   --readW: 68ch;                       /* ancho ideal de párrafos */
 }
 
+/*  Paletas alternativas (opcional)
+:root{  !* MORADO ATARDECER *!
+  --bg1:#0d0a13; --bg2:#171225; --surface:#141022; --surface-2:#120f1d;
+  --accent:#d6a3ff; --accent2:#7ac3ff; --text:#f3ecff; --muted:#d6cdea;
+  --containerW:1160px; --gutter:clamp(48px,7vw,120px); --navH:92px;
+  --radius-lg:28px; --radius-xl:36px; --shadow:0 24px 60px rgba(0,0,0,.45);
+  --ring:0 0 0 1px rgba(255,255,255,.06), inset 0 0 0 1px rgba(255,255,255,.03);
+  --readW:68ch;
+}
+:root{  !* ARENA + CORAL *!
+  --bg1:#0f191a; --bg2:#0f2022; --surface:#102223; --surface-2:#0e1d1e;
+  --accent:#ffb38a; --accent2:#ffd29b; --text:#f3fbfd; --muted:#d7e6ea;
+  --containerW:1160px; --gutter:clamp(48px,7vw,120px); --navH:92px;
+  --radius-lg:28px; --radius-xl:36px; --shadow:0 24px 60px rgba(0,0,0,.45);
+  --ring:0 0 0 1px rgba(255,255,255,.06), inset 0 0 0 1px rgba(255,255,255,.03);
+  --readW:68ch;
+}
+*/
+
 /* ============ Reset / base ============ */
 *{box-sizing:border-box}
 html,body{height:100%}
@@ -35,17 +59,17 @@ body{
   margin:0; color:var(--text);
   font:16px/1.72 "Poppins",system-ui,Arial;
   background:
-    radial-gradient(1200px 900px at 10% -10%, rgba(126,242,199,.08), transparent 60%),
-    radial-gradient(1200px 900px at 90% 110%, rgba(103,201,255,.07), transparent 60%),
+    radial-gradient(1200px 900px at 10% -10%, color-mix(in srgb,var(--accent) 14%, transparent) 0%, transparent 60%),
+    radial-gradient(1200px 900px at 90% 110%, color-mix(in srgb,var(--accent2) 12%, transparent) 0%, transparent 60%),
     linear-gradient(135deg,var(--bg1),var(--bg2));
   display:grid; grid-template-rows:auto 1fr auto;
   min-height:100svh;
 }
 
-/* ============ Navbar ============ */
+/* ============ Barra de navegación ============ */
 .header{
   position:sticky; top:0; z-index:40;
-  background:rgba(16,47,54,.8);
+  background:rgba(17,19,26,.78);
   backdrop-filter:blur(10px);
   border-bottom:1px solid rgba(255,255,255,.06);
 }
@@ -75,14 +99,14 @@ body{
   width:min(var(--containerW), 92vw);
   margin-inline:auto;
   padding-inline: var(--gutter);
-  padding-block: clamp(70px, 12vh, 140px);   /* mucho aire vertical */
+  padding-block: clamp(70px, 12vh, 140px);
 }
 .card{
   background:linear-gradient(180deg, color-mix(in srgb, var(--surface) 94%, black 6%), var(--surface));
   border:1px solid rgba(255,255,255,.08);
   border-radius:var(--radius-xl);
   box-shadow:var(--shadow);
-  padding: clamp(28px, 3vw, 48px);           /* padding grande */
+  padding: clamp(28px, 3vw, 48px);
 }
 
 /* ============ Tipografía ============ */
@@ -92,7 +116,7 @@ p{margin:0 0 12px}
 .lead{color:var(--muted)}
 footer.site{color:var(--muted); text-align:center; margin:28px 0 48px}
 
-/* ============ Hero (cuadro grande, centrado y aireado) ============ */
+/* ============ Hero (cuadro grande y aireado) ============ */
 .card.hero{
   padding-left: clamp(56px, 6.5vw, 120px);
   padding-right: clamp(56px, 6.5vw, 120px);
@@ -103,21 +127,21 @@ footer.site{color:var(--muted); text-align:center; margin:28px 0 48px}
 .hero{
   display:grid; grid-template-columns: 1.1fr 0.9fr;
   align-items:center;
-  gap: clamp(32px, 6vw, 64px);               /* gran separación columnas */
+  gap: clamp(32px, 6vw, 64px);
 }
-.hero > :first-child{ max-width: 640px }     /* copy no muy ancho */
+.hero > :first-child{ max-width: 640px }
 @media (max-width:980px){ .hero{ grid-template-columns:1fr } }
 
 .kicker{
   letter-spacing:.25em; text-transform:uppercase;
-  color:color-mix(in srgb, var(--accent2) 80%, white 12%); font-weight:900;
-  margin:0 0 16px;
+  color:color-mix(in srgb, var(--accent2) 80%, white 10%);
+  font-weight:900; margin:0 0 16px;
 }
 .cta{display:flex; gap:16px; margin-top:22px; flex-wrap:wrap}
 .btn{
   display:inline-flex; align-items:center; gap:10px;
   padding:12px 20px; border-radius:999px; text-decoration:none;
-  color:#0c1417; font-weight:800;
+  color:#0b0b10; font-weight:800;
   background:linear-gradient(90deg,var(--accent),var(--accent2));
   border:0; box-shadow:0 10px 28px rgba(0,0,0,.35);
 }
@@ -134,14 +158,13 @@ footer.site{color:var(--muted); text-align:center; margin:28px 0 48px}
 .avatar{
   width:min(520px, 48vmin); aspect-ratio:1/1; border-radius:50%;
   position:relative; overflow:hidden; margin-inline:auto;
-  background: radial-gradient(60% 60% at 50% 40%, rgba(103,201,255,.10), transparent 70%);
+  background: radial-gradient(60% 60% at 50% 40%, color-mix(in srgb,var(--accent2) 18%, transparent), transparent 70%);
   border:4px solid color-mix(in srgb, var(--accent2) 80%, white 15%);
-  box-shadow:0 0 38px rgba(103,201,255,.26), inset 0 0 16px rgba(126,242,199,.18);
+  box-shadow:0 0 36px color-mix(in srgb,var(--accent2) 26%, transparent), inset 0 0 16px color-mix(in srgb,var(--accent) 18%, transparent);
 }
 .avatar img{width:100%; height:100%; object-fit:cover}
 
-/* ============ Páginas de texto (Biografía/Contacto) ============ */
-/* Tarjeta más angosta y centrada + ancho de lectura de párrafos */
+/* ============ Páginas de texto (Biografía / Contacto) ============ */
 .wrap > .card:only-child:not(.hero){
   max-width: min(1000px, 92vw);
   margin-inline:auto;
@@ -153,11 +176,11 @@ footer.site{color:var(--muted); text-align:center; margin:28px 0 48px}
 .card h1{ margin-bottom: 18px; }
 .card p + p{ margin-top: 10px; }
 
-/* ============ Grid común (Services / Work) ============ */
+/* ============ Grid (Servicios / Proyectos) ============ */
 .grid{
   display:grid;
   grid-template-columns: repeat(12, 1fr);
-  gap: clamp(32px, 3.8vw, 48px);              /* gaps MUY grandes */
+  gap: clamp(32px, 3.8vw, 48px);
 }
 .card-proj{
   grid-column: span 6;
@@ -171,24 +194,22 @@ footer.site{color:var(--muted); text-align:center; margin:28px 0 48px}
 
 .thumb{
   aspect-ratio: 16/9;
-  background:#0c2226;
+  background:#0e0f14;
   border-bottom:1px solid rgba(255,255,255,.06);
 }
 .thumb img{width:100%; height:100%; object-fit:cover; display:block}
-
-/* Más padding dentro de las tarjetas (aunque el HTML tenga inline) */
 .card-proj > *{ padding: clamp(26px, 2.8vw, 36px) !important; }
 .meta{display:flex; justify-content:space-between; align-items:center; gap:12px}
-.pill{font-size:12px; border:1px solid rgba(255,255,255,.2); padding:6px 10px; border-radius:999px}
+.pill{font-size:12px; border:1px solid rgba(255,255,255,.22); padding:6px 10px; border-radius:999px}
 
-/* ============ Contacto (form + CV + redes) ============ */
+/* ============ Contacto (form + redes) ============ */
 form.contact{display:grid; gap:16px; max-width:760px}
 .row2{display:grid; grid-template-columns:1fr 1fr; gap:16px}
 @media (max-width:760px){ .row2{ grid-template-columns:1fr } }
 label{display:block; color:var(--muted); font-weight:600; margin-bottom:6px}
 input,textarea{
   width:100%;
-  background:#0e2830; border:1px solid rgba(255,255,255,.14);
+  background:#12141b; border:1px solid rgba(255,255,255,.14);
   color:var(--text); padding:14px; border-radius:14px; font:inherit;
 }
 textarea{min-height:130px}
@@ -196,7 +217,7 @@ textarea{min-height:130px}
 
 .social-grid{
   display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap: clamp(18px, 2.5vw, 28px); margin-top:22px
+  gap: clamp(18px, 2.5vw, 28px); margin-top:22px;
 }
 .s-card{
   color:var(--text); text-decoration:none; text-align:center;
@@ -206,22 +227,22 @@ textarea{min-height:130px}
 }
 .s-card:hover{transform:translateY(-2px); box-shadow:0 18px 40px rgba(0,0,0,.38)}
 .s-icon{width:60px; height:60px; border-radius:50%; display:grid; place-items:center; margin:6px auto 12px; background:linear-gradient(90deg,var(--accent),var(--accent2))}
-.s-icon svg{width:30px; height:30px; color:#0c1417}
+.s-icon svg{width:30px; height:30px; color:#0b0b10}
 .s-name{font-weight:800}
 .s-user{display:block; margin-top:6px; color:var(--muted); font-size:14px}
 
-/* Toast copiar email */
+/* ============ Toast (copiar email) ============ */
 .toast{
   position:fixed; left:50%; bottom:24px; transform:translateX(-50%);
-  background:#0e2830; color:var(--text); padding:10px 14px; border-radius:10px;
+  background:#12141b; color:var(--text); padding:10px 14px; border-radius:10px;
   border:1px solid rgba(255,255,255,.12); box-shadow:0 10px 24px rgba(0,0,0,.35);
   opacity:0; pointer-events:none; transition:.25s;
 }
 .toast.show{opacity:1}
 
-/* ============ Ajustes responsivos finos ============ */
+/* ============ Responsivo fino ============ */
 @media (min-width:1600px){
-  :root{ --containerW: 1260px; }       /* en pantallas XL mantiene lectura cómoda */
+  :root{ --containerW: 1260px; } /* mantiene lectura cómoda en pantallas XL */
 }
 @media (max-width:1100px){
   :root{ --gutter: clamp(32px, 6vw, 80px); }
@@ -232,3 +253,4 @@ textarea{min-height:130px}
   .card.hero{min-height:clamp(560px,70svh,740px)}
   .avatar{width:min(420px, 58vmin)}
 }
+
