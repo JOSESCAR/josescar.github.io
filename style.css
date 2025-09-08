@@ -1,0 +1,61 @@
+:root{
+  --bg1:#0f3f42; --bg2:#14575a; --surface:#103f42;
+  --accent:#6cf6d2;          /* verde neón suave */
+  --text:#eaf2f7; --muted:#c6d4df; --shadow:0 16px 44px rgba(0,0,0,.34);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; color:var(--text); font:16px/1.6 "Poppins",system-ui,Arial;
+  background:
+    radial-gradient(1100px 700px at 20% 0%, #0c3638 0%, transparent 60%),
+    radial-gradient(900px 700px at 80% 100%, #0b2f31 0%, transparent 55%),
+    linear-gradient(135deg,var(--bg1),var(--bg2));
+}
+
+/* NAVBAR */
+.header{position:sticky; top:0; z-index:50; background:rgba(16,63,66,.85); backdrop-filter: blur(8px); border-bottom:1px solid rgba(255,255,255,.08)}
+.nav{max-width:1100px; margin:0 auto; display:flex; align-items:center; gap:18px; padding:12px 16px}
+.brand{font-weight:800; letter-spacing:.3px; font-size:22px}
+.spacer{flex:1}
+.nav a{color:var(--muted); text-decoration:none; font-weight:600; padding:8px 10px; border-bottom:2px solid transparent; border-radius:6px}
+.nav a:hover{color:var(--text)}
+.nav a.active{color:var(--text); border-color:var(--accent)}
+
+/* LAYOUT */
+.wrap{max-width:1100px; margin:0 auto; padding:28px 16px 60px}
+.card{background:linear-gradient(180deg,#0d3537,#103f42); border:1px solid rgba(255,255,255,.08); box-shadow:var(--shadow); border-radius:24px; padding:28px}
+h1{margin:0 0 6px; font-size:clamp(28px,5vw,42px)}
+h2{margin:0 0 10px; font-size:clamp(22px,3.5vw,30px)}
+.lead{color:var(--muted)}
+
+/* HOME HERO (como tu ejemplo) */
+.hero{display:grid; grid-template-columns:1.15fr .85fr; gap:20px; align-items:center}
+@media (max-width:900px){.hero{grid-template-columns:1fr}}
+.kicker{letter-spacing:.25em; text-transform:uppercase; color:#9bf9e6; font-weight:700; margin:0 0 8px}
+.cta{display:flex; gap:12px; margin-top:16px; flex-wrap:wrap}
+.btn{display:inline-flex; align-items:center; gap:10px; padding:10px 16px; border-radius:999px; border:1.6px solid var(--accent); color:var(--text); text-decoration:none; background:linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.22))}
+.btn:hover{box-shadow:0 12px 26px rgba(0,0,0,.30)}
+.social{display:flex; gap:12px; margin-top:16px}
+.sico{width:42px; height:42px; border-radius:50%; display:grid; place-items:center; border:2px solid var(--accent); text-decoration:none; color:var(--text); background:rgba(255,255,255,.04)}
+.sico:hover{box-shadow:0 0 18px rgba(108,246,210,.35)}
+.avatar{width:min(260px,42vmin); aspect-ratio:1/1; border-radius:50%;
+  border:4px solid var(--accent); box-shadow:0 0 32px rgba(108,246,210,.28), inset 0 0 10px rgba(108,246,210,.25);
+  overflow:hidden; margin-inline:auto}
+.avatar img{width:100%; height:100%; object-fit:cover}
+
+/* GRID genérica */
+.grid{display:grid; gap:14px; grid-template-columns: repeat(12,1fr)}
+.card-proj{grid-column: span 6; border-radius:18px; overflow:hidden}
+@media (max-width:900px){.card-proj{grid-column: span 12}}
+.thumb{aspect-ratio:16/9; background:#0a2224}
+.thumb img{width:100%; height:100%; object-fit:cover}
+.meta{display:flex; justify-content:space-between; align-items:center; gap:10px}
+.pill{font-size:12px; border:1px solid rgba(255,255,255,.2); padding:4px 8px; border-radius:999px}
+
+footer.site{color:var(--muted); text-align:center; margin:18px 0 40px}
+
+/* FORM */
+form{display:grid; gap:10px; max-width:640px}
+input,textarea{background:#0b2f31; border:1px solid rgba(255,255,255,.16); color:var(--text); padding:12px; border-radius:12px; font:inherit}
+textarea{min-height:120px}
