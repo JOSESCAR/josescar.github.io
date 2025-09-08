@@ -1,45 +1,48 @@
 /* =========================================================
-   Jose Carlos — Portfolio · Tema Midnight Plum (full CSS)
+   Jose Carlos — Portfolio · Tema Aqua-Slate (CSS completo)
+   Enfoque: mucho aire, tipografía legible, grids amplios
    ========================================================= */
 
 :root{
-  /* ======= PALETA ======= */
-  --bg1:#0b0f1a;          /* navy muy oscuro */
-  --bg2:#121a2f;          /* azul noche */
-  --surface:#0f1629;      /* tarjeta */
-  --accent:#ff7ad9;       /* magenta suave */
-  --accent2:#7ae2ff;      /* cyan hielo */
-  --text:#ecf2ff;         /* texto claro */
-  --muted:#b9c6e4;        /* texto secundario */
+  /* PALETA */
+  --bg1:#0b1f24;            /* azul petróleo muy oscuro */
+  --bg2:#0f2c34;            /* teal noche */
+  --surface:#102f36;        /* tarjeta */
+  --surface-2:#0e2830;      /* bloques secundarios */
+  --accent:#7ef2c7;         /* menta */
+  --accent2:#67c9ff;        /* cian suave */
+  --text:#eaf5ff;           /* texto claro */
+  --muted:#c0d3df;          /* texto secundario */
 
-  /* Efectos / layout */
-  --ring:0 0 0 1px rgb(255 255 255 / .06), inset 0 0 0 1px rgb(255 255 255 / .02);
-  --shadow:0 22px 70px rgba(0,0,0,.48);
-
-  --containerW: 1480px;               /* ancho base del contenido */
-  --gutter: clamp(40px, 7vw, 120px);  /* margen lateral fluido */
-  --navH: 96px;                        /* altura navbar */
+  /* LAYOUT & FX */
+  --containerW: 1160px;                /* ancho cómodo para lectura */
+  --gutter: clamp(48px, 7vw, 120px);   /* margen lateral */
+  --navH: 92px;                        /* altura navbar */
+  --radius-lg: 28px;
+  --radius-xl: 36px;
+  --shadow: 0 24px 60px rgba(0,0,0,.45);
+  --ring: 0 0 0 1px rgba(255,255,255,.06), inset 0 0 0 1px rgba(255,255,255,.03);
 }
 
-/* ===== Reset + pantalla completa ===== */
+/* ============ Reset / base ============ */
 *{box-sizing:border-box}
 html,body{height:100%}
 html{scroll-behavior:smooth}
 body{
   margin:0; color:var(--text);
-  font:16px/1.6 "Poppins",system-ui,Arial;
+  font:16px/1.7 "Poppins",system-ui,Arial;
   background:
-    radial-gradient(1200px 800px at 10% -10%, rgba(255,122,217,.08) 0%, transparent 60%),
-    radial-gradient(1200px 900px at 90% 110%, rgba(122,226,255,.08) 0%, transparent 60%),
+    radial-gradient(1200px 900px at 10% -10%, rgba(126,242,199,.08), transparent 60%),
+    radial-gradient(1200px 900px at 90% 110%, rgba(103,201,255,.07), transparent 60%),
     linear-gradient(135deg,var(--bg1),var(--bg2));
-  min-height:100svh;
   display:grid; grid-template-rows:auto 1fr auto;
+  min-height:100svh;
 }
 
-/* ===== NAVBAR ===== */
+/* ============ Navbar ============ */
 .header{
-  position:sticky; top:0; z-index:50;
-  background:rgba(15,22,41,.8); backdrop-filter:blur(10px);
+  position:sticky; top:0; z-index:40;
+  background:rgba(16,47,54,.8); backdrop-filter:blur(10px);
   border-bottom:1px solid rgba(255,255,255,.06);
 }
 .nav{
@@ -47,14 +50,14 @@ body{
   margin-inline:auto;
   height:var(--navH);
   padding:0 var(--gutter);
-  display:flex; align-items:center; gap: clamp(20px, 3.6vw, 46px);
+  display:flex; align-items:center; gap:clamp(18px,3.5vw,48px);
 }
-.brand{font-weight:900; font-size:clamp(28px,2.2vw,36px); letter-spacing:.4px}
+.brand{font-weight:900; font-size:clamp(26px,2vw,34px); letter-spacing:.3px}
 .spacer{flex:1}
 .nav a{
   color:var(--muted); text-decoration:none; font-weight:800;
-  font-size:clamp(16px,1.2vw,20px);
-  padding:14px 18px; border-bottom:4px solid transparent; border-radius:10px;
+  font-size:clamp(16px,1.15vw,20px);
+  padding:12px 16px; border-bottom:4px solid transparent; border-radius:10px;
 }
 .nav a:hover{color:var(--text)}
 .nav a.active{
@@ -63,143 +66,153 @@ body{
   border-bottom:4px solid transparent;
 }
 
-/* ===== Contenedor y tarjetas ===== */
+/* ============ Contenedor y tarjetas ============ */
 .wrap{
   width:min(var(--containerW), 92vw);
   margin-inline:auto;
   padding-inline: var(--gutter);
-  padding-block: clamp(34px, 7.5vh, 120px);
+  padding-block: clamp(56px, 10vh, 120px);     /* mucho aire vertical */
 }
 .card{
-  background:linear-gradient(180deg, color-mix(in srgb,var(--surface) 94%, black 6%), var(--surface));
+  background:linear-gradient(180deg, color-mix(in srgb, var(--surface) 94%, black 6%), var(--surface));
   border:1px solid rgba(255,255,255,.08);
+  border-radius:var(--radius-xl);
   box-shadow:var(--shadow);
-  border-radius:36px;
-  padding:clamp(22px, 2vw+16px, 42px);
+  padding: clamp(28px, 3vw, 48px);             /* padding grande */
 }
 
-/* ===== Tipografía ===== */
-h1{margin:0 0 8px; font-size:clamp(32px,5.2vw,56px); letter-spacing:.2px}
-h2{margin:0 0 12px; font-size:clamp(22px,3.4vw,32px)}
+/* tipografía y párrafos */
+h1{margin:0 0 10px; font-size:clamp(32px,5vw,56px)}
+h2{margin:0 0 12px; font-size:clamp(22px,3.2vw,32px)}
+p{margin:0 0 12px}
 .lead{color:var(--muted)}
-footer.site{color:var(--muted); text-align:center; margin:26px 0 46px}
+footer.site{color:var(--muted); text-align:center; margin:28px 0 48px}
 
-/* ===== HERO (cuadro gigante con más aire) ===== */
+/* ============ Hero (cuadro grande, centrado y aireado) ============ */
 .card.hero{
-  /* ensancha la tarjeta un poco por fuera del contenedor */
-  --edge: clamp(28px, 5vw, 80px);
-  width: calc(100% + var(--edge)*2);
-  margin-left: calc(var(--edge)*-1);
-  margin-right: calc(var(--edge)*-1);
-
-  /* padding generoso */
-  padding-left: clamp(64px, 8vw, 140px);
-  padding-right: clamp(64px, 8vw, 140px);
-  padding-top: clamp(50px, 7vh, 110px);
-  padding-bottom: clamp(46px, 8vh, 120px);
-
-  /* altura grande */
-  min-height: clamp(700px, 78svh, 940px);
+  /* NO se extiende fuera del contenedor: todo respira */
+  padding-left: clamp(56px, 6.5vw, 120px);
+  padding-right: clamp(56px, 6.5vw, 120px);
+  padding-top: clamp(48px, 7vh, 110px);
+  padding-bottom: clamp(52px, 8vh, 120px);
+  min-height: clamp(640px, 74svh, 880px);
 }
 .hero{
-  display:grid; grid-template-columns:1.15fr .85fr;
-  gap: clamp(26px, 5vw, 60px); align-items:center;
+  display:grid; grid-template-columns: 1.1fr 0.9fr;
+  align-items:center;
+  gap: clamp(32px, 6vw, 64px);                  /* gran separación columnas */
 }
+.hero > :first-child{ max-width: 640px }        /* copy no muy ancho */
 @media (max-width:980px){ .hero{ grid-template-columns:1fr } }
 
 .kicker{
-  letter-spacing:.28em; text-transform:uppercase;
-  color:color-mix(in srgb, var(--accent2) 85%, white 10%);
-  font-weight:900; margin:0 0 14px;
+  letter-spacing:.25em; text-transform:uppercase;
+  color:color-mix(in srgb, var(--accent2) 80%, white 12%); font-weight:900;
+  margin:0 0 16px;
 }
 .cta{display:flex; gap:16px; margin-top:22px; flex-wrap:wrap}
 .btn{
   display:inline-flex; align-items:center; gap:10px;
-  padding:12px 20px; border-radius:999px;
-  color:#0b0f1a; font-weight:800; text-decoration:none;
-  background:linear-gradient(90deg, var(--accent), var(--accent2));
-  border:0; box-shadow:0 8px 28px rgba(0,0,0,.35);
+  padding:12px 20px; border-radius:999px; text-decoration:none;
+  color:#0c1417; font-weight:800;
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
+  border:0; box-shadow:0 10px 28px rgba(0,0,0,.35);
 }
-.btn:hover{transform:translateY(-1px); box-shadow:0 14px 36px rgba(0,0,0,.45); transition:.15s}
+.btn:hover{transform:translateY(-1px); box-shadow:0 16px 36px rgba(0,0,0,.45); transition:.15s}
 
 .social-row{display:flex; gap:12px; margin-top:14px}
 .sico{
-  width:44px; height:44px; border-radius:50%;
-  display:grid; place-items:center; text-decoration:none;
-  background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
-  border:1px solid rgba(255,255,255,.12);
-  box-shadow:var(--ring);
+  width:44px; height:44px; border-radius:50%; display:grid; place-items:center;
+  text-decoration:none; background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+  border:1px solid rgba(255,255,255,.12); box-shadow:var(--ring)
 }
 .sico svg{width:22px; height:22px; color:var(--accent2)}
 
 .avatar{
-  width:min(560px, 52vmin); aspect-ratio:1/1; border-radius:50%;
+  width:min(520px, 48vmin); aspect-ratio:1/1; border-radius:50%;
   position:relative; overflow:hidden; margin-inline:auto;
-  background: radial-gradient(60% 60% at 50% 40%, rgba(122,226,255,.08), transparent 70%);
-  box-shadow:0 0 40px rgba(122,226,255,.28), inset 0 0 16px rgba(255,122,217,.18);
+  background: radial-gradient(60% 60% at 50% 40%, rgba(103,201,255,.10), transparent 70%);
   border:4px solid color-mix(in srgb, var(--accent2) 80%, white 15%);
-}
-.avatar::after{
-  content:""; position:absolute; inset:-18px; border-radius:50%;
-  background: radial-gradient(60% 60% at 50% 50%, rgba(122,226,255,.18), transparent 70%);
-  pointer-events:none;
+  box-shadow:0 0 38px rgba(103,201,255,.26), inset 0 0 16px rgba(126,242,199,.18);
 }
 .avatar img{width:100%; height:100%; object-fit:cover}
 
-/* ===== GRID común (Work/Services) ===== */
-.grid{display:grid; gap: clamp(22px, 2.6vw, 34px); grid-template-columns:repeat(12,1fr)}
-.card-proj{grid-column:span 6; border-radius:20px; overflow:hidden}
-@media (max-width:900px){ .card-proj{grid-column:span 12} }
-.thumb{aspect-ratio:16/9; background:#0b1220; border-bottom:1px solid rgba(255,255,255,.06)}
-.thumb img{width:100%; height:100%; object-fit:cover}
-.card-proj > *{ padding: clamp(22px, 2.2vw, 30px) !important; }
-.meta{display:flex; justify-content:space-between; align-items:center; gap:10px}
-.pill{font-size:12px; border:1px solid rgba(255,255,255,.2); padding:4px 8px; border-radius:999px}
+/* ============ Grid común (Services / Work) ============ */
+.grid{
+  display:grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: clamp(28px, 3vw, 40px);                  /* gaps grandes */
+}
+.card-proj{
+  grid-column: span 6;
+  border-radius: var(--radius-lg);
+  overflow:hidden;
+  background: linear-gradient(180deg, var(--surface), var(--surface-2));
+  border:1px solid rgba(255,255,255,.08);
+  box-shadow: var(--shadow);
+}
+@media (max-width:900px){ .card-proj{ grid-column: span 12 } }
 
-/* ===== CONTACTO (form + CV + redes) ===== */
-form.contact{display:grid; gap:14px; max-width:760px}
-.row2{display:grid; grid-template-columns:1fr 1fr; gap:14px}
-@media (max-width:720px){ .row2{grid-template-columns:1fr} }
+.thumb{
+  aspect-ratio: 16/9;
+  background:#0c2226;
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+.thumb img{width:100%; height:100%; object-fit:cover; display:block}
+
+/* contenido interno de tarjetas con padding amplio (aunque el HTML tenga inline) */
+.card-proj > *{ padding: clamp(24px, 2.4vw, 36px) !important; }
+.meta{display:flex; justify-content:space-between; align-items:center; gap:12px}
+.pill{font-size:12px; border:1px solid rgba(255,255,255,.2); padding:6px 10px; border-radius:999px}
+
+/* ============ Contacto (form + CV + redes) ============ */
+form.contact{display:grid; gap:16px; max-width:760px}
+.row2{display:grid; grid-template-columns:1fr 1fr; gap:16px}
+@media (max-width:760px){ .row2{ grid-template-columns:1fr } }
+label{display:block; color:var(--muted); font-weight:600; margin-bottom:6px}
 input,textarea{
-  background:#0d1630; border:1px solid rgba(255,255,255,.16);
+  width:100%;
+  background:#0e2830; border:1px solid rgba(255,255,255,.14);
   color:var(--text); padding:14px; border-radius:14px; font:inherit;
 }
 textarea{min-height:130px}
-.form-actions{display:flex; gap:12px; flex-wrap:wrap; margin:6px 0 2px}
+.form-actions{display:flex; gap:14px; flex-wrap:wrap; margin:8px 0 4px}
 
-.social-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:18px; margin-top:18px}
+.social-grid{
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap: clamp(18px, 2.5vw, 28px); margin-top:22px
+}
 .s-card{
   color:var(--text); text-decoration:none; text-align:center;
   background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
-  border:1px solid rgba(255,255,255,.12);
-  border-radius:18px; padding:20px; transition:.25s; box-shadow:var(--ring);
+  border:1px solid rgba(255,255,255,.12); box-shadow:var(--ring);
+  border-radius:18px; padding:22px; transition:.25s;
 }
-.s-card:hover{box-shadow:0 18px 40px rgba(0,0,0,.38); transform:translateY(-2px)}
+.s-card:hover{transform:translateY(-2px); box-shadow:0 18px 40px rgba(0,0,0,.38)}
 .s-icon{width:60px; height:60px; border-radius:50%; display:grid; place-items:center; margin:6px auto 12px; background:linear-gradient(90deg,var(--accent),var(--accent2))}
-.s-icon svg{width:30px; height:30px; color:#0b0f1a}
+.s-icon svg{width:30px; height:30px; color:#0c1417}
 .s-name{font-weight:800}
 .s-user{display:block; margin-top:6px; color:var(--muted); font-size:14px}
 
-/* ===== Toast copiar email ===== */
+/* Toast copiar email */
 .toast{
   position:fixed; left:50%; bottom:24px; transform:translateX(-50%);
-  background:#0d1630; color:var(--text); padding:10px 14px; border-radius:10px;
+  background:#0e2830; color:var(--text); padding:10px 14px; border-radius:10px;
   border:1px solid rgba(255,255,255,.12); box-shadow:0 10px 24px rgba(0,0,0,.35);
   opacity:0; pointer-events:none; transition:.25s;
 }
 .toast.show{opacity:1}
 
-/* ===== Responsivo fino ===== */
-@media (max-width:1200px){
-  :root{ --gutter: clamp(28px, 6vw, 80px); }
-  .card.hero{ min-height: clamp(640px, 74svh, 860px); }
+/* ============ Ajustes responsivos finos ============ */
+@media (min-width:1600px){
+  :root{ --containerW: 1260px; }        /* en pantallas muy grandes mantén lectura cómoda */
 }
-@media (max-width:980px){
+@media (max-width:1100px){
+  :root{ --gutter: clamp(32px, 6vw, 80px); }
+}
+@media (max-width:900px){
   .nav{gap:18px}
-  .card.hero{
-    padding-left: clamp(28px, 6vw, 60px);
-    padding-right: clamp(28px, 6vw, 60px);
-    min-height: clamp(560px, 70svh, 780px);
-  }
-  .avatar{ width:min(420px, 58vmin); }
+  .card{border-radius:24px}
+  .card.hero{min-height:clamp(560px,70svh,740px)}
+  .avatar{width:min(420px, 58vmin)}
 }
