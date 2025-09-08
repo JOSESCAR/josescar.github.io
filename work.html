@@ -1,50 +1,88 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Jose Carlos – Work</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Proyectos – Jose Carlos</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
-  <header class="header">
-    <nav class="nav">
-      <div class="brand">PORTFOLIO</div>
-      <a href="index.html">Home</a>
-      <a href="services.html">Service</a>
-      <a href="biography.html">Biography</a>
-      <a href="work.html">Work</a>
-      <a href="contact.html">Contact</a>
-      <div class="spacer"></div>
-    </nav>
-  </header>
+<header class="header">
+  <nav class="nav">
+    <div class="brand">PORTFOLIO</div>
+    <a href="index.html">Home</a>
+    <a href="services.html">Service</a>
+    <a href="biography.html">Biography</a>
+    <a href="work.html" class="active">Work</a>
+    <a href="contact.html">Contact</a>
+    <div class="spacer"></div>
+  </nav>
+</header>
 
-  <main class="wrap">
-    <section class="card">
+<main>
+  <section class="wrap">
+    <article class="card">
       <h1>Proyectos</h1>
-      <div class="grid">
-        <article class="card card-proj">
-          <div class="thumb"><img src="covers/crimen-mlp.png" alt="MLP vs Logit" /></div>
-          <div style="padding:14px">
-            <h3>Predicción de franjas y provincias (Seguridad)</h3>
-            <p class="lead">Benchmark Logit Multinomial vs MLP. Región interandina del Ecuador.</p>
-            <div class="meta"><span class="pill">R · caret · nnet</span> <a class="btn" href="proyectos/crimen.html">Ver</a></div>
-          </div>
-        </article>
-        <article class="card card-proj">
-          <div class="thumb"><img src="covers/agro-dash.png" alt="AgroDash" /></div>
-          <div style="padding:14px">
-            <h3>AgroDash (EO/NASA)</h3>
-            <p class="lead">Humedad de suelo SMAP · mapas y series temporales</p>
-            <div class="meta"><span class="pill">Python · xarray · folium</span> <a class="btn" href="https://github.com/usuario/agro-dash" target="_blank" rel="noopener">Código</a></div>
-          </div>
-        </article>
-      </div>
-    </section>
-  </main>
+      <p class="lead">Casos resumidos. Puedo compartir más detalles bajo solicitud.</p>
 
-  <footer class="site">© 2025 • Jose Carlos</footer>
-  <script src="main.js"></script>
+      <div class="grid">
+        <!-- Proyecto 1 -->
+        <div class="card-proj">
+          <div class="thumb"><img src="assets/p1.jpg" alt="MLP vs Logit"/></div>
+          <div>
+            <h3>Predicción de franjas y provincias (Seguridad)</h3>
+            <p>Benchmark Logit Multinomial vs MLP con datos regionales. Validación robusta y reporte reproducible.</p>
+            <div class="meta">
+              <div class="pill">R</div><div class="pill">caret</div><div class="pill">nnet</div>
+              <a class="btn" href="#" target="_blank" rel="noopener">Ver</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Proyecto 2 -->
+        <div class="card-proj">
+          <div class="thumb"><img src="assets/p2.jpg" alt="AgroDash"/></div>
+          <div>
+            <h3>AgroDash (EO/NASA)</h3>
+            <p>Humedad de suelo SMAP; mapas y series temporales para decisiones rápidas en agro.</p>
+            <div class="meta">
+              <div class="pill">Python</div><div class="pill">xarray</div><div class="pill">folium</div>
+              <a class="btn" href="#" target="_blank" rel="noopener">Código</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Proyecto 3 -->
+        <div class="card-proj">
+          <div class="thumb"><img src="assets/p3.jpg" alt="Dashboards"/></div>
+          <div>
+            <h3>Dashboard Educación</h3>
+            <p>Métricas académicas con Power BI, segmentación por cohorte y alertas tempranas.</p>
+            <div class="meta">
+              <div class="pill">Power BI</div><div class="pill">DAX</div>
+              <a class="btn" href="#" target="_blank" rel="noopener">Ver</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Proyecto 4 -->
+        <div class="card-proj">
+          <div class="thumb"><img src="assets/p4.jpg" alt="ETL"/></div>
+          <div>
+            <h3>ETL & Reproducibilidad</h3>
+            <p>Pipelines con control de versiones, documentación y empaquetado liviano.</p>
+            <div class="meta">
+              <div class="pill">Git</div><div class="pill">Docker</div><div class="pill">ETL</div>
+              <a class="btn" href="#" target="_blank" rel="noopener">Ver</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+  </section>
+</main>
+
+<footer class="site">© 2025 • Jose Carlos</footer>
+<script src="main.js"></script>
 </body>
 </html>
