@@ -1,13 +1,9 @@
 /* =========================================================
-   Portafolio — Tema "Grafito + Lima" (CSS completo, español)
-   Enfoque: mucho aire, lectura cómoda, grids amplios
+   Portafolio — Tema "Grafito + Lima" (CSS completo, ESPAÑOL)
+   Enfoque: mucho aire, lectura cómoda, tarjetas anchas
    ========================================================= */
 
-/* ───────────────── Paletas ─────────────────
-   PALETA ACTUAL: Grafito + Lima (neón elegante)
-   Si deseas otra, comenta este bloque y descomenta
-   una de las paletas alternativas de abajo.
-*/
+/* ─ Paleta principal ─ */
 :root{
   /* Colores */
   --bg1:#0b0b10;           /* fondo base muy oscuro */
@@ -20,7 +16,7 @@
   --muted:#c9d0de;         /* texto secundario */
 
   /* Layout y efectos */
-  --containerW: 1160px;                /* ancho cómodo para lectura */
+  --containerW: 1440px;                /* ANCHO GLOBAL amplio */
   --gutter: clamp(48px, 7vw, 120px);   /* margen lateral fluido */
   --navH: 92px;                        /* altura de la barra */
   --radius-lg: 28px;
@@ -29,27 +25,8 @@
   --ring: 0 0 0 1px rgba(255,255,255,.06), inset 0 0 0 1px rgba(255,255,255,.03);
 
   /* Lectura */
-  --readW: 68ch;                       /* ancho ideal de párrafos */
+  --readW: 68ch;
 }
-
-/*  Paletas alternativas (opcional)
-:root{  !* MORADO ATARDECER *!
-  --bg1:#0d0a13; --bg2:#171225; --surface:#141022; --surface-2:#120f1d;
-  --accent:#d6a3ff; --accent2:#7ac3ff; --text:#f3ecff; --muted:#d6cdea;
-  --containerW:1160px; --gutter:clamp(48px,7vw,120px); --navH:92px;
-  --radius-lg:28px; --radius-xl:36px; --shadow:0 24px 60px rgba(0,0,0,.45);
-  --ring:0 0 0 1px rgba(255,255,255,.06), inset 0 0 0 1px rgba(255,255,255,.03);
-  --readW:68ch;
-}
-:root{  !* ARENA + CORAL *!
-  --bg1:#0f191a; --bg2:#0f2022; --surface:#102223; --surface-2:#0e1d1e;
-  --accent:#ffb38a; --accent2:#ffd29b; --text:#f3fbfd; --muted:#d7e6ea;
-  --containerW:1160px; --gutter:clamp(48px,7vw,120px); --navH:92px;
-  --radius-lg:28px; --radius-xl:36px; --shadow:0 24px 60px rgba(0,0,0,.45);
-  --ring:0 0 0 1px rgba(255,255,255,.06), inset 0 0 0 1px rgba(255,255,255,.03);
-  --readW:68ch;
-}
-*/
 
 /* ============ Reset / base ============ */
 *{box-sizing:border-box}
@@ -66,7 +43,7 @@ body{
   min-height:100svh;
 }
 
-/* ============ Barra de navegación ============ */
+/* ============ Barra de navegación (ES) ============ */
 .header{
   position:sticky; top:0; z-index:40;
   background:rgba(17,19,26,.78);
@@ -74,7 +51,7 @@ body{
   border-bottom:1px solid rgba(255,255,255,.06);
 }
 .nav{
-  width:min(var(--containerW), 92vw);
+  width:min(var(--containerW), 95vw);
   margin-inline:auto;
   height:var(--navH);
   padding:0 var(--gutter);
@@ -88,7 +65,7 @@ body{
   padding:12px 16px; border-bottom:4px solid transparent; border-radius:10px;
 }
 .nav a:hover{color:var(--text)}
-.nav a.active{
+.nav a.activo{
   color:var(--text);
   border-image: linear-gradient(90deg,var(--accent),var(--accent2)) 1;
   border-bottom:4px solid transparent;
@@ -96,17 +73,27 @@ body{
 
 /* ============ Contenedor y tarjetas ============ */
 .wrap{
-  width:min(var(--containerW), 92vw);
+  width:min(var(--containerW), 95vw);
   margin-inline:auto;
   padding-inline: var(--gutter);
   padding-block: clamp(70px, 12vh, 140px);
 }
+
+/* Tarjetas: amplias en TODAS las páginas */
 .card{
   background:linear-gradient(180deg, color-mix(in srgb, var(--surface) 94%, black 6%), var(--surface));
   border:1px solid rgba(255,255,255,.08);
   border-radius:var(--radius-xl);
   box-shadow:var(--shadow);
-  padding: clamp(28px, 3vw, 48px);
+  padding: clamp(32px, 3.2vw, 56px);
+}
+@media (min-width:900px){
+  .wrap > .card{
+    --edgeW: clamp(24px, 4vw, 84px);
+    width: calc(100% + var(--edgeW)*2);
+    margin-left: calc(var(--edgeW)*-1);
+    margin-right: calc(var(--edgeW)*-1);
+  }
 }
 
 /* ============ Tipografía ============ */
@@ -118,18 +105,14 @@ footer.site{color:var(--muted); text-align:center; margin:28px 0 48px}
 
 /* ============ Hero (cuadro grande y aireado) ============ */
 .card.hero{
-  padding-left: clamp(56px, 6.5vw, 120px);
-  padding-right: clamp(56px, 6.5vw, 120px);
-  padding-top: clamp(48px, 7vh, 110px);
-  padding-bottom: clamp(52px, 8vh, 120px);
   min-height: clamp(640px, 74svh, 880px);
 }
 .hero{
   display:grid; grid-template-columns: 1.1fr 0.9fr;
   align-items:center;
-  gap: clamp(32px, 6vw, 64px);
+  gap: clamp(36px, 6vw, 72px);
 }
-.hero > :first-child{ max-width: 640px }
+.hero > :first-child{ max-width: 660px }
 @media (max-width:980px){ .hero{ grid-template-columns:1fr } }
 
 .kicker{
@@ -165,18 +148,9 @@ footer.site{color:var(--muted); text-align:center; margin:28px 0 48px}
 .avatar img{width:100%; height:100%; object-fit:cover}
 
 /* ============ Páginas de texto (Biografía / Contacto) ============ */
-.wrap > .card:only-child:not(.hero){
-  max-width: min(1000px, 92vw);
-  margin-inline:auto;
-  padding: clamp(34px, 3.6vw, 60px);
-}
-.wrap > .card:only-child:not(.hero) :where(h1,h2,p,ul,ol){
-  max-width: var(--readW);
-}
-.card h1{ margin-bottom: 18px; }
-.card p + p{ margin-top: 10px; }
+.wrap > .card:only-child:not(.hero){ padding: clamp(34px, 3.6vw, 60px); }
 
-/* ============ Grid (Servicios / Proyectos) ============ */
+/* ============ Grids (Servicios / Proyectos) ============ */
 .grid{
   display:grid;
   grid-template-columns: repeat(12, 1fr);
@@ -203,7 +177,7 @@ footer.site{color:var(--muted); text-align:center; margin:28px 0 48px}
 .pill{font-size:12px; border:1px solid rgba(255,255,255,.22); padding:6px 10px; border-radius:999px}
 
 /* ============ Contacto (form + redes) ============ */
-form.contact{display:grid; gap:16px; max-width:760px}
+form.contact{display:grid; gap:16px; max-width:780px}
 .row2{display:grid; grid-template-columns:1fr 1fr; gap:16px}
 @media (max-width:760px){ .row2{ grid-template-columns:1fr } }
 label{display:block; color:var(--muted); font-weight:600; margin-bottom:6px}
@@ -229,7 +203,7 @@ textarea{min-height:130px}
 .s-icon{width:60px; height:60px; border-radius:50%; display:grid; place-items:center; margin:6px auto 12px; background:linear-gradient(90deg,var(--accent),var(--accent2))}
 .s-icon svg{width:30px; height:30px; color:#0b0b10}
 .s-name{font-weight:800}
-.s-user{display:block; margin-top:6px; color:var(--muted); font-size:14px}
+.s-user{display:block; margin-top:6px; color:#baccb3}
 
 /* ============ Toast (copiar email) ============ */
 .toast{
@@ -242,7 +216,7 @@ textarea{min-height:130px}
 
 /* ============ Responsivo fino ============ */
 @media (min-width:1600px){
-  :root{ --containerW: 1260px; } /* mantiene lectura cómoda en pantallas XL */
+  :root{ --containerW: 1560px; }
 }
 @media (max-width:1100px){
   :root{ --gutter: clamp(32px, 6vw, 80px); }
@@ -253,4 +227,3 @@ textarea{min-height:130px}
   .card.hero{min-height:clamp(560px,70svh,740px)}
   .avatar{width:min(420px, 58vmin)}
 }
-
