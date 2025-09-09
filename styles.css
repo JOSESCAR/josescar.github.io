@@ -239,3 +239,35 @@ textarea{min-height:130px}
   }
   .avatar{width:min(420px, 58vmin)}
 }
+/* === Realinear el círculo del héroe a la derecha con más aire === */
+.card.hero{
+  padding-inline: clamp(64px, 8vw, 128px);   /* más margen lateral */
+  padding-block: clamp(48px, 7vw, 110px);    /* más margen arriba/abajo */
+}
+
+.hero{
+  /* fija columna de texto y deja la imagen con todo el espacio restante */
+  grid-template-columns: minmax(420px, 560px) 1fr;
+  gap: clamp(64px, 9vw, 140px);              /* más separación entre columnas */
+}
+
+.hero > :first-child{
+  align-self: start;                          /* texto comienza arriba */
+}
+
+.avatar{
+  justify-self: end;                          /* ancla al lado derecho */
+  align-self: center;
+  margin-right: clamp(8px, 2vw, 28px);        /* aire al borde derecho */
+  transform: translateX(6%);                  /* empujoncito hacia la derecha */
+}
+
+/* En pantallas pequeñas vuelve a centrar y quita el desplazamiento */
+@media (max-width: 980px){
+  .hero{ grid-template-columns: 1fr; }
+  .avatar{
+    justify-self: center;
+    margin-inline: auto;
+    transform: none;
+  }
+}
