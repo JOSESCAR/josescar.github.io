@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contacto – Jose Carlos</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="formal.css" />
+</head>
+<body>
+<header class="site">
+  <div class="container nav">
+    <div class="brand">PORTAFOLIO</div>
+    <nav class="spacer">
+      <a href="index.html">Inicio</a>
+      <a href="proyectos.html">Proyectos</a>
+      <a href="servicios.html">Servicios</a>
+      <a href="biografia.html">Biografía</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <section>
+    <h2>Contacto</h2>
+    <p class="intro">¿Tienes un proyecto o colaboración? Escríbeme o descarga mi CV.</p>
+
+    <div class="card-cta" style="margin-bottom:24px">
+      <div class="cta">
+        <a class="btn primary" href="assets/CV_JoseCarlos.pdf" target="_blank" rel="noopener">Descargar CV</a>
+        <a class="btn ghost" href="mailto:carlosmexa302@gmail.com">Enviar correo</a>
+        <button class="btn ghost" data-copy-email="carlosmexa302@gmail.com" type="button">Copiar correo</button>
+      </div>
+    </div>
+
+    <form class="form" action="mailto:carlosmexa302@gmail.com" method="post" enctype="text/plain">
+      <div class="row">
+        <div>
+          <label for="nombre">Nombre</label>
+          <input id="nombre" name="Nombre" required>
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input id="email" name="Email" type="email" required>
+        </div>
+      </div>
+
+      <div>
+        <label for="asunto">Asunto</label>
+        <input id="asunto" name="Asunto" placeholder="Consulta / Propuesta">
+      </div>
+
+      <div>
+        <label for="mensaje">Mensaje</label>
+        <textarea id="mensaje" name="Mensaje" placeholder="Hola Jose…"></textarea>
+      </div>
+
+      <div class="cta">
+        <button class="btn primary" type="submit">Enviar</button>
+        <a class="btn ghost" href="mailto:carlosmexa302@gmail.com">Abrir en tu correo</a>
+      </div>
+    </form>
+  </section>
+</main>
+
+<footer class="site"><div class="container">© 2025 • Jose Carlos</div></footer>
+<script src="main.js"></script>
+</body>
+</html>
