@@ -1,79 +1,102 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Portafolio – Jose Carlos</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="formal.css" />
 </head>
 <body>
-<header class="header">
-  <nav class="nav">
+
+<header class="site">
+  <div class="container nav">
     <div class="brand">PORTAFOLIO</div>
-    <a href="index.html" class="activo">Inicio</a>
-    <a href="services.html">Servicios</a>
-    <a href="biography.html">Biografía</a>
-    <a href="work.html">Proyectos</a>
-    <a href="contact.html">Contacto</a>
-    <div class="spacer"></div>
-  </nav>
+    <nav class="spacer">
+      <a href="index.html">Inicio</a>
+      <a href="proyectos.html">Proyectos</a>
+      <a href="servicios.html">Servicios</a>
+      <a href="biografia.html">Biografía</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+  </div>
 </header>
 
-<!-- Sprite de iconos (para redes) -->
-<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
-  <symbol id="i-gh" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5 0-1.2-.5-2.3-1.3-3.2.3-1 .3-2.1-.1-3.1 0 0-1-.3-3.3 1.2A11 11 0 0 0 12 3a11 11 0 0 0-3.3.4C6.4 2 5.4 2.3 5.4 2.3a5 5 0 0 0-.1 3.1A5 5 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.4.5-.7 1-.8 1.6A5 5 0 0 1 5 15s-2 0-2 1.9c0 .6.3 1 .7 1.4 0 0 .3.3 1.3.3 0 0 .8 0 1.5-.3v2.7"/>
-  </symbol>
-  <symbol id="i-in" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-    <rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
-    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-  </symbol>
-  <symbol id="i-ig" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-    <rect x="3" y="3" width="18" height="18" rx="5"/>
-    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-    <circle cx="17.5" cy="6.5" r="0.8"/>
-  </symbol>
-  <symbol id="i-tt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M14 3v9.5a3.5 3.5 0 1 1-3.5-3.5M14 6a5 5 0 0 0 5 5"/>
-  </symbol>
-</svg>
+<main class="container">
+  <!-- Hero formal -->
+  <section class="hero">
+    <div>
+      <h1>Jose Carlos</h1>
+      <p class="lead">Estadístico y desarrollador orientado a visualización,
+        modelos predictivos y datos geoespaciales. Construyo productos de datos,
+        dashboards claros y reportes reproducibles.</p>
+      <div class="cta">
+        <a class="btn primary" href="proyectos.html">Ver proyectos</a>
+        <a class="btn ghost" href="assets/CV_JoseCarlos.pdf" target="_blank" rel="noopener">Descargar CV</a>
+      </div>
+    </div>
 
-<main>
-  <section class="wrap">
-    <article class="card hero">
-      <div class="hero">
-        <div>
-          <p class="kicker">UI/UX • CIENCIA DE DATOS</p>
-          <h1>JOSE CARLOS</h1>
-          <p class="lead">
-            Estadístico y desarrollador orientado a visualización,
-            modelos predictivos y datos geoespaciales. Construyo
-            dashboards, mapas y pipelines reproducibles.
-          </p>
-          <div class="cta">
-            <a class="btn" href="work.html">Ver proyectos</a>
-            <a class="btn" href="biography.html">Sobre mí</a>
-          </div>
-          <div class="social-row">
-            <a class="sico" href="https://github.com/" target="_blank" rel="noopener"><svg><use href="#i-gh"/></svg></a>
-            <a class="sico" href="https://www.linkedin.com/in/carlos-meza-351a09295" target="_blank" rel="noopener"><svg><use href="#i-in"/></svg></a>
-            <a class="sico" href="https://www.instagram.com/jose21carlo" target="_blank" rel="noopener"><svg><use href="#i-ig"/></svg></a>
-            <a class="sico" href="https://www.tiktok.com/@josecarlosgallego89" target="_blank" rel="noopener"><svg><use href="#i-tt"/></svg></a>
+    <figure class="portrait">
+      <img src="assets/avatar.jpg" alt="Foto profesional de Jose Carlos" />
+    </figure>
+  </section>
+
+  <!-- Últimos proyectos -->
+  <section>
+    <h2>Proyectos destacados</h2>
+    <p class="intro">Una muestra de casos recientes. Encuentra el listado completo en la sección Proyectos.</p>
+
+    <div class="grid">
+      <article class="card">
+        <div class="thumb"><img src="assets/proy1.jpg" alt="Proyecto 1" /></div>
+        <div class="body">
+          <h3>Predicción regional (Seguridad)</h3>
+          <p>Benchmark Logit Multinomial vs MLP. Evaluaciones F1/AUC y reporte reproducible.</p>
+          <div class="meta">
+            <div class="pills">
+              <span class="pill">R</span><span class="pill">caret</span><span class="pill">MLP</span>
+            </div>
+            <a class="btn ghost" href="proyectos.html">Ver caso</a>
           </div>
         </div>
-        <figure class="avatar" aria-label="Foto de Jose Carlos">
-          <img src="logo.png" alt="Jose Carlos">
-          
-        </figure>
-      </div>
-    </article>
+      </article>
+
+      <article class="card">
+        <div class="thumb"><img src="assets/proy2.jpg" alt="Proyecto 2" /></div>
+        <div class="body">
+          <h3>AgroDash (EO/SMAP)</h3>
+          <p>Mapas y series temporales para humedad de suelo. Enfoque en agro.</p>
+          <div class="meta">
+            <div class="pills">
+              <span class="pill">Python</span><span class="pill">xarray</span><span class="pill">Geo</span>
+            </div>
+            <a class="btn ghost" href="proyectos.html">Ver caso</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="thumb"><img src="assets/proy3.jpg" alt="Proyecto 3" /></div>
+        <div class="body">
+          <h3>Dashboards ejecutivos</h3>
+          <p>KPIs y storytelling en Power BI con adopción por stakeholders.</p>
+          <div class="meta">
+            <div class="pills">
+              <span class="pill">Power BI</span><span class="pill">DAX</span>
+            </div>
+            <a class="btn ghost" href="proyectos.html">Ver caso</a>
+          </div>
+        </div>
+      </article>
+    </div>
   </section>
 </main>
 
-<footer class="site">© 2025 • Jose Carlos</footer>
+<footer class="site">
+  <div class="container">© 2025 • Jose Carlos</div>
+</footer>
+
 <script src="main.js"></script>
 </body>
 </html>
-
