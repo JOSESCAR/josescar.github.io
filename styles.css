@@ -1,30 +1,22 @@
 /* =========================================================
-   Portafolio — Tema "Grafito + Lima" (CSS completo, ESPAÑOL)
-   Enfoque: mucho aire, lectura cómoda, tarjetas ANCHAS
+   Portafolio — Tema "Grafito + Lima" (ESPAÑOL)  |  SIN CAJAS
+   - Círculo a la derecha (hero)
+   - Sin fondos/bordes/sombras en todas las secciones
    ========================================================= */
 
 /* ─ Paleta principal ─ */
 :root{
-  /* Colores */
-  --bg1:#0b0b10;           /* fondo base muy oscuro */
-  --bg2:#14161d;           /* degradado profundo */
-  --surface:#11131a;       /* tarjeta principal */
-  --surface-2:#0f1117;     /* tarjetas secundarias */
-  --accent:#c8ff4d;        /* lima neón */
-  --accent2:#8dff7a;       /* menta lima */
-  --text:#eef2f8;          /* texto principal */
-  --muted:#c9d0de;         /* texto secundario */
+  --bg1:#0b0b10;
+  --bg2:#14161d;
+  --accent:#c8ff4d;
+  --accent2:#8dff7a;
+  --text:#eef2f8;
+  --muted:#c9d0de;
 
-  /* Layout y efectos */
-  --containerW: 1440px;                /* ancho global amplio */
-  --gutter: clamp(48px, 7vw, 120px);   /* margen lateral fluido */
-  --navH: 92px;                        /* altura de la barra */
-  --radius-lg: 28px;
-  --radius-xl: 36px;
-  --shadow: 0 24px 60px rgba(0,0,0,.45);
-  --ring: 0 0 0 1px rgba(255,255,255,.06), inset 0 0 0 1px rgba(255,255,255,.03);
+  --containerW: 1440px;
+  --gutter: clamp(48px, 7vw, 120px);
+  --navH: 92px;
 
-  /* Lectura */
   --readW: 68ch;
 }
 
@@ -36,14 +28,14 @@ body{
   margin:0; color:var(--text);
   font:16px/1.72 "Poppins",system-ui,Arial;
   background:
-    radial-gradient(1200px 900px at 10% -10%, color-mix(in srgb,var(--accent) 14%, transparent) 0%, transparent 60%),
-    radial-gradient(1200px 900px at 90% 110%, color-mix(in srgb,var(--accent2) 12%, transparent) 0%, transparent 60%),
+    radial-gradient(1200px 900px at 10% -10%, color-mix(in srgb,var(--accent) 12%, transparent) 0%, transparent 60%),
+    radial-gradient(1200px 900px at 90% 110%, color-mix(in srgb,var(--accent2) 10%, transparent) 0%, transparent 60%),
     linear-gradient(135deg,var(--bg1),var(--bg2));
   display:grid; grid-template-rows:auto 1fr auto;
   min-height:100svh;
 }
 
-/* ============ Barra de navegación (ES) ============ */
+/* ============ Barra de navegación ============ */
 .header{
   position:sticky; top:0; z-index:40;
   background:rgba(17,19,26,.78);
@@ -71,7 +63,7 @@ body{
   border-bottom:4px solid transparent;
 }
 
-/* ============ Contenedor y tarjetas ============ */
+/* ============ Contenedor de sección ============ */
 .wrap{
   width:min(var(--containerW), 95vw);
   margin-inline:auto;
@@ -79,14 +71,14 @@ body{
   padding-block: clamp(70px, 12vh, 140px);
 }
 
-/* Tarjetas: amplias en TODAS las páginas */
+/* ============ SIN CAJAS en TODAS las secciones ============ */
 .card{
-  background:linear-gradient(180deg, color-mix(in srgb, var(--surface) 94%, black 6%), var(--surface));
-  border:1px solid rgba(255,255,255,.08);
-  border-radius:var(--radius-xl);
-  box-shadow:var(--shadow);
+  background:transparent;     /* ← sin fondo */
+  border:none;                /* ← sin borde */
+  box-shadow:none;            /* ← sin sombra */
   padding: clamp(32px, 3.2vw, 56px);
 }
+/* si usabas la técnica de ensanchar tarjetas, mantenla sin fondo */
 @media (min-width:900px){
   .wrap > .card{
     --edgeW: clamp(24px, 4vw, 84px);
@@ -103,21 +95,19 @@ p{margin:0 0 12px}
 .lead{color:var(--muted)}
 footer.site{color:var(--muted); text-align:center; margin:28px 0 48px}
 
-/* ============ HÉROE (cuadro grande, con MUCHO aire) ============ */
+/* ============ HÉROE (círculo a la derecha, con aire) ============ */
 .card.hero{
-  /* 👇 MÁS aire para que el círculo no quede pegado */
-  padding-inline: clamp(56px, 7vw, 110px);
-  padding-block: clamp(42px, 6vw, 96px);
+  padding-inline: clamp(64px, 8vw, 128px);
+  padding-block: clamp(48px, 7vw, 110px);
   min-height: clamp(620px, 72svh, 840px);
 }
 .hero{
-  display:grid; grid-template-columns: 1.1fr 0.9fr;
+  display:grid;
+  grid-template-columns: minmax(420px, 560px) 1fr; /* texto fijo + imagen flexible */
   align-items:center;
-  /* 👇 MÁS separación entre texto y círculo */
-  gap: clamp(48px, 8vw, 120px);
+  gap: clamp(64px, 9vw, 140px); /* separación texto/círculo */
 }
-.hero > :first-child{ max-width: 660px }
-@media (max-width:980px){ .hero{ grid-template-columns:1fr } }
+.hero > :first-child{ max-width: 660px; align-self:start }
 
 .kicker{
   letter-spacing:.25em; text-transform:uppercase;
@@ -130,61 +120,74 @@ footer.site{color:var(--muted); text-align:center; margin:28px 0 48px}
   padding:12px 20px; border-radius:999px; text-decoration:none;
   color:#0b0b10; font-weight:800;
   background:linear-gradient(90deg,var(--accent),var(--accent2));
-  border:0; box-shadow:0 10px 28px rgba(0,0,0,.35);
+  border:0;
 }
-.btn:hover{transform:translateY(-1px); box-shadow:0 16px 36px rgba(0,0,0,.45); transition:.15s}
+.btn:hover{transform:translateY(-1px); transition:.15s}
 
 .social-row{display:flex; gap:12px; margin-top:14px}
 .sico{
   width:44px; height:44px; border-radius:50%; display:grid; place-items:center;
   text-decoration:none; background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
-  border:1px solid rgba(255,255,255,.12); box-shadow:var(--ring)
+  border:1px solid rgba(255,255,255,.12);
 }
 .sico svg{width:22px; height:22px; color:var(--accent2)}
 
-/* ─ Círculo / Avatar: centrado y con margen lateral ─ */
+/* — Círculo — */
 .avatar{
-  width:min(520px, 45vmin); aspect-ratio:1/1; border-radius:50%;
-  position:relative; overflow:hidden;
-  /* 👇 margen para no pegarse aún con paddings pequeños */
-  margin-inline: clamp(8px, 2vw, 32px);
-  margin-block: clamp(8px, 2vw, 24px);
+  width:min(540px, 48vmin);
+  aspect-ratio:1/1; border-radius:50%;
+  overflow:hidden;
+  justify-self:end;              /* a la derecha */
+  align-self:center;
+  margin-right: clamp(8px, 2.5vw, 32px); /* aire al borde */
+  transform: translateX(8%);     /* empuje extra hacia la derecha */
   background: radial-gradient(60% 60% at 50% 40%, color-mix(in srgb,var(--accent2) 18%, transparent), transparent 70%);
   border:4px solid color-mix(in srgb, var(--accent2) 80%, white 15%);
-  box-shadow:0 0 36px color-mix(in srgb,var(--accent2) 26%, transparent), inset 0 0 16px color-mix(in srgb,var(--accent) 18%, transparent);
 }
 .avatar img{width:100%; height:100%; object-fit:cover}
 
-/* ============ Páginas de texto (Biografía / Contacto) ============ */
-.wrap > .card:only-child:not(.hero){ padding: clamp(34px, 3.6vw, 60px); }
+/* En móviles, centramos el círculo */
+@media (max-width: 980px){
+  .hero{ grid-template-columns: 1fr; }
+  .avatar{ justify-self:center; transform:none; margin-inline:auto }
+}
 
-/* ============ Grids (Servicios / Proyectos) ============ */
+/* ============ Páginas de texto (biografía/contacto) ============ */
+.wrap > .card:only-child:not(.hero){
+  padding: clamp(34px, 3.6vw, 60px);
+}
+
+/* ============ Grids (Servicios / Proyectos) — SIN CAJAS ============ */
 .grid{
   display:grid;
   grid-template-columns: repeat(12, 1fr);
   gap: clamp(32px, 3.8vw, 48px);
 }
+
+/* Tarjetas de contenido: sin fondos ni sombras */
 .card-proj{
   grid-column: span 6;
-  border-radius: var(--radius-lg);
-  overflow:hidden;
-  background: linear-gradient(180deg, var(--surface), var(--surface-2));
-  border:1px solid rgba(255,255,255,.08);
-  box-shadow: var(--shadow);
+  background:transparent;
+  border:none;
+  box-shadow:none;
+  border-radius:0;
+  overflow:visible;
+  padding:0;
 }
 @media (max-width:900px){ .card-proj{ grid-column: span 12 } }
 
+/* mini “thumb” de proyecto/servicio */
 .thumb{
   aspect-ratio: 16/9;
   background:#0e0f14;
   border-bottom:1px solid rgba(255,255,255,.06);
 }
 .thumb img{width:100%; height:100%; object-fit:cover; display:block}
-.card-proj > *{ padding: clamp(26px, 2.8vw, 36px) !important; }
+.card-proj > *{ padding: clamp(18px, 2.2vw, 28px) !important; }
 .meta{display:flex; justify-content:space-between; align-items:center; gap:12px}
 .pill{font-size:12px; border:1px solid rgba(255,255,255,.22); padding:6px 10px; border-radius:999px}
 
-/* ============ Contacto (form + redes) ============ */
+/* ============ Contacto (form) — minimal, sin cajas ============ */
 form.contact{display:grid; gap:16px; max-width:780px}
 .row2{display:grid; grid-template-columns:1fr 1fr; gap:16px}
 @media (max-width:760px){ .row2{ grid-template-columns:1fr } }
@@ -197,17 +200,16 @@ input,textarea{
 textarea{min-height:130px}
 .form-actions{display:flex; gap:14px; flex-wrap:wrap; margin:8px 0 4px}
 
+/* Tarjetas de redes — también sin caja */
 .social-grid{
   display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
   gap: clamp(18px, 2.5vw, 28px); margin-top:22px;
 }
 .s-card{
   color:var(--text); text-decoration:none; text-align:center;
-  background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
-  border:1px solid rgba(255,255,255,.12); box-shadow:var(--ring);
-  border-radius:18px; padding:22px; transition:.25s;
+  background:transparent; border:none; box-shadow:none;
+  border-radius:0; padding:0;
 }
-.s-card:hover{transform:translateY(-2px); box-shadow:0 18px 40px rgba(0,0,0,.38)}
 .s-icon{width:60px; height:60px; border-radius:50%; display:grid; place-items:center; margin:6px auto 12px; background:linear-gradient(90deg,var(--accent),var(--accent2))}
 .s-icon svg{width:30px; height:30px; color:#0b0b10}
 .s-name{font-weight:800}
@@ -217,7 +219,7 @@ textarea{min-height:130px}
 .toast{
   position:fixed; left:50%; bottom:24px; transform:translateX(-50%);
   background:#12141b; color:var(--text); padding:10px 14px; border-radius:10px;
-  border:1px solid rgba(255,255,255,.12); box-shadow:0 10px 24px rgba(0,0,0,.35);
+  border:1px solid rgba(255,255,255,.12);
   opacity:0; pointer-events:none; transition:.25s;
 }
 .toast.show{opacity:1}
@@ -228,46 +230,4 @@ textarea{min-height:130px}
 }
 @media (max-width:1100px){
   :root{ --gutter: clamp(32px, 6vw, 80px); }
-}
-@media (max-width:900px){
-  .nav{gap:18px}
-  .card{border-radius:24px}
-  .card.hero{
-    padding-inline: clamp(28px, 6vw, 52px);
-    padding-block: clamp(24px, 5vw, 48px);
-    min-height:clamp(560px,70svh,740px)
-  }
-  .avatar{width:min(420px, 58vmin)}
-}
-/* === Realinear el círculo del héroe a la derecha con más aire === */
-.card.hero{
-  padding-inline: clamp(64px, 8vw, 128px);   /* más margen lateral */
-  padding-block: clamp(48px, 7vw, 110px);    /* más margen arriba/abajo */
-}
-
-.hero{
-  /* fija columna de texto y deja la imagen con todo el espacio restante */
-  grid-template-columns: minmax(420px, 560px) 1fr;
-  gap: clamp(64px, 9vw, 140px);              /* más separación entre columnas */
-}
-
-.hero > :first-child{
-  align-self: start;                          /* texto comienza arriba */
-}
-
-.avatar{
-  justify-self: end;                          /* ancla al lado derecho */
-  align-self: center;
-  margin-right: clamp(8px, 2vw, 28px);        /* aire al borde derecho */
-  transform: translateX(6%);                  /* empujoncito hacia la derecha */
-}
-
-/* En pantallas pequeñas vuelve a centrar y quita el desplazamiento */
-@media (max-width: 980px){
-  .hero{ grid-template-columns: 1fr; }
-  .avatar{
-    justify-self: center;
-    margin-inline: auto;
-    transform: none;
-  }
 }
