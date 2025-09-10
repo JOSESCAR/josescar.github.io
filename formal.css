@@ -141,7 +141,7 @@ section .intro{ color:var(--muted); margin-bottom:26px; max-width:68ch }
 .hero-stats{
   margin-top:24px;
   display:grid; gap:14px;
-  grid-template-columns: repeat(3, minmax(170px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
 }
 .stat{
   background:#fff; border:1px solid var(--line); border-radius:16px;
