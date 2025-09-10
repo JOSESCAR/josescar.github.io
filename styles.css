@@ -1,203 +1,143 @@
-/* =========================================================
-   Portafolio — Tema "Grafito + Lima" (ESPAÑOL)
-   Optimizado para aprovechar pantalla (ancho y vertical)
-   ========================================================= */
-
-/* ─ Paleta y layout base ─ */
+/* ===========================
+   Tema formal corporativo (ES)
+   Interfaz clara y sobria
+   =========================== */
 :root{
-  --bg1:#0b0b10;
-  --bg2:#14161d;
-
-  --accent:#c8ff4d;
-  --accent2:#8dff7a;
-
-  --text:#eef2f8;
-  --muted:#c9d0de;
-
-  /* Aprovechar más la pantalla */
-  --containerW: 1680px;                     /* antes 1440 */
-  --wrapW: 98vw;                            /* antes 95vw */
-  --gutter: clamp(40px, 5vw, 90px);         /* márgenes laterales */
-  --navH: 92px;
-
-  --readW: 70ch;
+  --bg: #f8fafc;          /* fondo */
+  --surface: #ffffff;     /* tarjetas */
+  --text: #0f172a;        /* principal */
+  --muted: #475569;       /* secundario */
+  --border: #e5e7eb;      /* bordes */
+  --accent: #2563eb;      /* azul corporativo */
+  --accent-2:#1e40af;     /* azul oscuro */
+  --radius: 16px;
+  --container: 1180px;
+  --shadow: 0 10px 30px rgba(2,6,23,.06);
 }
 
-/* ============ Reset / base ============ */
 *{box-sizing:border-box}
 html,body{height:100%}
 html{scroll-behavior:smooth}
 body{
-  margin:0; color:var(--text);
-  font:16px/1.72 "Poppins",system-ui,Arial;
-  background:
-    radial-gradient(1200px 900px at 10% -10%, color-mix(in srgb,var(--accent) 12%, transparent) 0%, transparent 60%),
-    radial-gradient(1200px 900px at 90% 110%, color-mix(in srgb,var(--accent2) 10%, transparent) 0%, transparent 60%),
-    linear-gradient(135deg,var(--bg1),var(--bg2));
-  display:grid; grid-template-rows:auto 1fr auto;
-  min-height:100svh;
+  margin:0; font:16px/1.65 "Inter", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  color:var(--text); background:var(--bg);
 }
 
-/* ============ Barra de navegación ============ */
-.header{
-  position:sticky; top:0; z-index:40;
-  background:rgba(17,19,26,.78);
-  backdrop-filter:blur(10px);
-  border-bottom:1px solid rgba(255,255,255,.06);
+/* Contenedor principal */
+.container{
+  width:min(var(--container), 96vw);
+  margin-inline:auto;
+}
+
+/* -------- Header -------- */
+header.site{
+  position:sticky; top:0; z-index:50;
+  background:rgba(255,255,255,.86); backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--border);
 }
 .nav{
-  width:min(var(--containerW), var(--wrapW));
-  margin-inline:auto;
-  height:var(--navH);
-  padding:0 var(--gutter);
-  display:flex; align-items:center; gap:clamp(18px,3.5vw,48px);
+  height:76px; display:flex; align-items:center; gap:24px;
 }
-.brand{font-weight:900; font-size:clamp(26px,2vw,34px); letter-spacing:.3px}
-.spacer{flex:1}
+.brand{font-weight:800; letter-spacing:.3px; font-size:20px}
+.nav .spacer{flex:1}
 .nav a{
-  color:var(--muted); text-decoration:none; font-weight:800;
-  font-size:clamp(16px,1.15vw,20px);
-  padding:12px 16px; border-bottom:4px solid transparent; border-radius:10px;
+  text-decoration:none; color:var(--muted); font-weight:600;
+  padding:10px 14px; border-radius:8px;
 }
-.nav a:hover{color:var(--text)}
+.nav a:hover{color:var(--text); background:#f1f5f9}
 .nav a.activo{
-  color:var(--text);
-  border-image: linear-gradient(90deg,var(--accent),var(--accent2)) 1;
-  border-bottom:4px solid transparent;
+  color:var(--accent); background:#eef2ff; border:1px solid #dbeafe;
 }
 
-/* ============ Contenedor de sección (MAS APROVECHADO) ============ */
-.wrap{
-  width:min(var(--containerW), var(--wrapW));
-  margin-inline:auto;
-  padding-inline: var(--gutter);
-
-  /* ↓ menos aire vertical por sección */
-  padding-block: clamp(48px, 8vh, 96px);
-}
-/* La segunda sección en adelante con aún menos padding-top */
-.wrap + .wrap{ padding-top: clamp(16px, 5vh, 56px); }
-
-/* ============ SIN CAJAS en TODAS las secciones ============ */
-.card{ background:transparent; border:none; box-shadow:none; padding:0 }
-
-/* ============ Tipografía ============ */
-h1{margin:0 0 10px; font-size:clamp(34px,5.2vw,60px)}
-h2{margin:0 0 12px; font-size:clamp(22px,3.2vw,32px)}
-p{margin:0 0 10px}
-.lead{color:var(--muted)}
-footer.site{color:var(--muted); text-align:center; margin:26px 0 44px}
-
-/* ============ HERO — círculo a la derecha y más horizontal ============ */
+/* -------- Hero -------- */
 .hero{
-  display:grid;
-  /* texto fijo ancho y alto + imagen flexible (aprovecha horizontal) */
-  grid-template-columns: minmax(480px, 660px) minmax(560px, 1fr);
-  align-items:center;
-  gap: clamp(56px, 8.5vw, 140px);            /* separación texto/círculo */
-  min-height: clamp(560px, 66svh, 780px);    /* no tan alto para no “perder” vertical */
-  padding-block: clamp(24px, 5vw, 52px);
+  display:grid; grid-template-columns: 1.1fr 0.9fr; gap:48px;
+  align-items:center; padding-block:72px;
 }
-.hero > :first-child{ max-width: 700px; align-self:start }
-
-.kicker{
-  letter-spacing:.25em; text-transform:uppercase;
-  color:color-mix(in srgb, var(--accent2) 80%, white 10%);
-  font-weight:900; margin:0 0 14px;
-}
-.cta{display:flex; gap:14px; margin-top:18px; flex-wrap:wrap}
+.hero h1{font-size: clamp(28px, 4.4vw, 48px); margin:0 0 10px}
+.hero .lead{color:var(--muted); max-width:60ch}
+.cta{display:flex; gap:12px; margin-top:20px; flex-wrap:wrap}
 .btn{
-  display:inline-flex; align-items:center; gap:10px;
-  padding:12px 20px; border-radius:999px; text-decoration:none;
-  color:#0b0b10; font-weight:800;
-  background:linear-gradient(90deg,var(--accent),var(--accent2));
-  border:0;
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  height:44px; padding:0 16px; border-radius:10px; font-weight:700; text-decoration:none;
+  border:1px solid transparent;
 }
-.btn:hover{transform:translateY(-1px); transition:.15s}
+.btn.primary{ background:var(--accent); color:#fff; }
+.btn.primary:hover{ background:var(--accent-2) }
+.btn.ghost{ background:#fff; border-color:var(--border); color:var(--text) }
+.btn.ghost:hover{ background:#f8fafc }
 
-.social-row{display:flex; gap:12px; margin-top:12px}
-.sico{
-  width:44px; height:44px; border-radius:50%; display:grid; place-items:center;
-  text-decoration:none; background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
-  border:1px solid rgba(255,255,255,.12);
+/* Foto profesional (vertical 3:4) */
+.portrait{
+  width:min(420px, 42vw); aspect-ratio:3/4; border-radius:14px; overflow:hidden;
+  border:1px solid var(--border); box-shadow:var(--shadow);
+  justify-self:end; background:#fff;
 }
-.sico svg{width:22px; height:22px; color:var(--accent2)}
+.portrait img{width:100%; height:100%; object-fit:cover; display:block}
 
-/* — Círculo — anclado a la derecha, más grande si hay espacio — */
-.avatar{
-  width: clamp(420px, 48vmin, 680px);
-  aspect-ratio:1/1; border-radius:50%;
-  overflow:hidden;
-  justify-self:end;                    /* A LA DERECHA */
-  align-self:center;
-  margin-right: clamp(10px, 2.8vw, 32px); /* aire al borde */
-  transform: translateX(8%);             /* empuje extra hacia la derecha */
+/* -------- Secciones comunes -------- */
+section{padding-block:64px}
+section h2{font-size: clamp(22px,3vw,32px); margin:0 0 6px}
+section .intro{color:var(--muted); margin-bottom:26px; max-width:64ch}
 
-  background: radial-gradient(60% 60% at 50% 40%,
-             color-mix(in srgb,var(--accent2) 18%, transparent), transparent 70%);
-  border:4px solid color-mix(in srgb, var(--accent2) 80%, white 15%);
-}
-.avatar img{width:100%; height:100%; object-fit:cover}
-
-/* En móviles, centrado y sin empuje */
-@media (max-width: 980px){
-  .hero{ grid-template-columns: 1fr; gap: clamp(24px, 6vw, 44px) }
-  .avatar{ justify-self:center; transform:none; margin-inline:auto }
-}
-
-/* ============ Grids (Servicios / Proyectos) — sin cajas ============ */
+/* -------- Proyectos -------- */
 .grid{
-  display:grid;
+  display:grid; gap:24px;
   grid-template-columns: repeat(12, 1fr);
-  gap: clamp(28px, 3.6vw, 44px);
 }
-.card-proj{
-  grid-column: span 6;
-  background:transparent; border:none; box-shadow:none; padding:0;
+.card{
+  grid-column: span 4; background:var(--surface); border:1px solid var(--border);
+  border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden;
+  display:flex; flex-direction:column;
 }
-@media (max-width:900px){ .card-proj{ grid-column: span 12 } }
-.thumb{
-  aspect-ratio: 16/9;
-  background:#0e0f14;
-  border-bottom:1px solid rgba(255,255,255,.06);
-}
-.thumb img{width:100%; height:100%; object-fit:cover; display:block}
-.card-proj > *{ padding: clamp(18px, 2.2vw, 28px) !important; }
-.meta{display:flex; justify-content:space-between; align-items:center; gap:12px}
-.pill{font-size:12px; border:1px solid rgba(255,255,255,.22); padding:6px 10px; border-radius:999px}
+.card .thumb{aspect-ratio:16/9; background:#f1f5f9; border-bottom:1px solid var(--border)}
+.card .thumb img{width:100%; height:100%; object-fit:cover; display:block}
+.card .body{padding:18px}
+.card h3{margin:0 0 6px; font-size:18px}
+.card p{margin:0 0 16px; color:var(--muted)}
+.card .meta{margin-top:auto; display:flex; justify-content:space-between; align-items:center}
+.pills{display:flex; gap:8px; flex-wrap:wrap}
+.pill{font-size:12px; padding:6px 10px; border-radius:999px; background:#eef2ff; color:#3730a3}
 
-/* ============ Contacto ============ */
-form.contact{display:grid; gap:14px; max-width:820px}
-.row2{display:grid; grid-template-columns:1fr 1fr; gap:14px}
-@media (max-width:760px){ .row2{ grid-template-columns:1fr } }
-label{display:block; color:var(--muted); font-weight:600; margin-bottom:6px}
-input,textarea{
-  width:100%; background:#12141b; border:1px solid rgba(255,255,255,.14);
-  color:var(--text); padding:14px; border-radius:14px; font:inherit;
+/* -------- Servicios -------- */
+.service{
+  grid-column: span 6; background:var(--surface); border:1px solid var(--border);
+  border-radius:var(--radius); box-shadow:var(--shadow); padding:20px;
 }
-textarea{min-height:120px}
-.form-actions{display:flex; gap:12px; flex-wrap:wrap; margin:8px 0 4px}
+.service h3{margin:0 0 8px}
+.service p{margin:0; color:var(--muted)}
 
-.social-grid{
-  display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap: clamp(16px, 2.3vw, 26px); margin-top:18px;
-}
-.s-card{ color:var(--text); text-decoration:none; text-align:center; background:transparent; border:none; box-shadow:none; padding:0 }
-.s-icon{width:60px; height:60px; border-radius:50%; display:grid; place-items:center; margin:6px auto 10px; background:linear-gradient(90deg,var(--accent),var(--accent2))}
-.s-icon svg{width:30px; height:30px; color:#0b0b10}
-.s-name{font-weight:800}
-.s-user{display:block; margin-top:6px; color:#baccb3}
+/* -------- Biografía -------- */
+.article{max-width: 78ch}
+.timeline{margin-top:18px; padding-left:18px}
+.timeline li{margin:8px 0}
 
-/* ============ Toast (copiar email) ============ */
-.toast{
-  position:fixed; left:50%; bottom:24px; transform:translateX(-50%);
-  background:#12141b; color:var(--text); padding:10px 14px; border-radius:10px;
-  border:1px solid rgba(255,255,255,.12);
-  opacity:0; pointer-events:none; transition:.25s;
+/* -------- Contacto -------- */
+.card-cta{
+  background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
+  padding:20px; box-shadow:var(--shadow);
 }
-.toast.show{opacity:1}
+.form{display:grid; gap:12px; max-width:680px}
+.row{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+@media (max-width:760px){ .row{grid-template-columns:1fr} }
+label{font-weight:600}
+input, textarea{
+  width:100%; border:1px solid var(--border); border-radius:10px; padding:10px;
+  font:inherit; background:#fff; color:var(--text)
+}
+textarea{min-height:120px; resize:vertical}
 
-/* ============ Ajustes de muy gran pantalla ============ */
-@media (min-width: 1680px){
-  :root{ --wrapW: 96vw; } /* aún más ancho en monitores grandes */
+/* -------- Footer -------- */
+footer.site{
+  margin-top:48px; border-top:1px solid var(--border); color:var(--muted);
+  padding-block:20px; text-align:center
 }
+
+/* -------- Responsive hero -------- */
+@media (max-width:1000px){
+  .hero{ grid-template-columns:1fr; }
+  .portrait{ justify-self:start; width:min(360px, 70vw) }
+}
+
+/* Utilidades */
+.mt-32{margin-top:32px}
