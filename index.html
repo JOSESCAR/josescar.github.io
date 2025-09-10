@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Portafolio – Jose Carlos</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="formal.css" />
 </head>
 <body>
@@ -23,68 +23,87 @@
   </div>
 </header>
 
-<main class="container">
-  <!-- Hero formal -->
-  <section class="hero">
-    <div>
-      <h1>Jose Carlos</h1>
-      <p class="lead">Estadístico y desarrollador orientado a visualización,
-        modelos predictivos y datos geoespaciales. Construyo productos de datos,
-        dashboards claros y reportes reproducibles.</p>
+<main>
+  <!-- HERO PRO -->
+  <section class="hero hero-pro container">
+    <div class="hero-copy">
+      <span class="badge">Estadística · Ciencia de Datos</span>
+
+      <h1 class="display">
+        <span class="highlight">Jose Carlos</span>
+      </h1>
+
+      <p class="lead">
+        Estadístico y desarrollador orientado a visualización, modelos predictivos y datos geoespaciales.
+        Construyo productos de datos, dashboards claros y reportes reproducibles.
+      </p>
+
       <div class="cta">
         <a class="btn primary" href="proyectos.html">Ver proyectos</a>
         <a class="btn ghost" href="assets/CV_JoseCarlos.pdf" target="_blank" rel="noopener">Descargar CV</a>
       </div>
+
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="k">+8</div>
+          <div class="t">Proyectos</div>
+        </div>
+        <div class="stat">
+          <div class="k">+10</div>
+          <div class="t">Tecnologías</div>
+        </div>
+        <div class="stat">
+          <div class="k">Listo</div>
+          <div class="t">Colaboraciones</div>
+        </div>
+      </div>
     </div>
 
-    <figure class="portrait">
-      <img src="assets/avatar.jpg" alt="Foto profesional de Jose Carlos" />
+    <figure class="portrait-pro" aria-label="Foto profesional">
+      <div class="frame">
+        <img src="assets/avatar.jpg" alt="Foto profesional de Jose Carlos" />
+      </div>
     </figure>
   </section>
 
-  <!-- Últimos proyectos -->
-  <section>
+  <!-- Proyectos destacados -->
+  <section class="container">
     <h2>Proyectos destacados</h2>
+    <div class="section-rule"></div>
     <p class="intro">Una muestra de casos recientes. Encuentra el listado completo en la sección Proyectos.</p>
 
     <div class="grid">
       <article class="card">
-        <div class="thumb"><img src="assets/proy1.jpg" alt="Proyecto 1" /></div>
+        <div class="thumb"><img src="assets/proy1.jpg" alt="Predicción regional" /></div>
         <div class="body">
           <h3>Predicción regional (Seguridad)</h3>
-          <p>Benchmark Logit Multinomial vs MLP. Evaluaciones F1/AUC y reporte reproducible.</p>
+          <p>Benchmark Logit Multinomial vs MLP. Evaluación F1/AUC y reporte reproducible.</p>
           <div class="meta">
-            <div class="pills">
-              <span class="pill">R</span><span class="pill">caret</span><span class="pill">MLP</span>
-            </div>
+            <div class="pills"><span class="pill">R</span><span class="pill">caret</span><span class="pill">MLP</span></div>
             <a class="btn ghost" href="proyectos.html">Ver caso</a>
           </div>
         </div>
       </article>
 
       <article class="card">
-        <div class="thumb"><img src="assets/proy2.jpg" alt="Proyecto 2" /></div>
+        <div class="thumb"><img src="assets/proy2.jpg" alt="AgroDash SMAP" /></div>
         <div class="body">
           <h3>AgroDash (EO/SMAP)</h3>
-          <p>Mapas y series temporales para humedad de suelo. Enfoque en agro.</p>
+          <p>Mapas y series temporales para humedad de suelo; decisiones en agro.</p>
           <div class="meta">
-            <div class="pills">
-              <span class="pill">Python</span><span class="pill">xarray</span><span class="pill">Geo</span>
-            </div>
+            <div class="pills"><span class="pill">Python</span><span class="pill">xarray</span><span class="pill">Geo</span></div>
             <a class="btn ghost" href="proyectos.html">Ver caso</a>
           </div>
         </div>
       </article>
 
       <article class="card">
-        <div class="thumb"><img src="assets/proy3.jpg" alt="Proyecto 3" /></div>
+        <div class="thumb"><img src="assets/proy3.jpg" alt="Dashboards ejecutivos" /></div>
         <div class="body">
           <h3>Dashboards ejecutivos</h3>
           <p>KPIs y storytelling en Power BI con adopción por stakeholders.</p>
           <div class="meta">
-            <div class="pills">
-              <span class="pill">Power BI</span><span class="pill">DAX</span>
-            </div>
+            <div class="pills"><span class="pill">Power BI</span><span class="pill">DAX</span></div>
             <a class="btn ghost" href="proyectos.html">Ver caso</a>
           </div>
         </div>
