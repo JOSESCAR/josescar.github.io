@@ -42,58 +42,12 @@
             margin-inline: auto;
         }
 
-        /* Animated background */
-        .animated-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            opacity: 0.03;
-        }
-
-        .animated-bg::before {
-            content: '';
-            position: absolute;
-            width: 200px;
-            height: 200px;
-            background: radial-gradient(circle, rgba(102,126,234,0.4) 0%, transparent 70%);
-            border-radius: 50%;
-            animation: float1 20s ease-in-out infinite;
-            top: 20%;
-            left: 10%;
-        }
-
-        .animated-bg::after {
-            content: '';
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(118,75,162,0.3) 0%, transparent 70%);
-            border-radius: 50%;
-            animation: float2 25s ease-in-out infinite;
-            top: 60%;
-            right: 10%;
-        }
-
-        @keyframes float1 {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(180deg); }
-        }
-
-        @keyframes float2 {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(20px) rotate(-180deg); }
-        }
-
         /* Header */
         header {
             position: sticky;
             top: 0;
             z-index: 100;
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--line);
             transition: all 0.3s ease;
@@ -161,6 +115,7 @@
         .hero {
             padding: 6rem 0;
             position: relative;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
         }
 
         .hero-grid {
@@ -390,6 +345,107 @@
             font-size: 0.875rem;
         }
 
+        /* New Sections based on the reference */
+        .services-section {
+            padding: 6rem 0;
+            background: white;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 900;
+            margin: 0 0 1rem;
+            line-height: 1.2;
+        }
+
+        .section-subtitle {
+            font-size: 1.25rem;
+            color: var(--muted);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--bg0);
+            border-radius: var(--radius);
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid var(--line);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--accent-3);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1.5rem;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .service-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin: 0 0 1rem;
+        }
+
+        .service-description {
+            color: var(--muted);
+            margin: 0;
+        }
+
+        .platform-section {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+        }
+
+        .platform-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .platform-text {
+            max-width: 500px;
+        }
+
+        .platform-image {
+            background: var(--gradient);
+            border-radius: var(--radius-lg);
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-align: center;
+            padding: 2rem;
+            box-shadow: var(--shadow-lg);
+        }
+
         /* Footer */
         footer {
             background: var(--text);
@@ -419,74 +475,24 @@
             .nav-links {
                 display: none;
             }
-        }
-
-        /* Floating elements */
-        .floating-elements {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            pointer-events: none;
-        }
-
-        .floating-element {
-            position: absolute;
-            background: var(--gradient);
-            border-radius: 50%;
-            opacity: 0.1;
-            animation: floatUp 15s infinite linear;
-        }
-
-        .floating-element:nth-child(1) {
-            width: 20px;
-            height: 20px;
-            left: 10%;
-            animation-delay: -2s;
-        }
-
-        .floating-element:nth-child(2) {
-            width: 30px;
-            height: 30px;
-            left: 80%;
-            animation-delay: -8s;
-        }
-
-        .floating-element:nth-child(3) {
-            width: 25px;
-            height: 25px;
-            left: 60%;
-            animation-delay: -15s;
-        }
-
-        @keyframes floatUp {
-            0% {
-                transform: translateY(100vh) rotate(0deg);
-                opacity: 0;
+            
+            .services-grid {
+                grid-template-columns: 1fr;
             }
-            10% {
-                opacity: 0.1;
+            
+            .platform-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
             }
-            90% {
-                opacity: 0.1;
-            }
-            100% {
-                transform: translateY(-100px) rotate(360deg);
-                opacity: 0;
+            
+            .platform-text {
+                text-align: center;
+                max-width: 100%;
             }
         }
     </style>
 </head>
 <body>
-    <div class="animated-bg"></div>
-    <div class="floating-elements">
-        <div class="floating-element"></div>
-        <div class="floating-element"></div>
-        <div class="floating-element"></div>
-    </div>
-    
     <!-- Header -->
     <header>
         <nav class="container">
@@ -548,6 +554,69 @@
         </div>
     </section>
 
+    <!-- Services Section -->
+    <section class="services-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">SERVICIOS QUE SE ADAPTAN A TUS NECESIDADES</h2>
+                <p class="section-subtitle">
+                    Ya sea que necesites análisis de datos, modelos predictivos o visualización de datos geoespaciales, 
+                    puedo ayudarte a tomar decisiones basadas en datos. Me adapto a tus necesidades y proporciono soluciones 
+                    que se ajustan a tu proyecto.
+                </p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">📈</div>
+                    <h3 class="service-title">Visualización de Datos</h3>
+                    <p class="service-description">
+                        Creo dashboards interactivos y reportes visuales que facilitan la comprensión de datos complejos.
+                    </p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">🔮</div>
+                    <h3 class="service-title">Modelos Predictivos</h3>
+                    <p class="service-description">
+                        Desarrollo modelos estadísticos y de machine learning para predecir tendencias y comportamientos.
+                    </p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">🗺️</div>
+                    <h3 class="service-title">Análisis Geoespacial</h3>
+                    <p class="service-description">
+                        Analizo y visualizo datos con componente espacial para identificar patrones y relaciones geográficas.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Platform Section -->
+    <section class="platform-section">
+        <div class="container">
+            <div class="platform-content">
+                <div class="platform-text">
+                    <h2 class="section-title">UN ENFOQUE QUE TE PONE EN CONTROL</h2>
+                    <p class="section-subtitle">
+                        Mi metodología de trabajo te permite mantener el control total de tus datos y procesos. 
+                        Utilizo herramientas modernas y técnicas reproducibles para garantizar que puedas entender, 
+                        validar y replicar cada análisis.
+                    </p>
+                    <div class="cta-buttons">
+                        <a href="contacto.html" class="btn btn-primary">Contactar</a>
+                    </div>
+                </div>
+                
+                <div class="platform-image">
+                    Dashboard Interactivo &<br>Reportes Reproducibles
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -590,15 +659,6 @@
         if (statsSection) {
             observer.observe(statsSection);
         }
-
-        // Add parallax effect to animated background
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const bg = document.querySelector('.animated-bg');
-            if (bg) {
-                bg.style.transform = `translateY(${scrolled * 0.5}px)`;
-            }
-        });
 
         // Header scroll effect
         window.addEventListener('scroll', () => {
