@@ -6,7 +6,7 @@
     <title>Jose Carlos | Estadístico & Data Scientist</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Reset y variables premium */
+        /* Variables y reset */
         :root {
             --primary: #0f172a;
             --primary-light: #1e293b;
@@ -19,10 +19,10 @@
             --text-light: #64748b;
             --border: #e2e8f0;
             --background: #ffffff;
-            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
             --radius: 8px;
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition: all 0.3s ease;
         }
 
         * {
@@ -31,17 +31,12 @@
             box-sizing: border-box;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
         body {
-            font-family: 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
             color: var(--text);
             background-color: var(--background);
             line-height: 1.6;
             overflow-x: hidden;
-            font-weight: 400;
         }
 
         .container {
@@ -50,10 +45,9 @@
             padding: 0 20px;
         }
 
-        /* Header premium */
+        /* Header */
         header {
-            background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
+            background-color: var(--background);
             border-bottom: 1px solid var(--border);
             position: fixed;
             top: 0;
@@ -61,12 +55,6 @@
             right: 0;
             z-index: 1000;
             padding: 16px 0;
-            transition: var(--transition);
-        }
-
-        .header-scrolled {
-            box-shadow: var(--shadow);
-            background-color: rgba(255, 255, 255, 0.98);
         }
 
         .nav-container {
@@ -99,7 +87,6 @@
             font-size: 20px;
             font-weight: 700;
             color: var(--primary);
-            letter-spacing: -0.5px;
         }
 
         .nav-tabs {
@@ -125,8 +112,6 @@
             display: block;
             cursor: pointer;
             font-size: 15px;
-            position: relative;
-            z-index: 1;
         }
 
         .nav-link:hover {
@@ -141,32 +126,23 @@
 
         /* Contenido principal */
         .main-content {
-            min-height: 100vh;
             margin-top: 80px;
-            position: relative;
+            min-height: calc(100vh - 80px);
         }
 
         .tab-content {
-            height: 100%;
-            position: relative;
-        }
-
-        .tab-panel {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            display: none;
             padding: 40px 0;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.4s ease, visibility 0.4s;
-            overflow-y: auto;
+            animation: fadeIn 0.5s ease;
         }
 
-        .tab-panel.active {
-            opacity: 1;
-            visibility: visible;
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .tab-content.active {
+            display: block;
         }
 
         /* Pestaña Inicio */
@@ -175,16 +151,14 @@
             grid-template-columns: 1.2fr 0.8fr;
             gap: 80px;
             align-items: center;
-            height: 100%;
         }
 
         .hero-text h1 {
-            font-size: 52px;
+            font-size: 48px;
             font-weight: 800;
             color: var(--primary);
             margin-bottom: 24px;
             line-height: 1.1;
-            letter-spacing: -1px;
         }
 
         .hero-text p {
@@ -192,7 +166,6 @@
             color: var(--text);
             margin-bottom: 40px;
             max-width: 540px;
-            font-weight: 400;
         }
 
         .highlight {
@@ -229,23 +202,6 @@
             transition: var(--transition);
             cursor: pointer;
             font-size: 16px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.7s;
-        }
-
-        .btn:hover::before {
-            left: 100%;
         }
 
         .btn-primary {
@@ -269,14 +225,11 @@
             border-color: var(--accent);
             color: var(--accent);
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
         }
 
         .profile-section {
             display: flex;
             justify-content: center;
-            align-items: center;
-            position: relative;
         }
 
         .profile-card {
@@ -287,13 +240,6 @@
             box-shadow: var(--shadow-lg);
             overflow: hidden;
             border: 1px solid var(--border);
-            position: relative;
-            transition: var(--transition);
-        }
-
-        .profile-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
         }
 
         .profile-header {
@@ -301,7 +247,6 @@
             color: white;
             padding: 40px 30px 30px;
             text-align: center;
-            position: relative;
         }
 
         .profile-image-container {
@@ -335,7 +280,6 @@
         .profile-title {
             font-size: 16px;
             opacity: 0.9;
-            font-weight: 400;
         }
 
         .profile-body {
@@ -354,12 +298,6 @@
             padding: 15px 10px;
             border-radius: var(--radius);
             background: #f8fafc;
-            transition: var(--transition);
-        }
-
-        .stat:hover {
-            background: #f1f5f9;
-            transform: translateY(-2px);
         }
 
         .stat-number {
@@ -367,14 +305,12 @@
             font-weight: 700;
             color: var(--primary);
             display: block;
-            line-height: 1;
         }
 
         .stat-label {
             font-size: 14px;
             color: var(--text-light);
             margin-top: 8px;
-            font-weight: 500;
         }
 
         .profile-description {
@@ -397,21 +333,9 @@
             border-radius: 20px;
             font-size: 14px;
             font-weight: 500;
-            transition: var(--transition);
-        }
-
-        .skill-tag:hover {
-            background: #e2e8f0;
-            transform: translateY(-1px);
         }
 
         /* Pestaña Servicios */
-        .services-content {
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-
         .section-header {
             margin-bottom: 50px;
         }
@@ -421,23 +345,18 @@
             font-weight: 800;
             color: var(--primary);
             margin-bottom: 16px;
-            letter-spacing: -1px;
         }
 
         .section-subtitle {
             font-size: 18px;
             color: var(--text);
             max-width: 700px;
-            font-weight: 400;
         }
 
         .services-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 30px;
-            flex: 1;
-            overflow-y: auto;
-            padding-right: 10px;
         }
 
         .service-card {
@@ -448,29 +367,10 @@
             border: 1px solid var(--border);
             display: flex;
             flex-direction: column;
-            height: 100%;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: linear-gradient(to bottom, var(--accent) 0%, var(--accent-dark) 100%);
-            transform: scaleY(0);
-            transition: transform 0.3s ease;
-        }
-
-        .service-card:hover::before {
-            transform: scaleY(1);
         }
 
         .service-card:hover {
-            transform: translateY(-8px);
+            transform: translateY(-5px);
             box-shadow: var(--shadow-lg);
             border-color: transparent;
         }
@@ -486,7 +386,6 @@
             margin-bottom: 24px;
             color: white;
             font-size: 28px;
-            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
         }
 
         .service-title {
@@ -520,19 +419,10 @@
         }
 
         /* Pestaña Proyectos */
-        .projects-content {
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 30px;
-            flex: 1;
-            overflow-y: auto;
-            padding-right: 10px;
         }
 
         .project-card {
@@ -547,7 +437,7 @@
         }
 
         .project-card:hover {
-            transform: translateY(-8px);
+            transform: translateY(-5px);
             box-shadow: var(--shadow-lg);
             border-color: transparent;
         }
@@ -560,24 +450,6 @@
             justify-content: center;
             color: white;
             font-size: 48px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .project-image::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(30, 41, 59, 0.8) 100%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .project-card:hover .project-image::after {
-            opacity: 1;
         }
 
         .project-content {
@@ -618,7 +490,6 @@
 
         /* Pestaña Contacto */
         .contact-content {
-            height: 100%;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 80px;
@@ -630,7 +501,6 @@
             font-weight: 800;
             color: var(--primary);
             margin-bottom: 24px;
-            letter-spacing: -1px;
         }
 
         .contact-info p {
@@ -651,11 +521,6 @@
             gap: 16px;
             padding: 16px;
             border-radius: var(--radius);
-            transition: var(--transition);
-        }
-
-        .contact-details li:hover {
-            background: #f8fafc;
         }
 
         .contact-details li i {
@@ -668,12 +533,6 @@
             justify-content: center;
             color: var(--accent);
             font-size: 20px;
-            transition: var(--transition);
-        }
-
-        .contact-details li:hover i {
-            background: var(--accent);
-            color: white;
         }
 
         .contact-form {
@@ -723,7 +582,6 @@
             background: var(--primary);
             color: white;
             padding: 40px 0 20px;
-            position: relative;
         }
 
         .footer-content {
@@ -823,30 +681,11 @@
                 text-align: center;
             }
         }
-
-        /* Scrollbar personalizado */
-        .tab-panel::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        .tab-panel::-webkit-scrollbar-track {
-            background: #f1f1f1;
-            border-radius: 10px;
-        }
-
-        .tab-panel::-webkit-scrollbar-thumb {
-            background: var(--accent);
-            border-radius: 10px;
-        }
-
-        .tab-panel::-webkit-scrollbar-thumb:hover {
-            background: var(--accent-dark);
-        }
     </style>
 </head>
 <body>
-    <!-- Header premium -->
-    <header id="header">
+    <!-- Header -->
+    <header>
         <div class="container">
             <div class="nav-container">
                 <div class="logo-container">
@@ -875,237 +714,236 @@
     <!-- Contenido principal -->
     <main class="main-content">
         <div class="container">
-            <div class="tab-content">
-                <!-- Pestaña Inicio -->
-                <div class="tab-panel active" id="home">
-                    <div class="home-content">
-                        <div class="hero-text">
-                            <h1>Transformo datos en <span class="highlight">decisiones inteligentes</span></h1>
-                            <p>Estadístico y científico de datos especializado en visualización, modelos predictivos y análisis geoespacial. Combino expertise técnico con capacidad de comunicación para entregar insights accionables.</p>
-                            <div class="cta-buttons">
-                                <a class="btn btn-primary tab-link" data-tab="contact">
-                                    <i class="fas fa-paper-plane"></i> Contactar
-                                </a>
-                                <a href="#" class="btn btn-outline">
-                                    <i class="fas fa-download"></i> Descargar CV
-                                </a>
-                            </div>
+            <!-- Pestaña Inicio -->
+            <div class="tab-content active" id="home">
+                <div class="home-content">
+                    <div class="hero-text">
+                        <h1>Transformo datos en <span class="highlight">decisiones inteligentes</span></h1>
+                        <p>Estadístico y científico de datos especializado en visualización, modelos predictivos y análisis geoespacial. Combino expertise técnico con capacidad de comunicación para entregar insights accionables.</p>
+                        <div class="cta-buttons">
+                            <a class="btn btn-primary" data-tab="contact">
+                                <i class="fas fa-paper-plane"></i> Contactar
+                            </a>
+                            <a href="#" class="btn btn-outline">
+                                <i class="fas fa-download"></i> Descargar CV
+                            </a>
                         </div>
-                        <div class="profile-section">
-                            <div class="profile-card">
-                                <div class="profile-header">
-                                    <div class="profile-image-container">
-                                        <!-- Reemplaza esto con tu foto -->
-                                        <i class="fas fa-user"></i>
-                                    </div>
-                                    <div class="profile-name">Jose Carlos</div>
-                                    <div class="profile-title">Estadístico & Data Scientist</div>
+                    </div>
+                    <div class="profile-section">
+                        <div class="profile-card">
+                            <div class="profile-header">
+                                <div class="profile-image-container">
+                                    <!-- Reemplaza esto con tu foto -->
+                                    <i class="fas fa-user"></i>
                                 </div>
-                                <div class="profile-body">
-                                    <div class="stats-container">
-                                        <div class="stat">
-                                            <span class="stat-number">3+</span>
-                                            <span class="stat-label">Años Experiencia</span>
-                                        </div>
-                                        <div class="stat">
-                                            <span class="stat-number">24</span>
-                                            <span class="stat-label">Proyectos</span>
-                                        </div>
-                                        <div class="stat">
-                                            <span class="stat-number">12</span>
-                                            <span class="stat-label">Tecnologías</span>
-                                        </div>
+                                <div class="profile-name">Jose Carlos</div>
+                                <div class="profile-title">Estadístico & Data Scientist</div>
+                            </div>
+                            <div class="profile-body">
+                                <div class="stats-container">
+                                    <div class="stat">
+                                        <span class="stat-number">3+</span>
+                                        <span class="stat-label">Años Experiencia</span>
                                     </div>
-                                    <p class="profile-description">Especializado en transformar datos complejos en soluciones empresariales claras y accionables.</p>
-                                    <div class="skills-container">
-                                        <span class="skill-tag">Python</span>
-                                        <span class="skill-tag">R</span>
-                                        <span class="skill-tag">SQL</span>
-                                        <span class="skill-tag">Tableau</span>
-                                        <span class="skill-tag">Machine Learning</span>
-                                        <span class="skill-tag">Power BI</span>
+                                    <div class="stat">
+                                        <span class="stat-number">24</span>
+                                        <span class="stat-label">Proyectos</span>
                                     </div>
+                                    <div class="stat">
+                                        <span class="stat-number">12</span>
+                                        <span class="stat-label">Tecnologías</span>
+                                    </div>
+                                </div>
+                                <p class="profile-description">Especializado en transformar datos complejos en soluciones empresariales claras y accionables.</p>
+                                <div class="skills-container">
+                                    <span class="skill-tag">Python</span>
+                                    <span class="skill-tag">R</span>
+                                    <span class="skill-tag">SQL</span>
+                                    <span class="skill-tag">Tableau</span>
+                                    <span class="skill-tag">Machine Learning</span>
+                                    <span class="skill-tag">Power BI</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- Pestaña Servicios -->
-                <div class="tab-panel" id="services">
-                    <div class="services-content">
-                        <div class="section-header">
-                            <h2 class="section-title">Servicios Especializados</h2>
-                            <p class="section-subtitle">Soluciones de datos personalizadas que se adaptan a tus objetivos empresariales específicos.</p>
+            <!-- Pestaña Servicios -->
+            <div class="tab-content" id="services">
+                <div class="section-header">
+                    <h2 class="section-title">Servicios Especializados</h2>
+                    <p class="section-subtitle">Soluciones de datos personalizadas que se adaptan a tus objetivos empresariales específicos.</p>
+                </div>
+                
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-chart-bar"></i>
                         </div>
-                        
-                        <div class="services-grid">
-                            <div class="service-card">
-                                <div class="service-icon">
-                                    <i class="fas fa-chart-bar"></i>
-                                </div>
-                                <h3 class="service-title">Visualización de Datos</h3>
-                                <p class="service-description">Creación de dashboards interactivos y reportes visuales que transforman datos complejos en insights comprensibles para la toma de decisiones.</p>
-                                <ul class="service-features">
-                                    <li><i class="fas fa-check"></i> Visualizaciones interactivas</li>
-                                    <li><i class="fas fa-check"></i> Filtros y controles dinámicos</li>
-                                    <li><i class="fas fa-check"></i> Actualización en tiempo real</li>
-                                </ul>
+                        <h3 class="service-title">Visualización de Datos</h3>
+                        <p class="service-description">Creación de dashboards interactivos y reportes visuales que transforman datos complejos en insights comprensibles para la toma de decisiones.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Visualizaciones interactivas</li>
+                            <li><i class="fas fa-check"></i> Filtros y controles dinámicos</li>
+                            <li><i class="fas fa-check"></i> Actualización en tiempo real</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3 class="service-title">Modelado Predictivo</h3>
+                        <p class="service-description">Desarrollo de modelos estadísticos y de machine learning para predecir tendencias, clasificar información y optimizar procesos empresariales.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Regresión y clasificación</li>
+                            <li><i class="fas fa-check"></i> Series temporales</li>
+                            <li><i class="fas fa-check"></i> Validación y testing riguroso</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-map-marked-alt"></i>
+                        </div>
+                        <h3 class="service-title">Análisis Geoespacial</h3>
+                        <p class="service-description">Análisis de datos con componente espacial para identificar patrones geográficos, optimizar ubicaciones y entender dinámicas territoriales.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Análisis de densidad</li>
+                            <li><i class="fas fa-check"></i> Optimización de rutas</li>
+                            <li><i class="fas fa-check"></i> Segmentación territorial</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h3 class="service-title">Análisis de Datos</h3>
+                        <p class="service-description">Transformo datos crudos en conjuntos listos para análisis mediante técnicas avanzadas de limpieza y preparación.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Identificación de valores atípicos</li>
+                            <li><i class="fas fa-check"></i> Imputación de datos faltantes</li>
+                            <li><i class="fas fa-check"></i> Normalización y estandarización</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pestaña Proyectos -->
+            <div class="tab-content" id="projects">
+                <div class="section-header">
+                    <h2 class="section-title">Proyectos Destacados</h2>
+                    <p class="section-subtitle">Una selección de trabajos recientes que demuestran mi expertise en análisis de datos y visualización.</p>
+                </div>
+                
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Dashboard de Ventas</h3>
+                            <p class="project-description">Sistema de visualización interactiva para seguimiento de KPIs de ventas en tiempo real con integración de múltiples fuentes de datos.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Tableau</span>
+                                <span class="project-tag">SQL</span>
+                                <span class="project-tag">ETL</span>
                             </div>
-                            
-                            <div class="service-card">
-                                <div class="service-icon">
-                                    <i class="fas fa-brain"></i>
-                                </div>
-                                <h3 class="service-title">Modelado Predictivo</h3>
-                                <p class="service-description">Desarrollo de modelos estadísticos y de machine learning para predecir tendencias, clasificar información y optimizar procesos empresariales.</p>
-                                <ul class="service-features">
-                                    <li><i class="fas fa-check"></i> Regresión y clasificación</li>
-                                    <li><i class="fas fa-check"></i> Series temporales</li>
-                                    <li><i class="fas fa-check"></i> Validación y testing riguroso</li>
-                                </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-image">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Modelo de Clasificación</h3>
+                            <p class="project-description">Algoritmo de machine learning para predecir la probabilidad de abandono de clientes con 92% de precisión.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Python</span>
+                                <span class="project-tag">Scikit-learn</span>
+                                <span class="project-tag">Pandas</span>
                             </div>
-                            
-                            <div class="service-card">
-                                <div class="service-icon">
-                                    <i class="fas fa-map-marked-alt"></i>
-                                </div>
-                                <h3 class="service-title">Análisis Geoespacial</h3>
-                                <p class="service-description">Análisis de datos con componente espacial para identificar patrones geográficos, optimizar ubicaciones y entender dinámicas territoriales.</p>
-                                <ul class="service-features">
-                                    <li><i class="fas fa-check"></i> Análisis de densidad</li>
-                                    <li><i class="fas fa-check"></i> Optimización de rutas</li>
-                                    <li><i class="fas fa-check"></i> Segmentación territorial</li>
-                                </ul>
-                            </div>
-                            
-                            <div class="service-card">
-                                <div class="service-icon">
-                                    <i class="fas fa-database"></i>
-                                </div>
-                                <h3 class="service-title">Análisis de Datos</h3>
-                                <p class="service-description">Transformo datos crudos en conjuntos listos para análisis mediante técnicas avanzadas de limpieza y preparación.</p>
-                                <ul class="service-features">
-                                    <li><i class="fas fa-check"></i> Identificación de valores atípicos</li>
-                                    <li><i class="fas fa-check"></i> Imputación de datos faltantes</li>
-                                    <li><i class="fas fa-check"></i> Normalización y estandarización</li>
-                                </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-image">
+                            <i class="fas fa-map-marked-alt"></i>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Análisis Geoespacial</h3>
+                            <p class="project-description">Estudio de optimización de ubicaciones para expansión de red de tiendas minoristas basado en datos demográficos.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">R</span>
+                                <span class="project-tag">GIS</span>
+                                <span class="project-tag">Leaflet</span>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- Pestaña Proyectos -->
-                <div class="tab-panel" id="projects">
-                    <div class="projects-content">
-                        <div class="section-header">
-                            <h2 class="section-title">Proyectos Destacados</h2>
-                            <p class="section-subtitle">Una selección de trabajos recientes que demuestran mi expertise en análisis de datos y visualización.</p>
-                        </div>
-                        
-                        <div class="projects-grid">
-                            <div class="project-card">
-                                <div class="project-image">
-                                    <i class="fas fa-chart-line"></i>
-                                </div>
-                                <div class="project-content">
-                                    <h3 class="project-title">Dashboard de Ventas</h3>
-                                    <p class="project-description">Sistema de visualización interactiva para seguimiento de KPIs de ventas en tiempo real con integración de múltiples fuentes de datos.</p>
-                                    <div class="project-tags">
-                                        <span class="project-tag">Tableau</span>
-                                        <span class="project-tag">SQL</span>
-                                        <span class="project-tag">ETL</span>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="project-card">
-                                <div class="project-image">
-                                    <i class="fas fa-robot"></i>
-                                </div>
-                                <div class="project-content">
-                                    <h3 class="project-title">Modelo de Clasificación</h3>
-                                    <p class="project-description">Algoritmo de machine learning para predecir la probabilidad de abandono de clientes con 92% de precisión.</p>
-                                    <div class="project-tags">
-                                        <span class="project-tag">Python</span>
-                                        <span class="project-tag">Scikit-learn</span>
-                                        <span class="project-tag">Pandas</span>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="project-card">
-                                <div class="project-image">
-                                    <i class="fas fa-map-marked-alt"></i>
-                                </div>
-                                <div class="project-content">
-                                    <h3 class="project-title">Análisis Geoespacial</h3>
-                                    <p class="project-description">Estudio de optimización de ubicaciones para expansión de red de tiendas minoristas basado en datos demográficos.</p>
-                                    <div class="project-tags">
-                                        <span class="project-tag">R</span>
-                                        <span class="project-tag">GIS</span>
-                                        <span class="project-tag">Leaflet</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <!-- Pestaña Contacto -->
+            <div class="tab-content" id="contact">
+                <div class="section-header">
+                    <h2 class="section-title">Contacto</h2>
+                    <p class="section-subtitle">¿Tienes un proyecto en mente? Hablemos sobre cómo puedo ayudarte a transformar tus datos en insights valiosos.</p>
                 </div>
-
-                <!-- Pestaña Contacto -->
-                <div class="tab-panel" id="contact">
-                    <div class="contact-content">
-                        <div class="contact-info">
-                            <h2>Trabajemos juntos</h2>
-                            <p>Estoy disponible para proyectos freelance y oportunidades a tiempo completo. No dudes en contactarme para discutir cómo puedo aportar valor a tu organización.</p>
-                            <ul class="contact-details">
-                                <li>
-                                    <i class="fas fa-envelope"></i>
-                                    <div>
-                                        <strong>Email</strong>
-                                        <div>jose.carlos@ejemplo.com</div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <i class="fas fa-phone"></i>
-                                    <div>
-                                        <strong>Teléfono</strong>
-                                        <div>+34 123 456 789</div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <i class="fas fa-map-marker-alt"></i>
-                                    <div>
-                                        <strong>Ubicación</strong>
-                                        <div>Madrid, España</div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        
-                        <div class="contact-form">
-                            <form id="contactForm">
-                                <div class="form-group">
-                                    <label for="name">Nombre</label>
-                                    <input type="text" id="name" class="form-control" required>
+                
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h2>Trabajemos juntos</h2>
+                        <p>Estoy disponible para proyectos freelance y oportunidades a tiempo completo. No dudes en contactarme para discutir cómo puedo aportar valor a tu organización.</p>
+                        <ul class="contact-details">
+                            <li>
+                                <i class="fas fa-envelope"></i>
+                                <div>
+                                    <strong>Email</strong>
+                                    <div>jose.carlos@ejemplo.com</div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="email">Email</label>
-                                    <input type="email" id="email" class="form-control" required>
+                            </li>
+                            <li>
+                                <i class="fas fa-phone"></i>
+                                <div>
+                                    <strong>Teléfono</strong>
+                                    <div>+34 123 456 789</div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="subject">Asunto</label>
-                                    <input type="text" id="subject" class="form-control" required>
+                            </li>
+                            <li>
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>
+                                    <strong>Ubicación</strong>
+                                    <div>Madrid, España</div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="message">Mensaje</label>
-                                    <textarea id="message" class="form-control" required></textarea>
-                                </div>
-                                <button type="submit" class="btn btn-primary" style="width: 100%;">
-                                    <i class="fas fa-paper-plane"></i> Enviar Mensaje
-                                </button>
-                            </form>
-                        </div>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="contact-form">
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <label for="name">Nombre</label>
+                                <input type="text" id="name" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Asunto</label>
+                                <input type="text" id="subject" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Mensaje</label>
+                                <textarea id="message" class="form-control" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary" style="width: 100%;">
+                                <i class="fas fa-paper-plane"></i> Enviar Mensaje
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -1142,16 +980,15 @@
         // Sistema de pestañas
         document.addEventListener('DOMContentLoaded', function() {
             const tabLinks = document.querySelectorAll('.nav-link');
-            const tabPanels = document.querySelectorAll('.tab-panel');
-            const header = document.getElementById('header');
+            const tabContents = document.querySelectorAll('.tab-content');
             
             // Función para cambiar de pestaña
             function switchTab(tabId) {
-                // Remover clase active de todas las pestañas y paneles
+                // Remover clase active de todas las pestañas y contenidos
                 tabLinks.forEach(link => link.classList.remove('active'));
-                tabPanels.forEach(panel => panel.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
                 
-                // Activar la pestaña y panel correspondiente
+                // Activar la pestaña y contenido correspondiente
                 document.querySelector(`.nav-link[data-tab="${tabId}"]`).classList.add('active');
                 document.getElementById(tabId).classList.add('active');
             }
@@ -1164,6 +1001,15 @@
                     switchTab(tabId);
                 });
             });
+            
+            // Botón de contacto en la pestaña de inicio
+            const contactBtn = document.querySelector('.btn-primary[data-tab="contact"]');
+            if (contactBtn) {
+                contactBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    switchTab('contact');
+                });
+            }
             
             // Form submission
             const contactForm = document.getElementById('contactForm');
@@ -1182,18 +1028,6 @@
                     switchTab('home');
                 });
             }
-            
-            // Efecto de scroll en el header
-            window.addEventListener('scroll', function() {
-                if (window.scrollY > 50) {
-                    header.classList.add('header-scrolled');
-                } else {
-                    header.classList.remove('header-scrolled');
-                }
-            });
-            
-            // Inicializar con la pestaña de inicio activa
-            switchTab('home');
         });
     </script>
 </body>
