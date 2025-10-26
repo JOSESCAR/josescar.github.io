@@ -3,642 +3,1050 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jose Carlos - Estadístico & Data Scientist</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <title>Jose Carlos | Estadístico & Data Scientist</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* Reset y variables */
         :root {
-            --bg0: #ffffff;
-            --bg1: #f8fafc;
-            --text: #1e293b;
-            --muted: #64748b;
-            --line: #e2e8f0;
-            
-            --accent: #2563eb;
-            --accent-2: #1d4ed8;
-            --accent-3: #60a5fa;
-            --gradient: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
-            
-            --radius: 8px;
-            --radius-lg: 16px;
-            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-            --container: 1200px;
+            --primary: #0a2540;
+            --secondary: #1d4e89;
+            --accent: #00b4d8;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --text: #495057;
+            --border: #dee2e6;
+            --shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+            --radius: 6px;
+            --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
-        * { 
-            box-sizing: border-box; 
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
-        
+
         body {
-            font-family: 'Inter', system-ui, sans-serif;
+            font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
             color: var(--text);
-            background: var(--bg0);
+            background-color: var(--light);
             line-height: 1.6;
-            overflow-x: hidden;
+            overflow: hidden;
+            height: 100vh;
         }
 
         .container {
-            width: min(var(--container), 95vw);
-            margin-inline: auto;
-            padding: 0 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            height: 100%;
         }
 
-        /* Header - Based on reference image */
+        /* Header */
         header {
-            position: sticky;
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: fixed;
             top: 0;
-            z-index: 100;
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--line);
-            transition: all 0.3s ease;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
         }
 
-        .nav {
-            height: 70px;
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            gap: 10px;
         }
 
-        .brand {
-            font-weight: 800;
-            font-size: 1.5rem;
+        .logo-icon {
             color: var(--accent);
-            text-decoration: none;
         }
 
-        .nav-links {
+        .nav-tabs {
             display: flex;
-            gap: 0.5rem;
             list-style: none;
-            margin: 0;
-            padding: 0;
+            gap: 5px;
+            background: #f1f3f5;
+            border-radius: 50px;
+            padding: 5px;
         }
 
-        .nav-link {
-            text-decoration: none;
-            color: var(--muted);
-            font-weight: 500;
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
-            transition: all 0.3s ease;
-            font-size: 0.9rem;
-        }
-
-        .nav-link:hover {
-            color: var(--accent);
-            background: rgba(37, 99, 235, 0.05);
-        }
-
-        .nav-link.active {
-            color: var(--accent);
-            background: rgba(37, 99, 235, 0.1);
-        }
-
-        /* Hero Section - Based on reference */
-        .hero {
-            padding: 5rem 0;
-            background: linear-gradient(135deg, rgba(37, 99, 235, 0.03) 0%, rgba(29, 78, 216, 0.03) 100%);
+        .nav-tab {
             position: relative;
         }
 
-        .hero-grid {
+        .nav-tab a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            padding: 10px 20px;
+            border-radius: 50px;
+            display: block;
+            transition: var(--transition);
+            position: relative;
+            z-index: 1;
+            cursor: pointer;
+        }
+
+        .nav-tab a:hover {
+            color: var(--primary);
+        }
+
+        .nav-tab a.active {
+            color: white;
+        }
+
+        .nav-tab-indicator {
+            position: absolute;
+            top: 5px;
+            left: 0;
+            height: calc(100% - 10px);
+            width: 0;
+            background: var(--primary);
+            border-radius: 50px;
+            transition: var(--transition);
+            z-index: 0;
+        }
+
+        .nav-tab a.active ~ .nav-tab-indicator {
+            width: calc(100% - 0px);
+        }
+
+        /* Main Content */
+        .main-content {
+            height: calc(100vh - 80px);
+            margin-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tab-content {
+            height: 100%;
+            position: relative;
+        }
+
+        .tab-panel {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 40px 0;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s;
+            overflow-y: auto;
+        }
+
+        .tab-panel.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Home Tab */
+        .home-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            gap: 60px;
             align-items: center;
+            height: 100%;
         }
 
-        .hero-content h1 {
-            font-size: 3.5rem;
-            font-weight: 900;
-            margin: 0 0 1.5rem;
+        .hero-text h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 20px;
             line-height: 1.1;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
             color: var(--text);
-        }
-
-        .hero-content .highlight {
-            color: var(--accent);
-            display: block;
-        }
-
-        .hero-content .subtitle {
-            font-size: 1.25rem;
-            color: var(--muted);
-            margin: 0 0 2.5rem;
+            margin-bottom: 30px;
             max-width: 500px;
-            font-weight: 400;
         }
 
-        .badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.75rem 1.5rem;
-            background: rgba(37, 99, 235, 0.1);
+        .highlight {
             color: var(--accent);
-            border: 1px solid rgba(37, 99, 235, 0.2);
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background-color: rgba(0, 180, 216, 0.2);
+            z-index: -1;
         }
 
         .cta-buttons {
             display: flex;
-            gap: 1rem;
-            margin-top: 2rem;
+            gap: 15px;
+            margin-top: 30px;
         }
 
         .btn {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            padding: 1rem 2rem;
-            border-radius: 8px;
+            gap: 10px;
+            padding: 14px 28px;
+            border-radius: var(--radius);
             text-decoration: none;
             font-weight: 600;
-            transition: all 0.3s ease;
-            font-size: 1rem;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.7s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
         }
 
         .btn-primary {
-            background: var(--accent);
+            background-color: var(--primary);
             color: white;
-            box-shadow: var(--shadow-md);
+            box-shadow: 0 4px 14px rgba(10, 37, 64, 0.3);
         }
 
         .btn-primary:hover {
-            background: var(--accent-2);
+            background-color: #0d3a5c;
             transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
+            box-shadow: 0 6px 20px rgba(10, 37, 64, 0.4);
         }
 
         .btn-secondary {
-            background: white;
-            color: var(--text);
-            border: 1px solid var(--line);
+            background-color: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
         }
 
         .btn-secondary:hover {
-            border-color: var(--accent);
-            color: var(--accent);
+            background-color: rgba(10, 37, 64, 0.05);
             transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
         }
 
-        /* Profile Image - Cleaner version */
         .profile-container {
-            position: relative;
-            justify-self: center;
-        }
-
-        .profile-image {
-            width: 100%;
-            max-width: 400px;
-            aspect-ratio: 4/5;
-            border-radius: var(--radius-lg);
-            background: white;
-            box-shadow: var(--shadow-lg);
-            position: relative;
-            overflow: hidden;
-            border: 1px solid var(--line);
-        }
-
-        .profile-photo {
-            width: 100%;
-            height: 100%;
-            border-radius: var(--radius-lg);
-            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
             display: flex;
-            align-items: center;
             justify-content: center;
-            color: var(--muted);
-            font-size: 1.2rem;
-            text-align: center;
-            padding: 1rem;
+            align-items: center;
+            height: 100%;
         }
 
-        /* Stats - Clean design */
-        .stats {
+        .profile-card {
+            width: 100%;
+            max-width: 450px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .profile-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-header {
+            background: var(--primary);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .profile-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .profile-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .profile-title {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+
+        .profile-body {
+            padding: 30px;
+        }
+
+        .profile-stats {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-top: 4rem;
+            gap: 20px;
+            margin-bottom: 25px;
         }
 
-        .stat-card {
-            background: white;
-            border: 1px solid var(--line);
-            border-radius: var(--radius);
-            padding: 2rem;
+        .stat {
             text-align: center;
-            box-shadow: var(--shadow-sm);
-            transition: all 0.3s ease;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
         }
 
         .stat-number {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--accent);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
             display: block;
-            margin-bottom: 0.5rem;
         }
 
         .stat-label {
-            color: var(--muted);
-            font-weight: 500;
-            font-size: 1rem;
+            font-size: 0.85rem;
+            color: var(--text);
+            margin-top: 5px;
         }
 
-        /* Services Section - Based on reference */
-        .services-section {
-            padding: 6rem 0;
-            background: white;
+        .profile-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .skill-tag {
+            background: #e9ecef;
+            color: var(--text);
+            padding: 6px 12px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* Services Tab */
+        .services-content {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
 
         .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
+            margin-bottom: 40px;
         }
 
         .section-title {
             font-size: 2.5rem;
-            font-weight: 800;
-            margin: 0 0 1.5rem;
-            line-height: 1.2;
-            color: var(--text);
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 15px;
         }
 
         .section-subtitle {
-            font-size: 1.25rem;
-            color: var(--muted);
-            max-width: 800px;
-            margin: 0 auto;
-            font-weight: 400;
+            font-size: 1.2rem;
+            color: var(--text);
+            max-width: 700px;
         }
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            flex: 1;
+            overflow-y: auto;
+            padding-right: 10px;
         }
 
         .service-card {
-            background: var(--bg1);
-            border-radius: var(--radius);
-            padding: 2.5rem 2rem;
-            text-align: center;
-            transition: all 0.3s ease;
-            border: 1px solid var(--line);
+            display: flex;
+            gap: 20px;
+            padding: 30px;
+            background: white;
+            border-radius: 12px;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
         }
 
         .service-card:hover {
             transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--accent-3);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
 
         .service-icon {
             width: 70px;
             height: 70px;
-            margin: 0 auto 1.5rem;
-            background: var(--gradient);
+            background: var(--primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            flex-shrink: 0;
+        }
+
+        .service-content h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .service-content p {
+            color: var(--text);
+            margin-bottom: 15px;
+        }
+
+        .service-features {
+            list-style: none;
+        }
+
+        .service-features li {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .service-features li i {
+            color: var(--accent);
+            font-size: 0.9rem;
+        }
+
+        /* Projects Tab */
+        .projects-content {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            flex: 1;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-image {
+            height: 150px;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+        }
+
+        .project-content {
+            padding: 25px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .project-description {
+            color: var(--text);
+            margin-bottom: 20px;
+            flex: 1;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .project-tag {
+            background: #e9ecef;
+            color: var(--text);
+            padding: 5px 10px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+        }
+
+        /* Contact Tab */
+        .contact-content {
+            height: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .contact-info h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .contact-info p {
+            color: var(--text);
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+
+        .contact-details {
+            list-style: none;
+        }
+
+        .contact-details li {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .contact-details li i {
+            width: 50px;
+            height: 50px;
+            background: #f8f9fa;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 1.75rem;
+            color: var(--accent);
+            font-size: 1.2rem;
         }
 
-        .service-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin: 0 0 1rem;
-            color: var(--text);
+        .contact-form {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
         }
 
-        .service-description {
-            color: var(--muted);
-            margin: 0;
-            line-height: 1.6;
+        .form-group {
+            margin-bottom: 20px;
         }
 
-        /* Platform Section - Based on reference */
-        .platform-section {
-            padding: 6rem 0;
-            background: var(--bg1);
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--primary);
         }
 
-        .platform-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: var(--transition);
         }
 
-        .platform-text {
-            max-width: 500px;
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(0, 180, 216, 0.1);
         }
 
-        .platform-image {
-            background: var(--gradient);
-            border-radius: var(--radius-lg);
-            height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-            font-weight: 700;
-            text-align: center;
-            padding: 2rem;
-            box-shadow: var(--shadow-lg);
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
         }
 
         /* Footer */
         footer {
-            background: var(--text);
+            background: var(--primary);
             color: white;
-            padding: 3rem 0;
-            text-align: center;
+            padding: 20px 0;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
         }
 
         .footer-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 2rem;
         }
 
-        .footer-links {
+        .footer-logo {
+            font-size: 1.2rem;
+            font-weight: 700;
             display: flex;
-            gap: 2rem;
-            list-style: none;
+            align-items: center;
+            gap: 10px;
         }
 
-        .footer-link {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-            transition: color 0.3s ease;
+        .footer-logo i {
+            color: var(--accent);
         }
 
-        .footer-link:hover {
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-link {
+            width: 36px;
+            height: 36px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
         }
 
         /* Responsive */
-        @media (max-width: 768px) {
-            .hero-grid {
+        @media (max-width: 992px) {
+            .home-content,
+            .contact-content {
                 grid-template-columns: 1fr;
-                gap: 3rem;
-                text-align: center;
+                gap: 40px;
             }
-            
-            .hero-content h1 {
+
+            .services-grid,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-text h1 {
                 font-size: 2.5rem;
             }
-            
-            .stats {
-                grid-template-columns: 1fr;
-            }
-            
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .nav-links {
+        }
+
+        @media (max-width: 768px) {
+            .nav-tabs {
                 display: none;
             }
-            
-            .services-grid {
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .profile-stats {
                 grid-template-columns: 1fr;
             }
-            
-            .platform-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            
-            .platform-text {
-                text-align: center;
-                max-width: 100%;
-            }
-            
+
             .footer-content {
                 flex-direction: column;
+                gap: 15px;
                 text-align: center;
             }
-            
-            .footer-links {
-                justify-content: center;
-            }
+        }
+
+        /* Scrollbar personalizado */
+        .tab-panel::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .tab-panel::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        .tab-panel::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 10px;
+        }
+
+        .tab-panel::-webkit-scrollbar-thumb:hover {
+            background: var(--secondary);
         }
     </style>
 </head>
 <body>
     <!-- Header -->
     <header>
-        <nav class="container">
-            <div class="nav">
-                <a href="index.html" class="brand">JOSE CARLOS</a>
-                <ul class="nav-links">
-                    <li><a href="index.html" class="nav-link active">Inicio</a></li>
-                    <li><a href="proyectos.html" class="nav-link">Proyectos</a></li>
-                    <li><a href="servicios.html" class="nav-link">Servicios</a></li>
-                    <li><a href="biografia.html" class="nav-link">Biografía</a></li>
-                    <li><a href="contacto.html" class="nav-link">Contacto</a></li>
+        <div class="container">
+            <div class="nav-container">
+                <a href="#" class="logo">
+                    <i class="fas fa-chart-line logo-icon"></i>
+                    Jose Carlos
+                </a>
+                <ul class="nav-tabs">
+                    <li class="nav-tab">
+                        <a class="tab-link active" data-tab="home">Inicio</a>
+                        <div class="nav-tab-indicator"></div>
+                    </li>
+                    <li class="nav-tab">
+                        <a class="tab-link" data-tab="services">Servicios</a>
+                        <div class="nav-tab-indicator"></div>
+                    </li>
+                    <li class="nav-tab">
+                        <a class="tab-link" data-tab="projects">Proyectos</a>
+                        <div class="nav-tab-indicator"></div>
+                    </li>
+                    <li class="nav-tab">
+                        <a class="tab-link" data-tab="contact">Contacto</a>
+                        <div class="nav-tab-indicator"></div>
+                    </li>
                 </ul>
             </div>
-        </nav>
+        </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
+    <!-- Main Content -->
+    <main class="main-content">
         <div class="container">
-            <div class="hero-grid">
-                <div class="hero-content">
-                    <div class="badge">
-                        📊 Estadística • Ciencia de Datos • Visualización
-                    </div>
-                    <h1>
-                        Transformo datos en <span class="highlight">decisiones inteligentes</span>
-                    </h1>
-                    <p class="subtitle">
-                        Estadístico especializado en visualización de datos, modelos predictivos y análisis geoespacial. 
-                        Construyo dashboards claros, reportes reproducibles y soluciones basadas en datos.
-                    </p>
-                    <div class="cta-buttons">
-                        <a href="proyectos.html" class="btn btn-primary">Ver Proyectos</a>
-                        <a href="#" class="btn btn-secondary">Descargar CV</a>
+            <div class="tab-content">
+                <!-- Home Tab -->
+                <div class="tab-panel active" id="home">
+                    <div class="home-content">
+                        <div class="hero-text">
+                            <h1>Transformo datos en <span class="highlight">decisiones inteligentes</span></h1>
+                            <p>Estadístico y científico de datos especializado en visualización, modelos predictivos y análisis geoespacial. Combino expertise técnico con capacidad de comunicación para entregar insights accionables.</p>
+                            <div class="cta-buttons">
+                                <a class="btn btn-primary tab-link" data-tab="contact">
+                                    <i class="fas fa-paper-plane"></i> Contactar
+                                </a>
+                                <a href="#" class="btn btn-secondary">
+                                    <i class="fas fa-download"></i> Descargar CV
+                                </a>
+                            </div>
+                        </div>
+                        <div class="profile-container">
+                            <div class="profile-card">
+                                <div class="profile-header">
+                                    <div class="profile-icon">
+                                        <i class="fas fa-user-tie"></i>
+                                    </div>
+                                    <div class="profile-name">Jose Carlos</div>
+                                    <div class="profile-title">Estadístico & Data Scientist</div>
+                                </div>
+                                <div class="profile-body">
+                                    <div class="profile-stats">
+                                        <div class="stat">
+                                            <span class="stat-number">3+</span>
+                                            <span class="stat-label">Años Experiencia</span>
+                                        </div>
+                                        <div class="stat">
+                                            <span class="stat-number">24</span>
+                                            <span class="stat-label">Proyectos</span>
+                                        </div>
+                                        <div class="stat">
+                                            <span class="stat-number">12</span>
+                                            <span class="stat-label">Tecnologías</span>
+                                        </div>
+                                    </div>
+                                    <p>Especializado en transformar datos complejos en soluciones empresariales claras y accionables.</p>
+                                    <div class="profile-skills">
+                                        <span class="skill-tag">Python</span>
+                                        <span class="skill-tag">R</span>
+                                        <span class="skill-tag">SQL</span>
+                                        <span class="skill-tag">Tableau</span>
+                                        <span class="skill-tag">Machine Learning</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="profile-container">
-                    <div class="profile-image">
-                        <div class="profile-photo">
-                            🧑‍💻<br>
-                            <span style="font-size: 1rem; margin-top: 1rem;">Jose Carlos<br>Estadístico & Data Scientist</span>
+
+                <!-- Services Tab -->
+                <div class="tab-panel" id="services">
+                    <div class="services-content">
+                        <div class="section-header">
+                            <h2 class="section-title">Servicios Especializados</h2>
+                            <p class="section-subtitle">Soluciones de datos personalizadas que se adaptan a tus objetivos empresariales específicos.</p>
+                        </div>
+                        
+                        <div class="services-grid">
+                            <div class="service-card">
+                                <div class="service-icon">
+                                    <i class="fas fa-database"></i>
+                                </div>
+                                <div class="service-content">
+                                    <h3>Análisis de Datos</h3>
+                                    <p>Transformo datos crudos en conjuntos listos para análisis mediante técnicas avanzadas de limpieza y preparación.</p>
+                                    <ul class="service-features">
+                                        <li><i class="fas fa-check"></i> Identificación de valores atípicos</li>
+                                        <li><i class="fas fa-check"></i> Imputación de datos faltantes</li>
+                                        <li><i class="fas fa-check"></i> Análisis exploratorio</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="service-card">
+                                <div class="service-icon">
+                                    <i class="fas fa-chart-bar"></i>
+                                </div>
+                                <div class="service-content">
+                                    <h3>Visualización</h3>
+                                    <p>Creo dashboards personalizados que permiten explorar datos de manera intuitiva y tomar decisiones informadas.</p>
+                                    <ul class="service-features">
+                                        <li><i class="fas fa-check"></i> Visualizaciones interactivas</li>
+                                        <li><i class="fas fa-check"></i> Filtros y controles dinámicos</li>
+                                        <li><i class="fas fa-check"></i> Reportes visuales claros</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="service-card">
+                                <div class="service-icon">
+                                    <i class="fas fa-brain"></i>
+                                </div>
+                                <div class="service-content">
+                                    <h3>Modelado Predictivo</h3>
+                                    <p>Desarrollo modelos estadísticos y de machine learning para predecir comportamientos y tendencias futuras.</p>
+                                    <ul class="service-features">
+                                        <li><i class="fas fa-check"></i> Regresión y clasificación</li>
+                                        <li><i class="fas fa-check"></i> Series temporales</li>
+                                        <li><i class="fas fa-check"></i> Validación rigurosa</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="service-card">
+                                <div class="service-icon">
+                                    <i class="fas fa-map-marked-alt"></i>
+                                </div>
+                                <div class="service-content">
+                                    <h3>Análisis Geoespacial</h3>
+                                    <p>Analizo datos con componente espacial para identificar patrones geográficos y optimizar decisiones de ubicación.</p>
+                                    <ul class="service-features">
+                                        <li><i class="fas fa-check"></i> Análisis de densidad</li>
+                                        <li><i class="fas fa-check"></i> Optimización de rutas</li>
+                                        <li><i class="fas fa-check"></i> Mapas interactivos</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projects Tab -->
+                <div class="tab-panel" id="projects">
+                    <div class="projects-content">
+                        <div class="section-header">
+                            <h2 class="section-title">Proyectos Destacados</h2>
+                            <p class="section-subtitle">Una selección de trabajos recientes que demuestran mi expertise en análisis de datos y visualización.</p>
+                        </div>
+                        
+                        <div class="projects-grid">
+                            <div class="project-card">
+                                <div class="project-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <div class="project-content">
+                                    <h3 class="project-title">Dashboard de Ventas</h3>
+                                    <p class="project-description">Sistema de visualización interactiva para seguimiento de KPIs de ventas en tiempo real.</p>
+                                    <div class="project-tags">
+                                        <span class="project-tag">Tableau</span>
+                                        <span class="project-tag">SQL</span>
+                                        <span class="project-tag">ETL</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="project-card">
+                                <div class="project-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                                    <i class="fas fa-robot"></i>
+                                </div>
+                                <div class="project-content">
+                                    <h3 class="project-title">Modelo de Clasificación</h3>
+                                    <p class="project-description">Algoritmo de machine learning para predecir la probabilidad de abandono de clientes.</p>
+                                    <div class="project-tags">
+                                        <span class="project-tag">Python</span>
+                                        <span class="project-tag">Scikit-learn</span>
+                                        <span class="project-tag">Pandas</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="project-card">
+                                <div class="project-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                                    <i class="fas fa-map-marked-alt"></i>
+                                </div>
+                                <div class="project-content">
+                                    <h3 class="project-title">Análisis Geoespacial</h3>
+                                    <p class="project-description">Estudio de optimización de ubicaciones para expansión de red de tiendas minoristas.</p>
+                                    <div class="project-tags">
+                                        <span class="project-tag">R</span>
+                                        <span class="project-tag">GIS</span>
+                                        <span class="project-tag">Leaflet</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Tab -->
+                <div class="tab-panel" id="contact">
+                    <div class="contact-content">
+                        <div class="contact-info">
+                            <h2>Trabajemos juntos</h2>
+                            <p>Estoy disponible para proyectos freelance y oportunidades a tiempo completo. No dudes en contactarme para discutir cómo puedo aportar valor a tu organización.</p>
+                            <ul class="contact-details">
+                                <li>
+                                    <i class="fas fa-envelope"></i>
+                                    <div>
+                                        <strong>Email</strong>
+                                        <div>jose.carlos@ejemplo.com</div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <i class="fas fa-phone"></i>
+                                    <div>
+                                        <strong>Teléfono</strong>
+                                        <div>+34 123 456 789</div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <div>
+                                        <strong>Ubicación</strong>
+                                        <div>Madrid, España</div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="contact-form">
+                            <form id="contactForm">
+                                <div class="form-group">
+                                    <label for="name">Nombre</label>
+                                    <input type="text" id="name" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" id="email" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="subject">Asunto</label>
+                                    <input type="text" id="subject" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="message">Mensaje</label>
+                                    <textarea id="message" class="form-control" required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary" style="width: 100%;">
+                                    <i class="fas fa-paper-plane"></i> Enviar Mensaje
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
-            
-            <div class="stats">
-                <div class="stat-card">
-                    <span class="stat-number" data-target="3">0</span>
-                    <span class="stat-label">Años de Experiencia</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number" data-target="15">0</span>
-                    <span class="stat-label">Proyectos Completados</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number" data-target="8">0</span>
-                    <span class="stat-label">Tecnologías Dominadas</span>
-                </div>
-            </div>
         </div>
-    </section>
-
-    <!-- Services Section -->
-    <section class="services-section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">SERVICIOS QUE SE ADAPTAN A TUS NECESIDADES</h2>
-                <p class="section-subtitle">
-                    Desde análisis exploratorios hasta modelos predictivos complejos, ofrezco soluciones de datos 
-                    personalizadas que se ajustan a tus objetivos y recursos específicos.
-                </p>
-            </div>
-            
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">📈</div>
-                    <h3 class="service-title">Visualización de Datos</h3>
-                    <p class="service-description">
-                        Dashboards interactivos y reportes visuales que transforman datos complejos en insights accionables 
-                        y fáciles de entender para la toma de decisiones.
-                    </p>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">🔮</div>
-                    <h3 class="service-title">Modelos Predictivos</h3>
-                    <p class="service-description">
-                        Desarrollo de modelos estadísticos y de machine learning para predecir tendencias, clasificar 
-                        información y optimizar procesos empresariales.
-                    </p>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">🗺️</div>
-                    <h3 class="service-title">Análisis Geoespacial</h3>
-                    <p class="service-description">
-                        Análisis de datos con componente espacial para identificar patrones geográficos, optimizar 
-                        ubicaciones y entender dinámicas territoriales.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Platform Section -->
-    <section class="platform-section">
-        <div class="container">
-            <div class="platform-content">
-                <div class="platform-text">
-                    <h2 class="section-title">METODOLOGÍA CENTRADA EN EL CLIENTE</h2>
-                    <p class="section-subtitle">
-                        Mi enfoque te mantiene en control total del proceso. Utilizo herramientas modernas y 
-                        metodologías reproducibles para garantizar transparencia, validación y replicabilidad 
-                        en cada análisis.
-                    </p>
-                    <div class="cta-buttons">
-                        <a href="contacto.html" class="btn btn-primary">Contactar Ahora</a>
-                    </div>
-                </div>
-                
-                <div class="platform-image">
-                    Análisis Reproducible &<br>Dashboards Interactivos
-                </div>
-            </div>
-        </div>
-    </section>
+    </main>
 
     <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="copyright">
-                    &copy; 2025 Jose Carlos • Estadístico & Data Scientist
+                <div class="footer-logo">
+                    <i class="fas fa-chart-line"></i>
+                    Jose Carlos
                 </div>
-                <ul class="footer-links">
-                    <li><a href="#" class="footer-link">LinkedIn</a></li>
-                    <li><a href="#" class="footer-link">GitHub</a></li>
-                    <li><a href="#" class="footer-link">Contacto</a></li>
-                </ul>
+                <div class="social-links">
+                    <a href="#" class="social-link">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </div>
+                <div class="copyright">
+                    &copy; 2025 Jose Carlos. Todos los derechos reservados.
+                </div>
             </div>
         </div>
     </footer>
 
     <script>
-        // Animate stats on scroll
-        const animateStats = () => {
-            const stats = document.querySelectorAll('.stat-number');
-            stats.forEach(stat => {
-                const target = parseInt(stat.getAttribute('data-target'));
-                let current = 0;
-                const increment = target / 30;
-                const updateStat = () => {
-                    if (current < target) {
-                        current += increment;
-                        stat.textContent = Math.ceil(current);
-                        requestAnimationFrame(updateStat);
-                    } else {
-                        stat.textContent = target;
-                    }
-                };
-                updateStat();
-            });
-        };
-
-        // Trigger animation when stats come into view
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    animateStats();
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.5 });
-
-        const statsSection = document.querySelector('.stats');
-        if (statsSection) {
-            observer.observe(statsSection);
-        }
-
-        // Header scroll effect
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(255, 255, 255, 0.98)';
-                header.style.boxShadow = 'var(--shadow-md)';
-            } else {
-                header.style.background = 'rgba(255, 255, 255, 0.98)';
-                header.style.boxShadow = 'none';
+        // Sistema de pestañas
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabLinks = document.querySelectorAll('.tab-link');
+            const tabPanels = document.querySelectorAll('.tab-panel');
+            
+            // Función para cambiar de pestaña
+            function switchTab(tabId) {
+                // Remover clase active de todas las pestañas y paneles
+                tabLinks.forEach(link => link.classList.remove('active'));
+                tabPanels.forEach(panel => panel.classList.remove('active'));
+                
+                // Activar la pestaña y panel correspondiente
+                document.querySelector(`.tab-link[data-tab="${tabId}"]`).classList.add('active');
+                document.getElementById(tabId).classList.add('active');
             }
+            
+            // Event listeners para los enlaces de pestañas
+            tabLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const tabId = this.getAttribute('data-tab');
+                    switchTab(tabId);
+                });
+            });
+            
+            // Form submission
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('¡Gracias por tu mensaje! Me pondré en contacto contigo pronto.');
+                    contactForm.reset();
+                });
+            }
+            
+            // Inicializar con la pestaña de inicio activa
+            switchTab('home');
         });
     </script>
 </body>
