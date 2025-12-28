@@ -431,7 +431,7 @@
             box-shadow: 0 10px 20px rgba(181, 154, 122, 0.2);
         }
 
-        /* ===== ESTADÍSTICAS ACTUALIZADAS ===== */
+        /* ===== ESTADÍSTICAS VISIBLES INMEDIATAMENTE ===== */
         .stats {
             display: flex;
             gap: 3rem;
@@ -1228,15 +1228,15 @@
                 </div>
                 <div class="stats">
                     <div class="stat-item">
-                        <span class="stat-number" data-count="3">0</span>
+                        <span class="stat-number" data-count="3" id="counter-projects">0</span>
                         <span class="stat-label">Proyectos</span>
                     </div>
                     <div class="stat-item">
-                        <span class="stat-number" data-count="95">0</span>
+                        <span class="stat-number" data-count="95" id="counter-satisfaction">0</span>
                         <span class="stat-label">Satisfacción</span>
                     </div>
                     <div class="stat-item">
-                        <span class="stat-number" data-count="2">0</span>
+                        <span class="stat-number" data-count="2" id="counter-experience">0</span>
                         <span class="stat-label">Años Experiencia</span>
                     </div>
                 </div>
@@ -1643,12 +1643,18 @@
             });
         });
 
-        // Contadores animados
-        const animateCounters = () => {
+        // ===== CONTADORES ACTUALIZADOS =====
+        // Se ejecutan inmediatamente al cargar la página
+        function animateCounters() {
             const counters = document.querySelectorAll('.stat-number');
+            
             counters.forEach(counter => {
+                // Establecer el valor inicial en 0 (por si acaso)
+                counter.textContent = '0';
+                
                 const target = parseInt(counter.getAttribute('data-count'));
-                const increment = target / 100;
+                const duration = 2000; // 2 segundos
+                const increment = target / (duration / 16); // 60fps
                 let current = 0;
                 
                 const timer = setInterval(() => {
@@ -1658,53 +1664,11 @@
                         clearInterval(timer);
                     }
                     counter.textContent = Math.floor(current);
-                }, 20);
+                }, 16); // Aproximadamente 60fps
             });
-        };
-
-        // Observador para animar contadores cuando son visibles
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    animateCounters();
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.5 });
-
-        const heroSection = document.querySelector('.hero');
-        if (heroSection) {
-            observer.observe(heroSection);
         }
 
-        // Efecto header al hacer scroll
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if (window.scrollY > 50) {
-                header.style.backgroundColor = 'rgba(248, 246, 242, 0.98)';
-                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.05)';
-            } else {
-                header.style.backgroundColor = 'rgba(248, 246, 242, 0.98)';
-                header.style.boxShadow = 'none';
-            }
-        });
-
-        // Animación de timeline
-        const timelineItems = document.querySelectorAll('.timeline-item');
-        const timelineObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    timelineObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.2 });
-
-        timelineItems.forEach(item => {
-            timelineObserver.observe(item);
-        });
-
-        // Animación de entrada para tarjetas
+        // ===== ANIMACIÓN DE ENTRADA PARA TARJETAS =====
         const animateCards = () => {
             const cards = document.querySelectorAll('.service-card, .project-card, .contact-card, .skill-column, .card-item');
             
@@ -1728,13 +1692,32 @@
             cards.forEach(card => cardObserver.observe(card));
         };
 
-        // Iniciar animaciones cuando la página cargue
+        // ===== ANIMACIÓN DE TIMELINE =====
+        const timelineItems = document.querySelectorAll('.timeline-item');
+        const timelineObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    timelineObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.2 });
+
+        timelineItems.forEach(item => {
+            timelineObserver.observe(item);
+        });
+
+        // ===== INICIAR ANIMACIONES CUANDO LA PÁGINA CARGUE =====
         window.addEventListener('load', () => {
+            // 1. Animar contadores inmediatamente (sin esperar)
+            animateCounters();
+            
+            // 2. Animar tarjetas
             animateCards();
             
-            // Efecto de escritura para el título
+            // 3. Efecto de escritura para el título (opcional)
             const heroTitle = document.querySelector('.hero h1');
-            if (heroTitle) {
+            if (heroTitle && !sessionStorage.getItem('titleAnimated')) {
                 const originalText = heroTitle.textContent;
                 heroTitle.textContent = '';
                 let i = 0;
@@ -1748,16 +1731,44 @@
                 }
                 
                 setTimeout(typeWriter, 500);
+                sessionStorage.setItem('titleAnimated', 'true');
             }
         });
 
-        // Parallax effect suave
+        // ===== EFECTO HEADER AL HACER SCROLL =====
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.backgroundColor = 'rgba(248, 246, 242, 0.98)';
+                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.05)';
+            } else {
+                header.style.backgroundColor = 'rgba(248, 246, 242, 0.98)';
+                header.style.boxShadow = 'none';
+            }
+        });
+
+        // ===== PARALLAX EFFECT SUAVE =====
         window.addEventListener('scroll', () => {
             const scrolled = window.pageYOffset;
             const hero = document.querySelector('.hero');
             
             if (hero) {
                 hero.style.backgroundPositionY = scrolled * 0.5 + 'px';
+            }
+        });
+
+        // ===== GARANTIZAR QUE LOS CONTADORES SE ACTUALICEN =====
+        // También ejecutar los contadores después de 100ms por si acaso
+        setTimeout(animateCounters, 100);
+        
+        // Y si el usuario vuelve al top de la página, también
+        window.addEventListener('scroll', () => {
+            if (window.scrollY < 100) {
+                // Solo verificar si los contadores están en 0
+                const projectsCounter = document.getElementById('counter-projects');
+                if (projectsCounter && projectsCounter.textContent === '0') {
+                    animateCounters();
+                }
             }
         });
     </script>
