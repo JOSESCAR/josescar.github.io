@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>José Carlos | Estadístico & Analista de Datos</title>
+    <title>José Gallegos | Statistics Engineering Student</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lato:wght@300;400;700&family=Cormorant+Garamond:wght@400;500;600;700&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* ===== RESET Y VARIABLES ===== */
         * {
             margin: 0;
             padding: 0;
@@ -28,6 +27,15 @@
             --radius: 8px;
         }
 
+        [data-theme="dark"] {
+            --cream: #1a1a1a;
+            --white: #2a2a2a;
+            --navy: #E8D9B5;
+            --charcoal: #F8F6F2;
+            --gray: #B8B8B8;
+            --shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+
         body {
             font-family: 'Lato', sans-serif;
             background-color: var(--cream);
@@ -35,9 +43,9 @@
             line-height: 1.7;
             overflow-x: hidden;
             scroll-behavior: smooth;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        /* ===== TIPOGRAFÍA ELEGANTE ===== */
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Cormorant Garamond', serif;
             font-weight: 600;
@@ -76,7 +84,6 @@
             padding: 0 2rem;
         }
 
-        /* ===== HEADER CON LOGO DINÁMICO ===== */
         header {
             position: fixed;
             top: 0;
@@ -88,6 +95,11 @@
             padding: 1.5rem 0;
             border-bottom: 1px solid rgba(181, 154, 122, 0.15);
             transition: var(--transition);
+        }
+
+        [data-theme="dark"] header {
+            background: rgba(26, 26, 26, 0.98);
+            border-bottom: 1px solid rgba(181, 154, 122, 0.3);
         }
 
         .header-container {
@@ -126,7 +138,6 @@
             transition: all 0.5s ease;
         }
 
-        /* Anillo exterior dinámico */
         .logo-symbol::before {
             content: '';
             position: absolute;
@@ -149,7 +160,6 @@
             transition: opacity 0.5s ease;
         }
 
-        /* Anillo interior pulsante */
         .logo-symbol::after {
             content: '';
             position: absolute;
@@ -163,7 +173,6 @@
             z-index: 0;
         }
 
-        /* Efecto de brillo interno */
         .logo-symbol .glow {
             position: absolute;
             width: 100%;
@@ -178,7 +187,6 @@
             transition: opacity 0.5s ease;
         }
 
-        /* Texto dentro del círculo */
         .logo-symbol .logo-initials {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.2rem;
@@ -190,7 +198,6 @@
             letter-spacing: 1px;
         }
 
-        /* Hover effects */
         .logo:hover .logo-symbol::before {
             opacity: 1;
         }
@@ -211,7 +218,6 @@
                 0 10px 30px rgba(181, 154, 122, 0.2);
         }
 
-        /* ===== ANIMACIONES DEL LOGO ===== */
         @keyframes rotateRing {
             0% {
                 transform: rotate(0deg);
@@ -232,7 +238,6 @@
             }
         }
 
-        /* ===== CONTENIDO DEL LOGO ===== */
         .logo-text {
             position: relative;
             padding-left: 0.5rem;
@@ -253,7 +258,6 @@
             width: 100%;
         }
 
-        /* ===== NAVEGACIÓN MINIMALISTA ===== */
         nav {
             display: flex;
             align-items: center;
@@ -291,6 +295,27 @@
             width: 100%;
         }
 
+        .theme-toggle {
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+
+        .theme-toggle:hover {
+            background: var(--gold);
+            color: var(--cream);
+            transform: rotate(20deg);
+        }
+
         .nav-btn {
             background: transparent;
             color: var(--gold);
@@ -324,12 +349,11 @@
             cursor: pointer;
         }
 
-        /* ===== HERO ELEGANTE ===== */
         .hero {
             padding: 12rem 0 6rem;
             position: relative;
             overflow: hidden;
-            background: linear-gradient(135deg, var(--cream) 0%, #F1ECE4 100%);
+            background: linear-gradient(135deg, var(--cream) 0%, var(--white) 100%);
             min-height: 90vh;
             display: flex;
             align-items: center;
@@ -431,7 +455,6 @@
             box-shadow: 0 10px 20px rgba(181, 154, 122, 0.2);
         }
 
-        /* ===== ESTADÍSTICAS VISIBLES INMEDIATAMENTE ===== */
         .stats {
             display: flex;
             gap: 3rem;
@@ -468,7 +491,6 @@
             color: var(--gold);
         }
 
-        /* ===== IMAGEN DE PERFIL ELEGANTE ===== */
         .hero-image-container {
             position: relative;
             width: 100%;
@@ -505,10 +527,17 @@
             transition: var(--transition);
         }
 
-        /* ===== SECCIONES MINIMALISTAS ===== */
         section {
             padding: 5rem 0;
             width: 100%;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .section-header {
@@ -541,7 +570,6 @@
             background: var(--gold);
         }
 
-        /* ===== SOBRE MÍ ACTUALIZADO ===== */
         .about {
             background: var(--cream);
         }
@@ -589,7 +617,6 @@
             color: var(--cream);
         }
 
-        /* ===== HABILIDADES ACTUALIZADAS ===== */
         .skills {
             background: var(--white);
         }
@@ -638,7 +665,6 @@
             color: var(--cream);
         }
 
-        /* ===== PROYECTOS ELEGANTES ===== */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -701,7 +727,6 @@
             color: var(--cream);
         }
 
-        /* ===== TIMELINE ACTUALIZADA ===== */
         .timeline {
             background: var(--cream);
         }
@@ -787,7 +812,6 @@
             transform: translateX(-50%);
         }
 
-        /* ===== CURSOS ACTUALIZADOS ===== */
         .courses, .awards {
             background: var(--cream);
         }
@@ -824,7 +848,6 @@
             display: block;
         }
 
-        /* ===== CONTACTO ELEGANTE ===== */
         .contact {
             background: var(--white);
         }
@@ -914,12 +937,15 @@
             width: 100%;
         }
 
-        /* ===== FOOTER ELEGANTE ===== */
         footer {
             background: var(--navy);
             color: var(--cream);
             padding: 4rem 0 2rem;
             position: relative;
+        }
+
+        [data-theme="dark"] footer {
+            background: #0d0d0d;
         }
 
         footer::before {
@@ -974,7 +1000,6 @@
             letter-spacing: 1px;
         }
 
-        /* ===== ANIMACIONES SUAVES ===== */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -986,7 +1011,6 @@
             }
         }
 
-        /* ===== RESPONSIVE ===== */
         @media (max-width: 1200px) {
             .container {
                 max-width: 100%;
@@ -1177,15 +1201,14 @@
     </style>
 </head>
 <body>
-    <!-- Header con Logo Dinámico -->
     <header>
         <div class="container header-container">
             <a href="#home" class="logo">
                 <div class="logo-symbol">
                     <div class="glow"></div>
-                    <div class="logo-initials">JC</div>
+                    <div class="logo-initials">JG</div>
                 </div>
-                <div class="logo-text">José Carlos</div>
+                <div class="logo-text">José Gallegos</div>
             </a>
             
             <button class="mobile-menu-btn" id="mobileMenuBtn">
@@ -1199,22 +1222,24 @@
                 <a href="#projects" class="nav-link">Proyectos</a>
                 <a href="#timeline" class="nav-link">Trayectoria</a>
                 <a href="#courses" class="nav-link">Cursos</a>
-                <a href="#awards" class="nav-link">Reconocimientos</a>
+                <a href="#awards" class="nav-link">Premios</a>
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
                 <a href="#contact" class="nav-btn">Contactar</a>
             </nav>
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="container hero-container">
             <div class="hero-content">
-                <div class="hero-badge">Estudiante de Ingeniería en Estadística</div>
+                <div class="hero-badge">Statistics Engineering Student – ESPOCH</div>
                 <h1>Transformo datos en decisiones estratégicas</h1>
                 <p>
-                    Especialista en análisis estadístico avanzado, visualización de datos 
-                    y desarrollo de soluciones de machine learning. Combino rigor científico 
-                    con diseño intuitivo para crear dashboards ejecutivos y modelos predictivos.
+                    Especializado en análisis estadístico avanzado, machine learning y visualización de datos. 
+                    Combino rigor científico con diseño intuitivo para crear dashboards ejecutivos y modelos predictivos 
+                    que impulsan decisiones basadas en evidencia.
                 </p>
                 <div class="hero-buttons">
                     <a href="#projects" class="btn btn-primary">
@@ -1228,7 +1253,7 @@
                 </div>
                 <div class="stats">
                     <div class="stat-item">
-                        <span class="stat-number" data-count="3" id="counter-projects">0</span>
+                        <span class="stat-number" data-count="5" id="counter-projects">0</span>
                         <span class="stat-label">Proyectos</span>
                     </div>
                     <div class="stat-item">
@@ -1236,7 +1261,7 @@
                         <span class="stat-label">Satisfacción</span>
                     </div>
                     <div class="stat-item">
-                        <span class="stat-number" data-count="2" id="counter-experience">0</span>
+                        <span class="stat-number" data-count="3" id="counter-experience">0</span>
                         <span class="stat-label">Años Experiencia</span>
                     </div>
                 </div>
@@ -1250,16 +1275,15 @@
         </div>
     </section>
 
-    <!-- About Section -->
     <section class="about" id="about">
         <div class="container">
             <div class="section-header">
                 <div class="section-label">Sobre Mí</div>
                 <h2>Estudiante de Ingeniería en Estadística - ESPOCH</h2>
                 <p>
-                    Formación sólida en estadística aplicada, ciencia de datos y toma de decisiones basada en evidencia. 
-                    Proyectos orientados a educación, salud y desarrollo social. Especializado en limpieza e integración 
-                    de grandes volúmenes de datos, modelado estadístico y diseño de dashboards ejecutivos.
+                    Actualmente en octavo semestre, con especialización en análisis de datos, machine learning, 
+                    modelado estadístico y visualización. Formación sólida en estadística aplicada, ciencia de datos 
+                    y toma de decisiones basada en evidencia. Proyectos orientados a educación, salud y desarrollo social.
                 </p>
             </div>
             <div class="services-grid">
@@ -1268,129 +1292,127 @@
                         <i class="fas fa-chart-bar"></i>
                     </div>
                     <h3>Investigación Estadística</h3>
-                    <p>Limpieza e integración de grandes volúmenes de datos con R y Python para investigación experimental.</p>
+                    <p>Limpieza e integración de grandes volúmenes de datos con R y Python. Modelado estadístico, simulaciones y análisis predictivo para investigación experimental.</p>
                 </div>
 
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-brain"></i>
                     </div>
-                    <h3>Visualización de Datos</h3>
-                    <p>Diseño de dashboards en Power BI y automatización de reportes para toma de decisiones basada en evidencia.</p>
+                    <h3>Machine Learning & BI</h3>
+                    <p>Desarrollo de modelos predictivos y dashboards interactivos en Power BI. Integración de IA para optimizar procesos y automatización de reportes.</p>
                 </div>
 
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-users"></i>
                     </div>
-                    <h3>Liderazgo Académico</h3>
-                    <p>Presidencia estudiantil y coordinación de eventos internacionales de estadística a nivel institucional.</p>
+                    <h3>Liderazgo & Colaboración Global</h3>
+                    <p>Experiencia en equipos multidisciplinarios internacionales. Presidencia estudiantil y coordinación de eventos internacionales de estadística.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Skills Section -->
     <section class="skills" id="skills">
         <div class="container">
             <div class="section-header">
-                <div class="section-label">Habilidades</div>
-                <h2>Lenguajes y Herramientas</h2>
-                <p>Lenguajes de programación, frameworks y software que utilizo habitualmente en proyectos.</p>
+                <div class="section-label">Habilidades Técnicas</div>
+                <h2>Lenguajes, Software y Competencias</h2>
+                <p>Stack tecnológico y herramientas que utilizo en proyectos de análisis de datos y ciencia de datos.</p>
             </div>
 
             <div class="skills-grid">
                 <div class="skill-column">
-                    <h4>Lenguajes</h4>
+                    <h4>Lenguajes & Frameworks</h4>
                     <div class="skill-list">
-                        <span class="skill-badge">RStudio</span>
+                        <span class="skill-badge">RStudio (Advanced)</span>
                         <span class="skill-badge">Python</span>
-                        <span class="skill-badge">HTML</span>
-                        <span class="skill-badge">CSS</span>
-                        <span class="skill-badge">JSON</span>
                         <span class="skill-badge">SQL</span>
+                        <span class="skill-badge">HTML & CSS</span>
+                        <span class="skill-badge">Quarto</span>
+                        <span class="skill-badge">Shiny (R)</span>
+                        <span class="skill-badge">pandas</span>
+                        <span class="skill-badge">scikit-learn</span>
+                        <span class="skill-badge">matplotlib</span>
                     </div>
                 </div>
 
                 <div class="skill-column">
-                    <h4>Software</h4>
+                    <h4>Software & Plataformas</h4>
                     <div class="skill-list">
                         <span class="skill-badge">Power BI</span>
                         <span class="skill-badge">Looker Studio</span>
-                        <span class="skill-badge">Docker</span>
-                        <span class="skill-badge">Atlas.ti</span>
-                        <span class="skill-badge">Microsoft</span>
-                        <span class="skill-badge">LaTeX</span>
-                        <span class="skill-badge">Minitab</span>
+                        <span class="skill-badge">Excel (Advanced)</span>
                         <span class="skill-badge">SPSS</span>
-                        <span class="skill-badge">Jamovi</span>
+                        <span class="skill-badge">Minitab</span>
                         <span class="skill-badge">Tableau</span>
-                        <span class="skill-badge">Git</span>
-                        <span class="skill-badge">Huggingface</span>
-                        <span class="skill-badge">Render</span>
-                        <span class="skill-badge">API</span>
+                        <span class="skill-badge">Atlas.ti</span>
+                        <span class="skill-badge">PostgreSQL</span>
+                        <span class="skill-badge">Kubo</span>
+                        <span class="skill-badge">LaTeX</span>
                     </div>
                 </div>
 
                 <div class="skill-column">
-                    <h4>Competencias</h4>
+                    <h4>Competencias Blandas</h4>
                     <div class="skill-list">
                         <span class="skill-badge">Comunicación Efectiva</span>
                         <span class="skill-badge">Pensamiento Analítico</span>
+                        <span class="skill-badge">Colaboración Global</span>
                         <span class="skill-badge">Liderazgo</span>
-                        <span class="skill-badge">Autogestión</span>
-                        <span class="skill-badge">Proactividad</span>
                         <span class="skill-badge">Adaptabilidad</span>
-                        <span class="skill-badge">Trabajo Colaborativo</span>
-                        <span class="skill-badge">Machine Learning</span>
-                        <span class="skill-badge">Visualización de Datos</span>
+                        <span class="skill-badge">Autogestión</span>
+                        <span class="skill-badge">Transparencia de Datos</span>
+                        <span class="skill-badge">Ética Profesional</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Projects Section -->
     <section class="projects" id="projects">
         <div class="container">
             <div class="section-header">
                 <div class="section-label">Portafolio</div>
                 <h2>Proyectos Destacados</h2>
                 <p>
-                    Una selección de trabajos recientes que demuestran mi experiencia 
-                    en análisis de datos y visualización.
+                    Una selección de trabajos que demuestran mi experiencia en análisis estadístico, 
+                    machine learning y visualización de datos.
                 </p>
             </div>
             
             <div class="projects-grid">
                 <div class="project-card">
                     <div class="project-image">
-                        <i class="fas fa-chart-line"></i>
+                        <i class="fas fa-satellite"></i>
                     </div>
                     <div class="project-content">
-                        <h3>Predicción Regional</h3>
-                        <p>Modelo de machine learning para predicción de seguridad regional usando R, caret y MLP.</p>
+                        <h3>AgroDash - NASA Earth Observation</h3>
+                        <p>Sistema de monitoreo de humedad del suelo usando datos satelitales SMAP de NASA. Desarrollado con Python, xarray y folium para visualización geoespacial interactiva.</p>
                         <div class="project-tags">
-                            <span class="tag">R</span>
-                            <span class="tag">caret</span>
-                            <span class="tag">MLP</span>
-                            <span class="tag">Machine Learning</span>
+                            <span class="tag">Python</span>
+                            <span class="tag">xarray</span>
+                            <span class="tag">folium</span>
+                            <span class="tag">NASA SMAP</span>
+                            <span class="tag">Geospatial</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="project-card">
                     <div class="project-image">
-                        <i class="fas fa-leaf"></i>
+                        <i class="fas fa-chart-line"></i>
                     </div>
                     <div class="project-content">
-                        <h3>AgroDash (EO/SMAP)</h3>
-                        <p>Sistema de monitoreo de humedad de suelo con datos satelitales NASA usando Python y xarray.</p>
+                        <h3>Modelo de Predicción Regional</h3>
+                        <p>Modelo de machine learning para predicción de indicadores de seguridad regional. Implementado con R, caret y redes neuronales MLP.</p>
                         <div class="project-tags">
-                            <span class="tag">Python</span>
-                            <span class="tag">xarray</span>
-                            <span class="tag">folium</span>
-                            <span class="tag">NASA Data</span>
+                            <span class="tag">R</span>
+                            <span class="tag">caret</span>
+                            <span class="tag">MLP</span>
+                            <span class="tag">Machine Learning</span>
+                            <span class="tag">Predictive Analytics</span>
                         </div>
                     </div>
                 </div>
@@ -1400,13 +1422,29 @@
                         <i class="fas fa-chart-pie"></i>
                     </div>
                     <div class="project-content">
-                        <h3>Dashboards Ejecutivos</h3>
-                        <p>Suite de dashboards con KPIs empresariales y storytelling de datos en Power BI.</p>
+                        <h3>Dashboards Ejecutivos Power BI</h3>
+                        <p>Suite de dashboards interactivos con KPIs empresariales, storytelling de datos y automatización de reportes. Modelado de datos avanzado con DAX.</p>
                         <div class="project-tags">
                             <span class="tag">Power BI</span>
                             <span class="tag">DAX</span>
                             <span class="tag">SQL</span>
-                            <span class="tag">Visualización</span>
+                            <span class="tag">Business Intelligence</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-microscope"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Investigación: Producción de Hongos</h3>
+                        <p>Artículo científico publicado: "Evaluación de la producción de hongos ostra blanca bajo diferentes sustratos: diseño completamente al azar vs simulación".</p>
+                        <div class="project-tags">
+                            <span class="tag">R</span>
+                            <span class="tag">Experimental Design</span>
+                            <span class="tag">Simulation</span>
+                            <span class="tag">Scientific Research</span>
                         </div>
                     </div>
                 </div>
@@ -1414,125 +1452,159 @@
         </div>
     </section>
 
-    <!-- Timeline Section -->
     <section class="timeline" id="timeline">
         <div class="container">
             <div class="section-header">
-                <div class="section-label">Trayectoria</div>
-                <h2>Mi Recorrido Profesional</h2>
+                <div class="section-label">Trayectoria Profesional</div>
+                <h2>Experiencia y Liderazgo</h2>
             </div>
             
             <div class="timeline-list">
                 <div class="timeline-item">
-                    <div class="timeline-year">2025</div>
+                    <div class="timeline-year">Present</div>
                     <div class="timeline-content">
-                        <h3>Investigador Independiente - ESPOCH</h3>
-                        <p>Limpieza e integración de grandes volúmenes de datos con R y Python. Modelado estadístico y simulaciones para investigación experimental.</p>
+                        <h3>Investigador Independiente</h3>
+                        <p><strong>ESPOCH, Riobamba</strong></p>
+                        <p>Estructuración, integración y limpieza de grandes datasets. Análisis estadístico y modelado predictivo con R y Python aplicando técnicas de machine learning. Desarrollo de dashboards interactivos en Power BI para monitoreo de indicadores de impacto.</p>
                     </div>
                 </div>
 
                 <div class="timeline-item">
                     <div class="timeline-year">2024</div>
                     <div class="timeline-content">
-                        <h3>Asistente de Visualización y Datos</h3>
-                        <p>Grupo BI-DATA – ESPOCH. Diseño y gestión de bases de datos para proyectos sociales y educativos. Automatización de reportes en Power BI y R.</p>
+                        <h3>AI & Business Intelligence Integration</h3>
+                        <p><strong>MIES-ESPOCH Project</strong></p>
+                        <p>Integración de soluciones de inteligencia artificial para aplicaciones de business intelligence. Aplicación de técnicas de machine learning para optimizar procesos de toma de decisiones. Colaboración con equipos multidisciplinarios en estrategias data-driven.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">2023</div>
+                    <div class="timeline-content">
+                        <h3>Asistente de Investigación y Visualización</h3>
+                        <p><strong>Grupo de Investigación BI-DATA – ESPOCH</strong></p>
+                        <p>Diseño y mantenimiento de bases de datos para proyectos sociales y educativos. Análisis avanzado en R/Python y producción de dashboards interactivos en Power BI para apoyar toma de decisiones y políticas basadas en evidencia.</p>
                     </div>
                 </div>
 
                 <div class="timeline-item">
                     <div class="timeline-year">2023-2024</div>
                     <div class="timeline-content">
-                        <h3>Practicante de Análisis Estadístico</h3>
-                        <p>Sociedad Ecuatoriana de Estadística. Análisis de datos nacionales con R y Excel para proyectos técnicos y académicos.</p>
+                        <h3>Practicante Profesional</h3>
+                        <p><strong>Sociedad Ecuatoriana de Estadística</strong></p>
+                        <p>Consolidación y análisis de datasets nacionales en Excel y R. Preparación de reportes técnicos para proyectos académicos y aplicados. Colaboración en iniciativas para mejorar la calidad de datos y promover la alfabetización estadística.</p>
                     </div>
                 </div>
 
                 <div class="timeline-item">
-                    <div class="timeline-year">2023-2025</div>
+                    <div class="timeline-year">2022-2024</div>
                     <div class="timeline-content">
-                        <h3>Presidente Estudiantil</h3>
-                        <p>Asociación de Estudiantes de Estadística – ESPOCH. Liderazgo de proyectos de impacto académico y social a nivel institucional.</p>
+                        <h3>Presidente y Vicepresidente Estudiantil</h3>
+                        <p><strong>Asociación de Estudiantes de Estadística – ESPOCH</strong></p>
+                        <p>Liderazgo de proyectos de impacto académico y social a nivel institucional. Fomento de colaboración con autoridades nacionales y redes internacionales. Gestión de iniciativas estudiantiles para el desarrollo profesional.</p>
                     </div>
                 </div>
 
                 <div class="timeline-item">
                     <div class="timeline-year">2023-2024</div>
                     <div class="timeline-content">
-                        <h3>Coordinador Logístico de Eventos</h3>
-                        <p>Congresos Internacionales de Estadística – ESPOCH. Gestión operativa de congresos internacionales con ponentes de alto nivel.</p>
+                        <h3>Organizador Logístico</h3>
+                        <p><strong>Congresos Internacionales de Estadística – ESPOCH</strong></p>
+                        <p>Coordinación de eventos académicos con ponentes internacionales. Aseguramiento de calidad operativa, cumplimiento de cronogramas y difusión de reportes técnicos. Gestión de logística para congresos de alto nivel.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">2024</div>
+                    <div class="timeline-content">
+                        <h3>Participante</h3>
+                        <p><strong>Congreso Latinoamericano de Sociedades Estadísticas</strong></p>
+                        <p>Interacción con estadísticos e investigadores líderes de Latinoamérica. Participación en discusiones sobre tendencias y desafíos en ciencia de datos y estadística aplicada.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Courses Section -->
     <section class="courses" id="courses">
         <div class="container">
             <div class="section-header">
-                <div class="section-label">Formación</div>
+                <div class="section-label">Formación Continua</div>
                 <h2>Cursos y Certificaciones</h2>
-                <p>Cursos y certificaciones que complementan mi perfil profesional.</p>
+                <p>Capacitaciones especializadas que complementan mi perfil profesional en ciencia de datos y estadística.</p>
             </div>
             <div class="cards-grid">
                 <div class="card-item">
-                    <h4>Power BI para Negocios</h4>
-                    <p>Modelado de datos, visualización interactiva, medidas DAX y análisis de KPI.</p>
-                    <div class="course-meta">2024 · Certificación Internacional</div>
+                    <h4>IBM AI Fundamentals</h4>
+                    <p>+40 horas de formación en fundamentos de inteligencia artificial. Conceptos básicos y aplicaciones de IA en análisis de datos y machine learning.</p>
+                    <div class="course-meta">2024 · Guayerd · Certificate</div>
                 </div>
                 <div class="card-item">
-                    <h4>Automatización de Reportes con Quarto y RStudio</h4>
-                    <p>Generación de reportes reproducibles y dinámicos en entornos de datos.</p>
-                    <div class="course-meta">2023 · Certificación</div>
+                    <h4>Power BI para Negocios</h4>
+                    <p>Dashboards interactivos, modelado de datos avanzado, medidas DAX y monitoreo de KPIs empresariales. Storytelling con datos para ejecutivos.</p>
+                    <div class="course-meta">2024 · Certificate</div>
+                </div>
+                <div class="card-item">
+                    <h4>Automatización con Quarto y RStudio</h4>
+                    <p>Generación de reportes reproducibles y dinámicos en entornos de datos. Automatización de flujos de trabajo estadísticos.</p>
+                    <div class="course-meta">2023 · Certificate</div>
                 </div>
                 <div class="card-item">
                     <h4>Machine Learning con R y Python</h4>
-                    <p>Aplicación de modelos supervisados y no supervisados para análisis predictivo.</p>
-                    <div class="course-meta">2023 · Certificación</div>
+                    <p>Implementación de algoritmos supervisados y no supervisados. Aplicación de técnicas de machine learning para análisis predictivo.</p>
+                    <div class="course-meta">2023 · Certificate</div>
                 </div>
                 <div class="card-item">
-                    <h4>Fundamentos de Inteligencia Artificial</h4>
-                    <p>Conceptos básicos y aplicaciones de IA en el análisis de datos.</p>
-                    <div class="course-meta">2025 · En curso</div>
+                    <h4>Modelado de Valores Extremos en R</h4>
+                    <p>Estimación de riesgos y análisis de eventos raros. Aplicación de teoría de valores extremos para toma de decisiones bajo incertidumbre.</p>
+                    <div class="course-meta">Certificate</div>
+                </div>
+                <div class="card-item">
+                    <h4>Métodos Biplot</h4>
+                    <p>Visualización e interpretación de datos multivariados. Técnicas avanzadas de reducción de dimensionalidad para análisis exploratorio.</p>
+                    <div class="course-meta">Certificate</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Awards Section -->
     <section class="awards" id="awards">
         <div class="container">
             <div class="section-header">
                 <div class="section-label">Reconocimientos</div>
                 <h2>Premios y Distinciones</h2>
-                <p>Algunos premios y menciones obtenidas en mi trayectoria.</p>
+                <p>Reconocimientos obtenidos en competencias académicas y eventos internacionales de innovación.</p>
             </div>
             <div class="cards-grid">
                 <div class="card-item">
-                    <h4>Segundo Lugar Nacional</h4>
-                    <p>Concurso Académico de Estadística Aplicada 2023. Premio por solución innovadora a retos de datos reales mediante análisis avanzado.</p>
-                    <div class="award-date">2023</div>
+                    <h4>🥈 2º Lugar - NASA Space Apps Challenge</h4>
+                    <p>Ganadores locales del desafío global de la NASA. Desarrollo de soluciones innovadoras para desafíos espaciales usando ciencia de datos y tecnología.</p>
+                    <div class="award-date">2024 · Local Winners</div>
                 </div>
                 <div class="card-item">
-                    <h4>Segundo Lugar - Hackathon NASA Spaces Challenge</h4>
-                    <p>Nivel interuniversitario. Desarrollo de soluciones innovadoras para desafíos espaciales.</p>
-                    <div class="award-date">2024</div>
+                    <h4>🌍 Nominación Global - NASA Challenge</h4>
+                    <p>Reconocimiento por nominación a nivel global en el concurso internacional NASA Space Apps Challenge.</p>
+                    <div class="award-date">2024 · Global Nomination</div>
                 </div>
                 <div class="card-item">
-                    <h4>Reconocimiento por Participación</h4>
-                    <p>Concurso de Estadística Aplicada, 2da edición. Por la calidad del trabajo presentado.</p>
-                    <div class="award-date">2023</div>
+                    <h4>🥈 2º Lugar Nacional - Estadística Aplicada</h4>
+                    <p>Concurso Académico de Estadística Aplicada 2023. Premio por solución innovadora a retos de datos reales mediante análisis estadístico avanzado.</p>
+                    <div class="award-date">2023 · National Award</div>
                 </div>
                 <div class="card-item">
-                    <h4>Nominación Global - NASA Spaces Challenge</h4>
-                    <p>Reconocimiento por estar nominado a nivel global en el concurso internacional de la NASA.</p>
-                    <div class="award-date">2024</div>
+                    <h4>💻 Hackathon IBM Interuniversitario</h4>
+                    <p>Participación en hackathon IBM con estudiantes de múltiples universidades. Colaboración en soluciones tecnológicas innovadoras.</p>
+                    <div class="award-date">2024 · Participation Certificate</div>
+                </div>
+                <div class="card-item">
+                    <h4>📊 Reconocimiento por Participación</h4>
+                    <p>Concurso de Estadística Aplicada, 2da edición. Reconocimiento por la calidad del trabajo presentado y metodología aplicada.</p>
+                    <div class="award-date">2024 · Participation Certificate</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section class="contact" id="contact">
         <div class="container">
             <div class="section-header">
@@ -1551,7 +1623,7 @@
                     </div>
                     <div class="contact-label">WhatsApp</div>
                     <div class="contact-value">
-                        <a href="https://wa.me/593963281463?text=Hola%20José%20Carlos,%20vi%20tu%20portafolio%20y%20me%20gustaría%20contactarte" target="_blank">
+                        <a href="https://wa.me/593963281463?text=Hola%20José,%20vi%20tu%20portafolio%20y%20me%20gustaría%20contactarte" target="_blank">
                             +593 96 328 1463
                         </a>
                     </div>
@@ -1563,8 +1635,8 @@
                     </div>
                     <div class="contact-label">LinkedIn</div>
                     <div class="contact-value">
-                        <a href="https://www.linkedin.com/in/jose-carlos-351a09295" target="_blank">
-                            jose-carlos-351a09295
+                        <a href="https://www.linkedin.com/in/carlos-meza-351a09295" target="_blank">
+                            carlos-meza-351a09295
                         </a>
                     </div>
                 </div>
@@ -1584,28 +1656,45 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="container footer-container">
-            <span class="signature-footer">José Carlos</span>
+            <span class="signature-footer">José Gallegos</span>
             <div class="footer-contact-info">
-                <p>Teléfono: +593 96 328 1463</p>
+                <p>Ecuador · +593 96 328 1463</p>
                 <p>
                     LinkedIn: 
-                    <a href="https://www.linkedin.com/in/jose-carlos-351a09295" target="_blank">
-                        jose-carlos-351a09295
+                    <a href="https://www.linkedin.com/in/carlos-meza-351a09295" target="_blank">
+                        carlos-meza-351a09295
                     </a>
                 </p>
                 <p>Email: carlosmexa302@gmail.com</p>
+                <p>Portfolio: <a href="https://josescar.github.io/" target="_blank">josescar.github.io</a></p>
             </div>
             <div class="footer-copyright">
-                © 2025 José Carlos - Estudiante de Ingeniería en Estadística - ESPOCH
+                © 2025 José Gallegos - Statistics Engineering Student - ESPOCH
             </div>
         </div>
     </footer>
 
     <script>
-        // Menú móvil
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+        const themeIcon = themeToggle.querySelector('i');
+        
+        // Check for saved theme preference
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        html.setAttribute('data-theme', currentTheme);
+        themeIcon.className = currentTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+        
+        themeToggle.addEventListener('click', () => {
+            const theme = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+            html.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            themeIcon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+        });
+
+        // Mobile Menu
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const mainNav = document.getElementById('mainNav');
         
@@ -1616,7 +1705,6 @@
                 : '<i class="fas fa-bars"></i>';
         });
 
-        // Cerrar menú al hacer clic en enlace
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', () => {
                 mainNav.classList.remove('active');
@@ -1624,7 +1712,7 @@
             });
         });
 
-        // Scroll suave
+        // Smooth Scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 if (this.getAttribute('href') === '#') return;
@@ -1643,18 +1731,16 @@
             });
         });
 
-        // ===== CONTADORES ACTUALIZADOS =====
-        // Se ejecutan inmediatamente al cargar la página
+        // Counters Animation
         function animateCounters() {
             const counters = document.querySelectorAll('.stat-number');
             
             counters.forEach(counter => {
-                // Establecer el valor inicial en 0 (por si acaso)
                 counter.textContent = '0';
                 
                 const target = parseInt(counter.getAttribute('data-count'));
-                const duration = 2000; // 2 segundos
-                const increment = target / (duration / 16); // 60fps
+                const duration = 2000;
+                const increment = target / (duration / 16);
                 let current = 0;
                 
                 const timer = setInterval(() => {
@@ -1664,11 +1750,11 @@
                         clearInterval(timer);
                     }
                     counter.textContent = Math.floor(current);
-                }, 16); // Aproximadamente 60fps
+                }, 16);
             });
         }
 
-        // ===== ANIMACIÓN DE ENTRADA PARA TARJETAS =====
+        // Animate Cards on Scroll
         const animateCards = () => {
             const cards = document.querySelectorAll('.service-card, .project-card, .contact-card, .skill-column, .card-item');
             
@@ -1692,7 +1778,21 @@
             cards.forEach(card => cardObserver.observe(card));
         };
 
-        // ===== ANIMACIÓN DE TIMELINE =====
+        // Animate Sections on Scroll
+        const sections = document.querySelectorAll('section');
+        const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        sections.forEach(section => {
+            sectionObserver.observe(section);
+        });
+
+        // Timeline Animation
         const timelineItems = document.querySelectorAll('.timeline-item');
         const timelineObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -1707,15 +1807,12 @@
             timelineObserver.observe(item);
         });
 
-        // ===== INICIAR ANIMACIONES CUANDO LA PÁGINA CARGUE =====
+        // Initialize on Load
         window.addEventListener('load', () => {
-            // 1. Animar contadores inmediatamente (sin esperar)
             animateCounters();
-            
-            // 2. Animar tarjetas
             animateCards();
             
-            // 3. Efecto de escritura para el título (opcional)
+            // Hero Title Typing Effect (optional)
             const heroTitle = document.querySelector('.hero h1');
             if (heroTitle && !sessionStorage.getItem('titleAnimated')) {
                 const originalText = heroTitle.textContent;
@@ -1735,19 +1832,17 @@
             }
         });
 
-        // ===== EFECTO HEADER AL HACER SCROLL =====
+        // Header Shadow on Scroll
         window.addEventListener('scroll', () => {
             const header = document.querySelector('header');
             if (window.scrollY > 50) {
-                header.style.backgroundColor = 'rgba(248, 246, 242, 0.98)';
                 header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.05)';
             } else {
-                header.style.backgroundColor = 'rgba(248, 246, 242, 0.98)';
                 header.style.boxShadow = 'none';
             }
         });
 
-        // ===== PARALLAX EFFECT SUAVE =====
+        // Parallax Effect
         window.addEventListener('scroll', () => {
             const scrolled = window.pageYOffset;
             const hero = document.querySelector('.hero');
@@ -1757,14 +1852,11 @@
             }
         });
 
-        // ===== GARANTIZAR QUE LOS CONTADORES SE ACTUALICEN =====
-        // También ejecutar los contadores después de 100ms por si acaso
+        // Re-animate counters
         setTimeout(animateCounters, 100);
         
-        // Y si el usuario vuelve al top de la página, también
         window.addEventListener('scroll', () => {
             if (window.scrollY < 100) {
-                // Solo verificar si los contadores están en 0
                 const projectsCounter = document.getElementById('counter-projects');
                 if (projectsCounter && projectsCounter.textContent === '0') {
                     animateCounters();
