@@ -848,6 +848,17 @@
             display: block;
         }
 
+        .card-item a, .project-card a {
+            color: var(--gold);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: var(--transition);
+        }
+
+        .card-item a:hover, .project-card a:hover {
+            border-bottom: 1px solid var(--gold);
+        }
+
         .contact {
             background: var(--white);
         }
@@ -1385,6 +1396,22 @@
             <div class="projects-grid">
                 <div class="project-card">
                     <div class="project-image">
+                        <i class="fas fa-gavel"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3><a href="https://doi.org/10.31876/rcs.v32i2.45585" target="_blank">Predicción de Incidencia Delictiva — Región Interandina</a></h3>
+                        <p>Modelos de regresión logística y redes neuronales para la predicción de criminalidad en la región interandina de Ecuador. Publicado en la Revista de Ciencias Sociales (Q2), Vol. 32(2), 429-446. Presentado como ponencia internacional en el II Congreso de Estadística y Ciencia de Datos (UNALM, Perú).</p>
+                        <div class="project-tags">
+                            <span class="tag">R</span>
+                            <span class="tag">Regresión Logística</span>
+                            <span class="tag">Redes Neuronales</span>
+                            <span class="tag">Revista Q2</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
                         <i class="fas fa-satellite"></i>
                     </div>
                     <div class="project-content">
@@ -1402,17 +1429,15 @@
 
                 <div class="project-card">
                     <div class="project-image">
-                        <i class="fas fa-chart-line"></i>
+                        <i class="fas fa-user-md"></i>
                     </div>
                     <div class="project-content">
-                        <h3>Modelo de Predicción Regional</h3>
-                        <p>Modelo de machine learning para predicción de indicadores de seguridad regional. Implementado con R, caret y redes neuronales MLP.</p>
+                        <h3><a href="https://laccei.org/laccei2026/" target="_blank">Score de Riesgo de Cáncer Cervical — LACCEI 2026</a></h3>
+                        <p>Score de riesgo de cáncer cervical reproducible basado en XGBoost. Paper estudiantil seleccionado entre los mejores trabajos de más de 3,000 presentados en la 24ª LACCEI International Multi-Conference (Santiago, Chile).</p>
                         <div class="project-tags">
-                            <span class="tag">R</span>
-                            <span class="tag">caret</span>
-                            <span class="tag">MLP</span>
+                            <span class="tag">XGBoost</span>
                             <span class="tag">Machine Learning</span>
-                            <span class="tag">Predictive Analytics</span>
+                            <span class="tag">Salud Pública</span>
                         </div>
                     </div>
                 </div>
@@ -1460,6 +1485,15 @@
             </div>
             
             <div class="timeline-list">
+                <div class="timeline-item">
+                    <div class="timeline-year">2026</div>
+                    <div class="timeline-content">
+                        <h3>Ponente Internacional</h3>
+                        <p><strong>II Congreso de Estadística y Ciencia de Datos – UNALM, Perú</strong></p>
+                        <p>Primera ponencia internacional. Trabajo aceptado en modalidad Comunicación: "Modelos de Regresión Logística y Redes Neuronales para la Predicción de Incidencia Delictiva: Región Interandina – Ecuador", publicado luego en la Revista de Ciencias Sociales (Q2).</p>
+                    </div>
+                </div>
+
                 <div class="timeline-item">
                     <div class="timeline-year">Present</div>
                     <div class="timeline-content">
@@ -1576,6 +1610,16 @@
                 <p>Reconocimientos obtenidos en competencias académicas y eventos internacionales de innovación.</p>
             </div>
             <div class="cards-grid">
+                <div class="card-item">
+                    <h4>🏆 1er Lugar - Concurso Académico de Estadística Aplicada (III Edición)</h4>
+                    <p>Ganador del Primer Lugar en el concurso de pósters de la Facultad de Ciencias, ESPOCH, con el póster sobre modelos de regresión logística y redes neuronales para la predicción de incidencia delictiva.</p>
+                    <div class="award-date">Junio 2026 · ESPOCH</div>
+                </div>
+                <div class="card-item">
+                    <h4>🌎 Selección entre los mejores trabajos - LACCEI 2026</h4>
+                    <p>Paper estudiantil elegido entre más de 3,000 trabajos presentados en la 24ª LACCEI International Multi-Conference for Engineering, Education and Technology. <a href="https://laccei.org/laccei2026/" target="_blank">Ver conferencia →</a></p>
+                    <div class="award-date">Julio 2026 · Santiago, Chile</div>
+                </div>
                 <div class="card-item">
                     <h4>🥈 2º Lugar - NASA Space Apps Challenge</h4>
                     <p>Ganadores locales del desafío global de la NASA. Desarrollo de soluciones innovadoras para desafíos espaciales usando ciencia de datos y tecnología.</p>
