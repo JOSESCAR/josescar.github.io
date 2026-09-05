@@ -218,12 +218,8 @@
         }
 
         @keyframes rotateRing {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         @keyframes pulseRing {
@@ -862,16 +858,20 @@
             background: var(--white);
         }
 
+        /* MODIFICADO: Uso de flexbox para centrar correctamente si hay 5 tarjetas */
         .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 2rem;
-            max-width: 54rem;
+            max-width: 65rem;
             margin: 0 auto;
             padding: 0 0.5rem;
         }
 
         .contact-card {
+            flex: 1 1 250px;
+            max-width: 320px;
             text-align: center;
             padding: 2rem 1.5rem;
             background: var(--cream);
@@ -926,6 +926,7 @@
             text-decoration: none;
             transition: var(--transition);
             position: relative;
+            font-size: 1rem;
         }
 
         .contact-value a::after {
@@ -997,6 +998,7 @@
             border-bottom: 1px solid transparent;
             transition: var(--transition);
             padding-bottom: 2px;
+            margin: 0 0.5rem;
         }
 
         .footer-contact-info a:hover {
@@ -1008,6 +1010,7 @@
             font-size: 0.85rem;
             margin-top: 2rem;
             letter-spacing: 1px;
+            text-align: center;
         }
 
         @keyframes fadeInUp {
@@ -1065,15 +1068,9 @@
         @media (max-width: 900px) {
             .services-grid,
             .projects-grid,
-            .skills-grid,
-            .cards-grid,
-            .contact-grid {
+            .cards-grid {
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
-            }
-            
-            .contact-grid {
-                grid-template-columns: repeat(2, 1fr);
             }
             
             .skills-grid {
@@ -1154,10 +1151,6 @@
             
             .container {
                 padding: 0 1.5rem;
-            }
-            
-            .contact-grid {
-                grid-template-columns: 1fr;
             }
             
             .skills-grid {
@@ -1692,24 +1685,51 @@
                         </a>
                     </div>
                 </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fab fa-orcid"></i>
+                    </div>
+                    <div class="contact-label">ORCID</div>
+                    <div class="contact-value">
+                        <a href="https://orcid.org/0009-0007-6831-6131" target="_blank">
+                            0009-0007-6831-6131
+                        </a>
+                    </div>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="contact-label">Google Scholar</div>
+                    <div class="contact-value">
+                        <a href="https://scholar.google.com/citations?hl=es&user=2bxi2ncAAAAJ&view_op=list_works&sortby=pubdate" target="_blank">
+                            Perfil Académico
+                        </a>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
 
     <footer>
-        <div class="footer-contact-info">
+        <div class="footer-container">
+            <div class="footer-contact-info">
                 <p>Ecuador · +593 96 328 1463</p>
                 <p>
-                    LinkedIn: 
-                    <a href="https://www.linkedin.com/in/josecarlos440" target="_blank">
-                        josecarlos440
-                    </a>
+                    LinkedIn: <a href="https://www.linkedin.com/in/josecarlos440" target="_blank">josecarlos440</a> |
+                    ORCID: <a href="https://orcid.org/0009-0007-6831-6131" target="_blank">0009-0007-6831-6131</a>
                 </p>
-                <p>Email: carlosmexa302@gmail.com</p>
+                <p>
+                    Google Scholar: <a href="https://scholar.google.com/citations?hl=es&user=2bxi2ncAAAAJ&view_op=list_works&sortby=pubdate" target="_blank">Perfil Académico</a>
+                </p>
+                <p>Email: <a href="mailto:carlosmexa302@gmail.com">carlosmexa302@gmail.com</a></p>
                 <p>Portfolio: <a href="https://josescar.github.io/" target="_blank">josescar.github.io</a></p>
             </div>
-        <div class="footer-copyright">
-                © 2025 José Gallegos - Statistics Engineering Student - ESPOCH
+            <div class="footer-copyright">
+                © 2026 José Gallegos - Statistics Engineering Student - ESPOCH
             </div>
         </div>
     </footer>
