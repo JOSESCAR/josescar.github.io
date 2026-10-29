@@ -4,2668 +4,583 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>José Carlos Gallegos Meza | Ingeniero Estadístico · Data Science & ML</title>
-    <meta name="description" content="Portafolio profesional de José Carlos Gallegos Meza, Ingeniero Estadístico (ESPOCH). Investigación Estadística, Machine Learning, Business Intelligence y Ciencia de Datos.">
-
-    <!-- Google Fonts: Display Arquitectónica + Serif Elegante + Sans + Mono + Firma -->
+    
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600;1,700&family=Dancing+Script:wght@600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Oswald:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=JetBrains+Mono:wght@400;500;600;700&family=Oswald:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* ==========================================================================
-           VARIABLES DE DISEÑO (ESTÉTICA DE LA REFERENCIA + ELEGANCIA DORADA/NAVY)
-           ========================================================================== */
         :root {
-            --outer-bg: #D4D0C8;        /* Fondo exterior piedra */
-            --canvas: #ECE8DF;          /* Crema editorial principal */
-            --canvas-alt: #E3DECFE6;    /* Crema secundario para alternar secciones */
-            --surface: #FAF8F4;         /* Blanco cálido para tarjetas y carpetas */
-            --ink: #14171A;             /* Negro tinta profundo */
-            --navy: #1C2B39;            /* Azul marino elegante original */
-            --charcoal: #2C3A47;
-            --muted: #55606E;           /* Gris texto */
-            --gold: #B59A7A;            /* Dorado clásico */
-            --dark-gold: #8B7355;
-            --light-gold: #E8D9B5;
-            --accent-yellow: #EFE064;   /* Amarillo suave editorial de la referencia */
+            --outer-bg: #D4D0C8;
+            --canvas: #ECE8DF;
+            --surface: #FAF8F4;
+            --ink: #14171A;
+            --muted: #55606E;
+            --gold: #B59A7A;
+            --accent-yellow: #EFE064;
             --stroke: 1.5px solid #14171A;
-            --stroke-soft: 1px solid rgba(20, 23, 26, 0.22);
-            --frame-border: 14px;
-            --radius-xl: 36px;
-            --radius-lg: 22px;
-            --radius-md: 16px;
-            --shadow-card: 0 14px 32px rgba(20, 23, 26, 0.07);
-            --shadow-hover: 0 22px 44px rgba(20, 23, 26, 0.14);
-            --transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+            --radius-xl: 32px;
+            --radius-lg: 18px;
+            --transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
         [data-theme="dark"] {
             --outer-bg: #090B0E;
             --canvas: #14181F;
-            --canvas-alt: #1A1F28;
             --surface: #212733;
             --ink: #F4F1EA;
-            --navy: #E8D9B5;
-            --charcoal: #E2DDD2;
             --muted: #A6B1BC;
             --gold: #C9AF8E;
-            --dark-gold: #E0C7A4;
             --accent-yellow: #E5C946;
             --stroke: 1.5px solid rgba(244, 241, 234, 0.42);
-            --stroke-soft: 1px solid rgba(244, 241, 234, 0.18);
-            --shadow-card: 0 14px 32px rgba(0, 0, 0, 0.45);
-            --shadow-hover: 0 22px 44px rgba(0, 0, 0, 0.65);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
+        /* Bloqueo estricto de pantalla completa para evitar scroll molesto */
+        html, body {
+            height: 100vh;
+            overflow: hidden;
             font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: var(--outer-bg);
             color: var(--ink);
-            line-height: 1.7;
-            padding: 1.3rem;
-            overflow-x: hidden;
-            transition: background-color 0.35s ease, color 0.35s ease;
+            padding: 0.8rem;
+            transition: background-color 0.3s ease;
         }
 
-        /* ==========================================================================
-           MARCO EXTERIOR GRUESO + NAVEGACIÓN DE MUESCA TRAPEZOIDAL (NOTCH)
-           ========================================================================== */
         .master-shell {
-            max-width: 1440px;
+            max-width: 1380px;
+            height: calc(100vh - 1.6rem);
             margin: 0 auto;
             background-color: var(--canvas);
-            border: var(--frame-border) solid #14171A;
+            border: var(--stroke);
             border-radius: var(--radius-xl);
-            position: relative;
+            display: flex;
+            flex-direction: column;
             overflow: hidden;
-            box-shadow: 0 32px 75px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.18);
         }
 
-        [data-theme="dark"] .master-shell {
-            border-color: #07090B;
-        }
-
+        /* Header superior compacto */
         .top-bar {
-            display: grid;
-            grid-template-columns: auto 1fr auto;
-            align-items: start;
-            padding: 0 2.2rem;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            pointer-events: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            border-bottom: var(--stroke);
+            background: var(--canvas);
+            flex-shrink: 0;
         }
 
-        .top-bar > * {
-            pointer-events: auto;
-        }
-
-        /* Logo estilo referencia a la izquierda con inicial JG y brillo */
         .brand-logo {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.7rem;
-            padding-top: 1rem;
-            text-decoration: none;
-            color: var(--ink);
-        }
-
-        .logo-symbol {
-            width: 2.55rem;
-            height: 2.55rem;
-            border-radius: 50%;
-            background: var(--surface);
-            border: var(--stroke);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            box-shadow: inset 0 0 0 2px var(--gold);
-            transition: var(--transition);
-        }
-
-        .logo-initials {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--ink);
-            letter-spacing: 1px;
-        }
-
-        .brand-logo:hover .logo-symbol {
-            background: var(--accent-yellow);
-            transform: scale(1.06);
-        }
-
-        .brand-logo:hover .logo-initials {
-            color: #14171A;
-        }
-
-        .brand-name {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.6rem;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            display: flex;
-            align-items: center;
-            gap: 0.35rem;
-        }
-
-        .brand-name .heart-dot {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            background: #14171A;
-            color: var(--accent-yellow);
-            font-size: 0.55rem;
-            transform: translateY(-4px);
-        }
-
-        [data-theme="dark"] .brand-name .heart-dot {
-            background: var(--accent-yellow);
-            color: #14171A;
-        }
-
-        /* Muesca Trapezoidal Central con TODOS los enlaces originales */
-        .notch-wrap {
-            display: flex;
-            justify-content: center;
-        }
-
-        .notch-nav {
-            background: #14171A;
-            color: #FAF8F4;
-            padding: 0.85rem 2.8rem 1.05rem;
-            clip-path: polygon(0 0, 100% 0, calc(100% - 26px) 100%, 26px 100%);
-            display: flex;
-            align-items: center;
-            gap: 1.45rem;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.16);
-        }
-
-        [data-theme="dark"] .notch-nav {
-            background: #07090B;
-        }
-
-        .notch-link {
-            color: rgba(250, 248, 244, 0.88);
-            text-decoration: none;
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.6px;
-            transition: var(--transition);
-            white-space: nowrap;
-        }
-
-        .notch-link:hover {
-            color: var(--accent-yellow);
-        }
-
-        /* Acciones derechas ("Join Us" pill + Theme Toggle) */
-        .top-actions {
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            gap: 0.65rem;
-            padding-top: 0.95rem;
-        }
-
-        .theme-toggle {
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            background: var(--surface);
-            border: var(--stroke);
-            color: var(--ink);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: var(--transition);
-            font-size: 0.9rem;
-        }
-
-        .theme-toggle:hover {
-            background: var(--accent-yellow);
-            color: #14171A;
-            transform: rotate(18deg);
-        }
-
-        .pill-top-btn {
-            background: var(--surface);
-            color: var(--ink);
-            border: var(--stroke);
-            padding: 0.5rem 1.4rem;
-            border-radius: 999px;
-            font-size: 0.76rem;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .pill-top-btn:hover {
-            background: #14171A;
-            color: var(--accent-yellow);
-            transform: translateY(-2px);
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            background: #14171A;
-            color: #FAF8F4;
-            border: none;
-            cursor: pointer;
-            font-size: 0.95rem;
-        }
-
-        /* ==========================================================================
-           HERO BENTO (5 ELEMENTOS EXACTOS DE LA IMAGEN + BIO COMPLETA + STATS)
-           ========================================================================== */
-        .hero-section {
-            padding: 1.8rem 2.6rem 3.2rem;
-            position: relative;
-        }
-
-        .hero-bento {
-            display: grid;
-            grid-template-columns: 1.16fr 0.84fr;
-            grid-template-rows: auto auto;
-            gap: 2.1rem 2.6rem;
-            position: relative;
-            align-items: stretch;
-        }
-
-        /* 1. Arriba Izquierda: Badge + Titular Gigante + Subtítulo */
-        .hero-headline-col {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding-right: 1rem;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.55rem;
-            align-self: flex-start;
-            background: var(--surface);
-            color: var(--ink);
-            border: var(--stroke);
-            padding: 0.35rem 0.95rem;
-            border-radius: 999px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.68rem;
-            font-weight: 700;
-            letter-spacing: 1.2px;
-            text-transform: uppercase;
-            margin-bottom: 1.1rem;
-        }
-
-        .hero-badge::before {
-            content: '';
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--gold);
-            border: 1px solid #14171A;
-        }
-
-        .hero-display-title {
-            font-family: 'Oswald', sans-serif;
-            font-size: clamp(2.85rem, 5.2vw, 4.95rem);
-            font-weight: 700;
-            line-height: 0.95;
-            letter-spacing: -0.02em;
-            text-transform: uppercase;
-            color: var(--ink);
-            margin-bottom: 1rem;
-        }
-
-        .hero-display-title .serif-elegance {
-            font-family: 'Cormorant Garamond', serif;
-            font-style: italic;
-            font-weight: 700;
-            text-transform: none;
-            color: var(--dark-gold);
-            font-size: 1.06em;
-        }
-
-        .hero-quick-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.85rem;
-            margin-top: 0.4rem;
-        }
-
-        /* 2. Arriba Derecha: Retrato con esquina superior izquierda biselada + Franja Amarilla (★★ / ↑) */
-        .hero-portrait-col {
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            padding-left: 1.5rem;
-        }
-
-        .portrait-card-ref {
-            width: 100%;
-            max-width: 355px;
-            height: 365px;
-            display: grid;
-            grid-template-columns: 1fr 42px;
-            border: var(--stroke);
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            background: var(--surface);
-            box-shadow: var(--shadow-card);
-            position: relative;
-            clip-path: polygon(38px 0, 100% 0, 100% 100%, 0 100%, 0 38px);
-        }
-
-        .portrait-card-ref::before {
-            content: '';
-            position: absolute;
-            top: 18px;
-            left: -12px;
-            width: 64px;
-            height: 2px;
-            background: #14171A;
-            transform: rotate(-45deg);
-            z-index: 5;
-        }
-
-        .portrait-img-box {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            background: linear-gradient(145deg, #2C3A47, #B59A7A);
-        }
-
-        .portrait-img-box img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center top;
-            filter: contrast(1.04) sepia(8%);
-            transition: transform 0.6s ease;
-        }
-
-        .portrait-card-ref:hover .portrait-img-box img {
-            transform: scale(1.04);
-        }
-
-        .portrait-name-tag {
-            position: absolute;
-            bottom: 12px;
-            left: 12px;
-            background: rgba(20, 23, 26, 0.86);
-            backdrop-filter: blur(6px);
-            color: #FAF8F4;
-            padding: 0.35rem 0.75rem;
-            border-radius: 8px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.65rem;
-            letter-spacing: 0.8px;
-            border-left: 3px solid var(--accent-yellow);
-        }
-
-        .yellow-side-bar {
-            background: var(--accent-yellow);
-            border-left: var(--stroke);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.9rem 0;
-            color: #14171A;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
-            font-weight: 700;
-        }
-
-        .yellow-side-bar .stars-stack {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-            font-size: 0.7rem;
-            line-height: 1;
-        }
-
-        .yellow-side-bar .vert-label {
-            writing-mode: vertical-rl;
-            text-orientation: mixed;
-            font-size: 0.6rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            opacity: 0.8;
-        }
-
-        /* 3. Centro: Sello Circular Giratorio + Estrella Negra Festoneada */
-        .center-seal-box {
-            position: absolute;
-            top: 48%;
-            left: 53%;
-            transform: translate(-50%, -50%);
-            z-index: 30;
-            width: 164px;
-            height: 164px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            pointer-events: none;
-        }
-
-        .seal-orbit-svg {
-            width: 100%;
-            height: 100%;
-            animation: spinOrbit 22s linear infinite;
-        }
-
-        .seal-orbit-svg text {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 7.6px;
-            font-weight: 700;
-            fill: var(--ink);
-            letter-spacing: 1.85px;
-            text-transform: uppercase;
-        }
-
-        .starburst-cta {
-            pointer-events: auto;
-            position: absolute;
-            width: 94px;
-            height: 94px;
-            text-decoration: none;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            transition: transform 0.35s ease;
-        }
-
-        .starburst-cta svg {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            fill: #14171A;
-            filter: drop-shadow(0 8px 16px rgba(0,0,0,0.22));
-            transition: fill 0.3s ease;
-        }
-
-        [data-theme="dark"] .starburst-cta svg {
-            fill: #07090B;
-            stroke: var(--gold);
-            stroke-width: 1.5px;
-        }
-
-        .starburst-cta:hover {
-            transform: scale(1.08) rotate(8deg);
-        }
-
-        .starburst-cta:hover svg {
-            fill: var(--dark-gold);
-        }
-
-        .starburst-text {
-            position: relative;
-            z-index: 2;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.55rem;
-            font-weight: 700;
-            line-height: 1.25;
-            letter-spacing: 0.7px;
-            text-transform: uppercase;
-            color: #FAF8F4;
-        }
-
-        .starburst-text .star-dot {
-            display: block;
-            color: var(--accent-yellow);
-            font-size: 0.55rem;
-            margin: 2px 0;
-        }
-
-        @keyframes spinOrbit {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        /* 4. Abajo Izquierda: Tarjeta Panorámica Biselada con Contadores + Círculo Amarillo Flotante */
-        .hero-bottom-left {
-            position: relative;
-            padding-right: 2.2rem;
-        }
-
-        .wide-visual-card {
-            width: 100%;
-            height: 275px;
-            border: var(--stroke);
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            position: relative;
-            background: var(--navy);
-            box-shadow: var(--shadow-card);
-            clip-path: polygon(0 0, calc(100% - 42px) 0, 100% 42px, 100% 100%, 0 100%);
-        }
-
-        .wide-visual-card::before {
-            content: '';
-            position: absolute;
-            top: 20px;
-            right: -14px;
-            width: 68px;
-            height: 2px;
-            background: #14171A;
-            transform: rotate(45deg);
-            z-index: 5;
-        }
-
-        .wide-visual-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: sepia(26%) saturate(82%) contrast(1.06) brightness(0.75);
-            transition: transform 0.65s ease;
-        }
-
-        .wide-visual-card:hover img {
-            transform: scale(1.05);
-        }
-
-        .wide-visual-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, rgba(20, 23, 26, 0.25) 0%, rgba(20, 23, 26, 0.9) 100%);
-            padding: 1.5rem 1.8rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            color: #FAF8F4;
-        }
-
-        .wide-visual-badge {
-            align-self: flex-start;
-            background: rgba(239, 224, 100, 0.18);
-            border: 1px solid var(--accent-yellow);
-            color: var(--accent-yellow);
-            padding: 0.25rem 0.75rem;
-            border-radius: 999px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* Contadores animados originales integrados en la tarjeta panorámica */
-        .hero-stats-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-            padding-top: 0.9rem;
-            border-top: 1px solid rgba(250, 248, 244, 0.22);
-        }
-
-        .stat-item {
-            text-align: left;
-        }
-
-        .stat-number {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2.35rem;
-            font-weight: 700;
-            color: #FAF8F4;
-            line-height: 1;
-        }
-
-        .stat-number::after {
-            content: '+';
-            color: var(--accent-yellow);
-            margin-left: 2px;
-        }
-
-        .stat-label {
-            display: block;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.65rem;
-            color: rgba(250, 248, 244, 0.8);
-            text-transform: uppercase;
-            letter-spacing: 1.2px;
-            margin-top: 0.25rem;
-        }
-
-        .floating-yellow-circle {
-            position: absolute;
-            right: -4px;
-            bottom: 24px;
-            width: 84px;
-            height: 84px;
-            border-radius: 50%;
-            background: var(--accent-yellow);
-            border: var(--stroke);
-            color: #14171A;
-            text-decoration: none;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            z-index: 10;
-            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
-            transition: var(--transition);
-        }
-
-        .floating-yellow-circle i {
-            font-size: 1.05rem;
-            margin-bottom: 3px;
-        }
-
-        .floating-yellow-circle span {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.54rem;
-            font-weight: 700;
-            line-height: 1.15;
-            text-transform: uppercase;
-        }
-
-        .floating-yellow-circle:hover {
-            transform: scale(1.08) rotate(-6deg);
-            background: #14171A;
-            color: var(--accent-yellow);
-        }
-
-        /* 5. Abajo Derecha: Tarjeta Carpeta con Pestaña Superior y Badge "ooo" */
-        .folder-shell {
-            position: relative;
-            padding-top: 28px;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-        }
-
-        .folder-dots-plate {
-            position: absolute;
-            top: 8px;
-            right: 0;
-            height: 34px;
-            padding: 0 1rem;
-            background: #14171A;
-            border-radius: 10px 10px 0 0;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            z-index: 1;
-        }
-
-        .folder-dots-plate span {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            border: 1.2px solid #FAF8F4;
-        }
-
-        .folder-box {
-            position: relative;
-            z-index: 2;
-            background: var(--surface);
-            border: var(--stroke);
-            border-radius: 0 var(--radius-md) var(--radius-md) var(--radius-md);
-            padding: 1.6rem 1.75rem 1.45rem;
-            box-shadow: var(--shadow-card);
-            transition: var(--transition);
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .folder-box:hover {
-            box-shadow: var(--shadow-hover);
-            transform: translateY(-3px);
-        }
-
-        .folder-tab-title {
-            position: absolute;
-            top: -29px;
-            left: -1.5px;
-            height: 30px;
-            background: var(--surface);
-            border-top: var(--stroke);
-            border-left: var(--stroke);
-            border-right: var(--stroke);
-            border-radius: 12px 14px 0 0;
-            padding: 0 1.8rem 0 1.2rem;
-            display: inline-flex;
-            align-items: center;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.7rem;
-            font-weight: 700;
-            letter-spacing: 0.7px;
-            text-transform: uppercase;
-            color: var(--ink);
-            clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 100%, 0 100%);
-            white-space: nowrap;
-        }
-
-        .folder-box p {
-            font-size: 0.95rem;
-            color: var(--muted);
-            margin-bottom: 1.25rem;
-            line-height: 1.72;
-        }
-
-        .folder-bottom-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-            padding-top: 0.85rem;
-            border-top: 1px dashed rgba(20, 23, 26, 0.2);
-        }
-
-        .black-circles-group {
-            display: flex;
-            align-items: center;
-        }
-
-        .black-circle-icon {
-            width: 34px;
-            height: 34px;
-            border-radius: 50%;
-            background: #14171A;
-            color: #FAF8F4;
-            border: 2px solid var(--surface);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.68rem;
-            font-weight: 700;
-            margin-right: -8px;
-        }
-
-        .pill-btn-yellow {
-            background: var(--surface);
-            color: var(--ink);
-            border: var(--stroke);
-            border-radius: 999px;
-            padding: 0.36rem 0.42rem 0.36rem 1.15rem;
-            font-size: 0.76rem;
-            font-weight: 700;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-            transition: var(--transition);
-        }
-
-        .pill-btn-yellow .y-circle {
-            width: 26px;
-            height: 26px;
-            border-radius: 50%;
-            background: var(--accent-yellow);
-            border: 1px solid #14171A;
-            color: #14171A;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.68rem;
-            transition: var(--transition);
-        }
-
-        .pill-btn-yellow:hover {
-            background: #14171A;
-            color: #FAF8F4;
-        }
-
-        .pill-btn-yellow:hover .y-circle {
-            transform: rotate(-45deg);
-        }
-
-        /* ==========================================================================
-           ESTILOS GENERALES DE SECCIÓN
-           ========================================================================== */
-        .page-section {
-            padding: 4.5rem 2.6rem;
-            border-top: var(--stroke);
-        }
-
-        .page-section.alt {
-            background: var(--canvas-alt);
-        }
-
-        .section-header-block {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            gap: 2rem;
-            margin-bottom: 3rem;
-            flex-wrap: wrap;
-        }
-
-        .section-label-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.72rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--dark-gold);
-            margin-bottom: 0.5rem;
-        }
-
-        .section-label-pill::before {
-            content: '★';
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: var(--accent-yellow);
-            border: 1px solid #14171A;
-            color: #14171A;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.58rem;
-        }
-
-        .section-main-title {
-            font-family: 'Oswald', sans-serif;
-            font-size: clamp(2.1rem, 3.6vw, 3.15rem);
-            text-transform: uppercase;
-            line-height: 1;
-            letter-spacing: -0.01em;
-            color: var(--ink);
-        }
-
-        .section-main-title em {
-            font-family: 'Cormorant Garamond', serif;
-            font-style: italic;
-            text-transform: none;
-            color: var(--dark-gold);
-            font-weight: 700;
-        }
-
-        .section-intro-text {
-            max-width: 42rem;
-            font-size: 0.98rem;
-            color: var(--muted);
-            line-height: 1.75;
-        }
-
-        /* ==========================================================================
-           SECCIÓN SOBRE MÍ (3 TARJETAS CARPETA COMPLETAS)
-           ========================================================================== */
-        .grid-3-cols {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2.3rem 1.9rem;
-        }
-
-        .folder-box h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.62rem;
-            font-weight: 700;
-            color: var(--ink);
-            margin-bottom: 0.75rem;
-            line-height: 1.2;
-        }
-
-        /* ==========================================================================
-           SECCIÓN HABILIDADES TÉCNICAS (LAS 3 COLUMNAS ORIGINALES ÍNTEGRAS)
-           ========================================================================== */
-        .skill-card-ref {
-            background: var(--surface);
-            border: var(--stroke);
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            box-shadow: var(--shadow-card);
-            display: flex;
-            flex-direction: column;
-            transition: var(--transition);
-        }
-
-        .skill-card-ref:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .skill-card-top {
-            background: #14171A;
-            color: #FAF8F4;
-            padding: 1.1rem 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .skill-card-top h4 {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.45rem;
             font-weight: 700;
-            color: #FAF8F4;
-        }
-
-        .skill-card-top .y-icon {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            background: var(--accent-yellow);
-            color: #14171A;
+            text-decoration: none;
+            color: var(--ink);
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-size: 0.8rem;
+            gap: 0.5rem;
         }
 
-        .skill-list {
-            padding: 1.6rem;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.55rem;
-        }
-
-        .skill-badge {
-            background: var(--canvas);
-            color: var(--ink);
-            border: 1px solid rgba(20, 23, 26, 0.3);
-            padding: 0.45rem 0.95rem;
+        .brand-logo span {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.6rem;
+            background: var(--accent-yellow);
+            border: 1px solid var(--ink);
+            padding: 0.15rem 0.5rem;
             border-radius: 999px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            transition: var(--transition);
+            text-transform: uppercase;
         }
 
-        .skill-badge.accent {
-            background: rgba(239, 224, 100, 0.35);
-            border-color: #14171A;
-        }
-
-        .skill-badge:hover {
-            background: #14171A;
-            color: var(--accent-yellow);
-            border-color: #14171A;
-        }
-
-        /* ==========================================================================
-           SECCIÓN PROYECTOS (9 PROYECTOS CON FOTOS REALES + FRANJA AMARILLA)
-           ========================================================================== */
-        .filter-bar {
+        /* Pestañas de navegación de vista única (Tabs) sin redundancias */
+        .view-tabs {
             display: flex;
-            flex-wrap: wrap;
-            gap: 0.65rem;
-            margin-bottom: 2.4rem;
-        }
-
-        .filter-btn {
+            gap: 0.5rem;
             background: var(--surface);
-            color: var(--ink);
             border: var(--stroke);
+            padding: 0.3rem;
             border-radius: 999px;
-            padding: 0.5rem 1.2rem;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: none;
+            padding: 0.45rem 1.1rem;
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.72rem;
             font-weight: 700;
             text-transform: uppercase;
             cursor: pointer;
+            border-radius: 999px;
+            color: var(--ink);
             transition: var(--transition);
         }
 
-        .filter-btn.active,
-        .filter-btn:hover {
-            background: #14171A;
+        .tab-btn.active, .tab-btn:hover {
+            background: var(--ink);
             color: var(--accent-yellow);
         }
 
-        .project-card-ref {
-            background: var(--surface);
-            border: var(--stroke);
-            border-radius: var(--radius-lg);
-            overflow: hidden;
+        .top-actions-right {
             display: flex;
-            flex-direction: column;
-            box-shadow: var(--shadow-card);
-            transition: var(--transition);
-        }
-
-        .project-card-ref:hover {
-            transform: translateY(-6px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .project-media-header {
-            height: 215px;
-            display: grid;
-            grid-template-columns: 1fr 38px;
-            border-bottom: var(--stroke);
-        }
-
-        .project-photo-wrap {
-            position: relative;
-            overflow: hidden;
-            background: var(--navy);
-        }
-
-        .project-photo-wrap img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: sepia(28%) saturate(80%) contrast(1.08) brightness(0.88);
-            transition: transform 0.6s ease, filter 0.45s ease;
-        }
-
-        .project-card-ref:hover .project-photo-wrap img {
-            transform: scale(1.06);
-            filter: sepia(10%) saturate(95%) contrast(1.05) brightness(0.96);
-        }
-
-        .project-floating-badge {
-            position: absolute;
-            top: 12px;
-            left: 12px;
-            background: rgba(20, 23, 26, 0.88);
-            color: var(--accent-yellow);
-            border: 1px solid rgba(239, 224, 100, 0.5);
-            padding: 0.25rem 0.7rem;
-            border-radius: 6px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.64rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-        }
-
-        .project-yellow-strip {
-            background: var(--accent-yellow);
-            border-left: var(--stroke);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
             align-items: center;
-            padding: 0.65rem 0;
-            color: #14171A;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.68rem;
-            font-weight: 700;
+            gap: 0.75rem;
         }
 
-        .project-body {
-            padding: 1.6rem;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-
-        .project-body h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.52rem;
-            font-weight: 700;
-            line-height: 1.22;
-            margin-bottom: 0.75rem;
-            color: var(--ink);
-        }
-
-        .project-body h3 a {
-            color: inherit;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .project-body h3 a:hover {
-            color: var(--dark-gold);
-        }
-
-        .project-body p {
-            font-size: 0.92rem;
-            color: var(--muted);
-            line-height: 1.68;
-            margin-bottom: 1.3rem;
-            flex-grow: 1;
-        }
-
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.4rem;
-            margin-bottom: 1.1rem;
-        }
-
-        .tag {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.64rem;
-            font-weight: 600;
-            background: var(--canvas);
-            color: var(--ink);
-            border: 1px solid rgba(20, 23, 26, 0.28);
-            padding: 0.2rem 0.58rem;
-            border-radius: 5px;
-            text-transform: uppercase;
-        }
-
-        .project-bottom-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 0.9rem;
-            border-top: 1px dashed rgba(20, 23, 26, 0.22);
-        }
-
-        /* ==========================================================================
-           LÍNEA DE TIEMPO COMPLETA (TODOS LOS 9 HITOS CON SU DESCRIPCIÓN ÍNTEGRA)
-           ========================================================================== */
-        .timeline-list {
-            max-width: 1080px;
-            margin: 0 auto;
-            position: relative;
-        }
-
-        .timeline-list::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: #14171A;
-            transform: translateX(-50%);
-        }
-
-        [data-theme="dark"] .timeline-list::before {
-            background: var(--gold);
-        }
-
-        .timeline-item {
-            display: flex;
-            margin-bottom: 2.6rem;
-            position: relative;
-        }
-
-        .timeline-item:nth-child(odd) {
-            justify-content: flex-start;
-            padding-right: calc(50% + 2.4rem);
-        }
-
-        .timeline-item:nth-child(even) {
-            justify-content: flex-end;
-            padding-left: calc(50% + 2.4rem);
-        }
-
-        .timeline-year-badge {
-            position: absolute;
-            top: 28px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--accent-yellow);
-            color: #14171A;
-            border: var(--stroke);
-            padding: 0.3rem 0.85rem;
-            border-radius: 999px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.72rem;
-            font-weight: 700;
-            z-index: 5;
-            white-space: nowrap;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
-        }
-
-        .timeline-card-wrap {
-            width: 100%;
-        }
-
-        /* ==========================================================================
-           CURSOS Y PREMIOS (GRILLA DE TARJETAS CARPETA COMPLETAS)
-           ========================================================================== */
-        .cards-grid-full {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
-            gap: 2.2rem 1.8rem;
-        }
-
-        .meta-pill {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.68rem;
-            font-weight: 700;
-            color: #14171A;
-            background: var(--accent-yellow);
-            border: 1px solid #14171A;
-            padding: 0.25rem 0.75rem;
-            border-radius: 999px;
-            display: inline-block;
-        }
-
-        /* ==========================================================================
-           CONTACTO (LAS 5 TARJETAS ORIGINALES) & FOOTER COMPLETO
-           ========================================================================== */
-        .contact-grid-5 {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1.5rem;
-        }
-
-        .contact-card-ref {
-            flex: 1 1 230px;
-            max-width: 260px;
-            background: var(--surface);
-            border: var(--stroke);
-            border-radius: var(--radius-lg);
-            padding: 1.8rem 1.3rem;
-            text-align: center;
-            box-shadow: var(--shadow-card);
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .contact-card-ref::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 6px;
-            background: var(--accent-yellow);
-            border-bottom: 1px solid #14171A;
-        }
-
-        .contact-card-ref:hover {
-            transform: translateY(-6px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .contact-icon-circle {
-            width: 3.3rem;
-            height: 3.3rem;
+        .icon-btn {
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
-            background: var(--canvas);
+            background: var(--surface);
             border: var(--stroke);
             color: var(--ink);
-            display: flex;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            margin: 0.4rem auto 1.1rem;
-            font-size: 1.25rem;
+            cursor: pointer;
             transition: var(--transition);
         }
 
-        .contact-card-ref:hover .contact-icon-circle {
+        .icon-btn:hover {
             background: var(--accent-yellow);
-            color: #14171A;
         }
 
-        .contact-label {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.68rem;
+        /* Contenedor central de vistas dinámicas (sin scroll general) */
+        .viewport-container {
+            flex-grow: 1;
+            position: relative;
+            overflow: hidden;
+            background: var(--canvas);
+        }
+
+        .view-panel {
+            position: absolute;
+            inset: 0;
+            padding: 2.2rem 2.8rem;
+            display: none;
+            flex-direction: column;
+            opacity: 0;
+            transition: opacity 0.25s ease;
+            overflow-y: auto; /* Solo scrollea internamente si un panel específico lo requiere */
+        }
+
+        .view-panel.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        /* PANEL 1: INICIO DIRECTO A PUBLICACIONES Y PERFIL */
+        .home-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 2.5rem;
+            height: 100%;
+            align-items: center;
+        }
+
+        .home-left h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(2.6rem, 4.8vw, 4.2rem);
+            line-height: 0.96;
             text-transform: uppercase;
-            letter-spacing: 1.8px;
-            color: var(--muted);
-            margin-bottom: 0.4rem;
-        }
-
-        .contact-value a {
-            color: var(--ink);
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 0.94rem;
-            word-break: break-word;
-            transition: color 0.3s ease;
-        }
-
-        .contact-value a:hover {
-            color: var(--dark-gold);
-        }
-
-        footer.master-footer {
-            background: #14171A;
-            color: #FAF8F4;
-            padding: 4rem 2.4rem 2.4rem;
-            text-align: center;
-            border-top: var(--stroke);
-        }
-
-        .signature-footer {
-            font-family: 'Dancing Script', cursive;
-            font-size: 3.4rem;
-            color: var(--accent-yellow);
             margin-bottom: 1rem;
+        }
+
+        .home-left h1 em {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            text-transform: none;
+            color: var(--gold);
+        }
+
+        .home-left p {
+            font-size: 0.98rem;
+            color: var(--muted);
+            margin-bottom: 1.8rem;
+            max-width: 36rem;
+        }
+
+        .quick-pub-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .pub-shortcut {
+            background: var(--surface);
+            border: var(--stroke);
+            padding: 0.9rem 1.2rem;
+            border-radius: var(--radius-lg);
+            text-decoration: none;
+            color: var(--ink);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .pub-shortcut:hover {
+            transform: translateX(6px);
+            background: var(--ink);
+            color: var(--accent-yellow);
+        }
+
+        .pub-shortcut strong {
+            font-size: 0.9rem;
             display: block;
         }
 
-        .footer-contact-info p {
-            color: rgba(250, 248, 244, 0.88);
-            font-size: 0.98rem;
-            margin-bottom: 0.45rem;
-        }
-
-        .footer-contact-info a {
-            color: var(--accent-yellow);
-            text-decoration: none;
-            border-bottom: 1px solid transparent;
-            transition: var(--transition);
-            margin: 0 0.35rem;
-        }
-
-        .footer-contact-info a:hover {
-            border-bottom-color: var(--accent-yellow);
-        }
-
-        .footer-copyright {
-            color: rgba(250, 248, 244, 0.65);
+        .pub-shortcut span {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.76rem;
-            margin-top: 2rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(250, 248, 244, 0.14);
-            letter-spacing: 0.8px;
+            font-size: 0.65rem;
+            opacity: 0.75;
         }
 
-        /* ==========================================================================
-           RESPONSIVE DESIGN
-           ========================================================================== */
-        @media (max-width: 1180px) {
-            .hero-bento {
-                grid-template-columns: 1fr;
-            }
-            .center-seal-box {
-                position: relative;
-                top: auto;
-                left: auto;
-                transform: none;
-                margin: -0.8rem auto;
-            }
-            .hero-portrait-col {
-                justify-content: center;
-                padding-left: 0;
-            }
-            .grid-3-cols {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .notch-nav {
-                padding: 0.8rem 1.8rem 1rem;
-                gap: 1rem;
-            }
+        .home-right-card {
+            background: var(--surface);
+            border: var(--stroke);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            text-align: center;
+            box-shadow: var(--shadow-card);
+        }
+
+        .home-right-card img {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: var(--stroke);
+            margin-bottom: 1rem;
+        }
+
+        .home-right-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .home-right-card p {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.72rem;
+            color: var(--gold);
+            margin-bottom: 1.2rem;
+            text-transform: uppercase;
+        }
+
+        /* PANEL 2: PUBLICACIONES CIENTÍFICAS DESTACADAS */
+        .pubs-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            height: 100%;
+        }
+
+        .pub-card-full {
+            background: var(--surface);
+            border: var(--stroke);
+            border-radius: var(--radius-lg);
+            padding: 1.6rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .pub-card-full h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.35rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .pub-card-full p {
+            font-size: 0.88rem;
+            color: var(--muted);
+            margin-bottom: 1rem;
+        }
+
+        .doi-btn {
+            background: var(--accent-yellow);
+            border: var(--stroke);
+            padding: 0.45rem 1rem;
+            border-radius: 999px;
+            text-decoration: none;
+            color: var(--ink);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            align-self: flex-start;
+        }
+
+        .doi-btn:hover {
+            background: var(--ink);
+            color: var(--accent-yellow);
+        }
+
+        /* PANEL 3: STACK Y CONTACTO DIRECTO */
+        .contact-stack-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            height: 100%;
+        }
+
+        .cs-box {
+            background: var(--surface);
+            border: var(--stroke);
+            border-radius: var(--radius-lg);
+            padding: 1.8rem;
+        }
+
+        .cs-box h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+        }
+
+        .chips-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .chip {
+            background: var(--canvas);
+            border: 1px solid rgba(20,23,26,0.3);
+            padding: 0.35rem 0.8rem;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .direct-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .direct-link-item {
+            background: var(--canvas);
+            border: var(--stroke);
+            padding: 0.8rem 1.2rem;
+            border-radius: 10px;
+            text-decoration: none;
+            color: var(--ink);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            transition: var(--transition);
+        }
+
+        .direct-link-item:hover {
+            background: var(--ink);
+            color: var(--accent-yellow);
         }
 
         @media (max-width: 900px) {
-            body {
-                padding: 0.5rem;
-            }
-            .master-shell {
-                border-width: 8px;
-                border-radius: 24px;
-            }
-            .top-bar {
-                grid-template-columns: 1fr auto;
-                padding: 0.8rem 1.2rem;
-                align-items: center;
-            }
-            .notch-wrap {
-                grid-column: 1 / -1;
-            }
-            .notch-nav {
-                display: none;
-                width: 100%;
-                clip-path: none;
-                border-radius: 16px;
-                flex-direction: column;
-                padding: 1.4rem;
-                margin-top: 0.6rem;
-            }
-            .notch-nav.active {
-                display: flex;
-            }
-            .mobile-menu-btn {
-                display: inline-flex;
-                align-items: center;
-                justify-content: center;
-            }
-            .hero-section,
-            .page-section {
-                padding: 2.4rem 1.25rem;
-            }
-            .grid-3-cols {
-                grid-template-columns: 1fr;
-            }
-            .hero-bottom-left {
-                padding-right: 0;
-            }
-            .floating-yellow-circle {
-                right: 10px;
-                bottom: 10px;
-            }
-            .timeline-list::before {
-                left: 18px;
-            }
-            .timeline-item:nth-child(odd),
-            .timeline-item:nth-child(even) {
-                justify-content: flex-start;
-                padding-left: 3.2rem;
-                padding-right: 0;
-            }
-            .timeline-year-badge {
-                left: 18px;
-                transform: none;
-                top: -12px;
-            }
-        }
-
-        @media (max-width: 520px) {
-            .hero-stats-grid {
-                grid-template-columns: 1fr;
-                gap: 0.6rem;
-            }
-            .wide-visual-card {
-                height: 330px;
-            }
+            html, body { height: auto; overflow: auto; }
+            .master-shell { height: auto; }
+            .home-grid, .pubs-grid, .contact-stack-grid { grid-template-columns: 1fr; }
+            .view-panel { position: relative; opacity: 1; display: flex !important; height: auto; overflow: visible; padding: 1.5rem; border-bottom: var(--stroke); }
+            .view-tabs { display: none; }
         }
     </style>
 </head>
 <body>
 
     <div class="master-shell">
-
-        <!-- ==================== HEADER CON NOTCH TRAPEZOIDAL Y TODOS LOS ENLACES ==================== -->
+        <!-- HEADER -->
         <header class="top-bar">
-            <a href="#home" class="brand-logo">
-                <div class="logo-symbol">
-                    <span class="logo-initials">JG</span>
-                </div>
-                <span class="brand-name">
-                    José Gallegos
-                    <span class="heart-dot">✦</span>
-                </span>
+            <a href="#" class="brand-logo">
+                José Gallegos <span>Ing. Estadístico</span>
             </a>
 
-            <div class="notch-wrap">
-                <nav class="notch-nav" id="mainNav">
-                    <a href="#home" class="notch-link">Inicio</a>
-                    <a href="#about" class="notch-link">Sobre Mí</a>
-                    <a href="#skills" class="notch-link">Habilidades</a>
-                    <a href="#projects" class="notch-link">Proyectos</a>
-                    <a href="#timeline" class="notch-link">Trayectoria</a>
-                    <a href="#courses" class="notch-link">Cursos</a>
-                    <a href="#awards" class="notch-link">Premios</a>
-                </nav>
-            </div>
+            <!-- Navegación por Pestañas (Single Viewport sin Scroll) -->
+            <nav class="view-tabs">
+                <button class="tab-btn active" data-target="panel-home">Inicio</button>
+                <button class="tab-btn" data-target="panel-pubs">Publicaciones &amp; DOI</button>
+                <button class="tab-btn" data-target="panel-stack">Stack &amp; Contacto</button>
+            </nav>
 
-            <div class="top-actions">
-                <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">
+            <div class="top-actions-right">
+                <button class="icon-btn" id="themeToggle" aria-label="Cambiar tema">
                     <i class="fas fa-moon"></i>
-                </button>
-                <a href="#contact" class="pill-top-btn">Contactar</a>
-                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menú móvil">
-                    <i class="fas fa-bars"></i>
                 </button>
             </div>
         </header>
 
-        <!-- ==================== HERO BENTO (DISEÑO DE LA IMAGEN + INFORMACIÓN COMPLETA) ==================== -->
-        <section class="hero-section" id="home">
-            <div class="hero-bento">
+        <!-- CONTENEDOR DE VISTAS ÚNICAS -->
+        <main class="viewport-container">
 
-                <!-- 1. Arriba Izquierda: Badge + Titular Gigante -->
-                <div class="hero-headline-col">
-                    <div class="hero-badge">Ingeniero Estadístico | Data Science &amp; Machine Learning</div>
-                    <h1 class="hero-display-title">
-                        MODELOS PREDICTIVOS<br>
-                        <span class="serif-elegance">que resuelven</span><br>
-                        PROBLEMAS REALES
-                    </h1>
-                    <div class="hero-quick-buttons">
-                        <a href="#projects" class="pill-btn-yellow">
-                            Ver Proyectos
-                            <span class="y-circle"><i class="fas fa-chart-line"></i></span>
-                        </a>
-                        <a href="#contact" class="pill-top-btn">
-                            <i class="fas fa-envelope"></i> Contactar
-                        </a>
-                    </div>
-                </div>
-
-                <!-- 2. Arriba Derecha: Retrato con esquina biselada + Franja Amarilla (★★ / ↑) -->
-                <div class="hero-portrait-col">
-                    <div class="portrait-card-ref">
-                        <div class="portrait-img-box">
-                            <img src="fondo.jpeg" alt="José Carlos Gallegos Meza" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=900&q=80'">
-                            <div class="portrait-name-tag">ING. JOSÉ CARLOS GALLEGOS</div>
-                        </div>
-                        <div class="yellow-side-bar">
-                            <div class="stars-stack">
-                                <span>★</span>
-                                <span>★</span>
-                            </div>
-                            <span class="vert-label">ESPOCH · DATA SCIENCE</span>
-                            <span>↑</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 3. Centro: Sello Circular Giratorio + Estrella Negra Festoneada -->
-                <div class="center-seal-box">
-                    <svg class="seal-orbit-svg" viewBox="0 0 160 160">
-                        <defs>
-                            <path id="orbitPath" d="M 80, 80 m -62, 0 a 62,62 0 1,1 124,0 a 62,62 0 1,1 -124,0" />
-                        </defs>
-                        <text>
-                            <textPath href="#orbitPath">
-                                JOSÉ GALLEGOS · INGENIERO ESTADÍSTICO · DATA SCIENCE &amp; ML ·
-                            </textPath>
-                        </text>
-                    </svg>
-
-                    <a href="#projects" class="starburst-cta">
-                        <svg viewBox="0 0 100 100">
-                            <polygon points="50,2 58,9 68,5 73,15 84,14 85,25 95,29 92,39 99,47 93,56 97,66 88,72 89,83 78,85 75,95 65,93 58,100 50,94 42,100 35,93 25,95 22,85 11,83 12,72 3,66 7,56 1,47 8,39 5,29 15,25 16,14 27,15 32,5 42,9" />
-                        </svg>
-                        <span class="starburst-text">
-                            <span class="star-dot">★</span>
-                            EXPLORAR<br>PROYECTOS
-                            <span class="star-dot">★</span>
+            <!-- VISTA 1: INICIO DIRECTO -->
+            <section class="view-panel active" id="panel-home">
+                <div class="home-grid">
+                    <div class="home-left">
+                        <span style="font-family:'JetBrains Mono'; font-size:0.7rem; font-weight:700; color:var(--gold); text-transform:uppercase; letter-spacing:1.5px; display:block; margin-bottom:0.5rem;">
+                            ★ ESPOCH · Data Science &amp; Machine Learning
                         </span>
-                    </a>
-                </div>
-
-                <!-- 4. Abajo Izquierda: Tarjeta Visual Panorámica con Contadores Animados + Círculo Amarillo -->
-                <div class="hero-bottom-left">
-                    <div class="wide-visual-card">
-                        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1000&q=80" alt="Ciencia de Datos e Investigación Estadística">
-                        <div class="wide-visual-overlay">
-                            <span class="wide-visual-badge">Impacto Cuantitativo &amp; Producción Científica</span>
-                            <div class="hero-stats-grid">
-                                <div class="stat-item">
-                                    <span class="stat-number" data-count="9" id="counter-projects">0</span>
-                                    <span class="stat-label">Proyectos &amp; Investigaciones</span>
-                                </div>
-                                <div class="stat-item">
-                                    <span class="stat-number" data-count="95" id="counter-satisfaction">0</span>
-                                    <span class="stat-label">% Satisfacción</span>
-                                </div>
-                                <div class="stat-item">
-                                    <span class="stat-number" data-count="3" id="counter-experience">0</span>
-                                    <span class="stat-label">Años Experiencia</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <a href="#projects" class="floating-yellow-circle">
-                        <i class="fas fa-layer-group"></i>
-                        <span>VER<br>PORTAFOLIO</span>
-                    </a>
-                </div>
-
-                <!-- 5. Abajo Derecha: Tarjeta Carpeta con Pestaña Superior y Texto Original Íntegro -->
-                <div class="folder-shell">
-                    <div class="folder-dots-plate" aria-hidden="true">
-                        <span></span><span></span><span></span>
-                    </div>
-                    <div class="folder-box">
-                        <div class="folder-tab-title">CIENCIA DE DATOS · RIGOR ESTADÍSTICO</div>
+                        <h1>
+                            Modelos predictivos <em>&amp; ciencia</em> aplicada
+                        </h1>
                         <p>
-                            No me quedo solo en la teoría estadística. Combino el rigor científico con machine learning para construir herramientas concretas —utilizando <strong>Python, R y Power BI</strong>— que descubren el valor oculto en tus bases de datos y lo vuelven accionable.
+                            Acceso directo a mis publicaciones científicas indexadas y desarrollos de machine learning sin rodeos ni desplazamiento innecesario.
                         </p>
-                        <div class="folder-bottom-bar">
-                            <div class="black-circles-group">
-                                <span class="black-circle-icon">R</span>
-                                <span class="black-circle-icon">Py</span>
-                                <span class="black-circle-icon">BI</span>
-                                <span class="black-circle-icon">SQL</span>
-                            </div>
-                            <a href="https://scholar.google.com/citations?hl=es&user=2bxi2ncAAAAJ&view_op=list_works&sortby=pubdate" target="_blank" rel="noopener" class="pill-btn-yellow">
-                                Perfil Académico
-                                <span class="y-circle"><i class="fas fa-graduation-cap"></i></span>
+                        
+                        <div class="quick-pub-cards">
+                            <a href="https://doi.org/10.31876/rcs.v32i2.45585" target="_blank" rel="noopener" class="pub-shortcut">
+                                <div>
+                                    <strong>Predicción de Incidencia Delictiva</strong>
+                                    <span>Revista de Ciencias Sociales (Q2) · 2026</span>
+                                </div>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                            <a href="https://dx.doi.org/10.18687/LACCEI2026.1.1.2637" target="_blank" rel="noopener" class="pub-shortcut">
+                                <div>
+                                    <strong>Score de Riesgo Cáncer Cervical (XGBoost)</strong>
+                                    <span>LACCEI 2026 · Santiago de Chile</span>
+                                </div>
+                                <i class="fas fa-arrow-right"></i>
                             </a>
                         </div>
                     </div>
+
+                    <div class="home-right-card">
+                        <img src="fondo.jpeg" alt="José Carlos Gallegos Meza" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80'">
+                        <h3>José Carlos Gallegos</h3>
+                        <p>Ingeniero Estadístico</p>
+                        <div style="display:flex; justify-content:center; gap:0.6rem;">
+                            <a href="https://www.linkedin.com/in/josecarlos440" target="_blank" rel="noopener" class="icon-btn"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="https://orcid.org/0009-0007-6831-6131" target="_blank" rel="noopener" class="icon-btn"><i class="fab fa-orcid"></i></a>
+                            <a href="mailto:carlosmexa302@gmail.com" class="icon-btn"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
                 </div>
+            </section>
 
-            </div>
-        </section>
-
-        <!-- ==================== SOBRE MÍ (TEXTO ÍNTEGRO + 3 TARJETAS COMPLETAS) ==================== -->
-        <section class="page-section" id="about">
-            <div class="section-header-block">
-                <div>
-                    <span class="section-label-pill">Sobre Mí</span>
-                    <h2 class="section-main-title">INGENIERO ESTADÍSTICO <em>— ESPOCH</em></h2>
-                </div>
-                <p class="section-intro-text">
-                    Mi pasión es encontrar patrones donde otros solo ven ruido. Con una sólida formación en estadística multivariante e investigación aplicada, diseño modelos que tienen un impacto directo en sectores como salud, agricultura, finanzas y desarrollo social. Me encargo de todo el ciclo de vida del dato: desde la limpieza de grandes volúmenes de información hasta el despliegue de plataformas interactivas listas para usar.
-                </p>
-            </div>
-
-            <div class="grid-3-cols">
-                <div class="folder-shell">
-                    <div class="folder-dots-plate"><span></span><span></span><span></span></div>
-                    <div class="folder-box">
-                        <div class="folder-tab-title">01 · INVESTIGACIÓN</div>
+            <!-- VISTA 2: PUBLICACIONES & DOI (ACCESO RÁPIDO) -->
+            <section class="view-panel" id="panel-pubs">
+                <div class="pubs-grid">
+                    <div class="pub-card-full">
                         <div>
-                            <h3>Investigación Estadística</h3>
-                            <p>Limpieza e integración de grandes volúmenes de datos con R y Python. Modelado estadístico multivariante, métodos de kernel (RKHS), simulaciones y análisis predictivo para investigación experimental.</p>
+                            <span style="font-family:'JetBrains Mono'; font-size:0.65rem; color:var(--gold); text-transform:uppercase;">Scopus Q2 · 2026</span>
+                            <h3>Predicción de Incidencia Delictiva — Región Interandina</h3>
+                            <p>Modelos de regresión logística y redes neuronales artificiales para predecir la incidencia criminal en Ecuador. Publicado en Revista de Ciencias Sociales (Q2).</p>
                         </div>
-                        <div class="folder-bottom-bar">
-                            <span class="black-circle-icon"><i class="fas fa-chart-bar"></i></span>
-                            <span class="tag">R · Python · RKHS</span>
-                        </div>
+                        <a href="https://doi.org/10.31876/rcs.v32i2.45585" target="_blank" rel="noopener" class="doi-btn">
+                            Ver DOI oficial <i class="fas fa-external-link-alt"></i>
+                        </a>
                     </div>
-                </div>
 
-                <div class="folder-shell">
-                    <div class="folder-dots-plate"><span></span><span></span><span></span></div>
-                    <div class="folder-box">
-                        <div class="folder-tab-title">02 · MACHINE LEARNING &amp; BI</div>
+                    <div class="pub-card-full">
                         <div>
-                            <h3>Machine Learning &amp; BI</h3>
-                            <p>Desarrollo de modelos predictivos y dashboards interactivos en Power BI. Integración de inteligencia artificial para optimizar procesos, visión por computadora y automatización de reportes reproducibles.</p>
+                            <span style="font-family:'JetBrains Mono'; font-size:0.65rem; color:var(--gold); text-transform:uppercase;">LACCEI 2026 · Chile</span>
+                            <h3>Score de Riesgo de Cáncer Cervical con XGBoost</h3>
+                            <p>Score clínico reproducible seleccionado entre los mejores trabajos de más de 3,000 presentados en la 24ª LACCEI International Multi-Conference.</p>
                         </div>
-                        <div class="folder-bottom-bar">
-                            <span class="black-circle-icon"><i class="fas fa-brain"></i></span>
-                            <span class="tag">XGBoost · Power BI · IA</span>
-                        </div>
+                        <a href="https://dx.doi.org/10.18687/LACCEI2026.1.1.2637" target="_blank" rel="noopener" class="doi-btn">
+                            Ver Paper DOI <i class="fas fa-external-link-alt"></i>
+                        </a>
                     </div>
-                </div>
 
-                <div class="folder-shell">
-                    <div class="folder-dots-plate"><span></span><span></span><span></span></div>
-                    <div class="folder-box">
-                        <div class="folder-tab-title">03 · LIDERAZGO GLOBAL</div>
+                    <div class="pub-card-full">
                         <div>
-                            <h3>Liderazgo &amp; Colaboración Global</h3>
-                            <p>Experiencia en equipos multidisciplinarios internacionales. Ponente en congresos en Perú y Chile, líder del Statistical Solutions Club, presidencia estudiantil y coordinación de eventos internacionales de estadística.</p>
+                            <span style="font-family:'JetBrains Mono'; font-size:0.65rem; color:var(--gold); text-transform:uppercase;">Centrosur Agraria · 2025</span>
+                            <h3>Evaluación de Producción de Hongos Ostra Blanca</h3>
+                            <p>Investigación sobre rendimiento bajo distintos sustratos contrastando Diseño Completamente al Azar (DCA) frente a simulación computacional en R.</p>
                         </div>
-                        <div class="folder-bottom-bar">
-                            <span class="black-circle-icon"><i class="fas fa-users"></i></span>
-                            <span class="tag">SSC · Congresos Int.</span>
-                        </div>
+                        <a href="https://centrosuragraria.com/index.php/revista/article/view/290" target="_blank" rel="noopener" class="doi-btn">
+                            Ver Artículo <i class="fas fa-external-link-alt"></i>
+                        </a>
                     </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- ==================== HABILIDADES TÉCNICAS (LAS 3 COLUMNAS COMPLETAS) ==================== -->
-        <section class="page-section alt" id="skills">
-            <div class="section-header-block">
-                <div>
-                    <span class="section-label-pill">Habilidades Técnicas</span>
-                    <h2 class="section-main-title">LENGUAJES, SOFTWARE <em>y Competencias</em></h2>
-                </div>
-                <p class="section-intro-text">
-                    Stack tecnológico y herramientas que utilizo en proyectos de análisis estadístico, ingeniería de datos y ciencia de datos.
-                </p>
-            </div>
-
-            <div class="grid-3-cols">
-                <!-- Columna 1: Lenguajes & Frameworks -->
-                <div class="skill-card-ref">
-                    <div class="skill-card-top">
-                        <h4>Lenguajes, Frameworks &amp; IA</h4>
-                        <span class="y-icon"><i class="fas fa-code"></i></span>
-                    </div>
-                    <div class="skill-list">
-                        <span class="skill-badge accent">RStudio (Advanced)</span>
-                        <span class="skill-badge accent">Python</span>
-                        <span class="skill-badge accent">SQL</span>
-                        <span class="skill-badge">HTML &amp; CSS</span>
-                        <span class="skill-badge">Quarto</span>
-                        <span class="skill-badge">Shiny (R)</span>
-                        <span class="skill-badge">pandas</span>
-                        <span class="skill-badge">scikit-learn</span>
-                        <span class="skill-badge">XGBoost &amp; Redes Neuronales</span>
-                        <span class="skill-badge">matplotlib</span>
-                        <span class="skill-badge">xarray &amp; folium</span>
-                        <span class="skill-badge">Ollama + Llama 3 (chattr)</span>
-                    </div>
-                </div>
-
-                <!-- Columna 2: Software & Plataformas -->
-                <div class="skill-card-ref">
-                    <div class="skill-card-top">
-                        <h4>Software &amp; Plataformas</h4>
-                        <span class="y-icon"><i class="fas fa-layer-group"></i></span>
-                    </div>
-                    <div class="skill-list">
-                        <span class="skill-badge accent">Power BI (DAX &amp; M)</span>
-                        <span class="skill-badge">Looker Studio</span>
-                        <span class="skill-badge accent">Excel (Advanced)</span>
-                        <span class="skill-badge">SPSS</span>
-                        <span class="skill-badge">Minitab</span>
-                        <span class="skill-badge">Tableau</span>
-                        <span class="skill-badge">Atlas.ti</span>
-                        <span class="skill-badge accent">PostgreSQL &amp; PostGIS</span>
-                        <span class="skill-badge">Kubo (KoboToolbox)</span>
-                        <span class="skill-badge">LaTeX / Overleaf</span>
-                    </div>
-                </div>
-
-                <!-- Columna 3: Competencias Blandas & Metodológicas (100% restauradas) -->
-                <div class="skill-card-ref">
-                    <div class="skill-card-top">
-                        <h4>Competencias Blandas &amp; Análisis</h4>
-                        <span class="y-icon"><i class="fas fa-lightbulb"></i></span>
-                    </div>
-                    <div class="skill-list">
-                        <span class="skill-badge accent">Comunicación Efectiva</span>
-                        <span class="skill-badge accent">Pensamiento Analítico</span>
-                        <span class="skill-badge">Colaboración Global</span>
-                        <span class="skill-badge accent">Liderazgo</span>
-                        <span class="skill-badge">Adaptabilidad</span>
-                        <span class="skill-badge">Autogestión</span>
-                        <span class="skill-badge">Transparencia de Datos</span>
-                        <span class="skill-badge">Ética Profesional</span>
-                        <span class="skill-badge">STATIS-Dual &amp; RKHS</span>
-                        <span class="skill-badge">Análisis Factorial (ML)</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ==================== PROYECTOS DESTACADOS (LOS 5 ORIGINALES + 4 NUEVOS ACTUALIZADOS) ==================== -->
-        <section class="page-section" id="projects">
-            <div class="section-header-block">
-                <div>
-                    <span class="section-label-pill">Portafolio</span>
-                    <h2 class="section-main-title">PROYECTOS <em>Destacados</em></h2>
-                </div>
-                <p class="section-intro-text">
-                    Una selección de trabajos publicados y desarrollos tecnológicos que demuestran mi experiencia en análisis estadístico, machine learning y visualización de datos.
-                </p>
-            </div>
-
-            <div class="filter-bar">
-                <button class="filter-btn active" data-filter="all">Todos los Proyectos (9)</button>
-                <button class="filter-btn" data-filter="research">Investigación &amp; Artículos</button>
-                <button class="filter-btn" data-filter="ai">Machine Learning &amp; IA</button>
-                <button class="filter-btn" data-filter="bi">Business Intelligence &amp; Geo</button>
-            </div>
-
-            <div class="grid-3-cols">
-
-                <!-- 1. Predicción de Incidencia Delictiva (Original + DOI) -->
-                <article class="project-card-ref" data-category="research ai">
-                    <div class="project-media-header">
-                        <div class="project-photo-wrap">
-                            <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=900&q=80" alt="Predicción de Incidencia Delictiva" loading="lazy">
-                            <span class="project-floating-badge">Revista Q2 · 2026</span>
-                        </div>
-                        <div class="project-yellow-strip">
-                            <span>★★</span>
-                            <span>01</span>
-                            <span>↑</span>
-                        </div>
-                    </div>
-                    <div class="project-body">
-                        <h3><a href="https://doi.org/10.31876/rcs.v32i2.45585" target="_blank" rel="noopener">Predicción de Incidencia Delictiva — Región Interandina</a></h3>
-                        <p>Modelos de regresión logística y redes neuronales para la predicción de criminalidad en la región interandina de Ecuador. Publicado en la Revista de Ciencias Sociales (Q2), Vol. 32(2), 429-446. Presentado como ponencia internacional en el II Congreso de Estadística y Ciencia de Datos (UNALM, Perú).</p>
-                        <div class="project-tags">
-                            <span class="tag">R</span>
-                            <span class="tag">Regresión Logística</span>
-                            <span class="tag">Redes Neuronales</span>
-                            <span class="tag">Revista Q2</span>
-                        </div>
-                        <div class="project-bottom-row">
-                            <span class="mono" style="font-size:0.7rem; color:var(--muted);">DOI: 10.31876/rcs</span>
-                            <a href="https://doi.org/10.31876/rcs.v32i2.45585" target="_blank" rel="noopener" class="pill-btn-yellow">
-                                Abrir Artículo <span class="y-circle"><i class="fas fa-arrow-up-right-from-square"></i></span>
-                            </a>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- 2. AgroDash - NASA Earth Observation (Original) -->
-                <article class="project-card-ref" data-category="bi ai">
-                    <div class="project-media-header">
-                        <div class="project-photo-wrap">
-                            <img src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=900&q=80" alt="AgroDash NASA Earth Observation" loading="lazy">
-                            <span class="project-floating-badge">NASA Space Apps</span>
-                        </div>
-                        <div class="project-yellow-strip">
-                            <span>★★</span>
-                            <span>02</span>
-                            <span>↑</span>
-                        </div>
-                    </div>
-                    <div class="project-body">
-                        <h3>AgroDash - NASA Earth Observation</h3>
-                        <p>Sistema de monitoreo de humedad del suelo usando datos satelitales SMAP de NASA. Desarrollado con Python, xarray y folium para visualización geoespacial interactiva y apoyo a la toma de decisiones agrícolas.</p>
-                        <div class="project-tags">
-                            <span class="tag">Python</span>
-                            <span class="tag">xarray</span>
-                            <span class="tag">folium</span>
-                            <span class="tag">NASA SMAP</span>
-                            <span class="tag">Geospatial</span>
-                        </div>
-                        <div class="project-bottom-row">
-                            <span class="mono" style="font-size:0.7rem; color:var(--muted);">Global Nominee</span>
-                            <a href="#awards" class="pill-btn-yellow">
-                                Ver Premio <span class="y-circle"><i class="fas fa-satellite"></i></span>
-                            </a>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- 3. Score de Riesgo de Cáncer Cervical — LACCEI 2026 (Original + DOI) -->
-                <article class="project-card-ref" data-category="research ai">
-                    <div class="project-media-header">
-                        <div class="project-photo-wrap">
-                            <img src="https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=900&q=80" alt="Score de Riesgo de Cáncer Cervical LACCEI 2026" loading="lazy">
-                            <span class="project-floating-badge">LACCEI 2026 · Top Paper</span>
-                        </div>
-                        <div class="project-yellow-strip">
-                            <span>★★</span>
-                            <span>03</span>
-                            <span>↑</span>
-                        </div>
-                    </div>
-                    <div class="project-body">
-                        <h3><a href="https://dx.doi.org/10.18687/LACCEI2026.1.1.2637" target="_blank" rel="noopener">Score de Riesgo de Cáncer Cervical — LACCEI 2026</a></h3>
-                        <p>Score de riesgo de cáncer cervical reproducible basado en XGBoost. Paper estudiantil seleccionado entre los mejores trabajos de más de 3,000 presentados en la 24ª LACCEI International Multi-Conference (Santiago, Chile).</p>
-                        <div class="project-tags">
-                            <span class="tag">XGBoost</span>
-                            <span class="tag">Machine Learning</span>
-                            <span class="tag">Salud Pública</span>
-                        </div>
-                        <div class="project-bottom-row">
-                            <span class="mono" style="font-size:0.7rem; color:var(--muted);">Santiago, Chile</span>
-                            <a href="https://dx.doi.org/10.18687/LACCEI2026.1.1.2637" target="_blank" rel="noopener" class="pill-btn-yellow">
-                                Abrir Paper <span class="y-circle"><i class="fas fa-arrow-up-right-from-square"></i></span>
-                            </a>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- 4. CUADRAS AI — Expo Clean Ecuador 2026 Hackathon (Nuevo) -->
-                <article class="project-card-ref" data-category="ai">
-                    <div class="project-media-header">
-                        <div class="project-photo-wrap">
-                            <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=900&q=80" alt="CUADRAS AI Monitoreo Ergonómico" loading="lazy">
-                            <span class="project-floating-badge">Expo Clean Hackathon · 2026</span>
-                        </div>
-                        <div class="project-yellow-strip">
-                            <span>★★</span>
-                            <span>04</span>
-                            <span>↑</span>
-                        </div>
-                    </div>
-                    <div class="project-body">
-                        <h3>CUADRAS AI — Monitoreo Ergonómico &amp; Gestión de EPP</h3>
-                        <p>Plataforma inteligente de monitoreo ergonómico y gestión de equipos de protección personal (EPP) cofundada junto a Aldrick Espinoza, Dennys Tubón, Luis Alvendaño y Matías García para la Expo Clean Ecuador 2026 Hackathon.</p>
-                        <div class="project-tags">
-                            <span class="tag">Computer Vision</span>
-                            <span class="tag">Python</span>
-                            <span class="tag">Ergonomía IA</span>
-                            <span class="tag">Seguridad Industrial</span>
-                        </div>
-                        <div class="project-bottom-row">
-                            <span class="mono" style="font-size:0.7rem; color:var(--muted);">Co-Founder · 2026</span>
-                            <a href="#contact" class="pill-btn-yellow">
-                                Consultar <span class="y-circle"><i class="fas fa-bolt"></i></span>
-                            </a>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- 5. Investigación Doctoral: STATIS-Dual con Kernels Mixtos y RKHS (Nuevo) -->
-                <article class="project-card-ref" data-category="research">
-                    <div class="project-media-header">
-                        <div class="project-photo-wrap">
-                            <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=900&q=80" alt="STATIS-Dual y Espacios de Hilbert RKHS" loading="lazy">
-                            <span class="project-floating-badge">Propuesta Doctoral · 2026</span>
-                        </div>
-                        <div class="project-yellow-strip">
-                            <span>★★</span>
-                            <span>05</span>
-                            <span>↑</span>
-                        </div>
-                    </div>
-                    <div class="project-body">
-                        <h3>Métodos de Kernel Mixtos y Espacios RKHS en STATIS-Dual</h3>
-                        <p>Investigación metodológica enfocada en espacios de Hilbert con núcleo reproductor (RKHS) y funciones de kernel mixtas para unificar variables heterogéneas en el análisis multibloque STATIS-Dual.</p>
-                        <div class="project-tags">
-                            <span class="tag">STATIS-Dual</span>
-                            <span class="tag">RKHS</span>
-                            <span class="tag">Kernels Mixtos</span>
-                            <span class="tag">Multivariante</span>
-                        </div>
-                        <div class="project-bottom-row">
-                            <span class="mono" style="font-size:0.7rem; color:var(--muted);">Teoría &amp; Aplicación</span>
-                            <a href="#contact" class="pill-btn-yellow">
-                                Detalles <span class="y-circle"><i class="fas fa-square-root-variable"></i></span>
-                            </a>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- 6. Riesgo Financiero y Optimización en Cooperativas (Nuevo) -->
-                <article class="project-card-ref" data-category="research bi">
-                    <div class="project-media-header">
-                        <div class="project-photo-wrap">
-                            <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=900&q=80" alt="Riesgo Financiero en Cooperativas de Ahorro y Crédito" loading="lazy">
-                            <span class="project-floating-badge">Investigación ESPOCH · 2026</span>
-                        </div>
-                        <div class="project-yellow-strip">
-                            <span>★★</span>
-                            <span>06</span>
-                            <span>↑</span>
-                        </div>
-                    </div>
-                    <div class="project-body">
-                        <h3>Riesgo Financiero y Optimización en Cooperativas</h3>
-                        <p>Proyecto integrado de evaluación de fragilidad financiera, análisis factorial por máxima verosimilitud y optimización operativa para cooperativas de ahorro y crédito de la provincia de Chimborazo.</p>
-                        <div class="project-tags">
-                            <span class="tag">Análisis Factorial (ML)</span>
-                            <span class="tag">Riesgo Financiero</span>
-                            <span class="tag">RStudio</span>
-                            <span class="tag">Cooperativas</span>
-                        </div>
-                        <div class="project-bottom-row">
-                            <span class="mono" style="font-size:0.7rem; color:var(--muted);">Chimborazo, EC</span>
-                            <a href="#contact" class="pill-btn-yellow">
-                                Ver Estudio <span class="y-circle"><i class="fas fa-chart-column"></i></span>
-                            </a>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- 7. Dashboards Ejecutivos Power BI (Original + MIES-ESPOCH) -->
-                <article class="project-card-ref" data-category="bi">
-                    <div class="project-media-header">
-                        <div class="project-photo-wrap">
-                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80" alt="Dashboards Ejecutivos Power BI" loading="lazy">
-                            <span class="project-floating-badge">Power BI · DAX &amp; M</span>
-                        </div>
-                        <div class="project-yellow-strip">
-                            <span>★★</span>
-                            <span>07</span>
-                            <span>↑</span>
-                        </div>
-                    </div>
-                    <div class="project-body">
-                        <h3>Dashboards Ejecutivos Power BI &amp; Monitoreo MIES</h3>
-                        <p>Suite de dashboards interactivos con KPIs empresariales y gubernamentales (MIES-ESPOCH), storytelling de datos y automatización de reportes. Modelado de datos avanzado con DAX, lenguaje M y SQL.</p>
-                        <div class="project-tags">
-                            <span class="tag">Power BI</span>
-                            <span class="tag">DAX &amp; M</span>
-                            <span class="tag">SQL</span>
-                            <span class="tag">Business Intelligence</span>
-                        </div>
-                        <div class="project-bottom-row">
-                            <span class="mono" style="font-size:0.7rem; color:var(--muted);">BI &amp; Storytelling</span>
-                            <a href="#timeline" class="pill-btn-yellow">
-                                Experiencia <span class="y-circle"><i class="fas fa-chart-pie"></i></span>
-                            </a>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- 8. Investigación: Producción de Hongos (Original + Link) -->
-                <article class="project-card-ref" data-category="research">
-                    <div class="project-media-header">
-                        <div class="project-photo-wrap">
-                            <img src="https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=900&q=80" alt="Investigación Producción de Hongos Ostra Blanca" loading="lazy">
-                            <span class="project-floating-badge">Artículo Científico · 2025</span>
-                        </div>
-                        <div class="project-yellow-strip">
-                            <span>★★</span>
-                            <span>08</span>
-                            <span>↑</span>
-                        </div>
-                    </div>
-                    <div class="project-body">
-                        <h3><a href="https://centrosuragraria.com/index.php/revista/article/view/290" target="_blank" rel="noopener">Investigación: Producción de Hongos Ostra Blanca</a></h3>
-                        <p>Artículo científico publicado en Centrosur Agraria: "Evaluación de la producción de hongos ostra blanca bajo diferentes sustratos: diseño completamente al azar vs simulación".</p>
-                        <div class="project-tags">
-                            <span class="tag">R</span>
-                            <span class="tag">Experimental Design</span>
-                            <span class="tag">Simulation</span>
-                            <span class="tag">Scientific Research</span>
-                        </div>
-                        <div class="project-bottom-row">
-                            <span class="mono" style="font-size:0.7rem; color:var(--muted);">Centrosur Agraria</span>
-                            <a href="https://centrosuragraria.com/index.php/revista/article/view/290" target="_blank" rel="noopener" class="pill-btn-yellow">
-                                Abrir Artículo <span class="y-circle"><i class="fas fa-arrow-up-right-from-square"></i></span>
-                            </a>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- 9. Statistical Solutions Club & Local LLM Workflow (Nuevo) -->
-                <article class="project-card-ref" data-category="ai research">
-                    <div class="project-media-header">
-                        <div class="project-photo-wrap">
-                            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=900&q=80" alt="Statistical Solutions Club y Flujos IA Local" loading="lazy">
-                            <span class="project-floating-badge">Liderazgo &amp; IA Local · 2026</span>
-                        </div>
-                        <div class="project-yellow-strip">
-                            <span>★★</span>
-                            <span>09</span>
-                            <span>↑</span>
-                        </div>
-                    </div>
-                    <div class="project-body">
-                        <h3>Statistical Solutions Club (SSC) &amp; Flujo Local LLM</h3>
-                        <p>Dirección del club estudiantil en ESPOCH formando en oratoria, comunicación de datos y analítica, junto con la integración de flujos locales de IA en RStudio con Ollama y Llama 3 mediante el paquete <code>chattr</code>.</p>
-                        <div class="project-tags">
-                            <span class="tag">RStudio &amp; Quarto</span>
-                            <span class="tag">Ollama / Llama 3</span>
-                            <span class="tag">chattr</span>
-                            <span class="tag">Liderazgo SSC</span>
-                        </div>
-                        <div class="project-bottom-row">
-                            <span class="mono" style="font-size:0.7rem; color:var(--muted);">ESPOCH · Comunidad</span>
-                            <a href="#contact" class="pill-btn-yellow">
-                                Contactar <span class="y-circle"><i class="fas fa-terminal"></i></span>
-                            </a>
-                        </div>
-                    </div>
-                </article>
-
-            </div>
-        </section>
-
-        <!-- ==================== TRAYECTORIA PROFESIONAL (TODOS LOS 9 HITOS COMPLETOS SIN RESUMIR) ==================== -->
-        <section class="page-section alt" id="timeline">
-            <div class="section-header-block">
-                <div>
-                    <span class="section-label-pill">Trayectoria Profesional</span>
-                    <h2 class="section-main-title">EXPERIENCIA <em>y Liderazgo</em></h2>
-                </div>
-                <p class="section-intro-text">
-                    Recorrido completo en investigación científica, integración de inteligencia artificial, docencia estudiantil y representación académica.
-                </p>
-            </div>
-
-            <div class="timeline-list">
-
-                <!-- Hito 1 -->
-                <div class="timeline-item">
-                    <div class="timeline-year-badge">Julio 2026</div>
-                    <div class="timeline-card-wrap folder-shell">
-                        <div class="folder-dots-plate"><span></span><span></span><span></span></div>
-                        <div class="folder-box">
-                            <div class="folder-tab-title">SANTIAGO, CHILE · LACCEI 2026</div>
-                            <h3>Ponente y Autor Finalista Internacional</h3>
-                            <p><strong>24ª LACCEI International Multi-Conference for Engineering, Education and Technology</strong></p>
-                            <p>Presentación presencial del artículo sobre score reproducible de riesgo de cáncer cervical basado en XGBoost, elegido entre los mejores trabajos de más de 3,000 envíos internacionales.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Hito 2 -->
-                <div class="timeline-item">
-                    <div class="timeline-year-badge">Junio 2026</div>
-                    <div class="timeline-card-wrap folder-shell">
-                        <div class="folder-dots-plate"><span></span><span></span><span></span></div>
-                        <div class="folder-box">
-                            <div class="folder-tab-title">LIMA, PERÚ · UNALM</div>
-                            <h3>Ponente Internacional</h3>
-                            <p><strong>II Congreso de Estadística y Ciencia de Datos – UNALM, Perú</strong></p>
-                            <p>Primera ponencia internacional. Trabajo aceptado en modalidad Comunicación oral y póster: "Modelos de Regresión Logística y Redes Neuronales para la Predicción de Incidencia Delictiva: Región Interandina – Ecuador", publicado luego en la Revista de Ciencias Sociales (Q2).</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Hito 3 -->
-                <div class="timeline-item">
-                    <div class="timeline-year-badge">Presente</div>
-                    <div class="timeline-card-wrap folder-shell">
-                        <div class="folder-dots-plate"><span></span><span></span><span></span></div>
-                        <div class="folder-box">
-                            <div class="folder-tab-title">ESPOCH · RIOBAMBA / QUITO</div>
-                            <h3>Investigador Independiente &amp; Líder del Statistical Solutions Club</h3>
-                            <p><strong>Escuela Superior Politécnica de Chimborazo (ESPOCH)</strong></p>
-                            <p>Estructuración, integración y limpieza de grandes datasets. Análisis estadístico y modelado predictivo con R y Python aplicando técnicas de machine learning y evaluación de riesgo financiero en cooperativas. Desarrollo de dashboards interactivos en Power BI y liderazgo de talleres de comunicación de datos y oratoria en el Statistical Solutions Club (SSC).</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Hito 4 -->
-                <div class="timeline-item">
-                    <div class="timeline-year-badge">2024</div>
-                    <div class="timeline-card-wrap folder-shell">
-                        <div class="folder-dots-plate"><span></span><span></span><span></span></div>
-                        <div class="folder-box">
-                            <div class="folder-tab-title">MAR 2024 – DIC 2024 · CONVENIO GUBERNAMENTAL</div>
-                            <h3>AI &amp; Business Intelligence Integration</h3>
-                            <p><strong>MIES-ESPOCH Project</strong></p>
-                            <p>Integración de soluciones de inteligencia artificial para aplicaciones de business intelligence. Aplicación de técnicas de machine learning para optimizar procesos de toma de decisiones y desarrollo de tableros de monitoreo de programas gubernamentales. Colaboración con equipos multidisciplinarios en estrategias data-driven.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Hito 5 -->
-                <div class="timeline-item">
-                    <div class="timeline-year-badge">2023</div>
-                    <div class="timeline-card-wrap folder-shell">
-                        <div class="folder-dots-plate"><span></span><span></span><span></span></div>
-                        <div class="folder-box">
-                            <div class="folder-tab-title">MAR 2023 – DIC 2023 · GRUPO BI-DATA</div>
-                            <h3>Asistente de Investigación y Visualización</h3>
-                            <p><strong>Grupo de Investigación BI-DATA – ESPOCH</strong></p>
-                            <p>Diseño y mantenimiento de bases de datos para proyectos sociales y educativos. Análisis avanzado en R/Python y producción de dashboards interactivos en Power BI para apoyar toma de decisiones y políticas basadas en evidencia.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Hito 6 -->
-                <div class="timeline-item">
-                    <div class="timeline-year-badge">2023-2024</div>
-                    <div class="timeline-card-wrap folder-shell">
-                        <div class="folder-dots-plate"><span></span><span></span><span></span></div>
-                        <div class="folder-box">
-                            <div class="folder-tab-title">ABR 2023 – DIC 2024 · PRÁCTICAS PROFESIONALES</div>
-                            <h3>Practicante Profesional</h3>
-                            <p><strong>Sociedad Ecuatoriana de Estadística</strong></p>
-                            <p>Consolidación y análisis de datasets nacionales en Excel y R. Preparación de reportes técnicos para proyectos académicos y aplicados. Colaboración en iniciativas para mejorar la calidad de datos y promover la alfabetización estadística.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Hito 7 -->
-                <div class="timeline-item">
-                    <div class="timeline-year-badge">2022-2024</div>
-                    <div class="timeline-card-wrap folder-shell">
-                        <div class="folder-dots-plate"><span></span><span></span><span></span></div>
-                        <div class="folder-box">
-                            <div class="folder-tab-title">MAR 2022 – DIC 2024 · LIDERAZGO ESTUDIANTIL</div>
-                            <h3>Presidente y Vicepresidente Estudiantil</h3>
-                            <p><strong>Asociación de Estudiantes de Estadística – ESPOCH</strong></p>
-                            <p>Liderazgo de proyectos de impacto académico y social a nivel institucional. Fomento de colaboración con autoridades nacionales y redes internacionales. Gestión de iniciativas estudiantiles, talleres y proyecciones académicas para el desarrollo profesional.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Hito 8 -->
-                <div class="timeline-item">
-                    <div class="timeline-year-badge">2023-2024</div>
-                    <div class="timeline-card-wrap folder-shell">
-                        <div class="folder-dots-plate"><span></span><span></span><span></span></div>
-                        <div class="folder-box">
-                            <div class="folder-tab-title">AGO 2023 – NOV 2024 · EVENTOS INTERNACIONALES</div>
-                            <h3>Organizador Logístico</h3>
-                            <p><strong>Congresos Internacionales de Estadística – ESPOCH</strong></p>
-                            <p>Coordinación de eventos académicos con ponentes internacionales. Aseguramiento de calidad operativa, cumplimiento de cronogramas y difusión de reportes técnicos. Gestión de logística para congresos de alto nivel.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Hito 9 -->
-                <div class="timeline-item">
-                    <div class="timeline-year-badge">2024</div>
-                    <div class="timeline-card-wrap folder-shell">
-                        <div class="folder-dots-plate"><span></span><span></span><span></span></div>
-                        <div class="folder-box">
-                            <div class="folder-tab-title">RED LATINOAMERICANA</div>
-                            <h3>Participante</h3>
-                            <p><strong>Congreso Latinoamericano de Sociedades Estadísticas</strong></p>
-                            <p>Interacción con estadísticos e investigadores líderes de Latinoamérica. Participación en discusiones sobre tendencias y desafíos en ciencia de datos y estadística aplicada.</p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- ==================== CURSOS Y CERTIFICACIONES (6 ORIGINALES + 2 NUEVOS DE 2026) ==================== -->
-        <section class="page-section" id="courses">
-            <div class="section-header-block">
-                <div>
-                    <span class="section-label-pill">Formación Continua</span>
-                    <h2 class="section-main-title">CURSOS <em>y Certificaciones</em></h2>
-                </div>
-                <p class="section-intro-text">
-                    Capacitaciones especializadas y programas internacionales que complementan mi perfil profesional en ciencia de datos, inteligencia artificial y estadística.
-                </p>
-            </div>
-
-            <div class="cards-grid-full">
-                <!-- Nuevo 1: University of Tokyo -->
-                <div class="folder-shell">
-                    <div class="folder-dots-plate"><span></span><span></span><span></span></div>
-                    <div class="folder-box">
-                        <div class="folder-tab-title">THE UNIVERSITY OF TOKYO</div>
+                    <div class="pub-card-full">
                         <div>
-                            <h3>GCI World — Data Science &amp; AI Program</h3>
-                            <p>Programa intensivo global en ciencia de datos, machine learning e inteligencia artificial impartido por el Matsuo &amp; Iwasawa Laboratory (The University of Tokyo) vía Omnicampus.</p>
+                            <span style="font-family:'JetBrains Mono'; font-size:0.65rem; color:var(--gold); text-transform:uppercase;">NASA Space Apps · Global</span>
+                            <h3>AgroDash — Monitoreo Satelital SMAP</h3>
+                            <p>Sistema geoespacial de humedad del suelo con Python, xarray y folium utilizando observaciones terrestres de la NASA.</p>
                         </div>
-                        <div class="folder-bottom-bar">
-                            <span class="meta-pill">2026 · Matsuo-Iwasawa Lab · UTokyo</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Nuevo 2: Arca Continental -->
-                <div class="folder-shell">
-                    <div class="folder-dots-plate"><span></span><span></span><span></span></div>
-                    <div class="folder-box">
-                        <div class="folder-tab-title">ARCA CONTINENTAL</div>
-                        <div>
-                            <h3>Diplomado "Acelera tu futuro 2.0"</h3>
-                            <p>Programa de diplomado enfocado en liderazgo estratégico, innovación sostenible, habilidades de gestión corporativa y resolución de problemas empresariales.</p>
-                        </div>
-                        <div class="folder-bottom-bar">
-                            <span class="meta-pill">2026 · Arca Continental · Diploma</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Original 1 -->
-                <div class="folder-shell">
-                    <div class="folder-dots-plate"><span></span><span></span><span></span></div>
-                    <div class="folder-box">
-                        <div class="folder-tab-title">INTELIGENCIA ARTIFICIAL</div>
-                        <div>
-                            <h3>IBM AI Fundamentals</h3>
-                            <p>+40 horas de formación en fundamentos de inteligencia artificial. Conceptos básicos y aplicaciones de IA en análisis de datos y machine learning.</p>
-                        </div>
-                        <div class="folder-bottom-bar">
-                            <span class="meta-pill">2024 · Guayerd · Certificate</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Original 2 -->
-                <div class="folder-shell">
-                    <div class="folder-dots-plate"><span></span><span></span><span></span></div>
-                    <div class="folder-box">
-                        <div class="folder-tab-title">BUSINESS INTELLIGENCE</div>
-                        <div>
-                            <h3>Power BI para Negocios</h3>
-                            <p>Dashboards interactivos, modelado de datos avanzado, medidas DAX y monitoreo de KPIs empresariales. Storytelling con datos para ejecutivos.</p>
-                        </div>
-                        <div class="folder-bottom-bar">
-                            <span class="meta-pill">2024 · Certificate</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Original 3 -->
-                <div class="folder-shell">
-                    <div class="folder-dots-plate"><span></span><span></span><span></span></div>
-                    <div class="folder-box">
-                        <div class="folder-tab-title">REPRODUCIBILIDAD</div>
-                        <div>
-                            <h3>Automatización con Quarto y RStudio</h3>
-                            <p>Generación de reportes reproducibles y dinámicos en entornos de datos. Automatización de flujos de trabajo estadísticos.</p>
-                        </div>
-                        <div class="folder-bottom-bar">
-                            <span class="meta-pill">2023 · Certificate</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Original 4 -->
-                <div class="folder-shell">
-                    <div class="folder-dots-plate"><span></span><span></span><span></span></div>
-                    <div class="folder-box">
-                        <div class="folder-tab-title">MODELADO PREDICTIVO</div>
-                        <div>
-                            <h3>Machine Learning con R y Python</h3>
-                            <p>Implementación de algoritmos supervisados y no supervisados. Aplicación de técnicas de machine learning para análisis predictivo.</p>
-                        </div>
-                        <div class="folder-bottom-bar">
-                            <span class="meta-pill">2023 · Certificate</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Original 5 -->
-                <div class="folder-shell">
-                    <div class="folder-dots-plate"><span></span><span></span><span></span></div>
-                    <div class="folder-box">
-                        <div class="folder-tab-title">TEORÍA DE RIESGO</div>
-                        <div>
-                            <h3>Modelado de Valores Extremos en R</h3>
-                            <p>Estimación de riesgos y análisis de eventos raros. Aplicación de teoría de valores extremos para toma de decisiones bajo incertidumbre.</p>
-                        </div>
-                        <div class="folder-bottom-bar">
-                            <span class="meta-pill">Certificate</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Original 6 -->
-                <div class="folder-shell">
-                    <div class="folder-dots-plate"><span></span><span></span><span></span></div>
-                    <div class="folder-box">
-                        <div class="folder-tab-title">ESTADÍSTICA MULTIVARIANTE</div>
-                        <div>
-                            <h3>Métodos Biplot</h3>
-                            <p>Visualización e interpretación de datos multivariados. Técnicas avanzadas de reducción de dimensionalidad para análisis exploratorio.</p>
-                        </div>
-                        <div class="folder-bottom-bar">
-                            <span class="meta-pill">Certificate</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ==================== PREMIOS Y DISTINCIONES (LOS 7 ORIGINALES + EXPO CLEAN HACKATHON) ==================== -->
-        <section class="page-section alt" id="awards">
-            <div class="section-header-block">
-                <div>
-                    <span class="section-label-pill">Reconocimientos</span>
-                    <h2 class="section-main-title">PREMIOS <em>y Distinciones</em></h2>
-                </div>
-                <p class="section-intro-text">
-                    Reconocimientos obtenidos en competencias académicas, congresos arbitrados y eventos internacionales de innovación.
-                </p>
-            </div>
-
-            <div class="cards-grid-full">
-                <!-- Premio 1 -->
-                <div class="folder-shell">
-                    <div class="folder-dots-plate"><span></span><span></span><span></span></div>
-                    <div class="folder-box">
-                        <div class="folder-tab-title">1ER LUGAR · JUNIO 2026</div>
-                        <div>
-                            <h3>1er Lugar - Concurso Académico de Estadística Aplicada (III Edición)</h3>
-                            <p>Ganador del Primer Lugar en el concurso de pósters de la Facultad de Ciencias, ESPOCH, con el póster sobre modelos de regresión logística y redes neuronales para la predicción de incidencia delictiva.</p>
-                        </div>
-                        <div class="folder-bottom-bar">
-                            <span class="meta-pill">Junio 2026 · ESPOCH</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Premio 2 -->
-                <div class="folder-shell">
-                    <div class="folder-dots-plate"><span></span><span></span><span></span></div>
-                    <div class="folder-box">
-                        <div class="folder-tab-title">TOP PAPER · JULIO 2026</div>
-                        <div>
-                            <h3>Selección entre los mejores trabajos - LACCEI 2026</h3>
-                            <p>Paper estudiantil elegido entre más de 3,000 trabajos presentados en la 24ª LACCEI International Multi-Conference for Engineering, Education and Technology.</p>
-                        </div>
-                        <div class="folder-bottom-bar">
-                            <span class="meta-pill">Julio 2026 · Santiago, Chile</span>
-                            <a href="https://laccei.org/laccei2026/" target="_blank" rel="noopener" class="pill-btn-yellow">
-                                Conferencia <span class="y-circle"><i class="fas fa-arrow-right"></i></span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Premio 3 (Nuevo: Expo Clean Hackathon) -->
-                <div class="folder-shell">
-                    <div class="folder-dots-plate"><span></span><span></span><span></span></div>
-                    <div class="folder-box">
-                        <div class="folder-tab-title">HACKATHON · OCTUBRE 2026</div>
-                        <div>
-                            <h3>Participación Destacada CUADRAS AI - Expo Clean Ecuador 2026</h3>
-                            <p>Cofundador del equipo CUADRAS AI en la Expo Clean Ecuador 2026 Hackathon, desarrollando una plataforma inteligente de monitoreo ergonómico y gestión de EPP.</p>
-                        </div>
-                        <div class="folder-bottom-bar">
-                            <span class="meta-pill">Octubre 2026 · Expo Clean Hackathon</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Premio 4 -->
-                <div class="folder-shell">
-                    <div class="folder-dots-plate"><span></span><span></span><span></span></div>
-                    <div class="folder-box">
-                        <div class="folder-tab-title">NASA SPACE APPS · 2024</div>
-                        <div>
-                            <h3>2º Lugar - NASA Space Apps Challenge</h3>
-                            <p>Ganadores locales del desafío global de la NASA. Desarrollo de soluciones innovadoras para desafíos espaciales usando ciencia de datos y tecnología.</p>
-                        </div>
-                        <div class="folder-bottom-bar">
-                            <span class="meta-pill">2024 · Local Winners</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Premio 5 -->
-                <div class="folder-shell">
-                    <div class="folder-dots-plate"><span></span><span></span><span></span></div>
-                    <div class="folder-box">
-                        <div class="folder-tab-title">GLOBAL NOMINEE · 2024</div>
-                        <div>
-                            <h3>Nominación Global - NASA Challenge</h3>
-                            <p>Reconocimiento por nominación a nivel global en el concurso internacional NASA Space Apps Challenge por soluciones geoespaciales basadas en datos abiertos.</p>
-                        </div>
-                        <div class="folder-bottom-bar">
-                            <span class="meta-pill">2024 · Global Nomination</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Premio 6 -->
-                <div class="folder-shell">
-                    <div class="folder-dots-plate"><span></span><span></span><span></span></div>
-                    <div class="folder-box">
-                        <div class="folder-tab-title">PREMIO NACIONAL · 2023</div>
-                        <div>
-                            <h3>2º Lugar Nacional - Estadística Aplicada</h3>
-                            <p>Concurso Académico de Estadística Aplicada 2023. Premio por solución innovadora a retos de datos reales mediante análisis estadístico avanzado.</p>
-                        </div>
-                        <div class="folder-bottom-bar">
-                            <span class="meta-pill">2023 · National Award</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Premio 7 -->
-                <div class="folder-shell">
-                    <div class="folder-dots-plate"><span></span><span></span><span></span></div>
-                    <div class="folder-box">
-                        <div class="folder-tab-title">INNOVACIÓN · 2024</div>
-                        <div>
-                            <h3>Hackathon IBM Interuniversitario</h3>
-                            <p>Participación en hackathon IBM con estudiantes de múltiples universidades. Colaboración en soluciones tecnológicas innovadoras.</p>
-                        </div>
-                        <div class="folder-bottom-bar">
-                            <span class="meta-pill">2024 · Participation Certificate</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Premio 8 -->
-                <div class="folder-shell">
-                    <div class="folder-dots-plate"><span></span><span></span><span></span></div>
-                    <div class="folder-box">
-                        <div class="folder-tab-title">MÉRITO ACADÉMICO · 2024</div>
-                        <div>
-                            <h3>Reconocimiento por Participación (2da Edición)</h3>
-                            <p>Concurso de Estadística Aplicada, 2da edición. Reconocimiento por la calidad del trabajo presentado y metodología estadística aplicada.</p>
-                        </div>
-                        <div class="folder-bottom-bar">
-                            <span class="meta-pill">2024 · Participation Certificate</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ==================== CONTACTO (LAS 5 TARJETAS ORIGINALES) ==================== -->
-        <section class="page-section" id="contact">
-            <div class="section-header-block">
-                <div>
-                    <span class="section-label-pill">Contacto</span>
-                    <h2 class="section-main-title">TRABAJEMOS <em>Juntos</em></h2>
-                </div>
-                <p class="section-intro-text">
-                    ¿Tienes un proyecto en mente? Contáctame para discutir cómo puedo ayudarte a transformar tus datos en decisiones estratégicas.
-                </p>
-            </div>
-
-            <div class="contact-grid-5">
-                <div class="contact-card-ref">
-                    <div class="contact-icon-circle"><i class="fab fa-whatsapp"></i></div>
-                    <div class="contact-label">WhatsApp</div>
-                    <div class="contact-value">
-                        <a href="https://wa.me/593963281463?text=Hola%20Jos%C3%A9,%20vi%20tu%20portafolio%20y%20me%20gustar%C3%ADa%20contactarte" target="_blank" rel="noopener">
-                            +593 96 328 1463
+                        <a href="#contact" class="doi-btn" onclick="document.querySelector('[data-target=\'panel-stack\']').click(); return false;">
+                            Contacto Directo <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
                 </div>
+            </section>
 
-                <div class="contact-card-ref">
-                    <div class="contact-icon-circle"><i class="fab fa-linkedin-in"></i></div>
-                    <div class="contact-label">LinkedIn</div>
-                    <div class="contact-value">
-                        <a href="https://www.linkedin.com/in/josecarlos440" target="_blank" rel="noopener">
-                            josecarlos440
-                        </a>
+            <!-- VISTA 3: STACK & CONTACTO DIRECTO -->
+            <section class="view-panel" id="panel-stack">
+                <div class="contact-stack-grid">
+                    <div class="cs-box">
+                        <h3>Stack Tecnológico</h3>
+                        <p style="font-size:0.88rem; color:var(--muted); margin-bottom:1.2rem;">Herramientas principales de análisis y modelado:</p>
+                        <div class="chips-container">
+                            <span class="chip">R &amp; RStudio</span>
+                            <span class="chip">Python (pandas, scikit-learn)</span>
+                            <span class="chip">XGBoost &amp; Redes Neuronales</span>
+                            <span class="chip">Power BI (DAX &amp; M)</span>
+                            <span class="chip">SQL &amp; PostgreSQL</span>
+                            <span class="chip">STATIS-Dual / RKHS</span>
+                            <span class="chip">Quarto &amp; LaTeX</span>
+                            <span class="chip">Ollama + Llama 3</span>
+                        </div>
+                    </div>
+
+                    <div class="cs-box">
+                        <h3>Canales Directos</h3>
+                        <p style="font-size:0.88rem; color:var(--muted); margin-bottom:1.2rem;">Conéctate conmigo de forma inmediata:</p>
+                        <div class="direct-links">
+                            <a href="https://wa.me/593963281463?text=Hola%20Jos%C3%A9,%20vi%20tu%20portafolio" target="_blank" rel="noopener" class="direct-link-item">
+                                <i class="fab fa-whatsapp" style="font-size:1.2rem; color:#25D366;"></i> WhatsApp: +593 96 328 1463
+                            </a>
+                            <a href="mailto:carlosmexa302@gmail.com" class="direct-link-item">
+                                <i class="fas fa-envelope" style="font-size:1.2rem; color:var(--gold);"></i> Email: carlosmexa302@gmail.com
+                            </a>
+                            <a href="https://scholar.google.com/citations?hl=es&user=2bxi2ncAAAAJ&view_op=list_works&sortby=pubdate" target="_blank" rel="noopener" class="direct-link-item">
+                                <i class="fas fa-graduation-cap" style="font-size:1.2rem;"></i> Google Scholar / Citas
+                            </a>
+                        </div>
                     </div>
                 </div>
+            </section>
 
-                <div class="contact-card-ref">
-                    <div class="contact-icon-circle"><i class="fas fa-envelope"></i></div>
-                    <div class="contact-label">Email</div>
-                    <div class="contact-value">
-                        <a href="mailto:carlosmexa302@gmail.com">
-                            carlosmexa302@gmail.com
-                        </a>
-                    </div>
-                </div>
-
-                <div class="contact-card-ref">
-                    <div class="contact-icon-circle"><i class="fab fa-orcid"></i></div>
-                    <div class="contact-label">ORCID</div>
-                    <div class="contact-value">
-                        <a href="https://orcid.org/0009-0007-6831-6131" target="_blank" rel="noopener">
-                            0009-0007-6831-6131
-                        </a>
-                    </div>
-                </div>
-
-                <div class="contact-card-ref">
-                    <div class="contact-icon-circle"><i class="fas fa-graduation-cap"></i></div>
-                    <div class="contact-label">Google Scholar</div>
-                    <div class="contact-value">
-                        <a href="https://scholar.google.com/citations?hl=es&user=2bxi2ncAAAAJ&view_op=list_works&sortby=pubdate" target="_blank" rel="noopener">
-                            Perfil Académico
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ==================== FOOTER COMPLETO ==================== -->
-        <footer class="master-footer">
-            <span class="signature-footer">José Carlos Gallegos</span>
-            <div class="footer-contact-info">
-                <p>Ecuador · +593 96 328 1463</p>
-                <p>
-                    LinkedIn: <a href="https://www.linkedin.com/in/josecarlos440" target="_blank" rel="noopener">josecarlos440</a> |
-                    ORCID: <a href="https://orcid.org/0009-0007-6831-6131" target="_blank" rel="noopener">0009-0007-6831-6131</a>
-                </p>
-                <p>
-                    Google Scholar: <a href="https://scholar.google.com/citations?hl=es&user=2bxi2ncAAAAJ&view_op=list_works&sortby=pubdate" target="_blank" rel="noopener">Perfil Académico</a>
-                </p>
-                <p>Email: <a href="mailto:carlosmexa302@gmail.com">carlosmexa302@gmail.com</a></p>
-                <p>Portfolio: <a href="https://josescar.github.io/" target="_blank" rel="noopener">josescar.github.io</a></p>
-            </div>
-            <div class="footer-copyright">
-                © 2026 José Carlos Gallegos Meza — Ingeniero en Estadística — ESPOCH
-            </div>
-        </footer>
-
+        </main>
     </div>
 
-    <!-- ==================== SCRIPTS ==================== -->
     <script>
-        // 1. Theme Toggle con persistencia en localStorage
+        // Sistema de Pestañas (Tabs) para vista única sin scroll
+        const tabs = document.querySelectorAll('.tab-btn');
+        const panels = document.querySelectorAll('.view-panel');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                panels.forEach(p => p.classList.remove('active'));
+
+                tab.classList.add('active');
+                document.getElementById(tab.getAttribute('data-target')).classList.add('active');
+            });
+        });
+
+        // Cambio de tema claro / oscuro
         const themeToggle = document.getElementById('themeToggle');
         const html = document.documentElement;
-        const themeIcon = themeToggle.querySelector('i');
+        const icon = themeToggle.querySelector('i');
 
-        const currentTheme = localStorage.getItem('theme') || 'light';
-        html.setAttribute('data-theme', currentTheme);
-        themeIcon.className = currentTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+        const saved = localStorage.getItem('theme') || 'light';
+        html.setAttribute('data-theme', saved);
+        icon.className = saved === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
 
         themeToggle.addEventListener('click', () => {
-            const theme = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-            html.setAttribute('data-theme', theme);
-            localStorage.setItem('theme', theme);
-            themeIcon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+            const next = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+            html.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+            icon.className = next === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
         });
-
-        // 2. Menú Móvil
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mainNav = document.getElementById('mainNav');
-
-        mobileMenuBtn.addEventListener('click', () => {
-            mainNav.classList.toggle('active');
-            mobileMenuBtn.innerHTML = mainNav.classList.contains('active')
-                ? '<i class="fas fa-times"></i>'
-                : '<i class="fas fa-bars"></i>';
-        });
-
-        document.querySelectorAll('.notch-link').forEach(link => {
-            link.addEventListener('click', () => {
-                mainNav.classList.remove('active');
-                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-            });
-        });
-
-        // 3. Animación de contadores numéricos
-        function animateCounters() {
-            const counters = document.querySelectorAll('.stat-number');
-            counters.forEach(counter => {
-                counter.textContent = '0';
-                const target = parseInt(counter.getAttribute('data-count'), 10);
-                const duration = 1800;
-                const increment = target / (duration / 16);
-                let current = 0;
-
-                const timer = setInterval(() => {
-                    current += increment;
-                    if (current >= target) {
-                        current = target;
-                        clearInterval(timer);
-                    }
-                    counter.textContent = Math.floor(current);
-                }, 16);
-            });
-        }
-
-        // 4. Filtro de proyectos por categoría
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const projectCards = document.querySelectorAll('.project-card-ref');
-
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                filterBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                const filter = btn.getAttribute('data-filter');
-
-                projectCards.forEach(card => {
-                    const cats = card.getAttribute('data-category') || '';
-                    if (filter === 'all' || cats.includes(filter)) {
-                        card.style.display = 'flex';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-            });
-        });
-
-        window.addEventListener('load', animateCounters);
     </script>
 </body>
 </html>
