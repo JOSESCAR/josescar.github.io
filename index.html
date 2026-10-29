@@ -1,274 +1,219 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lato:wght@300;400;700&family=Cormorant+Garamond:wght@400;500;600;700&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>José Carlos Gallegos Meza | Ingeniero Estadístico · Data Science & ML</title>
+    <meta name="description" content="Portafolio profesional de José Carlos Gallegos Meza, Ingeniero Estadístico (ESPOCH). Especialista en Ciencia de Datos, Machine Learning, Estadística Multivariante y Business Intelligence.">
+    
+    <!-- Google Fonts: Serif Editorial + Sans Limpia + Monoespaciada Técnica + Firma -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600&family=Dancing+Script:wght@600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome para iconografía de apoyo y redes -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
+        /* ==========================================================================
+           VARIABLES Y PALETA EDITORIAL (CREMA, DORADO, NAVY & ACENTO ÁMBAR)
+           ========================================================================== */
+        :root {
+            --cream: #F6F3EC;
+            --cream-alt: #EFEAE0;
+            --white: #FCFBF9;
+            --ink: #121820;
+            --navy: #182534;
+            --charcoal: #2B3846;
+            --gray: #5E6B78;
+            --gold: #B59A7A;
+            --dark-gold: #8A7050;
+            --light-gold: #E6D7B8;
+            --amber: #E5B842;
+            --amber-dark: #C99B26;
+            --border-gold: rgba(181, 154, 122, 0.32);
+            --border-strong: rgba(24, 37, 52, 0.14);
+            --shadow-soft: 0 18px 40px -15px rgba(18, 24, 32, 0.08);
+            --shadow-hover: 0 24px 48px -12px rgba(18, 24, 32, 0.16);
+            --cut-sm: 14px;
+            --cut-md: 22px;
+            --cut-lg: 32px;
+            --transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        [data-theme="dark"] {
+            --cream: #11151C;
+            --cream-alt: #171C26;
+            --white: #1D2430;
+            --ink: #F5F2EB;
+            --navy: #EDE3CE;
+            --charcoal: #D7D2C8;
+            --gray: #9BA6B2;
+            --gold: #C7AC8B;
+            --dark-gold: #E0C9A6;
+            --light-gold: #342E25;
+            --amber: #ECC04B;
+            --border-gold: rgba(199, 172, 139, 0.28);
+            --border-strong: rgba(237, 227, 206, 0.15);
+            --shadow-soft: 0 18px 40px -15px rgba(0, 0, 0, 0.45);
+            --shadow-hover: 0 24px 48px -12px rgba(0, 0, 0, 0.65);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        :root {
-            --gold: #B59A7A;
-            --dark-gold: #8B7355;
-            --light-gold: #E8D9B5;
-            --navy: #1C2B39;
-            --charcoal: #2C3A47;
-            --cream: #F8F6F2;
-            --white: #FFFFFF;
-            --gray: #6D7B8C;
-            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
-            --shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
-            --radius: 8px;
-        }
-
-        [data-theme="dark"] {
-            --cream: #1a1a1a;
-            --white: #2a2a2a;
-            --navy: #E8D9B5;
-            --charcoal: #F8F6F2;
-            --gray: #B8B8B8;
-            --shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'Lato', sans-serif;
+            font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: var(--cream);
             color: var(--charcoal);
             line-height: 1.7;
             overflow-x: hidden;
-            scroll-behavior: smooth;
-            transition: background-color 0.3s ease, color 0.3s ease;
+            transition: background-color 0.35s ease, color 0.35s ease;
+            background-image: 
+                radial-gradient(circle at 15% 10%, rgba(181, 154, 122, 0.07) 0%, transparent 45%),
+                radial-gradient(circle at 85% 80%, rgba(229, 184, 66, 0.05) 0%, transparent 45%);
         }
 
-        h1, h2, h3, h4, h5, h6 {
+        h1, h2, h3, h4 {
             font-family: 'Cormorant Garamond', serif;
-            font-weight: 600;
-            color: var(--navy);
-            letter-spacing: -0.5px;
-            margin-bottom: 1.5rem;
-        }
-
-        h1 { 
-            font-size: 3.5rem; 
-            line-height: 1.1;
+            color: var(--ink);
             font-weight: 700;
-        }
-        
-        h2 { 
-            font-size: 2.5rem; 
-            line-height: 1.2;
-        }
-        
-        h3 { 
-            font-size: 1.6rem; 
-            line-height: 1.3;
+            letter-spacing: -0.02em;
         }
 
-        p {
-            font-size: 1.05rem;
-            color: var(--gray);
-            margin-bottom: 1.8rem;
-            font-weight: 400;
-            line-height: 1.8;
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
         }
 
         .container {
-            max-width: 1400px;
+            max-width: 1360px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 2.2rem;
         }
 
+        /* ==========================================================================
+           HEADER & NAVEGACIÓN
+           ========================================================================== */
         header {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            background: rgba(248, 246, 242, 0.98);
-            backdrop-filter: blur(10px);
             z-index: 1000;
-            padding: 1.5rem 0;
-            border-bottom: 1px solid rgba(181, 154, 122, 0.15);
+            background: rgba(246, 243, 236, 0.9);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--border-gold);
+            padding: 1.1rem 0;
             transition: var(--transition);
         }
 
         [data-theme="dark"] header {
-            background: rgba(26, 26, 26, 0.98);
-            border-bottom: 1px solid rgba(181, 154, 122, 0.3);
+            background: rgba(17, 21, 28, 0.9);
         }
 
         .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 1.5rem;
         }
 
         .logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: var(--navy);
-            text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 1rem;
-            letter-spacing: 1px;
-            position: relative;
+            gap: 0.9rem;
+            text-decoration: none;
+            color: var(--ink);
         }
 
         .logo-symbol {
-            width: 2.8rem;
-            height: 2.8rem;
+            width: 2.75rem;
+            height: 2.75rem;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
-            z-index: 1;
-            background: var(--cream);
-            overflow: hidden;
-            box-shadow: 
-                0 0 0 1px var(--gold),
-                inset 0 0 0 1px var(--cream);
-            transition: all 0.5s ease;
-        }
-
-        .logo-symbol::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: conic-gradient(
-                from 0deg,
-                transparent,
-                var(--gold),
-                var(--light-gold),
-                var(--gold),
-                transparent
-            );
-            border-radius: 50%;
-            z-index: -1;
-            animation: rotateRing 8s linear infinite;
-            opacity: 0;
-            transition: opacity 0.5s ease;
+            background: var(--white);
+            border: 1px solid var(--gold);
+            box-shadow: inset 0 0 0 3px var(--cream);
+            transition: var(--transition);
         }
 
         .logo-symbol::after {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            border: 1px solid rgba(181, 154, 122, 0.3);
+            inset: -4px;
             border-radius: 50%;
-            animation: pulseRing 3s ease-in-out infinite;
-            z-index: 0;
+            border: 1px dashed var(--gold);
+            opacity: 0.55;
+            animation: spinSlow 18s linear infinite;
         }
 
-        .logo-symbol .glow {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background: radial-gradient(
-                circle at 30% 30%,
-                rgba(232, 217, 181, 0.3) 0%,
-                transparent 70%
-            );
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-
-        .logo-symbol .logo-initials {
+        .logo-initials {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.2rem;
             font-weight: 700;
-            color: var(--navy);
-            position: relative;
-            z-index: 2;
-            transition: all 0.3s ease;
+            color: var(--ink);
             letter-spacing: 1px;
         }
 
-        .logo:hover .logo-symbol::before {
-            opacity: 1;
-        }
-
-        .logo:hover .logo-symbol .glow {
-            opacity: 1;
-        }
-
-        .logo:hover .logo-symbol .logo-initials {
-            color: var(--gold);
+        .logo:hover .logo-symbol {
+            background: var(--amber);
+            border-color: var(--amber);
             transform: scale(1.05);
         }
 
-        .logo:hover .logo-symbol {
-            box-shadow: 
-                0 0 0 1px var(--gold),
-                inset 0 0 0 1px var(--cream),
-                0 10px 30px rgba(181, 154, 122, 0.2);
+        .logo:hover .logo-initials {
+            color: #121820;
         }
 
-        @keyframes rotateRing {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        @keyframes pulseRing {
-            0%, 100% {
-                transform: scale(1);
-                opacity: 0.3;
-            }
-            50% {
-                transform: scale(1.05);
-                opacity: 0.6;
-            }
+        .logo-text-wrap {
+            display: flex;
+            flex-direction: column;
         }
 
         .logo-text {
-            position: relative;
-            padding-left: 0.5rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.45rem;
+            font-weight: 700;
+            line-height: 1;
+            letter-spacing: 0.3px;
         }
 
-        .logo-text::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 1px;
-            background: var(--gold);
-            transition: var(--transition);
-        }
-
-        .logo:hover .logo-text::after {
-            width: 100%;
+        .logo-sub {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.62rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--dark-gold);
+            margin-top: 2px;
         }
 
         nav {
             display: flex;
             align-items: center;
-            gap: 2rem;
+            gap: 1.75rem;
         }
 
         .nav-link {
             color: var(--charcoal);
             text-decoration: none;
-            font-size: 0.8rem;
-            font-weight: 500;
-            letter-spacing: 1.5px;
+            font-size: 0.76rem;
+            font-weight: 600;
+            letter-spacing: 1.6px;
             text-transform: uppercase;
-            transition: var(--transition);
             position: relative;
-            padding: 0.5rem 0;
+            padding: 0.4rem 0;
+            transition: var(--transition);
         }
 
         .nav-link::after {
@@ -277,13 +222,13 @@
             bottom: 0;
             left: 0;
             width: 0;
-            height: 1px;
-            background: var(--gold);
+            height: 2px;
+            background: var(--amber);
             transition: var(--transition);
         }
 
         .nav-link:hover {
-            color: var(--gold);
+            color: var(--ink);
         }
 
         .nav-link:hover::after {
@@ -291,9 +236,9 @@
         }
 
         .theme-toggle {
-            background: transparent;
-            border: 1px solid var(--gold);
-            color: var(--gold);
+            background: var(--white);
+            border: 1px solid var(--border-gold);
+            color: var(--ink);
             width: 2.5rem;
             height: 2.5rem;
             border-radius: 50%;
@@ -302,931 +247,1175 @@
             justify-content: center;
             cursor: pointer;
             transition: var(--transition);
-            font-size: 1rem;
+            font-size: 0.95rem;
         }
 
         .theme-toggle:hover {
-            background: var(--gold);
-            color: var(--cream);
-            transform: rotate(20deg);
+            background: var(--amber);
+            border-color: var(--amber);
+            color: #121820;
+            transform: rotate(15deg);
         }
 
         .nav-btn {
-            background: transparent;
-            color: var(--gold);
-            padding: 0.7rem 1.5rem;
-            border: 1px solid var(--gold);
-            border-radius: 30px;
+            background: var(--ink);
+            color: var(--cream);
+            padding: 0.7rem 1.4rem;
             text-decoration: none;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 600;
             letter-spacing: 1.5px;
             text-transform: uppercase;
+            clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
             transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
+            border: 1px solid var(--ink);
         }
 
         .nav-btn:hover {
-            background: var(--gold);
-            color: var(--cream);
+            background: var(--amber);
+            border-color: var(--amber);
+            color: #121820;
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(181, 154, 122, 0.15);
         }
 
         .mobile-menu-btn {
             display: none;
             background: none;
-            border: none;
-            font-size: 1.3rem;
-            color: var(--navy);
+            border: 1px solid var(--border-gold);
+            width: 2.6rem;
+            height: 2.6rem;
+            border-radius: 6px;
+            font-size: 1.15rem;
+            color: var(--ink);
             cursor: pointer;
         }
 
+        /* ==========================================================================
+           HERO EDITORIAL CON MARCO BISELADO Y SELLO CIRCULAR
+           ========================================================================== */
         .hero {
-            padding: 12rem 0 6rem;
-            position: relative;
-            overflow: hidden;
-            background: linear-gradient(135deg, var(--cream) 0%, var(--white) 100%);
-            min-height: 90vh;
+            padding: 9.5rem 0 5rem;
+            min-height: 94vh;
             display: flex;
             align-items: center;
+            position: relative;
         }
 
-        .hero-container {
+        .hero-frame {
+            background: var(--white);
+            border: 1px solid var(--border-gold);
+            padding: 3.8rem 3.5rem;
+            position: relative;
+            clip-path: polygon(
+                0 0,
+                calc(100% - var(--cut-lg)) 0,
+                100% var(--cut-lg),
+                100% 100%,
+                var(--cut-lg) 100%,
+                0 calc(100% - var(--cut-lg))
+            );
+            box-shadow: var(--shadow-soft);
+        }
+
+        /* Esquinas decorativas internas */
+        .hero-frame::before {
+            content: '';
+            position: absolute;
+            inset: 12px;
+            border: 1px solid rgba(181, 154, 122, 0.18);
+            pointer-events: none;
+            clip-path: polygon(
+                0 0,
+                calc(100% - 24px) 0,
+                100% 24px,
+                100% 100%,
+                24px 100%,
+                0 calc(100% - 24px)
+            );
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.32fr 0.68fr;
+            gap: 4rem;
+            align-items: center;
             position: relative;
             z-index: 2;
-            display: grid;
-            grid-template-columns: 1.3fr 0.7fr;
-            gap: 5rem;
+        }
+
+        .hero-topline {
+            display: inline-flex;
             align-items: center;
-            width: 100%;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+            padding: 0.4rem 1rem 0.4rem 0.5rem;
+            background: var(--cream);
+            border: 1px solid var(--border-gold);
+            border-radius: 999px;
         }
 
-        .hero-content {
-            position: relative;
-        }
-
-        .hero-badge {
-            display: inline-block;
-            background: transparent;
-            color: var(--gold);
-            padding: 0.5rem 1.2rem;
+        .hero-topline-dot {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--amber);
+            color: #121820;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             font-size: 0.7rem;
+            font-weight: 700;
+        }
+
+        .hero-topline-text {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.72rem;
             font-weight: 600;
-            letter-spacing: 3px;
             text-transform: uppercase;
-            margin-bottom: 2rem;
-            border-radius: 30px;
-            border: 1px solid var(--gold);
+            letter-spacing: 1.6px;
+            color: var(--ink);
         }
 
         .hero h1 {
-            margin-bottom: 2rem;
+            font-size: clamp(2.9rem, 5.2vw, 4.9rem);
+            line-height: 0.98;
+            margin-bottom: 1.6rem;
+            color: var(--ink);
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            font-weight: 600;
+            color: var(--dark-gold);
             position: relative;
         }
 
-        .hero h1::after {
-            content: '';
-            position: absolute;
-            bottom: -1rem;
-            left: 0;
-            width: 3rem;
-            height: 1px;
-            background: var(--gold);
+        .hero h1 .highlight-bar {
+            background: linear-gradient(180deg, transparent 62%, rgba(229, 184, 66, 0.45) 62%);
+            padding: 0 0.15em;
         }
 
-        .hero p {
-            font-size: 1.1rem;
-            margin-bottom: 3rem;
-            max-width: 38rem;
+        .hero-lead {
+            font-size: 1.08rem;
             color: var(--charcoal);
+            max-width: 42rem;
+            margin-bottom: 2.3rem;
+            line-height: 1.8;
         }
 
-        .hero-buttons {
+        .hero-actions {
             display: flex;
+            flex-wrap: wrap;
             gap: 1rem;
-            margin-bottom: 4rem;
+            margin-bottom: 3rem;
         }
 
         .btn {
-            padding: 0.9rem 2rem;
+            padding: 0.95rem 1.9rem;
             text-decoration: none;
-            font-size: 0.8rem;
-            font-weight: 600;
-            letter-spacing: 1.5px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 1.6px;
             text-transform: uppercase;
-            transition: var(--transition);
             display: inline-flex;
             align-items: center;
-            gap: 0.8rem;
-            border-radius: 30px;
+            gap: 0.75rem;
+            transition: var(--transition);
+            clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px);
         }
 
         .btn-primary {
-            background: var(--gold);
+            background: var(--ink);
             color: var(--cream);
-            border: 1px solid var(--gold);
+            border: 1px solid var(--ink);
+        }
+
+        .btn-primary .btn-arrow {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: var(--amber);
+            color: #121820;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            transition: var(--transition);
         }
 
         .btn-primary:hover {
-            background: var(--dark-gold);
-            border-color: var(--dark-gold);
+            background: var(--amber);
+            border-color: var(--amber);
+            color: #121820;
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(139, 115, 85, 0.2);
+            box-shadow: 0 12px 24px rgba(229, 184, 66, 0.28);
+        }
+
+        .btn-primary:hover .btn-arrow {
+            background: #121820;
+            color: var(--amber);
+            transform: rotate(45deg);
         }
 
         .btn-secondary {
             background: transparent;
-            color: var(--gold);
+            color: var(--ink);
             border: 1px solid var(--gold);
         }
 
         .btn-secondary:hover {
             background: var(--gold);
-            color: var(--cream);
+            color: var(--white);
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(181, 154, 122, 0.2);
         }
 
-        .stats {
-            display: flex;
-            gap: 3rem;
-            padding-top: 3rem;
-            border-top: 1px solid rgba(181, 154, 122, 0.2);
+        /* Métricas editoriales */
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.2rem;
+            padding-top: 2.2rem;
+            border-top: 1px solid var(--border-gold);
         }
 
         .stat-item {
             position: relative;
-            text-align: center;
-            padding: 0 1rem;
-            flex: 1;
+            padding-right: 1rem;
+        }
+
+        .stat-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 10%;
+            height: 80%;
+            width: 1px;
+            background: var(--border-gold);
+        }
+
+        .stat-number-wrap {
+            display: flex;
+            align-items: baseline;
+            gap: 2px;
         }
 
         .stat-number {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             font-weight: 700;
-            color: var(--navy);
-            display: block;
+            color: var(--ink);
             line-height: 1;
         }
 
+        .stat-plus {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--amber-dark);
+        }
+
         .stat-label {
-            font-size: 0.7rem;
+            display: block;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.68rem;
             color: var(--gray);
             text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-top: 0.5rem;
+            letter-spacing: 1.2px;
+            margin-top: 0.35rem;
         }
 
-        .stat-number::after {
-            content: '+';
-            color: var(--gold);
+        /* Columna de Retrato + Sello Circular */
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        .hero-image-container {
+        .portrait-card {
             position: relative;
             width: 100%;
-            height: 450px;
+            max-width: 370px;
+            aspect-ratio: 4 / 4.7;
+            background: var(--navy);
+            padding: 12px;
+            border: 1px solid var(--gold);
+            clip-path: polygon(
+                var(--cut-md) 0,
+                100% 0,
+                100% calc(100% - var(--cut-md)),
+                calc(100% - var(--cut-md)) 100%,
+                0 100%,
+                0 var(--cut-md)
+            );
+            box-shadow: var(--shadow-hover);
+        }
+
+        .portrait-inner {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            clip-path: polygon(
+                16px 0,
+                100% 0,
+                100% calc(100% - 16px),
+                calc(100% - 16px) 100%,
+                0 100%,
+                0 16px
+            );
+            background: linear-gradient(145deg, #182534 0%, #2B3846 100%);
+        }
+
+        .portrait-inner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            filter: contrast(1.04) sepia(12%);
+            transition: transform 0.7s ease;
+        }
+
+        .portrait-card:hover .portrait-inner img {
+            transform: scale(1.04);
+        }
+
+        .portrait-caption {
+            position: absolute;
+            bottom: 14px;
+            left: 14px;
+            right: 14px;
+            background: rgba(18, 24, 32, 0.86);
+            backdrop-filter: blur(8px);
+            padding: 0.7rem 1rem;
+            border-left: 3px solid var(--amber);
+            color: #F6F3EC;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .portrait-caption span {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.68rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .portrait-caption strong {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.05rem;
+            color: var(--amber);
+        }
+
+        /* Sello circular giratorio estilo referencia */
+        .editorial-seal {
+            position: absolute;
+            top: -26px;
+            right: -22px;
+            width: 124px;
+            height: 124px;
+            border-radius: 50%;
+            background: var(--cream);
+            border: 1px solid var(--gold);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.14);
             display: flex;
             align-items: center;
             justify-content: center;
+            z-index: 5;
         }
 
-        .profile-image-wrapper {
-            position: relative;
-            width: 350px;
-            height: 350px;
+        .editorial-seal svg {
+            width: 112px;
+            height: 112px;
+            animation: spinSlow 20s linear infinite;
+        }
+
+        .editorial-seal text {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 8.3px;
+            font-weight: 600;
+            fill: var(--ink);
+            letter-spacing: 2.1px;
+            text-transform: uppercase;
+        }
+
+        .editorial-seal-center {
+            position: absolute;
+            width: 42px;
+            height: 42px;
             border-radius: 50%;
-            overflow: hidden;
-            box-shadow: 
-                0 20px 40px rgba(139, 115, 85, 0.15),
-                inset 0 0 0 12px var(--cream),
-                inset 0 0 0 15px var(--gold);
-            border: 1px solid var(--gold);
-            transition: transform 0.6s ease;
+            background: var(--amber);
+            color: #121820;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            font-weight: 700;
+            box-shadow: inset 0 0 0 2px #121820;
         }
 
-        .profile-image-wrapper:hover {
-            transform: rotate(5deg) scale(1.02);
+        @keyframes spinSlow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
-        .profile-image {
-            width: 100%;
-            height: 100%;
-            background: 
-                linear-gradient(135deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0) 50%),
-                url('fondo.jpeg') center/cover;
-            transition: var(--transition);
-        }
-
+        /* ==========================================================================
+           CABECERAS DE SECCIÓN
+           ========================================================================== */
         section {
-            padding: 5rem 0;
-            width: 100%;
-            opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-
-        section.visible {
-            opacity: 1;
-            transform: translateY(0);
+            padding: 5.5rem 0;
+            position: relative;
         }
 
         .section-header {
-            text-align: center;
-            max-width: 50rem;
-            margin: 0 auto 4rem;
-            padding: 0 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-bottom: 3.2rem;
+            border-bottom: 1px solid var(--border-gold);
+            padding-bottom: 1.8rem;
         }
 
-        .section-label {
-            display: inline-block;
-            color: var(--gold);
-            font-size: 0.7rem;
+        .section-header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            width: 100%;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .section-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.74rem;
             font-weight: 600;
-            letter-spacing: 3px;
             text-transform: uppercase;
-            margin-bottom: 1.5rem;
-            position: relative;
-            padding-bottom: 0.8rem;
+            letter-spacing: 2.5px;
+            color: var(--dark-gold);
+            margin-bottom: 0.6rem;
         }
 
-        .section-label::after {
+        .section-kicker::before {
             content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 2rem;
-            height: 1px;
-            background: var(--gold);
+            width: 10px;
+            height: 10px;
+            background: var(--amber);
+            display: inline-block;
+            transform: rotate(45deg);
         }
 
-        .about {
-            background: var(--cream);
+        .section-header h2 {
+            font-size: clamp(2.2rem, 3.8vw, 3.3rem);
+            line-height: 1.08;
+            margin-bottom: 0;
         }
 
+        .section-desc {
+            max-width: 36rem;
+            font-size: 0.98rem;
+            color: var(--gray);
+            margin-bottom: 0;
+        }
+
+        /* ==========================================================================
+           SOBRE MÍ / PILARES DE VALOR
+           ========================================================================== */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
-            padding: 0 0.5rem;
         }
 
         .service-card {
             background: var(--white);
-            padding: 2.5rem;
+            padding: 2.4rem 2.2rem;
+            border: 1px solid var(--border-gold);
             position: relative;
             transition: var(--transition);
-            border-radius: var(--radius);
-            border: 1px solid rgba(181, 154, 122, 0.1);
-            overflow: hidden;
+            clip-path: polygon(0 0, calc(100% - var(--cut-sm)) 0, 100% var(--cut-sm), 100% 100%, 0 100%);
         }
 
         .service-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(181, 154, 122, 0.3);
-            box-shadow: var(--shadow);
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--gold);
+        }
+
+        .service-num {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--dark-gold);
+            background: var(--cream);
+            padding: 0.3rem 0.65rem;
+            border: 1px solid var(--border-gold);
+            position: absolute;
+            top: 1.8rem;
+            right: 1.8rem;
         }
 
         .service-icon {
-            width: 3.5rem;
-            height: 3.5rem;
-            background: transparent;
-            color: var(--gold);
+            width: 3.3rem;
+            height: 3.3rem;
+            background: var(--cream);
+            color: var(--ink);
+            border: 1px solid var(--gold);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            border: 1px solid rgba(181, 154, 122, 0.3);
+            font-size: 1.2rem;
+            margin-bottom: 1.6rem;
             transition: var(--transition);
         }
 
         .service-card:hover .service-icon {
-            background: var(--gold);
-            color: var(--cream);
+            background: var(--amber);
+            border-color: var(--amber);
+            color: #121820;
         }
 
-        .skills {
-            background: var(--white);
+        .service-card h3 {
+            font-size: 1.65rem;
+            margin-bottom: 0.9rem;
         }
 
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 0.5rem;
+        .service-card p {
+            font-size: 0.96rem;
+            color: var(--gray);
+            margin-bottom: 0;
         }
 
-        .skill-column {
-            background: var(--cream);
-            border: 1px solid rgba(181, 154, 122, 0.1);
-            padding: 2.5rem;
-            border-radius: var(--radius);
-            transition: var(--transition);
+        /* ==========================================================================
+           PROYECTOS DESTACADOS (CON IMÁGENES REALES ARMONIZADAS Y FILTRO)
+           ========================================================================== */
+        .projects-section {
+            background: var(--cream-alt);
+            border-top: 1px solid var(--border-gold);
+            border-bottom: 1px solid var(--border-gold);
         }
 
-        .skill-column:hover {
-            transform: translateY(-3px);
-            border-color: rgba(181, 154, 122, 0.3);
-            box-shadow: var(--shadow);
-        }
-
-        .skill-list {
+        .filter-bar {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.6rem;
+            gap: 0.65rem;
+            margin-bottom: 2.5rem;
         }
 
-        .skill-badge {
-            background: rgba(181, 154, 122, 0.1);
-            color: var(--dark-gold);
-            padding: 0.5rem 1rem;
-            border-radius: 30px;
-            font-size: 0.8rem;
+        .filter-btn {
+            background: var(--white);
+            color: var(--charcoal);
+            border: 1px solid var(--border-gold);
+            padding: 0.55rem 1.2rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.73rem;
             font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
             transition: var(--transition);
+            clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
         }
 
-        .skill-badge:hover {
-            background: var(--gold);
-            color: var(--cream);
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--ink);
+            color: var(--amber);
+            border-color: var(--ink);
         }
 
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            padding: 0 0.5rem;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.2rem;
         }
 
         .project-card {
             background: var(--white);
+            border: 1px solid var(--border-gold);
+            display: flex;
+            flex-direction: column;
             position: relative;
             transition: var(--transition);
-            border-radius: var(--radius);
-            border: 1px solid rgba(181, 154, 122, 0.1);
-            overflow: hidden;
+            clip-path: polygon(
+                0 0,
+                calc(100% - var(--cut-md)) 0,
+                100% var(--cut-md),
+                100% 100%,
+                var(--cut-md) 100%,
+                0 calc(100% - var(--cut-md))
+            );
         }
 
         .project-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(181, 154, 122, 0.3);
-            box-shadow: var(--shadow);
+            transform: translateY(-7px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--gold);
         }
 
-        .project-image {
-            height: 15rem;
-            background: linear-gradient(45deg, var(--navy), var(--charcoal));
+        .pmedia-wrap {
+            position: relative;
+            padding: 0.85rem 0.85rem 0;
+        }
+
+        .pmedia {
+            height: 225px;
+            position: relative;
+            overflow: hidden;
+            background: var(--navy);
+            clip-path: polygon(
+                0 0,
+                calc(100% - 16px) 0,
+                100% 16px,
+                100% 100%,
+                0 100%
+            );
+        }
+
+        /* Fotografía real armonizada con la paleta crema/dorado/navy */
+        .pmedia img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: sepia(32%) saturate(80%) contrast(1.08) brightness(0.88);
+            transform: scale(1.01);
+            transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1), filter 0.5s ease;
+        }
+
+        /* Capa de armonización cromática en tonos de la página */
+        .pmedia::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                180deg,
+                rgba(24, 37, 52, 0.28) 0%,
+                rgba(181, 154, 122, 0.22) 55%,
+                rgba(18, 24, 32, 0.78) 100%
+            );
+            mix-blend-mode: multiply;
+            transition: opacity 0.45s ease;
+            pointer-events: none;
+        }
+
+        .project-card:hover .pmedia img {
+            transform: scale(1.07);
+            filter: sepia(15%) saturate(95%) contrast(1.06) brightness(0.95);
+        }
+
+        .pbadge {
+            position: absolute;
+            top: 1.55rem;
+            left: 1.55rem;
+            z-index: 3;
+            background: rgba(18, 24, 32, 0.86);
+            backdrop-filter: blur(6px);
+            color: var(--amber);
+            border: 1px solid rgba(229, 184, 66, 0.45);
+            padding: 0.28rem 0.7rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.66rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .pindex {
+            position: absolute;
+            bottom: 0.7rem;
+            left: 1.55rem;
+            z-index: 3;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.72rem;
+            color: #F6F3EC;
+            letter-spacing: 1.5px;
+            opacity: 0.9;
+        }
+
+        /* Botón circular de acción fuera del clip-path para no recortarse */
+        .go-btn {
+            position: absolute;
+            bottom: -18px;
+            right: 1.6rem;
+            z-index: 5;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: var(--amber);
+            color: #121820;
+            border: 2px solid var(--white);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--gold);
-            font-size: 2.5rem;
-            position: relative;
-            overflow: hidden;
+            text-decoration: none;
+            font-size: 0.9rem;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+            transition: var(--transition);
+        }
+
+        .project-card:hover .go-btn {
+            background: var(--ink);
+            color: var(--amber);
+            transform: rotate(45deg) scale(1.08);
         }
 
         .project-content {
-            padding: 2rem;
+            padding: 1.7rem 1.7rem 1.8rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .project-content h3 {
+            font-size: 1.5rem;
+            line-height: 1.22;
+            margin-bottom: 0.75rem;
+        }
+
+        .project-content h3 a {
+            color: var(--ink);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .project-content h3 a:hover {
+            color: var(--dark-gold);
+        }
+
+        .project-content p {
+            font-size: 0.92rem;
+            color: var(--gray);
+            line-height: 1.68;
+            margin-bottom: 1.3rem;
+            flex-grow: 1;
         }
 
         .project-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 1.5rem;
+            gap: 0.45rem;
+            padding-top: 1rem;
+            border-top: 1px dashed var(--border-gold);
         }
 
         .tag {
-            background: rgba(181, 154, 122, 0.1);
-            color: var(--dark-gold);
-            padding: 0.3rem 0.8rem;
-            font-size: 0.7rem;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            border-radius: 30px;
-            transition: var(--transition);
-        }
-
-        .tag:hover {
-            background: var(--gold);
-            color: var(--cream);
-        }
-
-        .timeline {
             background: var(--cream);
+            color: var(--charcoal);
+            border: 1px solid var(--border-gold);
+            padding: 0.22rem 0.65rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.66rem;
+            font-weight: 500;
+            letter-spacing: 0.4px;
         }
 
-        .timeline-list {
-            max-width: 52rem;
-            margin: 0 auto;
-            position: relative;
+        /* ==========================================================================
+           HABILIDADES TÉCNICAS
+           ========================================================================== */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
         }
 
-        .timeline-list::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: 0;
-            bottom: 0;
-            width: 1px;
-            background: linear-gradient(to bottom, transparent, var(--gold), transparent);
-            transform: translateX(-50%);
-        }
-
-        .timeline-item {
-            display: flex;
-            margin-bottom: 3rem;
-            position: relative;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.6s ease;
-        }
-
-        .timeline-item.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .timeline-item:nth-child(odd) {
-            justify-content: flex-end;
-            padding-right: calc(50% + 2rem);
-        }
-
-        .timeline-item:nth-child(even) {
-            justify-content: flex-start;
-            padding-left: calc(50% + 2rem);
-        }
-
-        .timeline-content {
+        .skill-column {
             background: var(--white);
-            padding: 2rem;
-            width: 100%;
-            max-width: 24rem;
-            border-radius: var(--radius);
-            border: 1px solid rgba(181, 154, 122, 0.1);
+            border: 1px solid var(--border-gold);
+            padding: 2.3rem;
             position: relative;
+            transition: var(--transition);
+            clip-path: polygon(0 0, calc(100% - var(--cut-sm)) 0, 100% var(--cut-sm), 100% 100%, 0 100%);
+        }
+
+        .skill-column:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-soft);
+            border-color: var(--gold);
+        }
+
+        .skill-column h3 {
+            font-size: 1.55rem;
+            margin-bottom: 1.3rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-gold);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .skill-column h3 i {
+            color: var(--amber-dark);
+            font-size: 1.1rem;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.55rem;
+        }
+
+        .skill-badge {
+            background: var(--cream);
+            color: var(--ink);
+            border: 1px solid var(--border-gold);
+            padding: 0.45rem 0.9rem;
+            font-size: 0.8rem;
+            font-weight: 600;
             transition: var(--transition);
         }
 
-        .timeline-content:hover {
-            transform: translateY(-3px);
-            border-color: rgba(181, 154, 122, 0.3);
-            box-shadow: var(--shadow);
+        .skill-badge.featured {
+            background: rgba(229, 184, 66, 0.16);
+            border-color: var(--amber-dark);
+        }
+
+        .skill-badge:hover {
+            background: var(--ink);
+            color: var(--amber);
+            border-color: var(--ink);
+        }
+
+        /* ==========================================================================
+           TRAYECTORIA PROFESIONAL (TIMELINE EDITORIAL)
+           ========================================================================== */
+        .timeline-section {
+            background: var(--cream-alt);
+            border-top: 1px solid var(--border-gold);
+            border-bottom: 1px solid var(--border-gold);
+        }
+
+        .timeline-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.8rem;
+        }
+
+        .timeline-card {
+            background: var(--white);
+            border: 1px solid var(--border-gold);
+            padding: 2rem 2.2rem;
+            position: relative;
+            transition: var(--transition);
+            clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 0 100%);
+        }
+
+        .timeline-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-soft);
+            border-color: var(--gold);
+        }
+
+        .timeline-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            gap: 1rem;
         }
 
         .timeline-year {
-            position: absolute;
-            top: 2rem;
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--gold);
-            background: var(--cream);
-            padding: 0.4rem 0.8rem;
-            border-radius: 30px;
-            border: 1px solid var(--gold);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.72rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            background: var(--ink);
+            color: var(--amber);
+            padding: 0.25rem 0.7rem;
         }
 
-        .timeline-item:nth-child(odd) .timeline-year {
-            right: calc(50% - 1rem);
-            transform: translateX(50%);
+        .timeline-org {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.72rem;
+            color: var(--dark-gold);
+            font-weight: 600;
         }
 
-        .timeline-item:nth-child(even) .timeline-year {
-            left: calc(50% - 1rem);
-            transform: translateX(-50%);
+        .timeline-card h3 {
+            font-size: 1.45rem;
+            margin-bottom: 0.6rem;
         }
 
-        .courses, .awards {
-            background: var(--cream);
+        .timeline-card p {
+            font-size: 0.92rem;
+            color: var(--gray);
+            margin-bottom: 0;
         }
 
+        /* ==========================================================================
+           CURSOS Y PREMIOS
+           ========================================================================== */
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 0.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.8rem;
         }
 
         .card-item {
             background: var(--white);
-            border: 1px solid rgba(181, 154, 122, 0.1);
+            border: 1px solid var(--border-gold);
             padding: 2rem;
-            border-radius: var(--radius);
-            transition: var(--transition);
             position: relative;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 0 100%);
         }
 
         .card-item:hover {
-            transform: translateY(-3px);
-            border-color: rgba(181, 154, 122, 0.3);
-            box-shadow: var(--shadow);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-soft);
+            border-color: var(--gold);
         }
 
-        .course-meta, .award-date {
-            font-size: 0.85rem;
-            color: var(--gold);
+        .card-item h4 {
+            font-size: 1.38rem;
+            margin-bottom: 0.7rem;
+            line-height: 1.25;
+        }
+
+        .card-item p {
+            font-size: 0.92rem;
+            color: var(--gray);
+            margin-bottom: 1.2rem;
+        }
+
+        .card-item a {
+            color: var(--dark-gold);
             font-weight: 600;
-            margin-top: 1rem;
-            display: block;
-        }
-
-        .card-item a, .project-card a {
-            color: var(--gold);
             text-decoration: none;
-            border-bottom: 1px solid transparent;
-            transition: var(--transition);
-        }
-
-        .card-item a:hover, .project-card a:hover {
             border-bottom: 1px solid var(--gold);
         }
 
-        .contact {
-            background: var(--white);
+        .course-meta, .award-date {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.72rem;
+            color: var(--ink);
+            background: var(--cream);
+            border-left: 3px solid var(--amber);
+            padding: 0.35rem 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
         }
 
-        /* MODIFICADO: Uso de flexbox para centrar correctamente si hay 5 tarjetas */
+        /* ==========================================================================
+           CONTACTO Y FOOTER
+           ========================================================================== */
         .contact-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 2rem;
-            max-width: 65rem;
-            margin: 0 auto;
-            padding: 0 0.5rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
         }
 
         .contact-card {
-            flex: 1 1 250px;
-            max-width: 320px;
+            background: var(--white);
+            border: 1px solid var(--border-gold);
+            padding: 2rem 1.4rem;
             text-align: center;
-            padding: 2rem 1.5rem;
-            background: var(--cream);
             transition: var(--transition);
-            border-radius: var(--radius);
-            border: 1px solid rgba(181, 154, 122, 0.1);
-            position: relative;
+            clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%);
         }
 
         .contact-card:hover {
             transform: translateY(-5px);
-            border-color: rgba(181, 154, 122, 0.3);
-            box-shadow: var(--shadow);
+            border-color: var(--gold);
+            box-shadow: var(--shadow-soft);
         }
 
         .contact-icon {
-            width: 3.5rem;
-            height: 3.5rem;
-            background: transparent;
-            color: var(--gold);
+            width: 3.2rem;
+            height: 3.2rem;
+            margin: 0 auto 1.1rem;
             border-radius: 50%;
+            background: var(--cream);
+            border: 1px solid var(--gold);
+            color: var(--ink);
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 1.5rem;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             transition: var(--transition);
-            border: 1px solid rgba(181, 154, 122, 0.3);
         }
 
         .contact-card:hover .contact-icon {
-            background: var(--gold);
-            color: var(--cream);
+            background: var(--amber);
+            border-color: var(--amber);
+            color: #121820;
         }
 
         .contact-label {
-            font-size: 0.7rem;
-            color: var(--gray);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.68rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 0.5rem;
-        }
-
-        .contact-value {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--navy);
+            letter-spacing: 1.8px;
+            color: var(--gray);
+            margin-bottom: 0.4rem;
         }
 
         .contact-value a {
-            color: var(--navy);
+            color: var(--ink);
             text-decoration: none;
-            transition: var(--transition);
-            position: relative;
-            font-size: 1rem;
-        }
-
-        .contact-value a::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 1px;
-            background: var(--gold);
-            transition: var(--transition);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            word-break: break-word;
         }
 
         .contact-value a:hover {
-            color: var(--gold);
-        }
-
-        .contact-value a:hover::after {
-            width: 100%;
+            color: var(--dark-gold);
         }
 
         footer {
-            background: var(--navy);
-            color: var(--cream);
-            padding: 4rem 0 2rem;
-            position: relative;
-        }
-
-        [data-theme="dark"] footer {
-            background: #0d0d0d;
-        }
-
-        footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--gold), transparent);
-        }
-
-        .footer-container {
+            background: #121820;
+            color: #F6F3EC;
+            padding: 4.5rem 0 2.5rem;
+            border-top: 2px solid var(--gold);
             text-align: center;
         }
 
         .signature-footer {
             font-family: 'Dancing Script', cursive;
-            font-size: 3.5rem;
-            color: var(--cream);
-            margin-bottom: 1.5rem;
+            font-size: 3.2rem;
+            color: var(--amber);
+            margin-bottom: 0.8rem;
             display: block;
-            letter-spacing: 2px;
         }
 
-        .footer-contact-info {
-            margin-bottom: 1.5rem;
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.78rem;
         }
 
-        .footer-contact-info p {
-            color: var(--cream);
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-contact-info a {
-            color: var(--gold);
+        .footer-links a {
+            color: #E6D7B8;
             text-decoration: none;
-            border-bottom: 1px solid transparent;
-            transition: var(--transition);
-            padding-bottom: 2px;
-            margin: 0 0.5rem;
+            transition: color 0.3s ease;
         }
 
-        .footer-contact-info a:hover {
-            border-bottom: 1px solid var(--gold);
+        .footer-links a:hover {
+            color: var(--amber);
         }
 
         .footer-copyright {
-            color: rgba(248, 246, 242, 0.7);
-            font-size: 0.85rem;
+            font-size: 0.82rem;
+            color: rgba(246, 243, 236, 0.65);
             margin-top: 2rem;
-            letter-spacing: 1px;
-            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(181, 154, 122, 0.2);
         }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @media (max-width: 1200px) {
-            .container {
-                max-width: 100%;
-                padding: 0 2rem;
-            }
-        }
-
-        @media (max-width: 1024px) {
-            h1 { font-size: 3rem; }
-            h2 { font-size: 2.2rem; }
-            
-            .hero-container {
+        /* ==========================================================================
+           RESPONSIVE DESIGN
+           ========================================================================== */
+        @media (max-width: 1080px) {
+            .hero-grid {
                 grid-template-columns: 1fr;
-                text-align: center;
-                gap: 4rem;
+                gap: 3rem;
             }
-            
-            .hero h1::after {
-                left: 50%;
-                transform: translateX(-50%);
-            }
-            
-            .hero p {
-                margin: 0 auto 3rem;
-            }
-            
-            .hero-buttons {
-                justify-content: center;
-            }
-            
-            .stats {
-                justify-content: center;
-            }
-            
-            .profile-image-wrapper {
-                width: 320px;
-                height: 320px;
-                margin: 0 auto;
-            }
-        }
-
-        @media (max-width: 900px) {
-            .services-grid,
             .projects-grid,
-            .cards-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-            
+            .services-grid,
             .skills-grid {
                 grid-template-columns: repeat(2, 1fr);
+            }
+            .hero-frame {
+                padding: 2.8rem 2.2rem;
             }
         }
 
         @media (max-width: 768px) {
             .mobile-menu-btn {
-                display: block;
+                display: flex;
+                align-items: center;
+                justify-content: center;
             }
-            
             nav {
                 position: fixed;
-                top: 5rem;
+                top: 4.9rem;
                 left: 0;
                 right: 0;
-                background: var(--cream);
+                background: var(--white);
                 flex-direction: column;
                 padding: 2rem;
-                border-bottom: 1px solid rgba(181, 154, 122, 0.2);
-                transform: translateY(-100%);
+                border-bottom: 1px solid var(--border-gold);
+                transform: translateY(-120%);
                 opacity: 0;
                 visibility: hidden;
                 transition: var(--transition);
-                z-index: 999;
+                box-shadow: var(--shadow-hover);
             }
-            
             nav.active {
                 transform: translateY(0);
                 opacity: 1;
                 visibility: visible;
             }
-            
-            .nav-link {
-                width: 100%;
-                text-align: center;
-                padding: 1rem 0;
-            }
-            
-            .nav-btn {
-                width: 100%;
-                text-align: center;
-            }
-            
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .btn {
-                width: 100%;
-                max-width: 300px;
-                justify-content: center;
-            }
-            
-            .stats {
-                flex-direction: column;
-                gap: 2rem;
-            }
-            
-            .timeline-list::before {
-                left: 2rem;
-            }
-            
-            .timeline-item:nth-child(odd),
-            .timeline-item:nth-child(even) {
-                justify-content: flex-start;
-                padding-left: 4rem;
-                padding-right: 0;
-            }
-            
-            .timeline-year {
-                left: 0 !important;
-                right: auto !important;
-                transform: translateX(-50%) !important;
-            }
-            
-            .container {
-                padding: 0 1.5rem;
-            }
-            
-            .skills-grid {
+            .projects-grid,
+            .services-grid,
+            .skills-grid,
+            .timeline-grid {
                 grid-template-columns: 1fr;
             }
-        }
-
-        @media (max-width: 480px) {
-            .container {
-                padding: 0 1rem;
+            .stats-bar {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
             }
-            
-            h1 { font-size: 2.5rem; }
-            h2 { font-size: 2rem; }
-            
-            section {
-                padding: 4rem 0;
+            .stat-item:nth-child(2)::after {
+                display: none;
             }
-            
-            .service-card,
-            .project-content,
-            .contact-card,
-            .timeline-content,
-            .skill-column,
-            .card-item {
-                padding: 1.5rem;
+            .hero-frame {
+                padding: 2rem 1.4rem;
             }
-            
-            .profile-image-wrapper {
-                width: 280px;
-                height: 280px;
+            .editorial-seal {
+                width: 96px;
+                height: 96px;
+                top: -16px;
+                right: -10px;
             }
-            
-            .hero {
-                padding: 10rem 0 4rem;
-            }
-            
-            .signature-footer {
-                font-size: 2.8rem;
-            }
-            
-            .logo-symbol {
-                width: 2.4rem;
-                height: 2.4rem;
-            }
-            
-            .logo-symbol .logo-initials {
-                font-size: 1rem;
+            .editorial-seal svg {
+                width: 86px;
+                height: 86px;
             }
         }
     </style>
 </head>
 <body>
+
+    <!-- ==================== HEADER ==================== -->
     <header>
         <div class="container header-container">
             <a href="#home" class="logo">
                 <div class="logo-symbol">
-                    <div class="glow"></div>
-                    <div class="logo-initials">JG</div>
+                    <span class="logo-initials">JG</span>
                 </div>
-                <div class="logo-text">José Gallegos</div>
+                <div class="logo-text-wrap">
+                    <span class="logo-text">José Carlos Gallegos</span>
+                    <span class="logo-sub">Ing. Estadístico · Data Science</span>
+                </div>
             </a>
-            
-            <button class="mobile-menu-btn" id="mobileMenuBtn">
+
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Abrir menú">
                 <i class="fas fa-bars"></i>
             </button>
-            
+
             <nav id="mainNav">
                 <a href="#home" class="nav-link">Inicio</a>
-                <a href="#about" class="nav-link">Sobre Mí</a>
-                <a href="#skills" class="nav-link">Habilidades</a>
+                <a href="#about" class="nav-link">Enfoque</a>
                 <a href="#projects" class="nav-link">Proyectos</a>
+                <a href="#skills" class="nav-link">Stack</a>
                 <a href="#timeline" class="nav-link">Trayectoria</a>
-                <a href="#courses" class="nav-link">Cursos</a>
+                <a href="#courses" class="nav-link">Formación</a>
                 <a href="#awards" class="nav-link">Premios</a>
-                <button class="theme-toggle" id="themeToggle">
+                <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">
                     <i class="fas fa-moon"></i>
                 </button>
                 <a href="#contact" class="nav-btn">Contactar</a>
@@ -1234,693 +1423,813 @@
         </div>
     </header>
 
+    <!-- ==================== HERO ==================== -->
     <section class="hero" id="home">
-        <div class="container hero-container">
-            <div class="hero-content">
-                <div class="hero-badge">Ingeniero Estadístico | Data Science & Machine Learning</div>
-                <h1>Modelos predictivos que resuelven problemas reales</h1>
-                <p>
-                    No me quedo solo en la teoría estadística. Combino el rigor científico con machine learning para construir herramientas concretas —utilizando Python, R y Power BI— que descubren el valor oculto en tus bases de datos y lo vuelven accionable.
-                </p>
-                <div class="hero-buttons">
-                    <a href="#projects" class="btn btn-primary">
-                        <i class="fas fa-chart-line"></i>
-                        Ver Proyectos
-                    </a>
-                    <a href="#contact" class="btn btn-secondary">
-                        <i class="fas fa-envelope"></i>
-                        Contactar
-                    </a>
-                </div>
-                <div class="stats">
-                    <div class="stat-item">
-                        <span class="stat-number" data-count="5" id="counter-projects">0</span>
-                        <span class="stat-label">Proyectos</span>
+        <div class="container">
+            <div class="hero-frame">
+                <div class="hero-grid">
+                    <div class="hero-content">
+                        <div class="hero-topline">
+                            <span class="hero-topline-dot"><i class="fas fa-check"></i></span>
+                            <span class="hero-topline-text">Ingeniero Estadístico · ESPOCH · Ciencia de Datos & IA</span>
+                        </div>
+
+                        <h1>
+                            Rigor estadístico y <span class="highlight-bar">modelos predictivos</span> que resuelven <em>problemas reales</em>.
+                        </h1>
+
+                        <p class="hero-lead">
+                            Transformo fenómenos complejos en decisiones estratégicas. Combino modelado estadístico multivariante, machine learning e inteligencia de negocios —en <strong>R, Python, SQL y Power BI</strong>— para desarrollar desde investigación científica publicada en revistas de alto impacto hasta plataformas inteligentes listas para producción.
+                        </p>
+
+                        <div class="hero-actions">
+                            <a href="#projects" class="btn btn-primary">
+                                Explorar Portafolio
+                                <span class="btn-arrow"><i class="fas fa-arrow-up-right-from-square"></i></span>
+                            </a>
+                            <a href="#contact" class="btn btn-secondary">
+                                <i class="fas fa-paper-plane"></i> Iniciar Conversación
+                            </a>
+                        </div>
+
+                        <div class="stats-bar">
+                            <div class="stat-item">
+                                <div class="stat-number-wrap">
+                                    <span class="stat-number" data-count="9">0</span>
+                                    <span class="stat-plus">+</span>
+                                </div>
+                                <span class="stat-label">Proyectos & Modelos</span>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number-wrap">
+                                    <span class="stat-number" data-count="3">0</span>
+                                    <span class="stat-plus">+</span>
+                                </div>
+                                <span class="stat-label">Papers & Ponencias Int.</span>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number-wrap">
+                                    <span class="stat-number" data-count="6">0</span>
+                                    <span class="stat-plus">+</span>
+                                </div>
+                                <span class="stat-label">Premios & Distinciones</span>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number-wrap">
+                                    <span class="stat-number" data-count="3">0</span>
+                                    <span class="stat-plus">+</span>
+                                </div>
+                                <span class="stat-label">Años de Experiencia</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="stat-item">
-                        <span class="stat-number" data-count="95" id="counter-satisfaction">0</span>
-                        <span class="stat-label">Satisfacción</span>
+
+                    <!-- Retrato con marco biselado y sello giratorio -->
+                    <div class="hero-visual">
+                        <div class="portrait-card">
+                            <div class="editorial-seal" aria-hidden="true">
+                                <svg viewBox="0 0 120 120">
+                                    <defs>
+                                        <path id="sealPath" d="M 60, 60 m -46, 0 a 46,46 0 1,1 92,0 a 46,46 0 1,1 -92,0" />
+                                    </defs>
+                                    <text>
+                                        <textPath href="#sealPath">
+                                            JOSÉ CARLOS GALLEGOS · DATA SCIENCE &amp; ML ·
+                                        </textPath>
+                                    </text>
+                                </svg>
+                                <div class="editorial-seal-center">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                            </div>
+
+                            <div class="portrait-inner">
+                                <img src="fondo.jpeg" alt="José Carlos Gallegos Meza — Ingeniero Estadístico" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=900&q=80'">
+                                <div class="portrait-caption">
+                                    <span>Quito / Riobamba, EC</span>
+                                    <strong>Ing. Estadístico</strong>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="stat-item">
-                        <span class="stat-number" data-count="3" id="counter-experience">0</span>
-                        <span class="stat-label">Años Experiencia</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="hero-image-container">
-                <div class="profile-image-wrapper">
-                    <div class="profile-image"></div>
                 </div>
             </div>
         </div>
     </section>
 
-   <section class="about" id="about">
+    <!-- ==================== SOBRE MÍ / ENFOQUE ==================== -->
+    <section id="about">
         <div class="container">
             <div class="section-header">
-                <div class="section-label">Sobre Mí</div>
-                <h2>Ingeniero Estadístico - ESPOCH</h2>
-                <p>
-                    Mi pasión es encontrar patrones donde otros solo ven ruido. Con una sólida formación en estadística multivariante e investigación aplicada, diseño modelos que tienen un impacto directo en sectores como salud, agricultura y desarrollo social. Me encargo de todo el ciclo de vida del dato: desde la limpieza de grandes volúmenes de información hasta el despliegue de plataformas interactivas listas para usar.
-                </p>
+                <span class="section-kicker">01 · Perfil Profesional</span>
+                <div class="section-header-top">
+                    <h2>De la teoría matemática al impacto aplicado</h2>
+                    <p class="section-desc">
+                        Ingeniero en Estadística por la Escuela Superior Politécnica de Chimborazo (ESPOCH). Diseño soluciones integrales que abarcan desde la arquitectura de datos hasta la inferencia estadística y el despliegue predictivo.
+                    </p>
+                </div>
             </div>
-            
+
             <div class="services-grid">
                 <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-chart-bar"></i>
-                    </div>
-                    <h3>Investigación Estadística</h3>
-                    <p>Limpieza e integración de grandes volúmenes de datos con R y Python. Modelado estadístico, simulaciones y análisis predictivo para investigación experimental.</p>
+                    <span class="service-num">01 / MODELADO</span>
+                    <div class="service-icon"><i class="fas fa-square-root-variable"></i></div>
+                    <h3>Estadística Multivariante & Científica</h3>
+                    <p>Investigación avanzada con métodos de kernel mixtos (RKHS), análisis multibloque STATIS-Dual, análisis factorial por máxima verosimilitud, diseño experimental y simulaciones estocásticas en R y Python.</p>
                 </div>
 
                 <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-brain"></i>
-                    </div>
-                    <h3>Machine Learning & BI</h3>
-                    <p>Desarrollo de modelos predictivos y dashboards interactivos en Power BI. Integración de IA para optimizar procesos y automatización de reportes.</p>
+                    <span class="service-num">02 / IA & BI</span>
+                    <div class="service-icon"><i class="fas fa-microchip"></i></div>
+                    <h3>Machine Learning & Business Intelligence</h3>
+                    <p>Construcción de modelos predictivos (XGBoost, Redes Neuronales, Regresión Logística), visión artificial ergonómica y arquitecturas de visualización ejecutiva con Power BI (DAX, M) y PostgreSQL/PostGIS.</p>
                 </div>
 
                 <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3>Liderazgo & Colaboración Global</h3>
-                    <p>Experiencia en equipos multidisciplinarios internacionales. Presidencia estudiantil y coordinación de eventos internacionales de estadística.</p>
+                    <span class="service-num">03 / COMUNIDAD</span>
+                    <div class="service-icon"><i class="fas fa-globe-americas"></i></div>
+                    <h3>Liderazgo & Divulgación Analítica</h3>
+                    <p>Ponente en congresos internacionales (Perú, Chile), líder del Statistical Solutions Club (SSC), expresidente estudiantil y coordinador de talleres de comunicación de datos y flujos reproducibles con Quarto.</p>
                 </div>
             </div>
         </div>
     </section>
-    
-    <section class="skills" id="skills">
+
+    <!-- ==================== PROYECTOS DESTACADOS ==================== -->
+    <section class="projects-section" id="projects">
         <div class="container">
             <div class="section-header">
-                <div class="section-label">Habilidades Técnicas</div>
-                <h2>Lenguajes, Software y Competencias</h2>
-                <p>Stack tecnológico y herramientas que utilizo en proyectos de análisis de datos y ciencia de datos.</p>
+                <span class="section-kicker">02 · Obra Seleccionada</span>
+                <div class="section-header-top">
+                    <h2>Proyectos e Investigaciones Recientes</h2>
+                    <p class="section-desc">
+                        Publicaciones indexadas, plataformas de inteligencia artificial, analítica geoespacial y sistemas de inteligencia de negocios.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Filtros interactivos -->
+            <div class="filter-bar">
+                <button class="filter-btn active" data-filter="all">Todos (9)</button>
+                <button class="filter-btn" data-filter="research">Investigación & Papers</button>
+                <button class="filter-btn" data-filter="ai">IA & Machine Learning</button>
+                <button class="filter-btn" data-filter="bi">BI, Finanzas & Geoespacial</button>
+            </div>
+
+            <div class="projects-grid">
+                <!-- Proyecto 1: Crimen Q2 -->
+                <article class="project-card" data-category="research ai">
+                    <div class="pmedia-wrap">
+                        <div class="pmedia">
+                            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=900&q=80" alt="Mapa de redes y predicción de incidencia delictiva" loading="lazy">
+                        </div>
+                        <span class="pbadge">Revista Q2 · 2026</span>
+                        <span class="pindex">PROY // 01</span>
+                        <a class="go-btn" href="https://doi.org/10.31876/rcs.v32i2.45585" target="_blank" rel="noopener noreferrer" aria-label="Ver artículo publicado en Revista de Ciencias Sociales">
+                            <i class="fas fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                    <div class="project-content">
+                        <h3><a href="https://doi.org/10.31876/rcs.v32i2.45585" target="_blank" rel="noopener noreferrer">Predicción de Incidencia Delictiva — Región Interandina</a></h3>
+                        <p>Modelos comparativos de regresión logística y redes neuronales artificiales para predecir la incidencia criminal en Ecuador. Publicado en <em>Revista de Ciencias Sociales (Q2)</em>, Vol. 32(2), 429–446 y presentado en UNALM (Perú).</p>
+                        <div class="project-tags">
+                            <span class="tag">R</span>
+                            <span class="tag">Redes Neuronales</span>
+                            <span class="tag">Regresión Logística</span>
+                            <span class="tag">Scopus Q2</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Proyecto 2: Cáncer Cervical LACCEI 2026 -->
+                <article class="project-card" data-category="research ai">
+                    <div class="pmedia-wrap">
+                        <div class="pmedia">
+                            <img src="https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=900&q=80" alt="Investigación biomédica y score de riesgo clínico" loading="lazy">
+                        </div>
+                        <span class="pbadge">LACCEI 2026 · Top Paper</span>
+                        <span class="pindex">PROY // 02</span>
+                        <a class="go-btn" href="https://dx.doi.org/10.18687/LACCEI2026.1.1.2637" target="_blank" rel="noopener noreferrer" aria-label="Ver paper en LACCEI 2026">
+                            <i class="fas fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                    <div class="project-content">
+                        <h3><a href="https://dx.doi.org/10.18687/LACCEI2026.1.1.2637" target="_blank" rel="noopener noreferrer">Score de Riesgo de Cáncer Cervical — LACCEI 2026</a></h3>
+                        <p>Desarrollo de un score clínico reproducible basado en XGBoost para estratificación temprana de riesgo oncológico. Seleccionado entre los mejores trabajos de más de 3,000 presentados en Santiago de Chile.</p>
+                        <div class="project-tags">
+                            <span class="tag">XGBoost</span>
+                            <span class="tag">Machine Learning Clínico</span>
+                            <span class="tag">Salud Pública</span>
+                            <span class="tag">Reproducibilidad</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Proyecto 3: CUADRAS AI -->
+                <article class="project-card" data-category="ai">
+                    <div class="pmedia-wrap">
+                        <div class="pmedia">
+                            <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=900&q=80" alt="Monitoreo ergonómico e inteligencia artificial industrial" loading="lazy">
+                        </div>
+                        <span class="pbadge">Expo Clean Hackathon · 2026</span>
+                        <span class="pindex">PROY // 03</span>
+                        <a class="go-btn" href="#contact" aria-label="Consultar detalles sobre CUADRAS AI">
+                            <i class="fas fa-bolt"></i>
+                        </a>
+                    </div>
+                    <div class="project-content">
+                        <h3>CUADRAS AI — Monitoreo Ergonómico & Gestión de EPP</h3>
+                        <p>Plataforma inteligente cofundada para la Expo Clean Ecuador 2026 Hackathon. Integra visión por computadora y analítica predictiva para evaluar posturas laborales en tiempo real y auditar el uso de equipos de protección personal.</p>
+                        <div class="project-tags">
+                            <span class="tag">Computer Vision</span>
+                            <span class="tag">Python</span>
+                            <span class="tag">Ergonomía IA</span>
+                            <span class="tag">Seguridad Industrial</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Proyecto 4: STATIS-Dual & RKHS -->
+                <article class="project-card" data-category="research">
+                    <div class="pmedia-wrap">
+                        <div class="pmedia">
+                            <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=900&q=80" alt="Geometría matemática y espacios de Hilbert" loading="lazy">
+                        </div>
+                        <span class="pbadge">Investigación Doctoral</span>
+                        <span class="pindex">PROY // 04</span>
+                        <a class="go-btn" href="#contact" aria-label="Consultar sobre investigación en STATIS-Dual y RKHS">
+                            <i class="fas fa-Compass-drafting"></i>
+                        </a>
+                    </div>
+                    <div class="project-content">
+                        <h3>STATIS-Dual con Kernels Mixtos y Espacios RKHS</h3>
+                        <p>Propuesta metodológica avanzada que emplea espacios de Hilbert con núcleo reproductor (RKHS) y funciones de kernel mixtas para unificar variables heterogéneas (continuas, categóricas y funcionales) en análisis multibloque.</p>
+                        <div class="project-tags">
+                            <span class="tag">STATIS-Dual</span>
+                            <span class="tag">RKHS</span>
+                            <span class="tag">Kernels Mixtos</span>
+                            <span class="tag">Estadística Multivariante</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Proyecto 5: Fragilidad Financiera Cooperativas -->
+                <article class="project-card" data-category="research bi">
+                    <div class="pmedia-wrap">
+                        <div class="pmedia">
+                            <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=900&q=80" alt="Modelado de riesgo financiero y cooperativas" loading="lazy">
+                        </div>
+                        <span class="pbadge">Riesgo Financiero · ESPOCH</span>
+                        <span class="pindex">PROY // 05</span>
+                        <a class="go-btn" href="#contact" aria-label="Consultar proyecto de riesgo financiero">
+                            <i class="fas fa-chart-column"></i>
+                        </a>
+                    </div>
+                    <div class="project-content">
+                        <h3>Riesgo Financiero y Optimización en Cooperativas</h3>
+                        <p>Proyecto de investigación aplicada para cooperativas de ahorro y crédito en Chimborazo. Integra análisis factorial por máxima verosimilitud, indicadores de fragilidad financiera y modelos de optimización operativa.</p>
+                        <div class="project-tags">
+                            <span class="tag">Análisis Factorial (ML)</span>
+                            <span class="tag">Riesgo Crediticio</span>
+                            <span class="tag">RStudio</span>
+                            <span class="tag">Econometría</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Proyecto 6: AgroDash NASA -->
+                <article class="project-card" data-category="bi ai">
+                    <div class="pmedia-wrap">
+                        <div class="pmedia">
+                            <img src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=900&q=80" alt="Observación satelital de la Tierra NASA SMAP" loading="lazy">
+                        </div>
+                        <span class="pbadge">NASA Space Apps · Global Nominee</span>
+                        <span class="pindex">PROY // 06</span>
+                        <a class="go-btn" href="#awards" aria-label="Ver reconocimiento NASA Space Apps">
+                            <i class="fas fa-satellite"></i>
+                        </a>
+                    </div>
+                    <div class="project-content">
+                        <h3>AgroDash — NASA Earth Observation (SMAP)</h3>
+                        <p>Plataforma geoespacial para monitoreo hídrico agrícola empleando datos satelitales SMAP de la NASA. Procesamiento de cubos de datos climáticos con Python (<code>xarray</code>, <code>folium</code>) y visualización territorial interactiva.</p>
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">xarray & Folium</span>
+                            <span class="tag">NASA SMAP</span>
+                            <span class="tag">PostGIS</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Proyecto 7: Dashboards MIES-ESPOCH & BI -->
+                <article class="project-card" data-category="bi">
+                    <div class="pmedia-wrap">
+                        <div class="pmedia">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80" alt="Dashboards ejecutivos en Power BI" loading="lazy">
+                        </div>
+                        <span class="pbadge">Business Intelligence · MIES</span>
+                        <span class="pindex">PROY // 07</span>
+                        <a class="go-btn" href="#timeline" aria-label="Ver experiencia en Business Intelligence">
+                            <i class="fas fa-chart-pie"></i>
+                        </a>
+                    </div>
+                    <div class="project-content">
+                        <h3>Sistemas de Monitoreo Gubernamental & BI Ejecutivo</h3>
+                        <p>Arquitectura de tableros interactivos en Power BI y Looker Studio para el convenio MIES–ESPOCH y gestión corporativa. Modelado estrella, medidas avanzadas en DAX, transformación en M e integración con bases SQL.</p>
+                        <div class="project-tags">
+                            <span class="tag">Power BI</span>
+                            <span class="tag">DAX & Lenguaje M</span>
+                            <span class="tag">PostgreSQL</span>
+                            <span class="tag">Data Storytelling</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Proyecto 8: Producción de Hongos -->
+                <article class="project-card" data-category="research">
+                    <div class="pmedia-wrap">
+                        <div class="pmedia">
+                            <img src="https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=900&q=80" alt="Diseño experimental agrícola y simulación" loading="lazy">
+                        </div>
+                        <span class="pbadge">Artículo Publicado · 2025</span>
+                        <span class="pindex">PROY // 08</span>
+                        <a class="go-btn" href="https://centrosuragraria.com/index.php/revista/article/view/290" target="_blank" rel="noopener noreferrer" aria-label="Leer artículo en Centrosur Agraria">
+                            <i class="fas fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                    <div class="project-content">
+                        <h3><a href="https://centrosuragraria.com/index.php/revista/article/view/290" target="_blank" rel="noopener noreferrer">Diseño Experimental vs. Simulación: Hongos Ostra</a></h3>
+                        <p>Investigación publicada en <em>Centrosur Agraria</em>: evaluación del rendimiento de <em>Pleurotus ostreatus</em> bajo distintos sustratos contrastando Diseño Completamente al Azar (DCA) frente a simulación computacional en R.</p>
+                        <div class="project-tags">
+                            <span class="tag">Diseño Experimental</span>
+                            <span class="tag">Simulación Monte Carlo</span>
+                            <span class="tag">R</span>
+                            <span class="tag">Agroestadística</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Proyecto 9: Statistical Solutions Club & Local LLM Workflow -->
+                <article class="project-card" data-category="ai research">
+                    <div class="pmedia-wrap">
+                        <div class="pmedia">
+                            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=900&q=80" alt="Comunidad científica y automatización con IA local" loading="lazy">
+                        </div>
+                        <span class="pbadge">Liderazgo & IA Local · 2026</span>
+                        <span class="pindex">PROY // 09</span>
+                        <a class="go-btn" href="#contact" aria-label="Contactar por talleres y consultoría">
+                            <i class="fas fa-terminal"></i>
+                        </a>
+                    </div>
+                    <div class="project-content">
+                        <h3>Statistical Solutions Club & Flujos Reproducibles con IA Local</h3>
+                        <p>Dirección del club de soluciones estadísticas en ESPOCH (talleres de analítica, Quarto y comunicación científica) e implementación de entornos locales de asistencia en código con Ollama + Llama 3 (<code>chattr</code>) en RStudio.</p>
+                        <div class="project-tags">
+                            <span class="tag">Quarto & LaTeX</span>
+                            <span class="tag">Ollama / Llama 3</span>
+                            <span class="tag">chattr (R)</span>
+                            <span class="tag">Mentoría Académica</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== HABILIDADES TÉCNICAS ==================== -->
+    <section id="skills">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-kicker">03 · Ecosistema Técnico</span>
+                <div class="section-header-top">
+                    <h2>Lenguajes, Motores Analíticos y Metodologías</h2>
+                    <p class="section-desc">
+                        Herramientas de código abierto y plataformas empresariales para cubrir todo el ciclo de vida del dato.
+                    </p>
+                </div>
             </div>
 
             <div class="skills-grid">
                 <div class="skill-column">
-                    <h4>Lenguajes & Frameworks</h4>
+                    <h3>Ciencia de Datos & Código <i class="fas fa-code"></i></h3>
                     <div class="skill-list">
-                        <span class="skill-badge">RStudio (Advanced)</span>
-                        <span class="skill-badge">Python</span>
-                        <span class="skill-badge">SQL</span>
-                        <span class="skill-badge">HTML & CSS</span>
-                        <span class="skill-badge">Quarto</span>
-                        <span class="skill-badge">Shiny (R)</span>
-                        <span class="skill-badge">pandas</span>
-                        <span class="skill-badge">scikit-learn</span>
-                        <span class="skill-badge">matplotlib</span>
+                        <span class="skill-badge featured">R & RStudio (Avanzado)</span>
+                        <span class="skill-badge featured">Python (pandas, scikit-learn)</span>
+                        <span class="skill-badge featured">XGBoost & Redes Neuronales</span>
+                        <span class="skill-badge">Quarto & RMarkdown</span>
+                        <span class="skill-badge">Shiny (Web Apps)</span>
+                        <span class="skill-badge">SQL & PostgreSQL</span>
+                        <span class="skill-badge">PostGIS & Folium / xarray</span>
+                        <span class="skill-badge">Ollama + Llama 3 (chattr)</span>
+                        <span class="skill-badge">LaTeX / Overleaf</span>
+                        <span class="skill-badge">HTML5, CSS3 & Git</span>
                     </div>
                 </div>
 
                 <div class="skill-column">
-                    <h4>Software & Plataformas</h4>
+                    <h3>BI & Software Estadístico <i class="fas fa-layer-group"></i></h3>
                     <div class="skill-list">
-                        <span class="skill-badge">Power BI</span>
+                        <span class="skill-badge featured">Power BI (DAX & Power Query M)</span>
+                        <span class="skill-badge featured">SPSS & Minitab</span>
                         <span class="skill-badge">Looker Studio</span>
-                        <span class="skill-badge">Excel (Advanced)</span>
-                        <span class="skill-badge">SPSS</span>
-                        <span class="skill-badge">Minitab</span>
                         <span class="skill-badge">Tableau</span>
-                        <span class="skill-badge">Atlas.ti</span>
-                        <span class="skill-badge">PostgreSQL</span>
-                        <span class="skill-badge">Kubo</span>
-                        <span class="skill-badge">LaTeX</span>
+                        <span class="skill-badge">Excel Financiero Avanzado</span>
+                        <span class="skill-badge">Atlas.ti (Análisis Cualitativo)</span>
+                        <span class="skill-badge">KoboToolbox (Levantamiento)</span>
                     </div>
                 </div>
 
                 <div class="skill-column">
-                    <h4>Competencias Blandas</h4>
+                    <h3>Especialidades & Liderazgo <i class="fas fa-chess-knight"></i></h3>
                     <div class="skill-list">
-                        <span class="skill-badge">Comunicación Efectiva</span>
-                        <span class="skill-badge">Pensamiento Analítico</span>
-                        <span class="skill-badge">Colaboración Global</span>
-                        <span class="skill-badge">Liderazgo</span>
-                        <span class="skill-badge">Adaptabilidad</span>
-                        <span class="skill-badge">Autogestión</span>
-                        <span class="skill-badge">Transparencia de Datos</span>
-                        <span class="skill-badge">Ética Profesional</span>
+                        <span class="skill-badge featured">Análisis Multivariante (STATIS, Biplot)</span>
+                        <span class="skill-badge featured">Métodos de Kernel & RKHS</span>
+                        <span class="skill-badge">Análisis Factorial (Máx. Verosimilitud)</span>
+                        <span class="skill-badge">Diseño de Experimentos (DCA/DBCA)</span>
+                        <span class="skill-badge">Teoría de Valores Extremos</span>
+                        <span class="skill-badge">Storytelling de Datos & Oratoria</span>
+                        <span class="skill-badge">Dirección de Equipos Multidisciplinarios</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="projects" id="projects">
+    <!-- ==================== TRAYECTORIA PROFESIONAL ==================== -->
+    <section class="timeline-section" id="timeline">
         <div class="container">
             <div class="section-header">
-                <div class="section-label">Portafolio</div>
-                <h2>Proyectos Destacados</h2>
-                <p>
-                    Una selección de trabajos que demuestran mi experiencia en análisis estadístico, 
-                    machine learning y visualización de datos.
-                </p>
+                <span class="section-kicker">04 · Recorrido</span>
+                <div class="section-header-top">
+                    <h2>Experiencia Profesional y Liderazgo</h2>
+                    <p class="section-desc">
+                        Investigación aplicada, integración de inteligencia de negocios, ponencias internacionales y representación institucional.
+                    </p>
+                </div>
             </div>
-            
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-gavel"></i>
+
+            <div class="timeline-grid">
+                <div class="timeline-card">
+                    <div class="timeline-meta">
+                        <span class="timeline-year">2026 · Presente</span>
+                        <span class="timeline-org">ESPOCH · Riobamba / Quito</span>
                     </div>
-                    <div class="project-content">
-                        <h3><a href="https://doi.org/10.31876/rcs.v32i2.45585" target="_blank">Predicción de Incidencia Delictiva — Región Interandina</a></h3>
-                        <p>Modelos de regresión logística y redes neuronales para la predicción de criminalidad en la región interandina de Ecuador. Publicado en la Revista de Ciencias Sociales (Q2), Vol. 32(2), 429-446. Presentado como ponencia internacional en el II Congreso de Estadística y Ciencia de Datos (UNALM, Perú).</p>
-                        <div class="project-tags">
-                            <span class="tag">R</span>
-                            <span class="tag">Regresión Logística</span>
-                            <span class="tag">Redes Neuronales</span>
-                            <span class="tag">Revista Q2</span>
-                        </div>
-                    </div>
+                    <h3>Investigador Colaborador & Líder del Statistical Solutions Club</h3>
+                    <p>Desarrollo de modelos de riesgo financiero para cooperativas de ahorro y crédito, investigación en métodos multivariantes (STATIS-Dual/RKHS) y dirección de talleres de ciencia de datos, comunicación estadística y analítica.</p>
                 </div>
 
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-satellite"></i>
+                <div class="timeline-card">
+                    <div class="timeline-meta">
+                        <span class="timeline-year">Jul 2026</span>
+                        <span class="timeline-org">LACCEI 2026 · Santiago, Chile</span>
                     </div>
-                    <div class="project-content">
-                        <h3>AgroDash - NASA Earth Observation</h3>
-                        <p>Sistema de monitoreo de humedad del suelo usando datos satelitales SMAP de NASA. Desarrollado con Python, xarray y folium para visualización geoespacial interactiva.</p>
-                        <div class="project-tags">
-                            <span class="tag">Python</span>
-                            <span class="tag">xarray</span>
-                            <span class="tag">folium</span>
-                            <span class="tag">NASA SMAP</span>
-                            <span class="tag">Geospatial</span>
-                        </div>
-                    </div>
+                    <h3>Ponente y Autor Finalista Internacional</h3>
+                    <p>Presentación presencial del artículo sobre score reproducible de riesgo de cáncer cervical con XGBoost en la 24ª LACCEI International Multi-Conference, seleccionado entre los mejores papers del congreso.</p>
                 </div>
 
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-user-md"></i>
+                <div class="timeline-card">
+                    <div class="timeline-meta">
+                        <span class="timeline-year">Jun 2026</span>
+                        <span class="timeline-org">UNALM · Lima, Perú</span>
                     </div>
-                    <div class="project-content">
-                        <h3><a href="https://dx.doi.org/10.18687/LACCEI2026.1.1.2637" target="_blank">Score de Riesgo de Cáncer Cervical — LACCEI 2026</a></h3>
-                        <p>Score de riesgo de cáncer cervical reproducible basado en XGBoost. Paper estudiantil seleccionado entre los mejores trabajos de más de 3,000 presentados en la 24ª LACCEI International Multi-Conference (Santiago, Chile).</p>
-                        <div class="project-tags">
-                            <span class="tag">XGBoost</span>
-                            <span class="tag">Machine Learning</span>
-                            <span class="tag">Salud Pública</span>
-                        </div>
-                    </div>
+                    <h3>Ponente Internacional</h3>
+                    <p>Ponencia oral y póster en el II Congreso de Estadística y Ciencia de Datos con la investigación sobre modelos de regresión logística y redes neuronales aplicados a la predicción de incidencia delictiva.</p>
                 </div>
 
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-chart-pie"></i>
+                <div class="timeline-card">
+                    <div class="timeline-meta">
+                        <span class="timeline-year">Mar 2024 – Dic 2024</span>
+                        <span class="timeline-org">Proyecto MIES – ESPOCH</span>
                     </div>
-                    <div class="project-content">
-                        <h3>Dashboards Ejecutivos Power BI</h3>
-                        <p>Suite de dashboards interactivos con KPIs empresariales, storytelling de datos y automatización de reportes. Modelado de datos avanzado con DAX.</p>
-                        <div class="project-tags">
-                            <span class="tag">Power BI</span>
-                            <span class="tag">DAX</span>
-                            <span class="tag">SQL</span>
-                            <span class="tag">Business Intelligence</span>
-                        </div>
-                    </div>
+                    <h3>Especialista en Integración de IA y Business Intelligence</h3>
+                    <p>Diseño e implementación de tableros interactivos y modelos analíticos para el monitoreo de programas gubernamentales de desarrollo social, optimizando la toma de decisiones basada en evidencia.</p>
                 </div>
 
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-microscope"></i>
+                <div class="timeline-card">
+                    <div class="timeline-meta">
+                        <span class="timeline-year">Abr 2023 – Dic 2024</span>
+                        <span class="timeline-org">Sociedad Ecuatoriana de Estadística</span>
                     </div>
-                    <div class="project-content">
-                        <h3><a href="https://centrosuragraria.com/index.php/revista/article/view/290" target="_blank">Investigación: Producción de Hongos</a></h3>
-                        <p>Artículo científico publicado: "Evaluación de la producción de hongos ostra blanca bajo diferentes sustratos: diseño completamente al azar vs simulación".</p>
-                        <div class="project-tags">
-                            <span class="tag">R</span>
-                            <span class="tag">Experimental Design</span>
-                            <span class="tag">Simulation</span>
-                            <span class="tag">Scientific Research</span>
-                        </div>
+                    <h3>Practicante Profesional en Analítica Nacional</h3>
+                    <p>Consolidación y depuración de bases de datos a escala nacional en R y Excel. Elaboración de reportes técnicos, estudios aplicados e iniciativas de alfabetización estadística.</p>
+                </div>
+
+                <div class="timeline-card">
+                    <div class="timeline-meta">
+                        <span class="timeline-year">Mar 2023 – Dic 2023</span>
+                        <span class="timeline-org">Grupo BI-DATA · ESPOCH</span>
                     </div>
+                    <h3>Asistente de Investigación y Visualización de Datos</h3>
+                    <p>Arquitectura de bases de datos para proyectos socioeducativos y programación de dashboards ejecutivos en R, Python y Power BI.</p>
+                </div>
+
+                <div class="timeline-card">
+                    <div class="timeline-meta">
+                        <span class="timeline-year">Mar 2022 – Dic 2024</span>
+                        <span class="timeline-org">Asociación de Estudiantes · ESPOCH</span>
+                    </div>
+                    <h3>Presidente y Vicepresidente Estudiantil</h3>
+                    <p>Representación estudiantil de la carrera de Ingeniería en Estadística, articulando alianzas académicas, cine-foros científicos, congresos internacionales y proyectos de impacto social.</p>
+                </div>
+
+                <div class="timeline-card">
+                    <div class="timeline-meta">
+                        <span class="timeline-year">Ago 2023 – Nov 2024</span>
+                        <span class="timeline-org">Congresos Internacionales · ESPOCH</span>
+                    </div>
+                    <h3>Coordinador Académico y Logístico</h3>
+                    <p>Organización integral y gestión de reportes técnicos para Congresos Internacionales de Estadística con ponentes de Latinoamérica y Europa.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="timeline" id="timeline">
+    <!-- ==================== CURSOS Y FORMACIÓN CONTINUA ==================== -->
+    <section id="courses">
         <div class="container">
             <div class="section-header">
-                <div class="section-label">Trayectoria Profesional</div>
-                <h2>Experiencia y Liderazgo</h2>
-            </div>
-            
-            <div class="timeline-list">
-                <div class="timeline-item">
-                    <div class="timeline-year">2026</div>
-                    <div class="timeline-content">
-                        <h3>Ponente Internacional</h3>
-                        <p><strong>II Congreso de Estadística y Ciencia de Datos – UNALM, Perú</strong></p>
-                        <p>Primera ponencia internacional. Trabajo aceptado en modalidad Comunicación: "Modelos de Regresión Logística y Redes Neuronales para la Predicción de Incidencia Delictiva: Región Interandina – Ecuador", publicado luego en la Revista de Ciencias Sociales (Q2).</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-year">Present</div>
-                    <div class="timeline-content">
-                        <h3>Investigador Independiente</h3>
-                        <p><strong>ESPOCH, Riobamba</strong></p>
-                        <p>Estructuración, integración y limpieza de grandes datasets. Análisis estadístico y modelado predictivo con R y Python aplicando técnicas de machine learning. Desarrollo de dashboards interactivos en Power BI para monitoreo de indicadores de impacto.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-year">2024</div>
-                    <div class="timeline-content">
-                        <h3>AI & Business Intelligence Integration</h3>
-                        <p><strong>MIES-ESPOCH Project</strong></p>
-                        <p>Integración de soluciones de inteligencia artificial para aplicaciones de business intelligence. Aplicación de técnicas de machine learning para optimizar procesos de toma de decisiones. Colaboración con equipos multidisciplinarios en estrategias data-driven.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-year">2023</div>
-                    <div class="timeline-content">
-                        <h3>Asistente de Investigación y Visualización</h3>
-                        <p><strong>Grupo de Investigación BI-DATA – ESPOCH</strong></p>
-                        <p>Diseño y mantenimiento de bases de datos para proyectos sociales y educativos. Análisis avanzado en R/Python y producción de dashboards interactivos en Power BI para apoyar toma de decisiones y políticas basadas en evidencia.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-year">2023-2024</div>
-                    <div class="timeline-content">
-                        <h3>Practicante Profesional</h3>
-                        <p><strong>Sociedad Ecuatoriana de Estadística</strong></p>
-                        <p>Consolidación y análisis de datasets nacionales en Excel y R. Preparación de reportes técnicos para proyectos académicos y aplicados. Colaboración en iniciativas para mejorar la calidad de datos y promover la alfabetización estadística.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-year">2022-2024</div>
-                    <div class="timeline-content">
-                        <h3>Presidente y Vicepresidente Estudiantil</h3>
-                        <p><strong>Asociación de Estudiantes de Estadística – ESPOCH</strong></p>
-                        <p>Liderazgo de proyectos de impacto académico y social a nivel institucional. Fomento de colaboración con autoridades nacionales y redes internacionales. Gestión de iniciativas estudiantiles para el desarrollo profesional.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-year">2023-2024</div>
-                    <div class="timeline-content">
-                        <h3>Organizador Logístico</h3>
-                        <p><strong>Congresos Internacionales de Estadística – ESPOCH</strong></p>
-                        <p>Coordinación de eventos académicos con ponentes internacionales. Aseguramiento de calidad operativa, cumplimiento de cronogramas y difusión de reportes técnicos. Gestión de logística para congresos de alto nivel.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-year">2024</div>
-                    <div class="timeline-content">
-                        <h3>Participante</h3>
-                        <p><strong>Congreso Latinoamericano de Sociedades Estadísticas</strong></p>
-                        <p>Interacción con estadísticos e investigadores líderes de Latinoamérica. Participación en discusiones sobre tendencias y desafíos en ciencia de datos y estadística aplicada.</p>
-                    </div>
+                <span class="section-kicker">05 · Educación Continua</span>
+                <div class="section-header-top">
+                    <h2>Programas Internacionales y Certificaciones</h2>
+                    <p class="section-desc">
+                        Especialización constante en inteligencia artificial, métodos multivariados y analítica de negocios.
+                    </p>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <section class="courses" id="courses">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-label">Formación Continua</div>
-                <h2>Cursos y Certificaciones</h2>
-                <p>Capacitaciones especializadas que complementan mi perfil profesional en ciencia de datos y estadística.</p>
-            </div>
             <div class="cards-grid">
                 <div class="card-item">
-                    <h4>IBM AI Fundamentals</h4>
-                    <p>+40 horas de formación en fundamentos de inteligencia artificial. Conceptos básicos y aplicaciones de IA en análisis de datos y machine learning.</p>
-                    <div class="course-meta">2024 · Guayerd · Certificate</div>
+                    <div>
+                        <h4>GCI World — Data Science & Artificial Intelligence</h4>
+                        <p>Programa intensivo global en ciencia de datos, ingeniería de características, machine learning e inteligencia artificial aplicada a los negocios.</p>
+                    </div>
+                    <div class="course-meta">2026 · The University of Tokyo (Matsuo & Iwasawa Lab)</div>
                 </div>
+
                 <div class="card-item">
-                    <h4>Power BI para Negocios</h4>
-                    <p>Dashboards interactivos, modelado de datos avanzado, medidas DAX y monitoreo de KPIs empresariales. Storytelling con datos para ejecutivos.</p>
-                    <div class="course-meta">2024 · Certificate</div>
+                    <div>
+                        <h4>Diplomado "Acelera tu Futuro 2.0"</h4>
+                        <p>Formación integral en liderazgo estratégico, innovación corporativa, gestión de proyectos y toma de decisiones orientada a resultados.</p>
+                    </div>
+                    <div class="course-meta">2026 · Arca Continental · Diplomado</div>
                 </div>
+
                 <div class="card-item">
-                    <h4>Automatización con Quarto y RStudio</h4>
-                    <p>Generación de reportes reproducibles y dinámicos en entornos de datos. Automatización de flujos de trabajo estadísticos.</p>
-                    <div class="course-meta">2023 · Certificate</div>
+                    <div>
+                        <h4>IBM AI Fundamentals</h4>
+                        <p>Más de 40 horas de especialización en fundamentos de inteligencia artificial, ética algorítmica y arquitecturas de machine learning.</p>
+                    </div>
+                    <div class="course-meta">2024 · IBM & Guayerd · Certificación</div>
                 </div>
+
                 <div class="card-item">
-                    <h4>Machine Learning con R y Python</h4>
-                    <p>Implementación de algoritmos supervisados y no supervisados. Aplicación de técnicas de machine learning para análisis predictivo.</p>
-                    <div class="course-meta">2023 · Certificate</div>
+                    <div>
+                        <h4>Power BI para Negocios & Modelado DAX</h4>
+                        <p>Diseño de modelos dimensionales, fórmulas DAX avanzadas, flujos ETL con Power Query y storytelling visual para dirección ejecutiva.</p>
+                    </div>
+                    <div class="course-meta">2024 · Certificación Especializada</div>
                 </div>
+
                 <div class="card-item">
-                    <h4>Modelado de Valores Extremos en R</h4>
-                    <p>Estimación de riesgos y análisis de eventos raros. Aplicación de teoría de valores extremos para toma de decisiones bajo incertidumbre.</p>
-                    <div class="course-meta">Certificate</div>
+                    <div>
+                        <h4>Automatización Científica con Quarto y RStudio</h4>
+                        <p>Creación de reportes técnicos parametrizados, documentos dinámicos y flujos de investigación 100% reproducibles.</p>
+                    </div>
+                    <div class="course-meta">2023 · Certificación Técnica</div>
                 </div>
+
                 <div class="card-item">
-                    <h4>Métodos Biplot</h4>
-                    <p>Visualización e interpretación de datos multivariados. Técnicas avanzadas de reducción de dimensionalidad para análisis exploratorio.</p>
-                    <div class="course-meta">Certificate</div>
+                    <div>
+                        <h4>Métodos Biplot & Modelado de Valores Extremos en R</h4>
+                        <p>Reducción de dimensionalidad e interpretación geométrica multivariante junto con estimación estadística de eventos raros y colas pesadas.</p>
+                    </div>
+                    <div class="course-meta">Especialización Estadística · Certificados</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="awards" id="awards">
+    <!-- ==================== PREMIOS Y DISTINCIONES ==================== -->
+    <section class="projects-section" id="awards">
         <div class="container">
             <div class="section-header">
-                <div class="section-label">Reconocimientos</div>
-                <h2>Premios y Distinciones</h2>
-                <p>Reconocimientos obtenidos en competencias académicas y eventos internacionales de innovación.</p>
+                <span class="section-kicker">06 · Reconocimientos</span>
+                <div class="section-header-top">
+                    <h2>Premios y Distinciones Académicas</h2>
+                    <p class="section-desc">
+                        Galardones obtenidos en competencias científicas, hackathons tecnológicos y congresos arbitrados.
+                    </p>
+                </div>
             </div>
+
             <div class="cards-grid">
                 <div class="card-item">
-                    <h4> 1er Lugar - Concurso Académico de Estadística Aplicada (III Edición)</h4>
-                    <p>Ganador del Primer Lugar en el concurso de pósters de la Facultad de Ciencias, ESPOCH, con el póster sobre modelos de regresión logística y redes neuronales para la predicción de incidencia delictiva.</p>
-                    <div class="award-date">Junio 2026 · ESPOCH</div>
+                    <div>
+                        <h4>1er Lugar — Concurso Académico de Estadística Aplicada (III Edición)</h4>
+                        <p>Ganador absoluto en la Facultad de Ciencias (ESPOCH) por la investigación en modelado predictivo de incidencia delictiva con redes neuronales y regresión logística.</p>
+                    </div>
+                    <div class="award-date">Junio 2026 · 1er Lugar Institucional · ESPOCH</div>
                 </div>
+
                 <div class="card-item">
-                    <h4> Selección entre los mejores trabajos - LACCEI 2026</h4>
-                    <p>Paper estudiantil elegido entre más de 3,000 trabajos presentados en la 24ª LACCEI International Multi-Conference for Engineering, Education and Technology. <a href="https://laccei.org/laccei2026/" target="_blank">Ver conferencia →</a></p>
-                    <div class="award-date">Julio 2026 · Santiago, Chile</div>
+                    <div>
+                        <h4>Top Paper Seleccionado — 24ª LACCEI Multi-Conference</h4>
+                        <p>Artículo elegido entre los mejores trabajos de más de 3,000 envíos internacionales en ingeniería y tecnología. <a href="https://dx.doi.org/10.18687/LACCEI2026.1.1.2637" target="_blank" rel="noopener">Ver publicación DOI →</a></p>
+                    </div>
+                    <div class="award-date">Julio 2026 · Santiago de Chile · Distinción Internacional</div>
                 </div>
+
                 <div class="card-item">
-                    <h4> 2º Lugar - NASA Space Apps Challenge</h4>
-                    <p>Ganadores locales del desafío global de la NASA. Desarrollo de soluciones innovadoras para desafíos espaciales usando ciencia de datos y tecnología.</p>
-                    <div class="award-date">2024 · Local Winners</div>
+                    <div>
+                        <h4>Proyecto Destacado CUADRAS AI — Expo Clean Ecuador Hackathon</h4>
+                        <p>Desarrollo y defensa de plataforma de visión artificial para ergonomía laboral y monitoreo inteligente de equipos de protección personal.</p>
+                    </div>
+                    <div class="award-date">Octubre 2026 · Innovación IA & Seguridad Industrial</div>
                 </div>
+
                 <div class="card-item">
-                    <h4> Nominación Global - NASA Challenge</h4>
-                    <p>Reconocimiento por nominación a nivel global en el concurso internacional NASA Space Apps Challenge.</p>
-                    <div class="award-date">2024 · Global Nomination</div>
+                    <div>
+                        <h4>Nominación Global & 2º Lugar Local — NASA Space Apps Challenge</h4>
+                        <p>Premiados por el desarrollo de soluciones geoespaciales con datos abiertos de observación terrestre de la NASA y nominados a la evaluación global.</p>
+                    </div>
+                    <div class="award-date">Octubre 2024 · NASA International Space Apps</div>
                 </div>
+
                 <div class="card-item">
-                    <h4> 2º Lugar Nacional - Estadística Aplicada</h4>
-                    <p>Concurso Académico de Estadística Aplicada 2023. Premio por solución innovadora a retos de datos reales mediante análisis estadístico avanzado.</p>
-                    <div class="award-date">2023 · National Award</div>
+                    <div>
+                        <h4>2º Lugar Nacional — Concurso de Estadística Aplicada</h4>
+                        <p>Reconocimiento a la excelencia metodológica en la resolución de problemáticas reales mediante modelado estadístico avanzado.</p>
+                    </div>
+                    <div class="award-date">Noviembre 2023 · Premio Nacional · ESPOCH</div>
                 </div>
+
                 <div class="card-item">
-                    <h4> Hackathon IBM Interuniversitario</h4>
-                    <p>Participación en hackathon IBM con estudiantes de múltiples universidades. Colaboración en soluciones tecnológicas innovadoras.</p>
-                    <div class="award-date">2024 · Participation Certificate</div>
-                </div>
-                <div class="card-item">
-                    <h4> Reconocimiento por Participación</h4>
-                    <p>Concurso de Estadística Aplicada, 2da edición. Reconocimiento por la calidad del trabajo presentado y metodología aplicada.</p>
-                    <div class="award-date">2024 · Participation Certificate</div>
+                    <div>
+                        <h4>Hackathon IBM Interuniversitario & II Edición Estadística Aplicada</h4>
+                        <p>Certificaciones de mérito por desarrollo colaborativo de soluciones basadas en inteligencia artificial y rigor metodológico.</p>
+                    </div>
+                    <div class="award-date">2024 · IBM & ESPOCH</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="contact" id="contact">
+    <!-- ==================== CONTACTO ==================== -->
+    <section id="contact">
         <div class="container">
             <div class="section-header">
-                <div class="section-label">Contacto</div>
-                <h2>Trabajemos Juntos</h2>
-                <p>
-                    ¿Tienes un proyecto en mente? Contáctame para discutir cómo puedo ayudarte 
-                    a transformar tus datos en decisiones estratégicas.
-                </p>
+                <span class="section-kicker">07 · Conectar</span>
+                <div class="section-header-top">
+                    <h2>¿Listo para colaborar en un nuevo proyecto?</h2>
+                    <p class="section-desc">
+                        Disponible para consultoría estadística, desarrollo de modelos de Machine Learning, Business Intelligence e investigación colaborativa.
+                    </p>
+                </div>
             </div>
-            
+
             <div class="contact-grid">
                 <div class="contact-card">
-                    <div class="contact-icon">
-                        <i class="fab fa-whatsapp"></i>
-                    </div>
-                    <div class="contact-label">WhatsApp</div>
+                    <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
+                    <div class="contact-label">WhatsApp Directo</div>
                     <div class="contact-value">
-                        <a href="https://wa.me/593963281463?text=Hola%20José,%20vi%20tu%20portafolio%20y%20me%20gustaría%20contactarte" target="_blank">
+                        <a href="https://wa.me/593963281463?text=Hola%20Jos%C3%A9%20Carlos,%20vi%20tu%20portafolio%20y%20me%20gustar%C3%ADa%20conversar%20sobre%20un%20proyecto" target="_blank" rel="noopener">
                             +593 96 328 1463
                         </a>
                     </div>
                 </div>
 
                 <div class="contact-card">
-                    <div class="contact-icon">
-                        <i class="fab fa-linkedin-in"></i>
+                    <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                    <div class="contact-label">Correo Electrónico</div>
+                    <div class="contact-value">
+                        <a href="mailto:carlosmexa302@gmail.com">carlosmexa302@gmail.com</a>
                     </div>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon"><i class="fab fa-linkedin-in"></i></div>
                     <div class="contact-label">LinkedIn</div>
                     <div class="contact-value">
-                        <a href="https://www.linkedin.com/in/josecarlos440" target="_blank">
-                            josecarlos440
-                        </a>
+                        <a href="https://www.linkedin.com/in/josecarlos440" target="_blank" rel="noopener">in/josecarlos440</a>
                     </div>
                 </div>
 
                 <div class="contact-card">
-                    <div class="contact-icon">
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <div class="contact-label">Email</div>
+                    <div class="contact-icon"><i class="fab fa-orcid"></i></div>
+                    <div class="contact-label">ORCID Científico</div>
                     <div class="contact-value">
-                        <a href="mailto:carlosmexa302@gmail.com">
-                            carlosmexa302@gmail.com
-                        </a>
+                        <a href="https://orcid.org/0009-0007-6831-6131" target="_blank" rel="noopener">0009-0007-6831-6131</a>
                     </div>
                 </div>
 
                 <div class="contact-card">
-                    <div class="contact-icon">
-                        <i class="fab fa-orcid"></i>
-                    </div>
-                    <div class="contact-label">ORCID</div>
-                    <div class="contact-value">
-                        <a href="https://orcid.org/0009-0007-6831-6131" target="_blank">
-                            0009-0007-6831-6131
-                        </a>
-                    </div>
-                </div>
-
-                <div class="contact-card">
-                    <div class="contact-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
+                    <div class="contact-icon"><i class="fas fa-graduation-cap"></i></div>
                     <div class="contact-label">Google Scholar</div>
                     <div class="contact-value">
-                        <a href="https://scholar.google.com/citations?hl=es&user=2bxi2ncAAAAJ&view_op=list_works&sortby=pubdate" target="_blank">
-                            Perfil Académico
+                        <a href="https://scholar.google.com/citations?hl=es&user=2bxi2ncAAAAJ&view_op=list_works&sortby=pubdate" target="_blank" rel="noopener">
+                            Publicaciones & Citas
                         </a>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
 
+    <!-- ==================== FOOTER ==================== -->
     <footer>
-        <div class="footer-container">
-            <div class="footer-contact-info">
-                <p>Ecuador · +593 96 328 1463</p>
-                <p>
-                    LinkedIn: <a href="https://www.linkedin.com/in/josecarlos440" target="_blank">josecarlos440</a> |
-                    ORCID: <a href="https://orcid.org/0009-0007-6831-6131" target="_blank">0009-0007-6831-6131</a>
-                </p>
-                <p>
-                    Google Scholar: <a href="https://scholar.google.com/citations?hl=es&user=2bxi2ncAAAAJ&view_op=list_works&sortby=pubdate" target="_blank">Perfil Académico</a>
-                </p>
-                <p>Email: <a href="mailto:carlosmexa302@gmail.com">carlosmexa302@gmail.com</a></p>
-                <p>Portfolio: <a href="https://josescar.github.io/" target="_blank">josescar.github.io</a></p>
+        <div class="container">
+            <span class="signature-footer">José Carlos Gallegos</span>
+            <p style="color: rgba(246, 243, 236, 0.8); max-width: 34rem; margin: 0 auto;">
+                Ingeniero en Estadística (ESPOCH) · Ciencia de Datos, Machine Learning e Investigación Multivariante.
+            </p>
+            <div class="footer-links">
+                <a href="https://www.linkedin.com/in/josecarlos440" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="https://orcid.org/0009-0007-6831-6131" target="_blank" rel="noopener">ORCID</a>
+                <a href="https://scholar.google.com/citations?hl=es&user=2bxi2ncAAAAJ&view_op=list_works&sortby=pubdate" target="_blank" rel="noopener">Google Scholar</a>
+                <a href="mailto:carlosmexa302@gmail.com">Email</a>
+                <a href="https://josescar.github.io/" target="_blank" rel="noopener">josescar.github.io</a>
             </div>
             <div class="footer-copyright">
-                © 2026 José Gallegos - Statistics Engineering Student - ESPOCH
+                © 2026 José Carlos Gallegos Meza · Ingeniero Estadístico (ESPOCH) · Quito, Ecuador
             </div>
         </div>
     </footer>
 
+    <!-- ==================== SCRIPTS ==================== -->
     <script>
-        // Theme Toggle
+        // 1. Modo Claro / Oscuro con persistencia
         const themeToggle = document.getElementById('themeToggle');
         const html = document.documentElement;
         const themeIcon = themeToggle.querySelector('i');
-        
-        // Check for saved theme preference
-        const currentTheme = localStorage.getItem('theme') || 'light';
-        html.setAttribute('data-theme', currentTheme);
-        themeIcon.className = currentTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
-        
+
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        html.setAttribute('data-theme', savedTheme);
+        themeIcon.className = savedTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+
         themeToggle.addEventListener('click', () => {
-            const theme = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-            html.setAttribute('data-theme', theme);
-            localStorage.setItem('theme', theme);
-            themeIcon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+            const nextTheme = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+            html.setAttribute('data-theme', nextTheme);
+            localStorage.setItem('theme', nextTheme);
+            themeIcon.className = nextTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
         });
 
-        // Mobile Menu
+        // 2. Menú móvil
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const mainNav = document.getElementById('mainNav');
-        
+
         mobileMenuBtn.addEventListener('click', () => {
             mainNav.classList.toggle('active');
-            mobileMenuBtn.innerHTML = mainNav.classList.contains('active') 
-                ? '<i class="fas fa-times"></i>' 
+            mobileMenuBtn.innerHTML = mainNav.classList.contains('active')
+                ? '<i class="fas fa-times"></i>'
                 : '<i class="fas fa-bars"></i>';
         });
 
-        document.querySelectorAll('.nav-link').forEach(link => {
+        document.querySelectorAll('.nav-link, .nav-btn').forEach(link => {
             link.addEventListener('click', () => {
                 mainNav.classList.remove('active');
                 mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
             });
         });
 
-        // Smooth Scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                if (this.getAttribute('href') === '#') return;
-                
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
+        // 3. Filtro interactivo de proyectos por categoría
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.getAttribute('data-filter');
+                projectCards.forEach(card => {
+                    const categories = card.getAttribute('data-category') || '';
+                    if (filter === 'all' || categories.includes(filter)) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
             });
         });
 
-        // Counters Animation
+        // 4. Animación de contadores numéricos
         function animateCounters() {
-            const counters = document.querySelectorAll('.stat-number');
-            
-            counters.forEach(counter => {
-                counter.textContent = '0';
-                
-                const target = parseInt(counter.getAttribute('data-count'));
-                const duration = 2000;
-                const increment = target / (duration / 16);
+            document.querySelectorAll('.stat-number').forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-count'), 10);
                 let current = 0;
-                
+                const step = Math.max(1, Math.ceil(target / 30));
                 const timer = setInterval(() => {
-                    current += increment;
+                    current += step;
                     if (current >= target) {
                         current = target;
                         clearInterval(timer);
                     }
-                    counter.textContent = Math.floor(current);
-                }, 16);
+                    counter.textContent = current;
+                }, 40);
             });
         }
 
-        // Animate Cards on Scroll
-        const animateCards = () => {
-            const cards = document.querySelectorAll('.service-card, .project-card, .contact-card, .skill-column, .card-item');
-            
-            const cardObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '0';
-                        entry.target.style.transform = 'translateY(20px)';
-                        
-                        setTimeout(() => {
-                            entry.target.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-                            entry.target.style.opacity = '1';
-                            entry.target.style.transform = 'translateY(0)';
-                        }, 100);
-                        
-                        cardObserver.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.1 });
-            
-            cards.forEach(card => cardObserver.observe(card));
-        };
-
-        // Animate Sections on Scroll
-        const sections = document.querySelectorAll('section');
-        const sectionObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1 });
-
-        sections.forEach(section => {
-            sectionObserver.observe(section);
-        });
-
-        // Timeline Animation
-        const timelineItems = document.querySelectorAll('.timeline-item');
-        const timelineObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    timelineObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.2 });
-
-        timelineItems.forEach(item => {
-            timelineObserver.observe(item);
-        });
-
-        // Initialize on Load
-        window.addEventListener('load', () => {
-            animateCounters();
-            animateCards();
-            
-            // Hero Title Typing Effect (optional)
-            const heroTitle = document.querySelector('.hero h1');
-            if (heroTitle && !sessionStorage.getItem('titleAnimated')) {
-                const originalText = heroTitle.textContent;
-                heroTitle.textContent = '';
-                let i = 0;
-                
-                function typeWriter() {
-                    if (i < originalText.length) {
-                        heroTitle.textContent += originalText.charAt(i);
-                        i++;
-                        setTimeout(typeWriter, 50);
-                    }
-                }
-                
-                setTimeout(typeWriter, 500);
-                sessionStorage.setItem('titleAnimated', 'true');
-            }
-        });
-
-        // Header Shadow on Scroll
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if (window.scrollY > 50) {
-                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.05)';
-            } else {
-                header.style.boxShadow = 'none';
-            }
-        });
-
-        // Parallax Effect
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const hero = document.querySelector('.hero');
-            
-            if (hero) {
-                hero.style.backgroundPositionY = scrolled * 0.5 + 'px';
-            }
-        });
-
-        // Re-animate counters
-        setTimeout(animateCounters, 100);
-        
-        window.addEventListener('scroll', () => {
-            if (window.scrollY < 100) {
-                const projectsCounter = document.getElementById('counter-projects');
-                if (projectsCounter && projectsCounter.textContent === '0') {
-                    animateCounters();
-                }
-            }
-        });
+        window.addEventListener('load', animateCounters);
     </script>
 </body>
 </html>
